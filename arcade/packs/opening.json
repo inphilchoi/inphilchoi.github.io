@@ -1,0 +1,45 @@
+{
+  "format": "mygba-arcade-pack",
+  "version": 1,
+  "id": "opening",
+  "title": "개장 기념",
+  "desc": "1층 기계 네 대로 몸을 푸는 여섯 판",
+  "stages": [
+    {
+      "id": "op-1", "gameId": "brick", "title": "속공",
+      "desc": "목숨 하나로 1분 안에 200점",
+      "seed": 20260908, "opts": { "lives": 1 },
+      "goal": { "type": "score", "target": 200, "timeLimit": 60 }, "reward": 1
+    },
+    {
+      "id": "op-2", "gameId": "brick", "title": "고층 벽",
+      "desc": "3레벨에서 시작해 90초 안에 800점",
+      "seed": 20260909, "opts": { "lives": 3, "level": 3 },
+      "goal": { "type": "score", "target": 800, "timeLimit": 90 }, "reward": 2
+    },
+    {
+      "id": "op-3", "gameId": "sky", "title": "격추왕",
+      "desc": "90초 안에 20,000점",
+      "seed": 20260910, "opts": { "lives": 3 },
+      "goal": { "type": "score", "target": 20000, "timeLimit": 90 }, "reward": 2
+    },
+    {
+      "id": "op-4", "gameId": "sky", "title": "외길",
+      "desc": "목숨 하나로 5웨이브까지",
+      "seed": 20260911, "opts": { "lives": 1 },
+      "goal": { "type": "reach", "stat": "wave", "value": 5 }, "reward": 3
+    },
+    {
+      "id": "op-5", "gameId": "maze", "title": "2층까지",
+      "desc": "어둠 속에서 별을 다 줍고 내려가라",
+      "seed": 20260912, "opts": { "lives": 3 },
+      "goal": { "type": "reach", "stat": "floor", "value": 2 }, "reward": 2
+    },
+    {
+      "id": "op-6", "gameId": "climb", "title": "40미터",
+      "desc": "물이 차오르기 전에 40M",
+      "seed": 20260913, "opts": {},
+      "goal": { "type": "reach", "stat": "height", "value": 40 }, "reward": 2
+    }
+  ]
+}

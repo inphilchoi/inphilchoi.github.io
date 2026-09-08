@@ -1,0 +1,33 @@
+{
+  "format": "mygba-arcade-pack",
+  "version": 1,
+  "id": "floor2",
+  "title": "2층 특별전",
+  "desc": "2층 기계를 연 사람만 도전할 수 있는 네 판",
+  "stages": [
+    {
+      "id": "f2-1", "gameId": "drift", "title": "파편 정리",
+      "desc": "4웨이브까지 살아남기",
+      "seed": 20260914, "opts": { "lives": 3 },
+      "goal": { "type": "reach", "stat": "wave", "value": 4 }, "reward": 2
+    },
+    {
+      "id": "f2-2", "gameId": "snake", "title": "대식가",
+      "desc": "길이 30까지 키우기",
+      "seed": 20260915, "opts": {},
+      "goal": { "type": "reach", "stat": "longest", "value": 30 }, "reward": 3
+    },
+    {
+      "id": "f2-3", "gameId": "mole", "title": "난타",
+      "desc": "제한 시간 안에 12,000점",
+      "seed": 20260916, "opts": { "time": 60 },
+      "goal": { "type": "score", "target": 12000 }, "reward": 2
+    },
+    {
+      "id": "f2-4", "gameId": "drift", "title": "외기체",
+      "desc": "목숨 하나로 60초 버티기",
+      "seed": 20260917, "opts": { "lives": 1 },
+      "goal": { "type": "survive", "seconds": 60 }, "reward": 3
+    }
+  ]
+}
