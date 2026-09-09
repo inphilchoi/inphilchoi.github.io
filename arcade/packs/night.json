@@ -1,0 +1,86 @@
+{
+  "format": "mygba-arcade-pack",
+  "version": 1,
+  "id": "night",
+  "title": "야간 개장",
+  "desc": "2층 세 대로 겨루는 심야 코스",
+  "stages": [
+    {
+      "id": "nt-1",
+      "gameId": "snake",
+      "title": "3레벨 식사",
+      "desc": "3레벨에서 6,000점",
+      "seed": 20260930,
+      "opts": {
+        "level": 3
+      },
+      "goal": {
+        "type": "score",
+        "target": 6000
+      },
+      "reward": 2
+    },
+    {
+      "id": "nt-2",
+      "gameId": "mole",
+      "title": "60초 타격전",
+      "desc": "기본 60초, 120초 안에 25,000점",
+      "seed": 20260931,
+      "opts": {
+        "time": 60
+      },
+      "goal": {
+        "type": "score",
+        "target": 25000,
+        "timeLimit": 120
+      },
+      "reward": 2
+    },
+    {
+      "id": "nt-3",
+      "gameId": "drift",
+      "title": "암석지대",
+      "desc": "150초 안에 28,000점",
+      "seed": 20260931,
+      "opts": {
+        "lives": 3
+      },
+      "goal": {
+        "type": "score",
+        "target": 28000,
+        "timeLimit": 150
+      },
+      "reward": 3
+    },
+    {
+      "id": "nt-4",
+      "gameId": "snake",
+      "title": "길이 50",
+      "desc": "굶지 않고 몸통 50칸까지",
+      "seed": 20260932,
+      "opts": {},
+      "goal": {
+        "type": "reach",
+        "stat": "longest",
+        "value": 50
+      },
+      "reward": 3
+    },
+    {
+      "id": "nt-5",
+      "gameId": "drift",
+      "title": "외목숨 5웨이브",
+      "desc": "목숨 하나로 5웨이브 도달",
+      "seed": 20260930,
+      "opts": {
+        "lives": 1
+      },
+      "goal": {
+        "type": "reach",
+        "stat": "wave",
+        "value": 5
+      },
+      "reward": 4
+    }
+  ]
+}

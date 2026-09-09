@@ -1,10 +1,32 @@
 {
   "format": "mygba-arcade-content",
   "version": 1,
-  "updatedAt": "2026-09-08",
+  "updatedAt": "2026-09-09",
   "note": "추억의 오락실 도전 스테이지. 실행 코드가 아니라 '어느 게임을 어떤 설정으로 어디까지'만 적힌 데이터입니다.",
   "packs": [
-    { "id": "opening", "title": "개장 기념", "url": "packs/opening.json", "rev": 1 },
-    { "id": "floor2",  "title": "2층 특별전", "url": "packs/floor2.json",  "rev": 1 }
+    {
+      "id": "opening",
+      "title": "개장 기념",
+      "url": "packs/opening.json",
+      "rev": 1
+    },
+    {
+      "id": "floor2",
+      "title": "2층 특별전",
+      "url": "packs/floor2.json",
+      "rev": 1
+    },
+    {
+      "id": "autumn",
+      "title": "가을 대회",
+      "url": "packs/autumn.json",
+      "rev": 1
+    },
+    {
+      "id": "night",
+      "title": "야간 개장",
+      "url": "packs/night.json",
+      "rev": 1
+    }
   ]
 }

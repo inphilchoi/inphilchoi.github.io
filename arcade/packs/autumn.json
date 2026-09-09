@@ -1,0 +1,103 @@
+{
+  "format": "mygba-arcade-pack",
+  "version": 1,
+  "id": "autumn",
+  "title": "가을 대회",
+  "desc": "1층 네 대로 겨루는 가을 정기전. 아래로 갈수록 어렵습니다",
+  "stages": [
+    {
+      "id": "au-1",
+      "gameId": "brick",
+      "title": "몸풀기",
+      "desc": "2레벨에서 90초 안에 450점",
+      "seed": 20260922,
+      "opts": {
+        "lives": 3,
+        "level": 2
+      },
+      "goal": {
+        "type": "score",
+        "target": 450,
+        "timeLimit": 90
+      },
+      "reward": 1
+    },
+    {
+      "id": "au-2",
+      "gameId": "sky",
+      "title": "편대 요격",
+      "desc": "120초 안에 60,000점",
+      "seed": 20260920,
+      "opts": {
+        "lives": 3
+      },
+      "goal": {
+        "type": "score",
+        "target": 60000,
+        "timeLimit": 120
+      },
+      "reward": 2
+    },
+    {
+      "id": "au-3",
+      "gameId": "climb",
+      "title": "60미터",
+      "desc": "물에 잠기기 전에 60M 까지",
+      "seed": 20260922,
+      "opts": {},
+      "goal": {
+        "type": "reach",
+        "stat": "height",
+        "value": 60
+      },
+      "reward": 2
+    },
+    {
+      "id": "au-4",
+      "gameId": "brick",
+      "title": "외목숨 4레벨",
+      "desc": "목숨 하나로 1,200점. 시간 제한은 없습니다",
+      "seed": 20260920,
+      "opts": {
+        "lives": 1,
+        "level": 4
+      },
+      "goal": {
+        "type": "score",
+        "target": 1200
+      },
+      "reward": 2
+    },
+    {
+      "id": "au-5",
+      "gameId": "maze",
+      "title": "지하 3층",
+      "desc": "목숨 5개로 3층까지 내려가기",
+      "seed": 20260922,
+      "opts": {
+        "lives": 5
+      },
+      "goal": {
+        "type": "reach",
+        "stat": "floor",
+        "value": 3
+      },
+      "reward": 3
+    },
+    {
+      "id": "au-6",
+      "gameId": "sky",
+      "title": "150초 사수",
+      "desc": "목숨 하나로 150초 버티기",
+      "seed": 20260920,
+      "opts": {
+        "lives": 1
+      },
+      "goal": {
+        "type": "survive",
+        "seconds": 150
+      },
+      "reward": 3
+    }
+  ]
+}
