@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://inphilchoi.github.io/sitemap.xml
