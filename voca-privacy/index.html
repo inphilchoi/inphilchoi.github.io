@@ -31,7 +31,7 @@
 <header><div class="wrap bar"><a class="back" href="/">← CreativeLab</a></div></header>
 <main class="wrap">
   <h1>Voca 통역 개인정보처리방침</h1>
-  <div class="date">최종 수정일: 2026년 9월 1일 · Privacy Policy (English summary below)</div>
+  <div class="date">최종 수정일: 2026년 9월 17일 · Privacy Policy (English summary below)</div>
 
   <div class="summary">
     <p><strong>요약 — Voca 통역은 계정이 없고, 개발자 서버가 없으며, 대화 내용을 어디에도 전송하지 않습니다.</strong>
@@ -62,10 +62,11 @@
   <p>모든 권한은 해당 기능을 실제로 쓰는 시점에 요청하며, 거부해도 나머지 기능은 그대로 쓸 수 있습니다.</p>
 
   <h2>4. 음성 인식에 관한 고지</h2>
-  <p>받아쓰기는 iOS에 내장된 음성 인식을 사용합니다. 기기 성능과 언어에 따라 음성이
-  <strong>Apple의 서버에서 처리될 수 있으며</strong>, 이 경우 Apple의
-  <a href="https://www.apple.com/legal/privacy/" rel="noopener">개인정보 보호정책</a>이 적용됩니다.
-  개발자는 이 과정에서 어떤 데이터에도 접근하지 않습니다.</p>
+  <p>받아쓰기는 <strong>기기 안(온디바이스) 음성 인식만</strong> 사용합니다. 말한 음성은 Apple·Google을 포함한
+  어떤 서버로도 전송되지 않고 기기 안에서 글자로 바뀝니다(iOS는 기기 내 인식 강제 옵션, Android는 기기 안 인식기가
+  확인된 경우에만 듣기를 시작합니다).</p>
+  <p>기기나 언어가 기기 안 음성 인식을 지원하지 않으면 <strong>서버 인식으로 넘기지 않고</strong>, 음성 입력을 쓸 수
+  없다고 안내한 뒤 텍스트 입력을 권합니다. 개발자는 이 과정에서 어떤 데이터에도 접근하지 않습니다.</p>
 
   <h2>5. 네트워크 사용</h2>
   <p>네트워크는 <strong>언어팩(온디바이스 번역 모델) 다운로드에만</strong> 사용합니다.
@@ -94,8 +95,9 @@
     <li><strong>Data collected:</strong> none.</li>
     <li><strong>On-device storage:</strong> interpretation history, saved phrases, ratings and language
       preferences stay in the app's own storage; delete them in the app or by uninstalling.</li>
-    <li><strong>Speech recognition:</strong> transcription uses iOS speech recognition, which may be processed
-      on Apple servers depending on your device and language; Apple's privacy policy applies to that processing.</li>
+    <li><strong>Speech recognition:</strong> transcription uses on-device speech recognition only; audio is never
+      sent to Apple, Google or any other server. If your device or language has no on-device recognizer, the app
+      does not fall back to server recognition — it tells you and suggests typing instead.</li>
     <li><strong>Network:</strong> used only to download on-device translation models (Google ML Kit).
       Conversations, audio and photos are never uploaded. After download, interpreting works offline.</li>
     <li><strong>Third parties:</strong> none.</li>
