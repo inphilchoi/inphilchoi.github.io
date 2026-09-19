@@ -6,28 +6,68 @@
   "desc": "2층 기계를 연 사람만 도전할 수 있는 네 판",
   "stages": [
     {
-      "id": "f2-1", "gameId": "drift", "title": "파편 정리",
+      "id": "f2-1",
+      "gameId": "drift",
+      "title": "파편 정리",
       "desc": "4웨이브까지 살아남기",
-      "seed": 20260914, "opts": { "lives": 3 },
-      "goal": { "type": "reach", "stat": "wave", "value": 4 }, "reward": 2
+      "seed": 20260914,
+      "opts": {
+        "lives": 3
+      },
+      "goal": {
+        "type": "reach",
+        "stat": "wave",
+        "value": 4
+      },
+      "reward": 2
     },
     {
-      "id": "f2-2", "gameId": "snake", "title": "대식가",
-      "desc": "길이 30까지 키우기",
-      "seed": 20260915, "opts": {},
-      "goal": { "type": "reach", "stat": "longest", "value": 30 }, "reward": 3
+      "id": "f2-5",
+      "gameId": "cross",
+      "title": "첫 배달",
+      "desc": "1분 안에 문 네 곳을 다 채우기",
+      "seed": 20260941,
+      "opts": {
+        "lives": 3
+      },
+      "goal": {
+        "type": "reach",
+        "stat": "level",
+        "value": 2,
+        "timeLimit": 60
+      },
+      "reward": 2
     },
     {
-      "id": "f2-3", "gameId": "mole", "title": "난타",
-      "desc": "제한 시간 안에 12,000점",
-      "seed": 20260916, "opts": { "time": 60 },
-      "goal": { "type": "score", "target": 12000 }, "reward": 2
+      "id": "f2-6",
+      "gameId": "road",
+      "title": "고속도로",
+      "desc": "2분 안에 9,000점",
+      "seed": 20260942,
+      "opts": {
+        "lives": 3
+      },
+      "goal": {
+        "type": "score",
+        "target": 9000,
+        "timeLimit": 120
+      },
+      "reward": 3
     },
     {
-      "id": "f2-4", "gameId": "drift", "title": "외기체",
+      "id": "f2-4",
+      "gameId": "drift",
+      "title": "외기체",
       "desc": "목숨 하나로 60초 버티기",
-      "seed": 20260917, "opts": { "lives": 1 },
-      "goal": { "type": "survive", "seconds": 60 }, "reward": 3
+      "seed": 20260917,
+      "opts": {
+        "lives": 1
+      },
+      "goal": {
+        "type": "survive",
+        "seconds": 60
+      },
+      "reward": 3
     }
   ]
 }

@@ -6,35 +6,35 @@
   "desc": "2층 세 대로 겨루는 심야 코스",
   "stages": [
     {
-      "id": "nt-1",
-      "gameId": "snake",
-      "title": "3레벨 식사",
-      "desc": "3레벨에서 6,000점",
-      "seed": 20260930,
+      "id": "nt-6",
+      "gameId": "cross",
+      "title": "러시아워",
+      "desc": "3라운드 속도에서 2,500점",
+      "seed": 20260940,
       "opts": {
         "level": 3
       },
       "goal": {
         "type": "score",
-        "target": 6000
+        "target": 2500
       },
       "reward": 2
     },
     {
-      "id": "nt-2",
-      "gameId": "mole",
-      "title": "60초 타격전",
-      "desc": "기본 60초, 120초 안에 25,000점",
-      "seed": 20260931,
+      "id": "nt-7",
+      "gameId": "road",
+      "title": "외목숨 3km",
+      "desc": "목숨 하나로 네 번째 구간까지",
+      "seed": 20260941,
       "opts": {
-        "time": 60
+        "lives": 1
       },
       "goal": {
-        "type": "score",
-        "target": 25000,
-        "timeLimit": 120
+        "type": "reach",
+        "stat": "stage",
+        "value": 4
       },
-      "reward": 2
+      "reward": 3
     },
     {
       "id": "nt-3",
@@ -53,16 +53,18 @@
       "reward": 3
     },
     {
-      "id": "nt-4",
-      "gameId": "snake",
-      "title": "길이 50",
-      "desc": "굶지 않고 몸통 50칸까지",
-      "seed": 20260932,
-      "opts": {},
+      "id": "nt-8",
+      "gameId": "cross",
+      "title": "외목숨 배달",
+      "desc": "목숨 하나로 문 네 곳을 다 채우기",
+      "seed": 20260940,
+      "opts": {
+        "lives": 1
+      },
       "goal": {
         "type": "reach",
-        "stat": "longest",
-        "value": 50
+        "stat": "level",
+        "value": 2
       },
       "reward": 3
     },
