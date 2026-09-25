@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>하루 - AI 비서 개인정보처리방침 · 이용약관 · Privacy Policy &amp; Terms</title>
-<meta name="description" content="하루(AI 비서)는 계정도 개발자 서버도 없습니다. AI 친구와의 대화는 기기 안의 Apple Intelligence 가 만들고, 대화·사진·기억은 기기에만 저장됩니다." />
+<meta name="description" content="하루(AI 비서)는 계정이 없고 개인정보를 수집하지 않습니다. AI 친구와의 대화는 기기 안의 Apple Intelligence 가 만들고, 대화·사진·기억은 기기에만 저장됩니다." />
 <style>
   :root{--bg:#F5F3EE;--surface:#FFF;--ink:#1D2330;--soft:#5A6172;--line:#E2DED4;--accent:#7A3CF0}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -32,16 +32,17 @@
 <header><div class="wrap bar"><a class="back" href="/">← CreativeLab</a></div></header>
 <main class="wrap">
   <h1>하루 - AI 비서 개인정보처리방침 · 이용약관</h1>
-  <div class="date">최종 수정일: 2026년 9월 25일 (일 처리 비서·음성으로 말 걸기 추가) · 운영자: INPHIL CHOI (CreativeLab) · 문의: <a href="mailto:creativelab.choi@gmail.com">creativelab.choi@gmail.com</a> · Privacy Policy &amp; Terms (English below)</div>
+  <div class="date">최종 수정일: 2026년 9월 26일 (하루 PC 연결·암호화 중계 추가) · 운영자: INPHIL CHOI (CreativeLab) · 문의: <a href="mailto:creativelab.choi@gmail.com">creativelab.choi@gmail.com</a> · Privacy Policy &amp; Terms (English below)</div>
 
   <div class="summary">
-    <p><strong>요약 — 하루는 내가 만든 AI 친구와 이야기하는 앱입니다. 회원가입이 없고, 개발자가 운영하는 서버가 없으며, 개인정보를 수집하지 않습니다.</strong>
-    대화는 기기 안의 Apple Intelligence 모델이 만들고, 대화·사진·기억·친구 설정은 이 기기에만 저장됩니다. 광고·분석·추적 SDK 가 없습니다.</p>
+    <p><strong>요약 — 하루는 내가 만든 AI 친구와 이야기하는 앱입니다. 회원가입이 없고, 개인정보를 수집하지 않습니다.</strong>
+    대화는 기기 안의 Apple Intelligence 모델이 만들고, 대화·사진·기억·친구 설정은 이 기기에만 저장됩니다. 광고·분석·추적 SDK 가 없습니다.
+    내 컴퓨터에 <a href="https://github.com/inphilchoi/haru-pc">하루 PC</a>를 연결한 경우에만, 맡긴 일이 내 PC 로 전달되며 밖에서는 내용을 볼 수 없게 암호화한 채 하루 중계를 거칩니다(6항).</p>
   </div>
 
   <h2>1. 수집하는 개인정보</h2>
   <p><strong>없습니다.</strong> 앱에는 회원가입·로그인이 없고, 이름·이메일·전화번호·위치·연락처를 묻지 않습니다.
-  분석·광고·추적 SDK 가 없고, 개발자가 운영하는 서버도 없습니다.</p>
+  분석·광고·추적 SDK 가 없습니다. 개발자가 운영하는 서버는 하루 PC 를 연결한 사용자만 쓰는 암호화 중계뿐이며, 중계는 내용을 볼 수 없고 저장하지 않습니다(6항).</p>
 
   <h2>2. AI 처리</h2>
   <p>AI 친구의 답, 설정 자동 채우기, 지난 대화 요약은 모두 Apple 이 기기에 넣어 둔 언어 모델(Apple Intelligence 온디바이스 모델)이 <strong>이 기기 안에서</strong> 만듭니다.
@@ -77,10 +78,19 @@
     <li><strong>메일</strong> — 하루는 메일을 직접 보내지 않습니다. 초안을 만들어 기기의 메일 앱을 열어 주면, 사용자가 확인하고 직접 보냅니다.</li>
   </ul>
 
-  <h2>6. 아동</h2>
+  <h2>6. 하루 PC 연결 (선택)</h2>
+  <p>사용자가 자기 컴퓨터에 <a href="https://github.com/inphilchoi/haru-pc">하루 PC</a>(오픈소스)를 설치하고 연결 QR 을 찍은 경우에만 해당합니다.</p>
+  <ul>
+    <li><strong>무엇이 오가나</strong> — 사용자가 "PC에 맡기기"를 누른 일의 글, PC 의 승인 요청과 사용자의 승인·거부, PC 의 답. 이것들은 사용자의 폰과 사용자의 PC 사이에서만 오갑니다.</li>
+    <li><strong>어떻게 오가나</strong> — 같은 Wi-Fi 에서는 PC 에 직접, 그 밖에는 CreativeLab 이 운영하는 <strong>하루 중계</strong>(Cloudflare Workers)를 거칩니다. 모든 내용은 폰과 PC 가 연결 QR 로만 나눠 가진 키로 <strong>종단간 암호화</strong>(ChaCha20-Poly1305)되어, 중계와 개발자는 내용을 볼 수 없습니다. 중계는 연결 방 번호와 접속 토큰의 해시만 저장하고, 오간 내용·기록은 저장하지 않습니다. 인프라 제공자인 Cloudflare 는 일반 웹 접속처럼 접속 IP·시각 같은 통신 기록을 처리할 수 있습니다(<a href="https://www.cloudflare.com/privacypolicy/">Cloudflare 개인정보 처리방침</a>).</li>
+    <li><strong>PC 에서의 처리</strong> — 맡긴 일은 사용자의 PC 에서, 사용자가 PC 에 연결한 AI 모델로 처리됩니다. PC 에 ChatGPT·Claude 같은 외부 AI 를 연결했다면 그 회사의 방침이 적용되며, 개발자는 이 내용을 받지 않습니다. PC 가 파일을 바꾸거나 명령을 실행하기 전에는 항상 폰에 승인 카드가 뜨고, 사용자가 승인한 것만 실행됩니다.</li>
+    <li><strong>폰에 저장되는 것</strong> — PC 주소, 기기 토큰, 중계 방 번호·접속 토큰·암호 키. 기기의 안전한 저장소(iOS 키체인·안드로이드 키스토어)에만 두며, 하루 PC 화면의 [연결 끊기]나 앱 삭제로 지워집니다.</li>
+  </ul>
+
+  <h2>7. 아동</h2>
   <p>하루는 만 14세 미만 아동을 포함해 누구의 개인정보도 수집하지 않습니다.</p>
 
-  <h2>7. 변경</h2>
+  <h2>8. 변경</h2>
   <p>이 방침이 바뀌면 이 페이지와 앱 업데이트 안내로 알립니다.</p>
 
   <h2 id="terms">이용약관</h2>
@@ -92,17 +102,17 @@
   <p>실존 인물을 흉내 내거나 다른 사람의 사진을 허락 없이 쓰는 캐릭터, 성적인 대화·혐오·폭력·불법 행위를 목적으로 한 캐릭터는 만들 수 없습니다. 어떤 설정을 적어도 AI 는 이런 대화를 거절합니다.</p>
   <h3>4. 공유한 카드의 책임</h3>
   <p>친구 카드를 다른 사람에게 보낼 때 그 안의 설정·사진에 대한 책임은 보낸 사람에게 있습니다. 부적절한 카드를 받았다면 앱에서 바로 삭제하고 creativelab.choi@gmail.com 으로 알려 주세요.</p>
-  <h3>5. 서버가 없습니다</h3>
-  <p>운영자는 대화·사진·가입 정보를 보관하지 않으므로 잃어버린 데이터를 되살려 드릴 수 없습니다.</p>
+  <h3>5. 데이터는 내 기기에만 있습니다</h3>
+  <p>운영자는 대화·사진·가입 정보를 보관하지 않으므로(하루 중계도 내용을 저장하지 않음) 잃어버린 데이터를 되살려 드릴 수 없습니다. 하루 PC 가 내 컴퓨터에서 한 일은 사용자가 폰에서 승인한 것이며, 그 결과에 대한 책임은 사용자에게 있습니다.</p>
   <h3>6. Apple 표준 약관</h3>
   <p>이 앱의 이용에는 <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple 표준 이용약관(EULA)</a>이 함께 적용됩니다.</p>
 
   <h2>English</h2>
-  <p class="en"><strong>Privacy Policy.</strong> Haru (AI assistant) collects no personal data. There is no account, no server run by the developer, and no analytics, advertising or tracking SDK.
+  <p class="en"><strong>Privacy Policy.</strong> Haru (AI assistant) collects no personal data. There is no account and no analytics, advertising or tracking SDK. The only server the developer runs is the encrypted Haru relay, used only if you connect Haru PC (see below); it cannot read or store your content.
   Your AI friends' replies, profile autofill and conversation summaries are generated on your device by Apple's on-device Apple Intelligence model; your chats and photos are never sent to the developer or to any external AI service. On devices without Apple Intelligence the app answers in a simple offline mode. "Draw a face with AI" uses Apple's Image Playground, which is governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.
   Friend profiles and photos, conversations, photos you send in chat, the on-device "memory" summary, closeness level and settings are stored only on your device (no iCloud sync); deleting a chat or the app deletes them permanently.
-  A friend card (.haru) is sent only when you choose to share it, via the method you pick; it contains the friend's settings and photo (up to 400 KB) and never your conversations, memory or closeness level. The photo picker passes only the photos you select. "Talk" uses the microphone only while you hold the conversation button, converting speech to text on-device where supported (otherwise Apple's speech recognition processes it under Apple's Privacy Policy); audio is never stored, only the resulting text. Replies are read aloud with built-in device voices. The optional "AI natural voice" downloads, only when you tap Download, the Supertonic 3 speech model (about 400 MB) from Hugging Face once; only model files are requested (Hugging Face may log your IP like any download — Hugging Face Privacy Policy), then speech is generated offline on your device and the model can be deleted anytime. Calendar and Reminders are accessed only when you ask the assistant or open the Feed; items are added only after you approve the card, and nothing leaves the device. Contacts are read on-device only to find the person you name (never stored or sent). Alarms/timers are set only after you approve. When you ask about the weather, your current location is used once and only coordinates are sent to Apple Weather (WeatherKit); location is never stored. Calls, messages, directions, shortcuts and other apps are only opened after you approve the card — Haru never pays, transfers or sends inside other apps; apps you allow are remembered on-device. Text in photos you send (invitations, bills, receipts) is read on-device only (Apple Vision and on-device AI) and never leaves the device. Haru never sends email itself — it opens a draft in your Mail app for you to review and send. Expenses, goals, notes and email drafts are stored only on your device. We collect no data from anyone, including children. Changes will be posted on this page.</p>
-  <p class="en"><strong>Terms of Use.</strong> (1) Your friends are AI characters: they can be wrong and do not replace medical, legal, financial or mental-health advice. (2) If you are struggling, contact a person — in Korea call 109 (24h) or 1577-0199; in an emergency 112/119. (3) You may not create characters that impersonate real people, use others' photos without permission, or aim at sexual, hateful, violent or illegal conversations; the AI declines such conversations regardless of settings. (4) You are responsible for friend cards you share; delete inappropriate cards and report them to creativelab.choi@gmail.com. (5) There is no server, so lost data cannot be restored. (6) <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple's Standard EULA</a> also applies.</p>
+  A friend card (.haru) is sent only when you choose to share it, via the method you pick; it contains the friend's settings and photo (up to 400 KB) and never your conversations, memory or closeness level. The photo picker passes only the photos you select. "Talk" uses the microphone only while you hold the conversation button, converting speech to text on-device where supported (otherwise Apple's speech recognition processes it under Apple's Privacy Policy); audio is never stored, only the resulting text. Replies are read aloud with built-in device voices. The optional "AI natural voice" downloads, only when you tap Download, the Supertonic 3 speech model (about 400 MB) from Hugging Face once; only model files are requested (Hugging Face may log your IP like any download — Hugging Face Privacy Policy), then speech is generated offline on your device and the model can be deleted anytime. Calendar and Reminders are accessed only when you ask the assistant or open the Feed; items are added only after you approve the card, and nothing leaves the device. Contacts are read on-device only to find the person you name (never stored or sent). Alarms/timers are set only after you approve. When you ask about the weather, your current location is used once and only coordinates are sent to Apple Weather (WeatherKit); location is never stored. Calls, messages, directions, shortcuts and other apps are only opened after you approve the card — Haru never pays, transfers or sends inside other apps; apps you allow are remembered on-device. Text in photos you send (invitations, bills, receipts) is read on-device only (Apple Vision and on-device AI) and never leaves the device. Haru never sends email itself — it opens a draft in your Mail app for you to review and send. Expenses, goals, notes and email drafts are stored only on your device. <strong>Haru PC (optional).</strong> Only if you install the open-source <a href="https://github.com/inphilchoi/haru-pc">Haru PC</a> on your own computer and scan its pairing code: tasks you hand off, the PC's approval requests with your answers, and the PC's replies travel only between your phone and your PC — directly on the same Wi-Fi, otherwise through the Haru relay run by CreativeLab on Cloudflare Workers. Everything is end-to-end encrypted (ChaCha20-Poly1305) with a key that only your phone and PC share through the pairing code, so neither the relay nor the developer can read it; the relay stores only room ids and a hash of each room's access token, and no content or logs. Cloudflare, as infrastructure provider, may process connection metadata such as IP address and time (<a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a>). Tasks are processed on your PC by the AI model you connected there; if that is an external service (e.g. ChatGPT, Claude), its policy applies and the developer receives nothing. Nothing on your computer changes until you approve the card on your phone. The PC address, device token and relay keys are kept in the phone's secure storage (iOS Keychain / Android Keystore) and removed by "Disconnect" or deleting the app. We collect no data from anyone, including children. Changes will be posted on this page.</p>
+  <p class="en"><strong>Terms of Use.</strong> (1) Your friends are AI characters: they can be wrong and do not replace medical, legal, financial or mental-health advice. (2) If you are struggling, contact a person — in Korea call 109 (24h) or 1577-0199; in an emergency 112/119. (3) You may not create characters that impersonate real people, use others' photos without permission, or aim at sexual, hateful, violent or illegal conversations; the AI declines such conversations regardless of settings. (4) You are responsible for friend cards you share; delete inappropriate cards and report them to creativelab.choi@gmail.com. (5) Your data stays on your devices (the relay stores no content), so lost data cannot be restored; actions Haru PC takes on your computer are the ones you approved, and you are responsible for them. (6) <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple's Standard EULA</a> also applies.</p>
 
   <footer>하루 - AI 비서 · CreativeLab · creativelab.choi@gmail.com</footer>
 </main>
