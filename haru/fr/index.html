@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haru - Assistant IA</title>
+<meta name="description" content="Haru, l'assistant à qui vous confiez les choses de vive voix et qui s'en occupe sur votre appareil. Sans inscription, il gère agenda, tâches, budget et e-mails, et en connectant Haru PC, vous pouvez aussi confier depuis votre téléphone le travail de votre ordinateur.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Haru - Assistant IA">
+<meta property="og:description" content="Dites-le, et c'est fait, sur votre appareil. Jusqu'au travail de votre ordinateur.">
+<meta property="og:url" content="https://inphilchoi.github.io/haru/fr/">
+<meta property="og:image" content="https://inphilchoi.github.io/haru/icon.png">
+<link rel="alternate" hreflang="ko" href="https://inphilchoi.github.io/haru/">
+<link rel="alternate" hreflang="en" href="https://inphilchoi.github.io/haru/en/">
+<link rel="alternate" hreflang="ja" href="https://inphilchoi.github.io/haru/ja/">
+<link rel="alternate" hreflang="zh-Hans" href="https://inphilchoi.github.io/haru/zh-hans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://inphilchoi.github.io/haru/zh-hant/">
+<link rel="alternate" hreflang="fr" href="https://inphilchoi.github.io/haru/fr/">
+<link rel="alternate" hreflang="de" href="https://inphilchoi.github.io/haru/de/">
+<link rel="alternate" hreflang="es" href="https://inphilchoi.github.io/haru/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://inphilchoi.github.io/haru/pt-br/">
+<link rel="alternate" hreflang="x-default" href="https://inphilchoi.github.io/haru/en/">
+<link rel="icon" href="../icon.png">
+<link rel="apple-touch-icon" href="../icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+/* CreativeLab 홈페이지(creativelab-kr.github.io)와 같은 조판 규칙:
+   큰 제목·좁은 자간, 흰 면과 옅은 회색 면을 번갈아, 파랑 하나, 알약 버튼, 항상 밝게. */
+:root{
+  color-scheme:light;
+  --bg:#fff; --bg-soft:#f5f5f7; --surface:#fff;
+  --text:#1d1d1f; --text-mid:#424245; --text-muted:#6e6e73;
+  --border:rgba(0,0,0,.09);
+  --accent:#0071e3; --accent-hover:#0077ed; --accent-link:#0066cc;
+  --haru:#e8707f; --haru-soft:#fdeef0;
+  --live:#0a7d45;
+  --nav-bg:rgba(255,255,255,.72);
+  --font:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --fs-hero:clamp(2.8rem,1.2rem + 6.5vw,6rem);
+  --fs-h2:clamp(1.9rem,1.2rem + 2.6vw,3.25rem);
+  --fs-h3:clamp(1.15rem,1rem + .6vw,1.5rem);
+  --fs-lede:clamp(1.0625rem,.95rem + .55vw,1.45rem);
+  --wrap:1024px; --nav-h:48px; --gutter:22px;
+  --radius:18px; --radius-lg:28px; --pill:980px;
+  --ease:cubic-bezier(.28,.11,.32,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px);-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:1.0625rem;line-height:1.55;letter-spacing:-.01em;word-break:keep-all;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+:where(a,button):focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.narrow{max-width:760px}
+
+/* 머리띠 */
+.nav{position:sticky;top:0;z-index:50;height:var(--nav-h);background:var(--nav-bg);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+.nav .wrap{height:100%;display:flex;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-right:auto}
+.brand img{width:24px;height:24px;border-radius:6px}
+.nav-links{display:flex;gap:18px;font-size:.8125rem;color:var(--text-mid)}
+.nav-links a:hover{color:var(--text)}
+.lang{font:inherit;font-size:.8125rem;color:var(--text-mid);background:transparent;border:1px solid rgba(0,0,0,.14);border-radius:var(--pill);padding:4px 8px;max-width:120px}
+.nav-cta{font-size:.8125rem;font-weight:600;color:#fff;background:var(--accent);padding:5px 12px;border-radius:var(--pill)}
+@media (max-width:720px){.nav-links{display:none}}
+
+/* 구획 */
+section{padding:clamp(72px,10vw,120px) 0}
+.soft{background:var(--bg-soft)}
+.eyebrow{color:var(--haru);font-weight:600;font-size:clamp(1rem,.9rem + .4vw,1.3rem);margin:0 0 10px;letter-spacing:-.01em}
+h1,h2,h3{margin:0;letter-spacing:-.025em;line-height:1.08}
+h2{font-size:var(--fs-h2);font-weight:700}
+h3{font-size:var(--fs-h3);font-weight:700;line-height:1.25}
+.lede{font-size:var(--fs-lede);color:var(--text-mid);line-height:1.45;margin:18px 0 0}
+.center{text-align:center}
+.center .lede{margin-inline:auto;max-width:640px}
+.muted{color:var(--text-muted)}
+.link{color:var(--accent-link)}
+.link:hover{text-decoration:underline}
+.link::after{content:" ›"}
+
+/* 버튼 */
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.center .actions{justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:6px;font-size:1.0625rem;font-weight:500;padding:12px 22px;border-radius:var(--pill);transition:background .2s var(--ease)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-ghost{color:var(--accent-link);border:1px solid var(--accent-link)}
+.btn-ghost:hover{background:#f0f6ff}
+
+/* 첫 화면 */
+.hero{padding-top:clamp(56px,8vw,96px);padding-bottom:0;text-align:center;overflow:hidden}
+.hero-icon{width:96px;height:96px;border-radius:22px;margin:0 auto 22px;box-shadow:0 10px 30px rgba(232,112,127,.28)}
+.hero h1{font-size:var(--fs-hero);font-weight:800;letter-spacing:-.035em;line-height:1.02}
+.hero h1 .accent{background:linear-gradient(90deg,#f4a261,#e8707f 55%,#d9577a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.badge-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px}
+.badge{font-size:.8125rem;color:var(--text-mid);background:var(--bg-soft);border-radius:var(--pill);padding:6px 12px}
+.hero-phones{display:flex;justify-content:center;gap:clamp(16px,4vw,48px);margin-top:clamp(48px,7vw,80px);padding-bottom:0;transform:translateY(40px)}
+@media (max-width:720px){.hero-phones .phone:nth-child(2){display:none}}
+
+/* 폰(앱 화면을 앱과 같은 모양으로 그린 것) */
+.phone{width:min(300px,78vw);flex:none;border-radius:46px;background:#1b1b1d;padding:12px;box-shadow:0 30px 60px rgba(0,0,0,.18),inset 0 0 0 2px #3a3a3c;text-align:left}
+.screen{border-radius:36px;background:#000;color:#f5f5f7;height:560px;overflow:hidden;display:flex;flex-direction:column;font-size:.8rem;line-height:1.4}
+.bar{display:flex;align-items:center;gap:8px;padding:34px 16px 10px;background:linear-gradient(#2a2410,#231e0c)}
+.bar .av{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#f6c2a1,#e8707f)}
+.bar b{font-size:.9rem}
+.bar small{display:block;color:#aaa;font-size:.65rem}
+.chat{flex:1;padding:12px 12px 0;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.me{align-self:flex-end;background:#e57a86;color:#fff;border-radius:16px 16px 4px 16px;padding:8px 11px;max-width:80%}
+.ai{align-self:flex-start;background:#1f1f22;border-radius:16px 16px 16px 4px;padding:8px 11px;max-width:82%}
+.card{align-self:stretch;margin-left:10px;background:#1c1c1e;border:1px solid #2c2c2e;border-radius:16px;padding:10px 12px}
+.card .k{display:flex;justify-content:space-between;align-items:center;color:#9a9aa0;font-size:.68rem;font-weight:600}
+.card .st{color:#ff9f43;background:#3a2a17;border-radius:8px;padding:1px 6px}
+.card .st.ok{color:#5ad17a;background:#173a22}
+.card .t{font-weight:700;font-size:.85rem;margin:5px 0}
+.card pre{margin:4px 0 8px;background:#2a2a2d;border-radius:8px;padding:7px 8px;font-family:var(--mono);font-size:.66rem;white-space:pre-wrap;color:#e5e5ea}
+.card .b{display:flex;gap:6px}
+.card .b span{border-radius:999px;padding:4px 12px;font-size:.72rem;background:#3a3a3c}
+.card .b span.p{background:#e57a86;color:#fff}
+.input{margin:10px;border-radius:20px;background:#1c1c1e;color:#8e8e93;padding:10px 14px;font-size:.72rem}
+
+/* 타일 */
+.tiles-4{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))!important}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:18px;margin-top:48px}
+.tile{background:var(--surface);border-radius:var(--radius-lg);padding:28px}
+.soft .tile{background:#fff}
+section:not(.soft) .tile{background:var(--bg-soft)}
+.tile .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--haru-soft);color:var(--haru);margin-bottom:16px}
+.tile .ic svg{width:24px;height:24px}
+.tile p{color:var(--text-mid);margin:10px 0 0}
+.tile ul{margin:12px 0 0;padding-left:1.1em;color:var(--text-mid)}
+.tile li{margin:4px 0}
+.say{display:inline-block;background:var(--bg-soft);border-radius:10px;padding:1px 8px;margin:2px 0;color:var(--text)}
+section:not(.soft) .tile .say{background:#fff}
+
+/* 흐름도 */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:14px;margin-top:48px}
+.node{background:#fff;border-radius:var(--radius-lg);padding:26px 20px;text-align:center}
+.node .ic{width:52px;height:52px;border-radius:14px;margin:0 auto 12px;display:grid;place-items:center;background:var(--haru-soft);color:var(--haru)}
+.node .ic svg{width:28px;height:28px}
+.node p{margin:6px 0 0;color:var(--text-muted);font-size:.9375rem}
+.arrow{color:var(--text-muted);font-size:1.6rem;text-align:center;align-self:center}
+@media (max-width:760px){.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}}
+
+/* 설치 */
+.tabs{display:inline-flex;background:#e8e8ed;border-radius:var(--pill);padding:3px;margin-top:36px}
+.tabs button{font:inherit;font-size:.9375rem;border:0;background:transparent;padding:8px 18px;border-radius:var(--pill);cursor:pointer;color:var(--text-mid)}
+.tabs button[aria-selected="true"]{background:#fff;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:600}
+.code{position:relative;margin-top:16px;background:#1d1d1f;color:#f5f5f7;border-radius:var(--radius);padding:20px 60px 20px 22px;font-family:var(--mono);font-size:.875rem;line-height:1.6;white-space:pre-wrap;word-break:break-all;text-align:left}
+.code .cm{color:#8e8e93}
+.copy{position:absolute;top:12px;right:12px;font:inherit;font-size:.75rem;border:0;border-radius:var(--pill);background:#3a3a3c;color:#fff;padding:5px 11px;cursor:pointer}
+.copy:hover{background:#48484a}
+.steps{counter-reset:s;list-style:none;padding:0;margin:40px 0 0;display:grid;gap:14px}
+.steps li{counter-increment:s;background:var(--bg-soft);border-radius:var(--radius);padding:18px 20px 18px 64px;position:relative}
+.soft .steps li{background:#fff}
+.steps li::before{content:counter(s);position:absolute;left:20px;top:16px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;display:grid;place-items:center;font-size:.9375rem}
+.steps b{display:block;margin-bottom:2px}
+.steps p{margin:0;color:var(--text-mid)}
+code{font-family:var(--mono);font-size:.9em;background:rgba(0,0,0,.05);border-radius:6px;padding:1px 6px}
+.note{margin-top:22px;font-size:.9375rem;color:var(--text-muted)}
+
+/* 표 */
+.table{width:100%;border-collapse:collapse;margin-top:28px;font-size:.9688rem;text-align:left}
+.table th,.table td{padding:14px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.table th{font-weight:600;color:var(--text-muted);font-size:.8125rem}
+.table td:first-child{white-space:nowrap;font-family:var(--mono);font-size:.85rem}
+@media (max-width:640px){.table td:first-child{white-space:normal}}
+
+/* 자주 묻는 질문 */
+details{background:var(--bg-soft);border-radius:var(--radius);padding:4px 22px;margin-top:12px}
+.soft details{background:#fff}
+summary{cursor:pointer;list-style:none;padding:16px 0;font-weight:600;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--text-muted);font-weight:400;font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"−"}
+details p{margin:0 0 18px;color:var(--text-mid)}
+
+footer{background:var(--bg-soft);color:var(--text-muted);font-size:.8125rem;padding:32px 0 48px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+footer a:hover{color:var(--text)}
+footer .grow{margin-right:auto}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Haru">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="../icon.png" alt="" width="24" height="24">Haru</a>
+    <div class="nav-links">
+      <a href="#features">Fonctions</a>
+      <a href="#pc">Haru PC</a>
+      <a href="#connection">Connexion</a>
+      <a href="#install">Installation</a>
+      <a href="#use">Utilisation</a>
+      <a href="#faq">Questions</a>
+    </div>
+    <select class="lang" aria-label="Langue" data-base="../" onchange="haruLang(this.value)"><option value="">한국어</option><option value="en/">English</option><option value="ja/">日本語</option><option value="zh-hans/">简体中文</option><option value="zh-hant/">繁體中文</option><option value="fr/" selected>Français</option><option value="de/">Deutsch</option><option value="es/">Español</option><option value="pt-br/">Português (BR)</option></select>
+    <a class="nav-cta" href="#install">Obtenir Haru PC</a>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- 첫 화면 -->
+<section class="hero">
+  <div class="wrap">
+    <img class="hero-icon" src="../icon.png" alt="Icône de l'app Haru" width="96" height="96">
+    <h1>Haru.<br><span class="accent">Dites-le, c'est fait.</span></h1>
+    <p class="lede" style="max-width:640px;margin-inline:auto">Un assistant qui gère votre agenda, vos tâches, votre budget et vos e-mails travaille dans votre téléphone. En connectant Haru PC, vous pouvez aussi confier depuis votre téléphone le travail de votre ordinateur.</p>
+    <div class="badge-row" aria-label="Points forts">
+      <span class="badge">Sans inscription</span>
+      <span class="badge">Décide sur l'appareil</span>
+      <span class="badge">Sans pub ni pistage</span>
+      <span class="badge">Gratuit</span>
+    </div>
+    <div class="actions" style="justify-content:center">
+      <a class="btn btn-primary" href="#install">Installer Haru PC</a>
+      <a class="btn btn-ghost" href="#use">Voir comment l'utiliser</a>
+    </div>
+    <p class="note">L'app Haru (iPhone et Android) est en préparation pour sa sortie sur les stores.</p>
+
+    <div class="hero-phones" aria-hidden="true">
+      <div class="phone"><div class="screen">
+        <div class="bar"><span class="av"></span><div><b>Haru</b><small>Assistant</small></div></div>
+        <div class="chat">
+          <div class="me">Prends-moi le dentiste demain à 15 h</div>
+          <div class="ai">Je l'ajoute au calendrier ?</div>
+          <div class="card"><div class="k">Agenda<span class="st">À confirmer</span></div><div class="t">Dentiste</div><div class="muted" style="color:#9a9aa0;font-size:.7rem">Demain 15:00</div><div class="b" style="margin-top:8px"><span class="p">Ajouter</span><span>Annuler</span></div></div>
+          <div class="me">J'ai dépensé 4 500 wons pour un kimbap à midi</div>
+          <div class="ai">C'est noté dans le budget. Ce mois-ci, vos repas s'élèvent à 82 300 wons.</div>
+        </div>
+        <div class="input">Parler à Haru</div>
+      </div></div>
+      <div class="phone"><div class="screen">
+        <div class="bar"><span class="av"></span><div><b>Haru</b><small>Haru PC connecté</small></div></div>
+        <div class="chat">
+          <div class="me">Sur mon PC, compte les fichiers du dossier Téléchargements</div>
+          <div class="card"><div class="k">Tâche PC<span class="st ok">Terminé</span></div><div class="t">Compte les fichiers du dossier Téléchargements</div></div>
+          <div class="ai">Le PC veut effectuer cette tâche. Vérifiez le contenu et choisissez.</div>
+          <div class="card"><div class="k">Demande d'approbation PC<span class="st">À confirmer</span></div><div class="t">Haru PC · Exécuter une commande</div><pre>Commande / Command: ls -1 ~/Downloads</pre><div class="b"><span class="p">Exécuter</span><span>Annuler</span></div></div>
+          <div class="ai">PC : il y a 23 fichiers dans le dossier Téléchargements.</div>
+        </div>
+        <div class="input">Parler à Haru</div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 기능 -->
+<section id="features" class="soft">
+  <div class="wrap">
+    <p class="eyebrow">Ce que fait Haru</p>
+    <h2>Un mot<br>suffit.</h2>
+    <p class="lede">Haru vous montre d'abord ce qu'il va faire sous forme de carte. Il n'agit qu'après votre confirmation.</p>
+    <div class="tiles">
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <h3>Agenda et tâches</h3>
+        <ul><li><span class="say">Prends-moi le dentiste demain à 15 h</span></li><li><span class="say">Décale-le à 16 h</span></li><li><span class="say">Ajoute « acheter du lait » à mes tâches</span></li></ul>
+      </div>
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Budget</h3>
+        <ul><li><span class="say">J'ai dépensé 4 500 wons pour un kimbap à midi</span></li><li><span class="say">Combien j'ai dépensé ce mois-ci ?</span></li><li><span class="say">Annule le dernier</span></li></ul>
+      </div>
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg></div>
+        <h3>E-mails, contacts, itinéraires</h3>
+        <ul><li><span class="say">Écris un e-mail à mon chef pour dire que j'aurai 30 minutes de retard</span></li><li><span class="say">Envoie un SMS à maman</span></li><li><span class="say">Itinéraire vers la gare de Gangnam</span></li></ul>
+        <p class="muted" style="font-size:.9rem">Pour les e-mails, Haru prépare seulement un brouillon : c'est vous qui appuyez sur Envoyer.</p>
+      </div>
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Tout organiser avec une photo</h3>
+        <p>Montrez un faire-part de mariage, une facture ou un reçu, et Haru en tire rendez-vous, tâches et dépenses. Le texte des photos est lu uniquement sur l'appareil.</p>
+      </div>
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></div>
+        <h3>Parlez, écoutez</h3>
+        <p>Appuyez sur le micro et parlez : vos paroles sont converties en texte et envoyées. Les réponses vous sont lues à voix haute.</p>
+      </div>
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h3>Sur l'appareil</h3>
+        <p>Les décisions sont prises sur l'appareil par Apple Intelligence sur iPhone (Gemini Nano sur les appareils Android compatibles). Les conversations et les données sont enregistrées uniquement sur cet appareil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 하루 PC -->
+<section id="pc">
+  <div class="wrap center">
+    <p class="eyebrow">Haru PC</p>
+    <h2>Demandez depuis le téléphone,<br>votre ordinateur s'y met.</h2>
+    <p class="lede">Laissez Haru PC allumé sur votre ordinateur, et vous pourrez lui confier des tâches en commençant par « Sur mon PC, … ». Il trouve des fichiers, les range, crée des documents et exécute des commandes. Avant de modifier quoi que ce soit, une carte d'approbation apparaît d'abord sur votre téléphone.</p>
+  </div>
+  <div class="wrap">
+    <div class="flow">
+      <div class="node" style="background:var(--bg-soft)">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
+        <h3>App Haru</h3><p>« Sur mon PC, range le dossier Documents »</p>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node" style="background:var(--bg-soft)">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h3>Chiffrement de bout en bout</h3><p>Choisissez entre le relais Haru et la connexion directe auto-hébergée. Dans les deux cas, seuls le téléphone et le PC peuvent lire le contenu.</p>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node" style="background:var(--bg-soft)">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Haru PC</h3><p>Il n'exécute que ce que vous avez approuvé et vous envoie le résultat sur le téléphone.</p>
+      </div>
+    </div>
+    <div class="tiles tiles-4">
+      <div class="tile"><h3>Connexion au choix</h3><p>Partout avec le relais Haru, ou sans relais avec la connexion directe auto-hébergée. <a class="link" href="#connection">Comparer</a></p></div>
+      <div class="tile"><h3>Même app fermée</h3><p>Les tâches confiées continuent sur le PC. Rouvrez l'app et les cartes d'approbation en attente s'affichent.</p></div>
+      <div class="tile"><h3>Vos IA publiques telles quelles</h3><p>Connectez-vous à une IA publique comme ChatGPT · Claude · Gemini ou utilisez une clé API, ou bien un modèle local gratuit sur votre ordinateur.</p></div>
+      <div class="tile"><h3>Open source</h3><p>Il fonctionne sur l'assistant IA open source <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>, et son code source est publié sur <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 연결 방식 -->
+<section id="connection">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">Connexion</p>
+      <h2>Choisissez<br>entre deux options.</h2>
+      <p class="lede">Vous choisissez à l'installation, et vous pouvez changer à tout moment avec <code>haru-pc relay on</code> · <code>off</code>.</p>
+    </div>
+    <div class="tiles" style="grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))">
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 1 0 6 16.5"/><path d="M6 19h11.5"/></svg></div>
+        <h3>Relais Haru <span class="badge" style="margin-left:6px;font-size:.75rem">Recommandé</span></h3>
+        <ul>
+          <li>Connexion <b>à la maison comme à l'extérieur</b>, sans rien configurer</li>
+          <li>Chiffrement de bout en bout — le relais ne peut pas voir le contenu et ne stocke que le hachage du jeton d'accès</li>
+          <li>Même app fermée, les tâches confiées continuent, et les cartes d'approbation s'affichent à la réouverture</li>
+          <li>Exploité par CreativeLab (Cloudflare)</li>
+        </ul>
+      </div>
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Connexion directe auto-hébergée</h3>
+        <ul>
+          <li>Notre relais n'est pas utilisé — le téléphone se connecte <b>directement</b> à votre ordinateur</li>
+          <li>Immédiatement sur le même Wi-Fi ; à l'extérieur, via votre Tailscale ou <b>votre propre relais</b></li>
+          <li>Les cartes d'approbation arrivent quand l'app est ouverte</li>
+          <li><a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/docs/self-host-relay.md">Héberger votre propre relais</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 설치 -->
+<section id="install" class="soft">
+  <div class="wrap narrow">
+    <p class="eyebrow">Installation</p>
+    <h2>Une seule commande<br>pour l'installer.</h2>
+    <p class="lede">Ouvrez un terminal (PowerShell sous Windows) et collez la ligne ci-dessous. C'est terminé en 5 à 10 minutes.</p>
+    <div class="tabs" role="tablist" aria-label="Système d'exploitation">
+      <button role="tab" id="tab-unix" aria-selected="true" aria-controls="pane-unix">Mac · Linux</button>
+      <button role="tab" id="tab-win" aria-selected="false" aria-controls="pane-win">Windows</button>
+    </div>
+    <div id="pane-unix" role="tabpanel" aria-labelledby="tab-unix">
+      <div class="code"><button class="copy" type="button">Copier</button><span data-copy>curl -fsSL https://raw.githubusercontent.com/inphilchoi/haru-pc/main/install.sh | bash</span></div>
+      <p class="note">Sur Mac, lancez-la dans l'app <b>Terminal</b> (Applications ▸ Utilitaires). Sous Linux, si systemd est présent, il démarre automatiquement à l'allumage.</p>
+    </div>
+    <div id="pane-win" role="tabpanel" aria-labelledby="tab-win" hidden>
+      <div class="code"><button class="copy" type="button">Copier</button><span data-copy>irm https://raw.githubusercontent.com/inphilchoi/haru-pc/main/install.ps1 | iex</span></div>
+      <p class="note">Ouvrez <b>PowerShell</b> depuis le menu Démarrer et collez la ligne. Windows 10 et 11 sont pris en charge.</p>
+    </div>
+    <ol class="steps">
+      <li><b>Installation des prérequis</b><p>Node.js (installé ou mis à jour s'il est absent ou trop ancien), une version vérifiée d'OpenClaw et le plugin de sécurité Haru PC.</p></li>
+      <li><b>Configuration sécurisée</b><p>Toute modification passe par une approbation sur le téléphone, connexion chiffrée (TLS), accès direct uniquement sur le même Wi-Fi.</p></li>
+      <li><b>Choix de la connexion</b><p>1) Relais Haru (recommandé) 2) Connexion directe auto-hébergée. Vous pourrez changer plus tard.</p></li>
+      <li><b>Choix de l'IA</b><p>Connexion ou clé API d'une IA publique comme ChatGPT·Claude·Gemini, ou modèle local gratuit. La connexion se fait directement sur la page officielle de chaque entreprise.</p></li>
+      <li><b>Le QR de connexion s'affiche</b><p>Haru PC reste actif en arrière-plan et affiche un QR à scanner avec le téléphone.</p></li>
+    </ol>
+    <p class="note">Pour lire le script avant de l'exécuter : <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.sh">install.sh</a> · <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.ps1">install.ps1</a></p>
+  </div>
+</section>
+
+<!-- AI 고르기 -->
+<section id="model">
+  <div class="wrap narrow">
+    <p class="eyebrow">Choisir l'IA</p>
+    <h2>L'IA publique que vous utilisez déjà,<br>telle quelle.</h2>
+    <p class="lede">Haru PC ne vous demande jamais de mot de passe. Vous vous connectez sur la page de chaque entreprise, et Haru PC ne reçoit que les autorisations nécessaires. Vous pouvez changer à tout moment.</p>
+    <table class="table">
+      <thead><tr><th>Commande</th><th>Ce qui est connecté</th></tr></thead>
+      <tbody>
+        <tr><td>haru-pc model login chatgpt</td><td>Connexion avec un forfait ChatGPT (page d'OpenAI)</td></tr>
+        <tr><td>haru-pc model login claude</td><td>Forfait Claude (d'abord <code>claude auth login</code>)</td></tr>
+        <tr><td>haru-pc model login copilot</td><td>GitHub Copilot</td></tr>
+        <tr><td>haru-pc model key openai</td><td>Clé API (openai·anthropic·gemini·mistral·deepseek, etc.)</td></tr>
+        <tr><td>haru-pc model local</td><td>Modèle local gratuit sur votre ordinateur — privé mais lent. 16 Go de RAM ou plus recommandés</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><b>Configuration recommandée</b> — un <b>Mac mini</b> toujours allumé. Il consomme peu d'électricité, tourne sans écran et, avec 16 Go de RAM ou plus, peut même faire tourner le modèle local gratuit.</p>
+  </div>
+</section>
+
+<!-- 연결 -->
+<section id="connect" class="soft">
+  <div class="wrap narrow">
+    <p class="eyebrow">Connexion du téléphone</p>
+    <h2>Un seul QR<br>et c'est fini.</h2>
+    <ol class="steps">
+      <li><b>Dans l'app Haru, « Connecte mon PC »</b><p>Ou Réglages (⚙) ▸ Haru PC ▸ Scanner le QR.</p></li>
+      <li><b>Scannez le QR affiché sur l'ordinateur</b><p>Le QR n'est utilisable qu'une seule fois pendant 10 minutes. Pour en afficher un nouveau : <code>haru-pc pair</code>.</p></li>
+      <li><b>« Connecté » : tout est prêt</b><p>Vous pouvez désormais confier des tâches depuis votre téléphone, à la maison comme à l'extérieur.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 사용 방법 -->
+<section id="use">
+  <div class="wrap">
+    <p class="eyebrow">Utilisation</p>
+    <h2>Commencez par<br>« Sur mon PC ».</h2>
+    <p class="lede">Parlez simplement à Haru sur votre téléphone, comme d'habitude. Haru comprend quand il s'agit d'une tâche pour le PC et vous demande une fois avant de la confier.</p>
+    <div class="tiles">
+      <div class="tile"><h3>Chercher et compter</h3><ul><li><span class="say">Sur mon PC, donne-moi la liste des fichiers du Bureau</span></li><li><span class="say">Compte les fichiers du dossier Téléchargements</span></li></ul></div>
+      <div class="tile"><h3>Créer et ranger</h3><ul><li><span class="say">Crée compte-rendu.txt dans le dossier Documents</span></li><li><span class="say">Range le dossier Téléchargements par type</span></li></ul></div>
+      <div class="tile"><h3>Vous pouvez fermer l'app</h3><p>Même si vous fermez l'app après avoir confié une tâche, le PC continue jusqu'à 15 minutes. Rouvrez-la et les cartes d'approbation en attente s'affichent.</p></div>
+    </div>
+    <ol class="steps" style="margin-top:36px">
+      <li><b>Parler</b><p>« Sur mon PC, crée memo.txt dans le dossier Documents et écris bonjour dedans »</p></li>
+      <li><b>Confier au PC</b><p>Appuyez sur [Confier au PC] pour l'envoyer au PC.</p></li>
+      <li><b>Approbation</b><p>Avant toute modification, le PC envoie une carte — « Écriture de fichier · cible · contenu ». Si c'est bon, [Exécuter], sinon [Annuler].</p></li>
+      <li><b>Résultat</b><p>Une fois terminé, il vous prévient par « PC : … ».</p></li>
+    </ol>
+
+    <h3 style="margin-top:64px">Commandes à utiliser sur l'ordinateur</h3>
+    <table class="table">
+      <thead><tr><th>Commande</th><th>Ce qu'elle fait</th></tr></thead>
+      <tbody>
+        <tr><td>haru-pc pair</td><td>Afficher le QR de connexion du téléphone (10 minutes, une fois)</td></tr>
+        <tr><td>haru-pc status</td><td>S'il est allumé, et le téléphone connecté</td></tr>
+        <tr><td>haru-pc allow &lt;dossier&gt;</td><td>Ajouter un dossier où Haru PC peut travailler (par défaut : Documents·Téléchargements·Bureau)</td></tr>
+        <tr><td>haru-pc relay on | off</td><td>Changer de mode de connexion — relais Haru / connexion directe auto-hébergée</td></tr>
+        <tr><td>haru-pc relay url &lt;wss://…&gt;</td><td>Utiliser votre propre relais (<code>default</code> pour revenir)</td></tr>
+        <tr><td>haru-pc remote on</td><td>En connexion directe, accès aussi depuis l'extérieur — via votre Tailscale</td></tr>
+        <tr><td>haru-pc readonly on</td><td>Consulter seulement, sans rien modifier</td></tr>
+        <tr><td>haru-pc model</td><td>Voir ou changer le modèle d'IA actuel</td></tr>
+        <tr><td>haru-pc unpair</td><td>Supprimer le téléphone connecté</td></tr>
+        <tr><td>haru-pc update</td><td>Mettre à jour vers la prochaine version vérifiée</td></tr>
+        <tr><td>haru-pc uninstall</td><td>Arrêter et désinstaller</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 안전 -->
+<section id="safety" class="soft">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">Sécurité</p>
+      <h2>Sans votre accord,<br>rien ne change.</h2>
+    </div>
+    <div class="tiles">
+      <div class="tile"><h3>Approbation à chaque modification</h3><p>L'écriture et le déplacement de fichiers, ainsi que l'exécution de commandes, s'approuvent un par un sur le téléphone. Il n'y a pas de « Toujours autoriser ». Sans réponse sous 10 minutes, c'est refusé.</p></div>
+      <div class="tile"><h3>Uniquement dans les dossiers autorisés</h3><p>Par défaut : Documents·Téléchargements·Bureau. Le reste est bloqué. Rien n'est supprimé : les fichiers sont déplacés dans un dossier de rangement.</p></div>
+      <div class="tile"><h3>Une commande à la fois</h3><p>Les commandes comme les pipes, les enchaînements ou les redirections, où ce qui s'exécute réellement peut différer de ce qu'affiche la carte, sont bloquées.</p></div>
+      <div class="tile"><h3>L'IA ne peut pas changer les réglages</h3><p>Les réglages de sécurité comme les dossiers autorisés ou la lecture seule ne peuvent être modifiés que par une personne, sur l'ordinateur.</p></div>
+      <div class="tile"><h3>Ni paiement ni connexion</h3><p>Il n'envoie pas d'argent, n'achète rien et ne saisit aucun mot de passe.</p></div>
+      <div class="tile"><h3>Le relais ne voit pas le contenu</h3><p>Chiffrement de bout en bout avec une clé que seuls le téléphone et le PC connaissent. Le relais ne stocke que le numéro de salle et le hachage du jeton d'accès. Si vous ne voulez pas de relais, optez pour la connexion directe auto-hébergée.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 자주 묻는 질문 -->
+<section id="faq">
+  <div class="wrap narrow">
+    <p class="eyebrow">Questions fréquentes</p>
+    <h2>Vos questions.</h2>
+    <details><summary>Où obtenir l'app Haru ?</summary><p>Sa sortie sur iPhone (App Store) et Android (Google Play) est en préparation. Nous l'annoncerons sur cette page dès sa sortie.</p></details>
+    <details><summary>Haru PC est-il gratuit ?</summary><p>Oui, il est gratuit et open source. Si vous connectez une IA externe comme ChatGPT ou Claude, les forfaits et limites d'utilisation de cette entreprise s'appliquent. Les modèles locaux sont sans frais.</p></details>
+    <details><summary>Puis-je l'utiliser sur un téléphone sans Apple Intelligence ?</summary><p>Oui. À la place de la conversation IA, un mode assistant fonctionnant par règles vous donne accès à toutes les fonctions : agenda, budget, Haru PC, etc. La conversation IA est disponible à partir de l'iPhone 15 Pro.</p></details>
+    <details><summary>Je ne reçois pas de carte d'approbation.</summary><p>Ouvrez l'app Haru. Si une tâche confiée est en cours, la carte en attente s'affiche. Vérifiez sur l'ordinateur avec <code>haru-pc status</code> que Haru PC est bien allumé. Avec un petit modèle local, la première réponse peut prendre quelques minutes.</p></details>
+    <details><summary>C'est bloqué car hors des dossiers autorisés.</summary><p>Exécutez <code>haru-pc allow ~/DossierSouhaité</code> sur l'ordinateur et Haru PC pourra aussi travailler dans ce dossier. L'IA ne peut pas modifier ce réglage d'elle-même.</p></details>
+    <details><summary>Je ne veux pas utiliser le serveur relais Haru.</summary><p>Choisissez « Connexion directe auto-hébergée » à l'installation ou exécutez <code>haru-pc relay off</code>. Sur le même Wi-Fi, le téléphone se connecte directement à l'ordinateur ; à l'extérieur, utilisez votre Tailscale (<code>haru-pc remote on</code>) ou votre propre relais (<code>haru-pc relay url wss://…</code>). Après le changement, reconnectez avec <code>haru-pc pair</code>.</p></details>
+    <details><summary>Quelle IA utilise Haru PC ?</summary><p>L'IA publique que vous avez choisie (ChatGPT·Claude·Gemini, etc.) ou un modèle local sur votre ordinateur. L'app Haru sur le téléphone utilise Apple Intelligence sur l'appareil, et Haru PC utilise l'IA connectée à l'ordinateur : les deux sont indépendants.</p></details>
+    <details><summary>Que modifie l'installation sur mon ordinateur ?</summary><p>Elle installe ou met à jour Node.js s'il est absent ou trop ancien (Homebrew sur Mac), installe OpenClaw et Haru PC dans <code>~/.haru-pc</code>, et les enregistre comme service d'arrière-plan. Vous pouvez tout arrêter et supprimer avec <code>haru-pc uninstall</code>.</p></details>
+    <details><summary>Où vont mes données ?</summary><p>Les conversations et données du téléphone restent sur le téléphone, et les tâches confiées ne circulent qu'entre le téléphone et votre PC. Pour en savoir plus, consultez la <a class="link" href="../../haru-privacy/">politique de confidentialité</a>.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="grow">Haru - Assistant IA · <a href="https://creativelab-kr.github.io/">CreativeLab</a></span>
+    <a href="https://github.com/inphilchoi/haru-pc">GitHub</a>
+    <a href="../../haru-privacy/">Politique de confidentialité et conditions d'utilisation</a>
+    <a href="mailto:creativelab.choi@gmail.com">creativelab.choi@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+// 운영체제 탭 — Windows 로 들어오면 Windows 탭을 먼저 보여 준다
+(function () {
+  var tabs = [document.getElementById('tab-unix'), document.getElementById('tab-win')];
+  function pick(i) {
+    tabs.forEach(function (t, j) {
+      t.setAttribute('aria-selected', String(i === j));
+      document.getElementById(t.getAttribute('aria-controls')).hidden = i !== j;
+    });
+  }
+  tabs.forEach(function (t, i) { t.addEventListener('click', function () { pick(i); }); });
+  if (/Windows/i.test(navigator.userAgent)) pick(1);
+
+  // 복사 버튼
+  document.querySelectorAll('.copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.parentNode.querySelector('[data-copy]').textContent;
+      var done = function () { b.textContent = 'Copié'; setTimeout(function () { b.textContent = 'Copier'; }, 1600); };
+      if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {});
+      else { var r = document.createRange(); r.selectNodeContents(b.parentNode.querySelector('[data-copy]')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); done(); }
+    });
+  });
+})();
+
+// 한국어 첫 페이지에 처음 온 다른 언어 브라우저는 그 언어 페이지로 (직접 고른 적이 있으면 그대로)
+(function () {
+  if (document.querySelector('.lang').getAttribute('data-base') !== '') return;
+  var saved = null;
+  try { saved = localStorage.getItem('haru.lang'); } catch (e) {}
+  if (saved) return;
+  var l = (navigator.language || 'ko').toLowerCase();
+  var dir = /^ko/.test(l) ? '' : /^ja/.test(l) ? 'ja/' : /^zh-(tw|hk|mo|hant)/.test(l) ? 'zh-hant/' : /^zh/.test(l) ? 'zh-hans/'
+    : /^fr/.test(l) ? 'fr/' : /^de/.test(l) ? 'de/' : /^es/.test(l) ? 'es/' : /^pt/.test(l) ? 'pt-br/' : 'en/';
+  if (dir) location.replace(dir + location.hash);
+})();
+
+// 언어 바꾸기 — 고른 언어는 이 브라우저에만 기억한다
+function haruLang(dir) {
+  try { localStorage.setItem('haru.lang', dir || 'ko'); } catch (e) {}
+  var base = document.querySelector('.lang').getAttribute('data-base');
+  location.href = base + dir + location.hash;
+}
+</script>
+</body>
+</html>

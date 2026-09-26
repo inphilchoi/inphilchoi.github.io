@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>하루 - AI 비서</title>
-<meta name="description" content="말로 맡기면 기기 안에서 해내는 비서, 하루. 회원가입 없이 일정·할 일·가계부·메일을 챙기고, 하루 PC를 연결하면 내 컴퓨터의 일도 폰에서 맡길 수 있어요.">
+<title>Haru - Assistente de IA</title>
+<meta name="description" content="Haru, o assistente que resolve dentro do seu aparelho o que você pede falando. Sem cadastro, cuida da agenda, das tarefas, das finanças e dos e-mails; conecte o Haru PC e peça pelo celular até o que precisa ser feito no seu computador.">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
-<meta property="og:title" content="하루 - AI 비서">
-<meta property="og:description" content="말로 맡기면, 기기 안에서 해냅니다. 내 컴퓨터의 일까지.">
-<meta property="og:url" content="https://inphilchoi.github.io/haru/">
+<meta property="og:title" content="Haru - Assistente de IA">
+<meta property="og:description" content="Peça falando, e ele resolve dentro do aparelho. Até o que é do seu computador.">
+<meta property="og:url" content="https://inphilchoi.github.io/haru/pt-br/">
 <meta property="og:image" content="https://inphilchoi.github.io/haru/icon.png">
 <link rel="alternate" hreflang="ko" href="https://inphilchoi.github.io/haru/">
 <link rel="alternate" hreflang="en" href="https://inphilchoi.github.io/haru/en/">
@@ -22,8 +22,8 @@
 <link rel="alternate" hreflang="es" href="https://inphilchoi.github.io/haru/es/">
 <link rel="alternate" hreflang="pt-BR" href="https://inphilchoi.github.io/haru/pt-br/">
 <link rel="alternate" hreflang="x-default" href="https://inphilchoi.github.io/haru/en/">
-<link rel="icon" href="icon.png">
-<link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" href="../icon.png">
+<link rel="apple-touch-icon" href="../icon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 /* CreativeLab 홈페이지(creativelab-kr.github.io)와 같은 조판 규칙:
@@ -187,19 +187,19 @@ footer .grow{margin-right:auto}
 </head>
 <body>
 
-<nav class="nav" aria-label="하루">
+<nav class="nav" aria-label="Haru">
   <div class="wrap">
-    <a class="brand" href="#top"><img src="icon.png" alt="" width="24" height="24">하루</a>
+    <a class="brand" href="#top"><img src="../icon.png" alt="" width="24" height="24">Haru</a>
     <div class="nav-links">
-      <a href="#features">기능</a>
-      <a href="#pc">하루 PC</a>
-      <a href="#connection">연결 방식</a>
-      <a href="#install">설치</a>
-      <a href="#use">사용 방법</a>
-      <a href="#faq">질문</a>
+      <a href="#features">Recursos</a>
+      <a href="#pc">Haru PC</a>
+      <a href="#connection">Conexão</a>
+      <a href="#install">Instalação</a>
+      <a href="#use">Como usar</a>
+      <a href="#faq">Perguntas</a>
     </div>
-    <select class="lang" aria-label="언어" data-base="" onchange="haruLang(this.value)"><option value="" selected>한국어</option><option value="en/">English</option><option value="ja/">日本語</option><option value="zh-hans/">简体中文</option><option value="zh-hant/">繁體中文</option><option value="fr/">Français</option><option value="de/">Deutsch</option><option value="es/">Español</option><option value="pt-br/">Português (BR)</option></select>
-    <a class="nav-cta" href="#install">하루 PC 받기</a>
+    <select class="lang" aria-label="Idioma" data-base="../" onchange="haruLang(this.value)"><option value="">한국어</option><option value="en/">English</option><option value="ja/">日本語</option><option value="zh-hans/">简体中文</option><option value="zh-hant/">繁體中文</option><option value="fr/">Français</option><option value="de/">Deutsch</option><option value="es/">Español</option><option value="pt-br/" selected>Português (BR)</option></select>
+    <a class="nav-cta" href="#install">Baixar o Haru PC</a>
   </div>
 </nav>
 
@@ -208,43 +208,43 @@ footer .grow{margin-right:auto}
 <!-- 첫 화면 -->
 <section class="hero">
   <div class="wrap">
-    <img class="hero-icon" src="icon.png" alt="하루 앱 아이콘" width="96" height="96">
-    <h1>하루.<br><span class="accent">말로 맡기면, 해냅니다.</span></h1>
-    <p class="lede" style="max-width:640px;margin-inline:auto">일정·할 일·가계부·메일을 챙기는 비서가 폰 안에서 일해요. 하루 PC를 연결하면 내 컴퓨터의 일까지 폰에서 맡길 수 있어요.</p>
-    <div class="badge-row" aria-label="특징">
-      <span class="badge">회원가입 없음</span>
-      <span class="badge">기기 안에서 판단</span>
-      <span class="badge">광고·추적 없음</span>
-      <span class="badge">무료</span>
+    <img class="hero-icon" src="../icon.png" alt="Ícone do app Haru" width="96" height="96">
+    <h1>Haru.<br><span class="accent">Peça falando, e está feito.</span></h1>
+    <p class="lede" style="max-width:640px;margin-inline:auto">Um assistente que cuida da sua agenda, das tarefas, das finanças e dos e-mails trabalha dentro do seu celular. Conecte o Haru PC e peça pelo celular até o que precisa ser feito no seu computador.</p>
+    <div class="badge-row" aria-label="Destaques">
+      <span class="badge">Sem cadastro</span>
+      <span class="badge">Decide dentro do aparelho</span>
+      <span class="badge">Sem anúncios nem rastreamento</span>
+      <span class="badge">Grátis</span>
     </div>
     <div class="actions" style="justify-content:center">
-      <a class="btn btn-primary" href="#install">하루 PC 설치하기</a>
-      <a class="btn btn-ghost" href="#use">사용 방법 보기</a>
+      <a class="btn btn-primary" href="#install">Instalar o Haru PC</a>
+      <a class="btn btn-ghost" href="#use">Ver como usar</a>
     </div>
-    <p class="note">하루 앱(iPhone·Android)은 스토어 출시를 준비하고 있어요.</p>
+    <p class="note">O app Haru (iPhone e Android) está se preparando para chegar às lojas.</p>
 
     <div class="hero-phones" aria-hidden="true">
       <div class="phone"><div class="screen">
-        <div class="bar"><span class="av"></span><div><b>하루</b><small>비서</small></div></div>
+        <div class="bar"><span class="av"></span><div><b>Haru</b><small>Assistente</small></div></div>
         <div class="chat">
-          <div class="me">내일 오후 3시 치과 잡아 줘</div>
-          <div class="ai">캘린더에 넣을까요?</div>
-          <div class="card"><div class="k">일정<span class="st">확인 필요</span></div><div class="t">치과</div><div class="muted" style="color:#9a9aa0;font-size:.7rem">내일 오후 3:00</div><div class="b" style="margin-top:8px"><span class="p">추가</span><span>취소</span></div></div>
-          <div class="me">점심 김밥 4,500원 썼어</div>
-          <div class="ai">가계부에 적었어요. 이번 달 식비는 82,300원이에요.</div>
+          <div class="me">Marca dentista amanhã às 15h</div>
+          <div class="ai">Coloco na agenda?</div>
+          <div class="card"><div class="k">Agenda<span class="st">Confirmar</span></div><div class="t">Dentista</div><div class="muted" style="color:#9a9aa0;font-size:.7rem">Amanhã, 15:00</div><div class="b" style="margin-top:8px"><span class="p">Adicionar</span><span>Cancelar</span></div></div>
+          <div class="me">Gastei 4.500 wons num kimbap no almoço</div>
+          <div class="ai">Anotei nas finanças. Neste mês, você gastou 82.300 wons com alimentação.</div>
         </div>
-        <div class="input">하루에게 말 걸기</div>
+        <div class="input">Fale com o Haru</div>
       </div></div>
       <div class="phone"><div class="screen">
-        <div class="bar"><span class="av"></span><div><b>하루</b><small>하루 PC 연결됨</small></div></div>
+        <div class="bar"><span class="av"></span><div><b>Haru</b><small>Haru PC conectado</small></div></div>
         <div class="chat">
-          <div class="me">내 PC에서 다운로드 폴더 파일 개수 세어 줘</div>
-          <div class="card"><div class="k">PC 작업<span class="st ok">완료</span></div><div class="t">다운로드 폴더 파일 개수 세어 줘</div></div>
-          <div class="ai">PC가 이 작업을 하려고 해요. 내용을 확인하고 골라 주세요.</div>
-          <div class="card"><div class="k">PC 승인 요청<span class="st">확인 필요</span></div><div class="t">하루 PC · 명령 실행</div><pre>명령 / Command: ls -1 ~/Downloads</pre><div class="b"><span class="p">실행</span><span>취소</span></div></div>
-          <div class="ai">PC: 다운로드 폴더에 파일이 23개 있어요.</div>
+          <div class="me">No meu PC, conta quantos arquivos tem na pasta Downloads</div>
+          <div class="card"><div class="k">Tarefa no PC<span class="st ok">Concluída</span></div><div class="t">Contar os arquivos da pasta Downloads</div></div>
+          <div class="ai">O PC quer fazer esta tarefa. Confira o conteúdo e escolha.</div>
+          <div class="card"><div class="k">Pedido de aprovação do PC<span class="st">Confirmar</span></div><div class="t">Haru PC · Executar comando</div><pre>Comando / Command: ls -1 ~/Downloads</pre><div class="b"><span class="p">Executar</span><span>Cancelar</span></div></div>
+          <div class="ai">PC: há 23 arquivos na pasta Downloads.</div>
         </div>
-        <div class="input">하루에게 말 걸기</div>
+        <div class="input">Fale com o Haru</div>
       </div></div>
     </div>
   </div>
@@ -253,40 +253,40 @@ footer .grow{margin-right:auto}
 <!-- 기능 -->
 <section id="features" class="soft">
   <div class="wrap">
-    <p class="eyebrow">하루가 하는 일</p>
-    <h2>말 한마디면<br>충분해요.</h2>
-    <p class="lede">하루가 할 일은 먼저 카드로 보여 드려요. 확인을 누르셔야 실행해요.</p>
+    <p class="eyebrow">O que o Haru faz</p>
+    <h2>Basta uma<br>frase.</h2>
+    <p class="lede">O Haru mostra primeiro, em um cartão, o que vai fazer. Ele só executa depois que você confirma.</p>
     <div class="tiles">
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
-        <h3>일정과 할 일</h3>
-        <ul><li><span class="say">내일 오후 3시 치과 잡아 줘</span></li><li><span class="say">그거 4시로 바꿔 줘</span></li><li><span class="say">우유 사기 할 일에 넣어 줘</span></li></ul>
+        <h3>Agenda e tarefas</h3>
+        <ul><li><span class="say">Marca dentista amanhã às 15h</span></li><li><span class="say">Muda isso para as 16h</span></li><li><span class="say">Coloca "comprar leite" nas tarefas</span></li></ul>
       </div>
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <h3>가계부</h3>
-        <ul><li><span class="say">점심 김밥 4,500원 썼어</span></li><li><span class="say">이번 달 얼마 썼어?</span></li><li><span class="say">방금 거 취소</span></li></ul>
+        <h3>Finanças</h3>
+        <ul><li><span class="say">Gastei 4.500 wons num kimbap no almoço</span></li><li><span class="say">Quanto eu gastei neste mês?</span></li><li><span class="say">Cancela o último</span></li></ul>
       </div>
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg></div>
-        <h3>메일·연락·길찾기</h3>
-        <ul><li><span class="say">팀장님께 30분 늦는다고 메일 써 줘</span></li><li><span class="say">엄마한테 문자 보내 줘</span></li><li><span class="say">강남역 가는 길</span></li></ul>
-        <p class="muted" style="font-size:.9rem">메일은 초안만 만들고, 보내기는 직접 눌러요.</p>
+        <h3>E-mail, contatos e rotas</h3>
+        <ul><li><span class="say">Escreve um e-mail para o meu gerente dizendo que vou atrasar 30 minutos</span></li><li><span class="say">Manda uma mensagem para a minha mãe</span></li><li><span class="say">Como chegar à estação Gangnam</span></li></ul>
+        <p class="muted" style="font-size:.9rem">O e-mail fica só como rascunho; quem aperta enviar é você.</p>
       </div>
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <h3>사진 한 장으로 정리</h3>
-        <p>청첩장·고지서·영수증을 보여 주면 일정·할 일·지출로 정리해요. 사진 속 글자는 기기 안에서만 읽어요.</p>
+        <h3>Organize com uma foto</h3>
+        <p>Mostre um convite de casamento, uma conta ou um recibo, e ele organiza tudo em compromissos, tarefas e gastos. O texto da foto é lido só dentro do aparelho.</p>
       </div>
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></div>
-        <h3>말로 걸고, 소리로 듣고</h3>
-        <p>마이크를 누르고 말하면 글자로 바뀌어 보내져요. 답은 소리로 읽어 줘요.</p>
+        <h3>Fale e ouça</h3>
+        <p>Toque no microfone e fale: sua voz vira texto e é enviada. As respostas são lidas em voz alta.</p>
       </div>
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-        <h3>기기 안에서</h3>
-        <p>판단은 iPhone의 Apple Intelligence(Android는 지원 기기의 Gemini Nano)가 기기 안에서 해요. 대화와 기록은 이 기기에만 저장돼요.</p>
+        <h3>Dentro do aparelho</h3>
+        <p>As decisões são tomadas dentro do aparelho pelo Apple Intelligence do iPhone (no Android, pelo Gemini Nano em aparelhos compatíveis). As conversas e os registros ficam salvos só neste aparelho.</p>
       </div>
     </div>
   </div>
@@ -295,32 +295,32 @@ footer .grow{margin-right:auto}
 <!-- 하루 PC -->
 <section id="pc">
   <div class="wrap center">
-    <p class="eyebrow">하루 PC</p>
-    <h2>폰으로 시키면,<br>내 컴퓨터가 일해요.</h2>
-    <p class="lede">내 컴퓨터에 하루 PC를 켜 두면 "내 PC에서 …"로 컴퓨터 일을 맡길 수 있어요. 파일을 찾고, 정리하고, 문서를 만들고, 명령을 실행해요. 무엇이든 바꾸기 전에는 폰에 승인 카드가 먼저 떠요.</p>
+    <p class="eyebrow">Haru PC</p>
+    <h2>Você pede pelo celular,<br>seu computador trabalha.</h2>
+    <p class="lede">Deixe o Haru PC ligado no seu computador e peça tarefas dele com "No meu PC, …". Ele encontra e organiza arquivos, cria documentos e executa comandos. Antes de mudar qualquer coisa, um cartão de aprovação aparece primeiro no seu celular.</p>
   </div>
   <div class="wrap">
     <div class="flow">
       <div class="node" style="background:var(--bg-soft)">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
-        <h3>하루 앱</h3><p>"내 PC에서 문서 폴더 정리해 줘"</p>
+        <h3>App Haru</h3><p>"No meu PC, organiza a pasta Documentos"</p>
       </div>
       <div class="arrow" aria-hidden="true">→</div>
       <div class="node" style="background:var(--bg-soft)">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-        <h3>종단간 암호화</h3><p>하루 중계 또는 설치형 직접 연결 중에서 골라요. 어느 쪽이든 내용은 폰과 PC만 읽어요.</p>
+        <h3>Criptografia de ponta a ponta</h3><p>Escolha entre o relay do Haru e a conexão direta auto-hospedada. Em qualquer um, só o celular e o PC leem o conteúdo.</p>
       </div>
       <div class="arrow" aria-hidden="true">→</div>
       <div class="node" style="background:var(--bg-soft)">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <h3>하루 PC</h3><p>승인한 일만 실행하고, 결과를 폰으로 알려 줘요.</p>
+        <h3>Haru PC</h3><p>Executa só o que você aprovou e avisa o resultado no celular.</p>
       </div>
     </div>
     <div class="tiles tiles-4">
-      <div class="tile"><h3>연결 방식은 선택</h3><p>하루 중계로 어디서든, 또는 중계 없이 설치형 직접 연결. <a class="link" href="#connection">비교</a></p></div>
-      <div class="tile"><h3>앱을 닫아도</h3><p>맡긴 일은 PC에서 계속돼요. 다시 열면 기다리던 승인 카드가 떠요.</p></div>
-      <div class="tile"><h3>공개 AI를 그대로</h3><p>ChatGPT · Claude · Gemini 같은 공개 AI에 로그인하거나 API 키로, 또는 내 컴퓨터의 무료 로컬 모델로.</p></div>
-      <div class="tile"><h3>오픈소스</h3><p>오픈소스 AI 비서 <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a> 위에서 동작하고, 소스는 <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>에 공개돼 있어요.</p></div>
+      <div class="tile"><h3>Você escolhe a conexão</h3><p>Pelo relay do Haru, de qualquer lugar, ou sem relay, com a conexão direta auto-hospedada. <a class="link" href="#connection">Comparar</a></p></div>
+      <div class="tile"><h3>Mesmo com o app fechado</h3><p>A tarefa que você pediu continua no PC. Ao abrir de novo, aparece o cartão de aprovação que estava esperando.</p></div>
+      <div class="tile"><h3>As IAs públicas de sempre</h3><p>Entre em IAs públicas como ChatGPT · Claude · Gemini com login ou chave de API, ou use um modelo local gratuito no seu computador.</p></div>
+      <div class="tile"><h3>Código aberto</h3><p>Funciona sobre o assistente de IA de código aberto <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>, e o código-fonte está publicado no <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>.</p></div>
     </div>
   </div>
 </section>
@@ -329,29 +329,29 @@ footer .grow{margin-right:auto}
 <section id="connection">
   <div class="wrap">
     <div class="center">
-      <p class="eyebrow">연결 방식</p>
-      <h2>두 가지 중에서<br>고르세요.</h2>
-      <p class="lede">설치할 때 고르고, 언제든 <code>haru-pc relay on</code> · <code>off</code>로 바꿀 수 있어요.</p>
+      <p class="eyebrow">Conexão</p>
+      <h2>Escolha entre<br>duas opções.</h2>
+      <p class="lede">Você escolhe na instalação e pode trocar quando quiser com <code>haru-pc relay on</code> · <code>off</code>.</p>
     </div>
     <div class="tiles" style="grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))">
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 1 0 6 16.5"/><path d="M6 19h11.5"/></svg></div>
-        <h3>하루 중계 <span class="badge" style="margin-left:6px;font-size:.75rem">추천</span></h3>
+        <h3>Relay do Haru <span class="badge" style="margin-left:6px;font-size:.75rem">Recomendado</span></h3>
         <ul>
-          <li>설정할 것 없이 <b>집에서도 밖에서도</b> 연결</li>
-          <li>종단간 암호화 — 중계는 내용을 볼 수 없고, 접속 토큰의 해시만 저장</li>
-          <li>앱을 닫아도 맡긴 일이 이어지고, 다시 열면 승인 카드가 떠요</li>
-          <li>CreativeLab이 운영(Cloudflare)</li>
+          <li>Conecta <b>em casa e fora de casa</b>, sem nada para configurar</li>
+          <li>Criptografia de ponta a ponta — o relay não vê o conteúdo e guarda só o hash do token de acesso</li>
+          <li>Mesmo com o app fechado, a tarefa continua; ao abrir de novo, aparece o cartão de aprovação</li>
+          <li>Operado pela CreativeLab (Cloudflare)</li>
         </ul>
       </div>
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <h3>설치형 직접 연결</h3>
+        <h3>Conexão direta auto-hospedada</h3>
         <ul>
-          <li>저희 중계를 쓰지 않아요 — 폰이 내 컴퓨터에 <b>직접</b> 연결</li>
-          <li>같은 Wi-Fi에서는 바로, 밖에서는 내 Tailscale이나 <b>내가 운영하는 중계</b>로</li>
-          <li>승인 카드는 앱이 열려 있을 때 받아요</li>
-          <li><a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/docs/self-host-relay.md">내 중계 운영 방법</a></li>
+          <li>Não usa o nosso relay — o celular se conecta <b>diretamente</b> ao seu computador</li>
+          <li>Na mesma rede Wi-Fi, na hora; fora de casa, pelo seu Tailscale ou por <b>um relay operado por você</b></li>
+          <li>Os cartões de aprovação chegam quando o app está aberto</li>
+          <li><a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/docs/self-host-relay.md">Como operar seu próprio relay</a></li>
         </ul>
       </div>
     </div>
@@ -361,61 +361,61 @@ footer .grow{margin-right:auto}
 <!-- 설치 -->
 <section id="install" class="soft">
   <div class="wrap narrow">
-    <p class="eyebrow">설치</p>
-    <h2>명령 한 줄이면<br>설치돼요.</h2>
-    <p class="lede">터미널(Windows는 PowerShell)을 열고 아래 한 줄을 붙여 넣으세요. 5~10분이면 끝나요.</p>
-    <div class="tabs" role="tablist" aria-label="운영체제">
+    <p class="eyebrow">Instalação</p>
+    <h2>Uma linha de comando<br>e está instalado.</h2>
+    <p class="lede">Abra o Terminal (no Windows, o PowerShell) e cole a linha abaixo. Leva de 5 a 10 minutos.</p>
+    <div class="tabs" role="tablist" aria-label="Sistema operacional">
       <button role="tab" id="tab-unix" aria-selected="true" aria-controls="pane-unix">Mac · Linux</button>
       <button role="tab" id="tab-win" aria-selected="false" aria-controls="pane-win">Windows</button>
     </div>
     <div id="pane-unix" role="tabpanel" aria-labelledby="tab-unix">
-      <div class="code"><button class="copy" type="button">복사</button><span data-copy>curl -fsSL https://raw.githubusercontent.com/inphilchoi/haru-pc/main/install.sh | bash</span></div>
-      <p class="note">Mac은 <b>터미널</b> 앱(응용 프로그램 ▸ 유틸리티)에서 실행해요. Linux는 systemd가 있으면 켜질 때 자동으로 시작돼요.</p>
+      <div class="code"><button class="copy" type="button">Copiar</button><span data-copy>curl -fsSL https://raw.githubusercontent.com/inphilchoi/haru-pc/main/install.sh | bash</span></div>
+      <p class="note">No Mac, execute no app <b>Terminal</b> (Aplicativos ▸ Utilitários). No Linux, se houver systemd, ele inicia automaticamente quando o computador liga.</p>
     </div>
     <div id="pane-win" role="tabpanel" aria-labelledby="tab-win" hidden>
-      <div class="code"><button class="copy" type="button">복사</button><span data-copy>irm https://raw.githubusercontent.com/inphilchoi/haru-pc/main/install.ps1 | iex</span></div>
-      <p class="note">시작 메뉴에서 <b>PowerShell</b>을 열고 붙여 넣어요. Windows 10·11을 지원해요.</p>
+      <div class="code"><button class="copy" type="button">Copiar</button><span data-copy>irm https://raw.githubusercontent.com/inphilchoi/haru-pc/main/install.ps1 | iex</span></div>
+      <p class="note">Abra o <b>PowerShell</b> pelo menu Iniciar e cole. Compatível com Windows 10 e 11.</p>
     </div>
     <ol class="steps">
-      <li><b>필요한 것을 설치해요</b><p>Node.js(없거나 오래됐으면 새로 설치·업데이트)와 검증한 버전의 OpenClaw, 하루 PC 안전 플러그인.</p></li>
-      <li><b>안전하게 설정해요</b><p>바꾸는 일은 모두 폰 승인, 암호화 연결(TLS), 같은 Wi-Fi 안에서만 직접 접속.</p></li>
-      <li><b>연결 방식을 골라요</b><p>1) 하루 중계(추천) 2) 설치형 직접 연결. 나중에 바꿀 수 있어요.</p></li>
-      <li><b>AI를 골라요</b><p>ChatGPT·Claude·Gemini 같은 공개 AI 로그인·API 키, 또는 무료 로컬 모델. 로그인은 각 회사의 공식 페이지에서 직접 해요.</p></li>
-      <li><b>연결 QR이 떠요</b><p>백그라운드에서 켜 두고, 폰으로 찍을 QR을 보여 줘요.</p></li>
+      <li><b>Instala o que é necessário</b><p>Node.js (instalado ou atualizado se não existir ou estiver desatualizado), uma versão verificada do OpenClaw e o plugin de segurança do Haru PC.</p></li>
+      <li><b>Configura com segurança</b><p>Toda mudança precisa de aprovação no celular, conexão criptografada (TLS) e acesso direto só dentro da mesma rede Wi-Fi.</p></li>
+      <li><b>Você escolhe a conexão</b><p>1) Relay do Haru (recomendado) 2) Conexão direta auto-hospedada. Dá para trocar depois.</p></li>
+      <li><b>Você escolhe a IA</b><p>Login ou chave de API de IAs públicas como ChatGPT·Claude·Gemini, ou um modelo local gratuito. O login é feito por você, na página oficial de cada empresa.</p></li>
+      <li><b>Aparece o QR de conexão</b><p>Ele fica ligado em segundo plano e mostra o QR para você escanear com o celular.</p></li>
     </ol>
-    <p class="note">스크립트를 먼저 읽어 보고 싶다면 <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.sh">install.sh</a> · <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.ps1">install.ps1</a></p>
+    <p class="note">Se quiser ler o script antes: <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.sh">install.sh</a> · <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.ps1">install.ps1</a></p>
   </div>
 </section>
 
 <!-- AI 고르기 -->
 <section id="model">
   <div class="wrap narrow">
-    <p class="eyebrow">AI 고르기</p>
-    <h2>쓰던 공개 AI를<br>그대로.</h2>
-    <p class="lede">하루 PC는 비밀번호를 묻지 않아요. 로그인은 각 회사 페이지에서 하고, 하루 PC는 필요한 권한만 받아요. 언제든 바꿀 수 있어요.</p>
+    <p class="eyebrow">Escolher a IA</p>
+    <h2>A IA pública que você já usa,<br>do jeito que está.</h2>
+    <p class="lede">O Haru PC não pede sua senha. O login é feito na página de cada empresa, e o Haru PC recebe só as permissões necessárias. Dá para trocar quando quiser.</p>
     <table class="table">
-      <thead><tr><th>명령</th><th>연결되는 것</th></tr></thead>
+      <thead><tr><th>Comando</th><th>O que conecta</th></tr></thead>
       <tbody>
-        <tr><td>haru-pc model login chatgpt</td><td>ChatGPT 요금제로 로그인 (OpenAI 페이지)</td></tr>
-        <tr><td>haru-pc model login claude</td><td>Claude 요금제 (먼저 <code>claude auth login</code>)</td></tr>
+        <tr><td>haru-pc model login chatgpt</td><td>Login com o seu plano do ChatGPT (página da OpenAI)</td></tr>
+        <tr><td>haru-pc model login claude</td><td>Plano do Claude (antes, <code>claude auth login</code>)</td></tr>
         <tr><td>haru-pc model login copilot</td><td>GitHub Copilot</td></tr>
-        <tr><td>haru-pc model key openai</td><td>API 키 (openai·anthropic·gemini·mistral·deepseek 등)</td></tr>
-        <tr><td>haru-pc model local</td><td>내 컴퓨터의 무료 로컬 모델 — 비공개지만 느려요. RAM 16GB 이상 권장</td></tr>
+        <tr><td>haru-pc model key openai</td><td>Chave de API (openai·anthropic·gemini·mistral·deepseek etc.)</td></tr>
+        <tr><td>haru-pc model local</td><td>Modelo local gratuito no seu computador — privado, mas lento. Recomendado 16 GB de RAM ou mais</td></tr>
       </tbody>
     </table>
-    <p class="note"><b>추천 구성</b> — 늘 켜 두는 <b>Mac mini</b>. 전기를 적게 쓰고 모니터 없이 돌아가며, RAM 16GB 이상이면 무료 로컬 모델까지 쓸 수 있어요.</p>
+    <p class="note"><b>Configuração recomendada</b> — um <b>Mac mini</b> sempre ligado. Gasta pouca energia, funciona sem monitor e, com 16 GB de RAM ou mais, roda até o modelo local gratuito.</p>
   </div>
 </section>
 
 <!-- 연결 -->
 <section id="connect" class="soft">
   <div class="wrap narrow">
-    <p class="eyebrow">폰 연결</p>
-    <h2>QR 한 번이면<br>끝이에요.</h2>
+    <p class="eyebrow">Conectar o celular</p>
+    <h2>Um QR<br>e pronto.</h2>
     <ol class="steps">
-      <li><b>하루 앱에서 "내 PC 연결해 줘"</b><p>또는 설정(⚙) ▸ 하루 PC ▸ QR 스캔.</p></li>
-      <li><b>컴퓨터에 뜬 QR을 찍어요</b><p>QR은 10분 동안 한 번만 쓸 수 있어요. 새로 띄우려면 <code>haru-pc pair</code>.</p></li>
-      <li><b>"연결됨"이면 준비 끝</b><p>이제 집에서도 밖에서도 폰으로 일을 맡길 수 있어요.</p></li>
+      <li><b>No app Haru, diga "Conecta o meu PC"</b><p>Ou Ajustes (⚙) ▸ Haru PC ▸ Escanear QR.</p></li>
+      <li><b>Escaneie o QR que aparece no computador</b><p>O QR vale por 10 minutos e só pode ser usado uma vez. Para gerar outro, use <code>haru-pc pair</code>.</p></li>
+      <li><b>Apareceu "Conectado"? Está pronto</b><p>Agora você pode pedir tarefas pelo celular, em casa ou fora de casa.</p></li>
     </ol>
   </div>
 </section>
@@ -423,36 +423,36 @@ footer .grow{margin-right:auto}
 <!-- 사용 방법 -->
 <section id="use">
   <div class="wrap">
-    <p class="eyebrow">사용 방법</p>
-    <h2>"내 PC에서"로<br>시작하세요.</h2>
-    <p class="lede">폰의 하루에게 평소처럼 말하면 돼요. PC 일인지 하루가 알아듣고, 맡기기 전에 한 번 물어봐요.</p>
+    <p class="eyebrow">Como usar</p>
+    <h2>Comece com<br>"No meu PC".</h2>
+    <p class="lede">É só falar com o Haru no celular como sempre. O Haru entende quando é uma tarefa do PC e pergunta uma vez antes de repassá-la.</p>
     <div class="tiles">
-      <div class="tile"><h3>찾고 세기</h3><ul><li><span class="say">내 PC에서 바탕화면 파일 목록 알려 줘</span></li><li><span class="say">다운로드 폴더 파일 개수 세어 줘</span></li></ul></div>
-      <div class="tile"><h3>만들고 정리하기</h3><ul><li><span class="say">문서 폴더에 회의록.txt 만들어 줘</span></li><li><span class="say">다운로드 폴더를 종류별로 정리해 줘</span></li></ul></div>
-      <div class="tile"><h3>앱을 닫아도 돼요</h3><p>맡긴 뒤 앱을 닫아도 PC는 15분까지 일을 이어 가요. 다시 열면 기다리던 승인 카드가 떠요.</p></div>
+      <div class="tile"><h3>Encontrar e contar</h3><ul><li><span class="say">No meu PC, me mostra a lista de arquivos da Área de Trabalho</span></li><li><span class="say">Conta quantos arquivos tem na pasta Downloads</span></li></ul></div>
+      <div class="tile"><h3>Criar e organizar</h3><ul><li><span class="say">Cria ata-da-reuniao.txt na pasta Documentos</span></li><li><span class="say">Organiza a pasta Downloads por tipo</span></li></ul></div>
+      <div class="tile"><h3>Pode fechar o app</h3><p>Depois de pedir, mesmo com o app fechado, o PC continua o trabalho por até 15 minutos. Ao abrir de novo, aparece o cartão de aprovação que estava esperando.</p></div>
     </div>
     <ol class="steps" style="margin-top:36px">
-      <li><b>말하기</b><p>"내 PC에서 문서 폴더에 메모.txt 만들고 안녕 이라고 써 줘"</p></li>
-      <li><b>PC에 맡기기</b><p>[PC에 맡기기]를 누르면 PC로 보내요.</p></li>
-      <li><b>승인</b><p>PC가 바꾸기 전에 카드를 보내요 — "파일 쓰기 · 대상 · 내용". 맞으면 [실행], 아니면 [취소].</p></li>
-      <li><b>결과</b><p>끝나면 "PC: …"로 알려 줘요.</p></li>
+      <li><b>Fale</b><p>"No meu PC, cria nota.txt na pasta Documentos e escreve olá"</p></li>
+      <li><b>Envie para o PC</b><p>Toque em [Enviar para o PC] para mandar a tarefa ao PC.</p></li>
+      <li><b>Aprove</b><p>Antes de mudar algo, o PC envia um cartão — "Gravar arquivo · destino · conteúdo". Se estiver certo, [Executar]; se não, [Cancelar].</p></li>
+      <li><b>Resultado</b><p>Quando termina, ele avisa com "PC: …".</p></li>
     </ol>
 
-    <h3 style="margin-top:64px">컴퓨터에서 쓰는 명령</h3>
+    <h3 style="margin-top:64px">Comandos para usar no computador</h3>
     <table class="table">
-      <thead><tr><th>명령</th><th>하는 일</th></tr></thead>
+      <thead><tr><th>Comando</th><th>O que faz</th></tr></thead>
       <tbody>
-        <tr><td>haru-pc pair</td><td>폰 연결 QR 띄우기 (10분, 한 번)</td></tr>
-        <tr><td>haru-pc status</td><td>켜져 있는지, 연결된 폰</td></tr>
-        <tr><td>haru-pc allow &lt;폴더&gt;</td><td>하루 PC가 일할 수 있는 폴더 추가 (기본: 문서·다운로드·바탕화면)</td></tr>
-        <tr><td>haru-pc relay on | off</td><td>연결 방식 바꾸기 — 하루 중계 / 설치형 직접 연결</td></tr>
-        <tr><td>haru-pc relay url &lt;wss://…&gt;</td><td>내가 운영하는 중계 쓰기 (<code>default</code>로 되돌리기)</td></tr>
-        <tr><td>haru-pc remote on</td><td>직접 연결에서 밖에서도 — 내 Tailscale로</td></tr>
-        <tr><td>haru-pc readonly on</td><td>보기만 하고 아무것도 바꾸지 않게</td></tr>
-        <tr><td>haru-pc model</td><td>지금 AI 모델 보기·바꾸기</td></tr>
-        <tr><td>haru-pc unpair</td><td>연결된 폰 지우기</td></tr>
-        <tr><td>haru-pc update</td><td>검증한 다음 버전으로 업데이트</td></tr>
-        <tr><td>haru-pc uninstall</td><td>멈추고 지우기</td></tr>
+        <tr><td>haru-pc pair</td><td>Mostra o QR para conectar o celular (10 minutos, uso único)</td></tr>
+        <tr><td>haru-pc status</td><td>Se está ligado e qual celular está conectado</td></tr>
+        <tr><td>haru-pc allow &lt;pasta&gt;</td><td>Adiciona uma pasta onde o Haru PC pode trabalhar (padrão: Documentos·Downloads·Área de Trabalho)</td></tr>
+        <tr><td>haru-pc relay on | off</td><td>Troca o tipo de conexão — relay do Haru / conexão direta auto-hospedada</td></tr>
+        <tr><td>haru-pc relay url &lt;wss://…&gt;</td><td>Usa um relay operado por você (volte com <code>default</code>)</td></tr>
+        <tr><td>haru-pc remote on</td><td>Na conexão direta, acesso também de fora de casa — pelo seu Tailscale</td></tr>
+        <tr><td>haru-pc readonly on</td><td>Só visualiza, sem mudar nada</td></tr>
+        <tr><td>haru-pc model</td><td>Mostra ou troca o modelo de IA atual</td></tr>
+        <tr><td>haru-pc unpair</td><td>Remove o celular conectado</td></tr>
+        <tr><td>haru-pc update</td><td>Atualiza para a próxima versão verificada</td></tr>
+        <tr><td>haru-pc uninstall</td><td>Para e desinstala</td></tr>
       </tbody>
     </table>
   </div>
@@ -462,16 +462,16 @@ footer .grow{margin-right:auto}
 <section id="safety" class="soft">
   <div class="wrap">
     <div class="center">
-      <p class="eyebrow">안전</p>
-      <h2>허락하지 않으면<br>아무것도 바뀌지 않아요.</h2>
+      <p class="eyebrow">Segurança</p>
+      <h2>Sem a sua permissão,<br>nada muda.</h2>
     </div>
     <div class="tiles">
-      <div class="tile"><h3>바꿀 때마다 승인</h3><p>파일 쓰기·옮기기, 명령 실행은 한 건씩 폰에서 승인해요. "항상 허용"은 없어요. 10분 안에 답하지 않으면 거부돼요.</p></div>
-      <div class="tile"><h3>허용한 폴더 안에서만</h3><p>기본은 문서·다운로드·바탕화면. 그 밖은 막혀요. 지우지 않고 '정리함'으로 옮겨요.</p></div>
-      <div class="tile"><h3>명령은 한 번에 하나</h3><p>파이프·연결·리디렉션처럼 카드에 보이는 것과 실제로 도는 것이 달라질 수 있는 명령은 막아요.</p></div>
-      <div class="tile"><h3>AI는 설정을 못 바꿔요</h3><p>허용 폴더·읽기 전용 같은 안전 설정은 사람이 컴퓨터에서만 바꿀 수 있어요.</p></div>
-      <div class="tile"><h3>결제·로그인 안 해요</h3><p>돈을 보내거나 사거나, 비밀번호를 입력하지 않아요.</p></div>
-      <div class="tile"><h3>중계는 내용을 못 봐요</h3><p>폰과 PC만 아는 키로 종단간 암호화. 중계는 방 번호와 접속 토큰의 해시만 저장해요. 중계가 싫다면 설치형 직접 연결로.</p></div>
+      <div class="tile"><h3>Aprovação a cada mudança</h3><p>Gravar ou mover arquivos e executar comandos: cada ação é aprovada uma a uma no celular. Não existe "Permitir sempre". Se você não responder em 10 minutos, o pedido é recusado.</p></div>
+      <div class="tile"><h3>Só nas pastas permitidas</h3><p>O padrão é Documentos·Downloads·Área de Trabalho. Fora delas, o acesso é bloqueado. Em vez de apagar, ele move para a pasta de arrumação.</p></div>
+      <div class="tile"><h3>Um comando por vez</h3><p>Comandos em que o que aparece no cartão pode ser diferente do que realmente roda, como pipes, encadeamentos e redirecionamentos, são bloqueados.</p></div>
+      <div class="tile"><h3>A IA não muda as configurações</h3><p>Configurações de segurança, como pastas permitidas e modo somente leitura, só podem ser alteradas por uma pessoa, no próprio computador.</p></div>
+      <div class="tile"><h3>Sem pagamentos nem logins</h3><p>Ele não envia dinheiro, não faz compras e não digita senhas.</p></div>
+      <div class="tile"><h3>O relay não vê o conteúdo</h3><p>Criptografia de ponta a ponta com uma chave que só o celular e o PC conhecem. O relay guarda apenas o número da sala e o hash do token de acesso. Se preferir não usar relay, use a conexão direta auto-hospedada.</p></div>
     </div>
   </div>
 </section>
@@ -479,17 +479,17 @@ footer .grow{margin-right:auto}
 <!-- 자주 묻는 질문 -->
 <section id="faq">
   <div class="wrap narrow">
-    <p class="eyebrow">자주 묻는 질문</p>
-    <h2>궁금한 것.</h2>
-    <details><summary>하루 앱은 어디서 받나요?</summary><p>iPhone(App Store)·Android(Google Play) 출시를 준비하고 있어요. 나오면 이 페이지에 바로 알릴게요.</p></details>
-    <details><summary>하루 PC는 무료인가요?</summary><p>네, 무료이고 오픈소스예요. ChatGPT·Claude 같은 외부 AI를 연결하면 그 회사의 요금제·사용 한도가 적용돼요. 로컬 모델은 비용이 없어요.</p></details>
-    <details><summary>Apple Intelligence가 안 되는 폰도 쓸 수 있나요?</summary><p>네. AI 대화 대신 규칙으로 동작하는 비서 모드로 일정·가계부·하루 PC 등 모든 기능을 쓸 수 있어요. AI 대화는 iPhone 15 Pro 이상에서 돼요.</p></details>
-    <details><summary>승인 카드가 오지 않아요.</summary><p>하루 앱을 열어 보세요. 맡긴 일이 진행 중이면 기다리던 카드가 떠요. 컴퓨터에서 <code>haru-pc status</code>로 하루 PC가 켜져 있는지 확인해 주세요. 작은 로컬 모델은 첫 답이 몇 분 걸릴 수 있어요.</p></details>
-    <details><summary>허용한 폴더 밖이라 막혔어요.</summary><p>컴퓨터에서 <code>haru-pc allow ~/원하는폴더</code>를 실행하면 그 폴더에서도 일할 수 있어요. AI는 이 설정을 스스로 바꿀 수 없어요.</p></details>
-    <details><summary>하루 중계 서버를 쓰고 싶지 않아요.</summary><p>설치할 때 "설치형 직접 연결"을 고르거나 <code>haru-pc relay off</code>를 실행하세요. 같은 Wi-Fi에서는 폰이 컴퓨터에 직접 연결되고, 밖에서는 내 Tailscale(<code>haru-pc remote on</code>)이나 내가 운영하는 중계(<code>haru-pc relay url wss://…</code>)를 쓰면 돼요. 바꾼 뒤에는 <code>haru-pc pair</code>로 다시 연결해요.</p></details>
-    <details><summary>하루 PC는 어떤 AI를 쓰나요?</summary><p>내가 고른 공개 AI(ChatGPT·Claude·Gemini 등)나 내 컴퓨터의 로컬 모델을 써요. 폰의 하루 앱은 기기 안의 Apple Intelligence를 쓰고, 하루 PC는 컴퓨터에 연결한 AI를 쓰는 식으로 서로 따로예요.</p></details>
-    <details><summary>설치가 내 컴퓨터에 무엇을 바꾸나요?</summary><p>Node.js가 없거나 오래됐으면 설치·업데이트하고(Mac은 Homebrew), OpenClaw와 하루 PC를 설치해 <code>~/.haru-pc</code>에 두고, 백그라운드 서비스로 등록해요. <code>haru-pc uninstall</code>로 멈추고 지울 수 있어요.</p></details>
-    <details><summary>내 데이터는 어디로 가나요?</summary><p>폰의 대화·기록은 폰에만, 맡긴 일은 폰과 내 PC 사이에서만 오가요. 자세한 내용은 <a class="link" href="../haru-privacy/">개인정보처리방침</a>을 보세요.</p></details>
+    <p class="eyebrow">Perguntas frequentes</p>
+    <h2>Dúvidas.</h2>
+    <details><summary>Onde baixo o app Haru?</summary><p>Estamos preparando o lançamento para iPhone (App Store) e Android (Google Play). Assim que sair, avisaremos nesta página.</p></details>
+    <details><summary>O Haru PC é grátis?</summary><p>Sim, é grátis e de código aberto. Se você conectar IAs externas como ChatGPT·Claude, valem o plano e os limites de uso dessas empresas. O modelo local não tem custo.</p></details>
+    <details><summary>Dá para usar em celulares sem Apple Intelligence?</summary><p>Sim. No lugar da conversa com IA, um modo assistente que funciona por regras permite usar todos os recursos, como agenda, finanças e Haru PC. A conversa com IA funciona no iPhone 15 Pro ou mais recente.</p></details>
+    <details><summary>O cartão de aprovação não chega.</summary><p>Abra o app Haru. Se a tarefa pedida estiver em andamento, o cartão que estava esperando aparece. No computador, confira com <code>haru-pc status</code> se o Haru PC está ligado. Com modelos locais pequenos, a primeira resposta pode levar alguns minutos.</p></details>
+    <details><summary>Foi bloqueado por estar fora das pastas permitidas.</summary><p>Execute <code>haru-pc allow ~/PastaDesejada</code> no computador para que ele possa trabalhar também nessa pasta. A IA não consegue mudar essa configuração sozinha.</p></details>
+    <details><summary>Não quero usar o servidor de relay do Haru.</summary><p>Na instalação, escolha "Conexão direta auto-hospedada" ou execute <code>haru-pc relay off</code>. Na mesma rede Wi-Fi, o celular se conecta direto ao computador; fora de casa, use seu Tailscale (<code>haru-pc remote on</code>) ou um relay operado por você (<code>haru-pc relay url wss://…</code>). Depois de trocar, conecte de novo com <code>haru-pc pair</code>.</p></details>
+    <details><summary>Qual IA o Haru PC usa?</summary><p>A IA pública que você escolher (ChatGPT·Claude·Gemini etc.) ou um modelo local no seu computador. O app Haru no celular usa o Apple Intelligence dentro do aparelho, e o Haru PC usa a IA conectada ao computador: são coisas separadas.</p></details>
+    <details><summary>O que a instalação muda no meu computador?</summary><p>Se o Node.js não existir ou estiver desatualizado, ele é instalado ou atualizado (no Mac, via Homebrew); o OpenClaw e o Haru PC são instalados em <code>~/.haru-pc</code> e registrados como serviço em segundo plano. Você pode parar e desinstalar com <code>haru-pc uninstall</code>.</p></details>
+    <details><summary>Para onde vão os meus dados?</summary><p>As conversas e registros do celular ficam só no celular, e as tarefas pedidas circulam apenas entre o celular e o seu PC. Para mais detalhes, veja a <a class="link" href="../../haru-privacy/">Política de Privacidade</a>.</p></details>
   </div>
 </section>
 
@@ -497,9 +497,9 @@ footer .grow{margin-right:auto}
 
 <footer>
   <div class="wrap">
-    <span class="grow">하루 - AI 비서 · <a href="https://creativelab-kr.github.io/">CreativeLab</a></span>
+    <span class="grow">Haru - Assistente de IA · <a href="https://creativelab-kr.github.io/">CreativeLab</a></span>
     <a href="https://github.com/inphilchoi/haru-pc">GitHub</a>
-    <a href="../haru-privacy/">개인정보처리방침·이용약관</a>
+    <a href="../../haru-privacy/">Política de Privacidade · Termos de Uso</a>
     <a href="mailto:creativelab.choi@gmail.com">creativelab.choi@gmail.com</a>
   </div>
 </footer>
@@ -521,7 +521,7 @@ footer .grow{margin-right:auto}
   document.querySelectorAll('.copy').forEach(function (b) {
     b.addEventListener('click', function () {
       var text = b.parentNode.querySelector('[data-copy]').textContent;
-      var done = function () { b.textContent = '복사됨'; setTimeout(function () { b.textContent = '복사'; }, 1600); };
+      var done = function () { b.textContent = 'Copiado'; setTimeout(function () { b.textContent = 'Copiar'; }, 1600); };
       if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {});
       else { var r = document.createRange(); r.selectNodeContents(b.parentNode.querySelector('[data-copy]')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); done(); }
     });

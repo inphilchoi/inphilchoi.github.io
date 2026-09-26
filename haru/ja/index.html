@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haru - AIアシスタント</title>
+<meta name="description" content="話しかけるだけで、デバイスの中でこなしてくれるアシスタント、Haru。会員登録なしで予定・やること・家計簿・メールをサポート。Haru PCをつなげば、自分のコンピュータの作業もスマートフォンから任せられます。">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Haru - AIアシスタント">
+<meta property="og:description" content="話しかければ、デバイスの中でこなします。自分のコンピュータの作業まで。">
+<meta property="og:url" content="https://inphilchoi.github.io/haru/ja/">
+<meta property="og:image" content="https://inphilchoi.github.io/haru/icon.png">
+<link rel="alternate" hreflang="ko" href="https://inphilchoi.github.io/haru/">
+<link rel="alternate" hreflang="en" href="https://inphilchoi.github.io/haru/en/">
+<link rel="alternate" hreflang="ja" href="https://inphilchoi.github.io/haru/ja/">
+<link rel="alternate" hreflang="zh-Hans" href="https://inphilchoi.github.io/haru/zh-hans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://inphilchoi.github.io/haru/zh-hant/">
+<link rel="alternate" hreflang="fr" href="https://inphilchoi.github.io/haru/fr/">
+<link rel="alternate" hreflang="de" href="https://inphilchoi.github.io/haru/de/">
+<link rel="alternate" hreflang="es" href="https://inphilchoi.github.io/haru/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://inphilchoi.github.io/haru/pt-br/">
+<link rel="alternate" hreflang="x-default" href="https://inphilchoi.github.io/haru/en/">
+<link rel="icon" href="../icon.png">
+<link rel="apple-touch-icon" href="../icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+/* CreativeLab 홈페이지(creativelab-kr.github.io)와 같은 조판 규칙:
+   큰 제목·좁은 자간, 흰 면과 옅은 회색 면을 번갈아, 파랑 하나, 알약 버튼, 항상 밝게. */
+:root{
+  color-scheme:light;
+  --bg:#fff; --bg-soft:#f5f5f7; --surface:#fff;
+  --text:#1d1d1f; --text-mid:#424245; --text-muted:#6e6e73;
+  --border:rgba(0,0,0,.09);
+  --accent:#0071e3; --accent-hover:#0077ed; --accent-link:#0066cc;
+  --haru:#e8707f; --haru-soft:#fdeef0;
+  --live:#0a7d45;
+  --nav-bg:rgba(255,255,255,.72);
+  --font:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --fs-hero:clamp(2.8rem,1.2rem + 6.5vw,6rem);
+  --fs-h2:clamp(1.9rem,1.2rem + 2.6vw,3.25rem);
+  --fs-h3:clamp(1.15rem,1rem + .6vw,1.5rem);
+  --fs-lede:clamp(1.0625rem,.95rem + .55vw,1.45rem);
+  --wrap:1024px; --nav-h:48px; --gutter:22px;
+  --radius:18px; --radius-lg:28px; --pill:980px;
+  --ease:cubic-bezier(.28,.11,.32,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px);-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:1.0625rem;line-height:1.55;letter-spacing:-.01em;word-break:keep-all;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+:where(a,button):focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.narrow{max-width:760px}
+
+/* 머리띠 */
+.nav{position:sticky;top:0;z-index:50;height:var(--nav-h);background:var(--nav-bg);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+.nav .wrap{height:100%;display:flex;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-right:auto}
+.brand img{width:24px;height:24px;border-radius:6px}
+.nav-links{display:flex;gap:18px;font-size:.8125rem;color:var(--text-mid)}
+.nav-links a:hover{color:var(--text)}
+.lang{font:inherit;font-size:.8125rem;color:var(--text-mid);background:transparent;border:1px solid rgba(0,0,0,.14);border-radius:var(--pill);padding:4px 8px;max-width:120px}
+.nav-cta{font-size:.8125rem;font-weight:600;color:#fff;background:var(--accent);padding:5px 12px;border-radius:var(--pill)}
+@media (max-width:720px){.nav-links{display:none}}
+
+/* 구획 */
+section{padding:clamp(72px,10vw,120px) 0}
+.soft{background:var(--bg-soft)}
+.eyebrow{color:var(--haru);font-weight:600;font-size:clamp(1rem,.9rem + .4vw,1.3rem);margin:0 0 10px;letter-spacing:-.01em}
+h1,h2,h3{margin:0;letter-spacing:-.025em;line-height:1.08}
+h2{font-size:var(--fs-h2);font-weight:700}
+h3{font-size:var(--fs-h3);font-weight:700;line-height:1.25}
+.lede{font-size:var(--fs-lede);color:var(--text-mid);line-height:1.45;margin:18px 0 0}
+.center{text-align:center}
+.center .lede{margin-inline:auto;max-width:640px}
+.muted{color:var(--text-muted)}
+.link{color:var(--accent-link)}
+.link:hover{text-decoration:underline}
+.link::after{content:" ›"}
+
+/* 버튼 */
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.center .actions{justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:6px;font-size:1.0625rem;font-weight:500;padding:12px 22px;border-radius:var(--pill);transition:background .2s var(--ease)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-ghost{color:var(--accent-link);border:1px solid var(--accent-link)}
+.btn-ghost:hover{background:#f0f6ff}
+
+/* 첫 화면 */
+.hero{padding-top:clamp(56px,8vw,96px);padding-bottom:0;text-align:center;overflow:hidden}
+.hero-icon{width:96px;height:96px;border-radius:22px;margin:0 auto 22px;box-shadow:0 10px 30px rgba(232,112,127,.28)}
+.hero h1{font-size:var(--fs-hero);font-weight:800;letter-spacing:-.035em;line-height:1.02}
+.hero h1 .accent{background:linear-gradient(90deg,#f4a261,#e8707f 55%,#d9577a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.badge-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px}
+.badge{font-size:.8125rem;color:var(--text-mid);background:var(--bg-soft);border-radius:var(--pill);padding:6px 12px}
+.hero-phones{display:flex;justify-content:center;gap:clamp(16px,4vw,48px);margin-top:clamp(48px,7vw,80px);padding-bottom:0;transform:translateY(40px)}
+@media (max-width:720px){.hero-phones .phone:nth-child(2){display:none}}
+
+/* 폰(앱 화면을 앱과 같은 모양으로 그린 것) */
+.phone{width:min(300px,78vw);flex:none;border-radius:46px;background:#1b1b1d;padding:12px;box-shadow:0 30px 60px rgba(0,0,0,.18),inset 0 0 0 2px #3a3a3c;text-align:left}
+.screen{border-radius:36px;background:#000;color:#f5f5f7;height:560px;overflow:hidden;display:flex;flex-direction:column;font-size:.8rem;line-height:1.4}
+.bar{display:flex;align-items:center;gap:8px;padding:34px 16px 10px;background:linear-gradient(#2a2410,#231e0c)}
+.bar .av{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#f6c2a1,#e8707f)}
+.bar b{font-size:.9rem}
+.bar small{display:block;color:#aaa;font-size:.65rem}
+.chat{flex:1;padding:12px 12px 0;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.me{align-self:flex-end;background:#e57a86;color:#fff;border-radius:16px 16px 4px 16px;padding:8px 11px;max-width:80%}
+.ai{align-self:flex-start;background:#1f1f22;border-radius:16px 16px 16px 4px;padding:8px 11px;max-width:82%}
+.card{align-self:stretch;margin-left:10px;background:#1c1c1e;border:1px solid #2c2c2e;border-radius:16px;padding:10px 12px}
+.card .k{display:flex;justify-content:space-between;align-items:center;color:#9a9aa0;font-size:.68rem;font-weight:600}
+.card .st{color:#ff9f43;background:#3a2a17;border-radius:8px;padding:1px 6px}
+.card .st.ok{color:#5ad17a;background:#173a22}
+.card .t{font-weight:700;font-size:.85rem;margin:5px 0}
+.card pre{margin:4px 0 8px;background:#2a2a2d;border-radius:8px;padding:7px 8px;font-family:var(--mono);font-size:.66rem;white-space:pre-wrap;color:#e5e5ea}
+.card .b{display:flex;gap:6px}
+.card .b span{border-radius:999px;padding:4px 12px;font-size:.72rem;background:#3a3a3c}
+.card .b span.p{background:#e57a86;color:#fff}
+.input{margin:10px;border-radius:20px;background:#1c1c1e;color:#8e8e93;padding:10px 14px;font-size:.72rem}
+
+/* 타일 */
+.tiles-4{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))!important}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:18px;margin-top:48px}
+.tile{background:var(--surface);border-radius:var(--radius-lg);padding:28px}
+.soft .tile{background:#fff}
+section:not(.soft) .tile{background:var(--bg-soft)}
+.tile .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--haru-soft);color:var(--haru);margin-bottom:16px}
+.tile .ic svg{width:24px;height:24px}
+.tile p{color:var(--text-mid);margin:10px 0 0}
+.tile ul{margin:12px 0 0;padding-left:1.1em;color:var(--text-mid)}
+.tile li{margin:4px 0}
+.say{display:inline-block;background:var(--bg-soft);border-radius:10px;padding:1px 8px;margin:2px 0;color:var(--text)}
+section:not(.soft) .tile .say{background:#fff}
+
+/* 흐름도 */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:14px;margin-top:48px}
+.node{background:#fff;border-radius:var(--radius-lg);padding:26px 20px;text-align:center}
+.node .ic{width:52px;height:52px;border-radius:14px;margin:0 auto 12px;display:grid;place-items:center;background:var(--haru-soft);color:var(--haru)}
+.node .ic svg{width:28px;height:28px}
+.node p{margin:6px 0 0;color:var(--text-muted);font-size:.9375rem}
+.arrow{color:var(--text-muted);font-size:1.6rem;text-align:center;align-self:center}
+@media (max-width:760px){.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}}
+
+/* 설치 */
+.tabs{display:inline-flex;background:#e8e8ed;border-radius:var(--pill);padding:3px;margin-top:36px}
+.tabs button{font:inherit;font-size:.9375rem;border:0;background:transparent;padding:8px 18px;border-radius:var(--pill);cursor:pointer;color:var(--text-mid)}
+.tabs button[aria-selected="true"]{background:#fff;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:600}
+.code{position:relative;margin-top:16px;background:#1d1d1f;color:#f5f5f7;border-radius:var(--radius);padding:20px 60px 20px 22px;font-family:var(--mono);font-size:.875rem;line-height:1.6;white-space:pre-wrap;word-break:break-all;text-align:left}
+.code .cm{color:#8e8e93}
+.copy{position:absolute;top:12px;right:12px;font:inherit;font-size:.75rem;border:0;border-radius:var(--pill);background:#3a3a3c;color:#fff;padding:5px 11px;cursor:pointer}
+.copy:hover{background:#48484a}
+.steps{counter-reset:s;list-style:none;padding:0;margin:40px 0 0;display:grid;gap:14px}
+.steps li{counter-increment:s;background:var(--bg-soft);border-radius:var(--radius);padding:18px 20px 18px 64px;position:relative}
+.soft .steps li{background:#fff}
+.steps li::before{content:counter(s);position:absolute;left:20px;top:16px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;display:grid;place-items:center;font-size:.9375rem}
+.steps b{display:block;margin-bottom:2px}
+.steps p{margin:0;color:var(--text-mid)}
+code{font-family:var(--mono);font-size:.9em;background:rgba(0,0,0,.05);border-radius:6px;padding:1px 6px}
+.note{margin-top:22px;font-size:.9375rem;color:var(--text-muted)}
+
+/* 표 */
+.table{width:100%;border-collapse:collapse;margin-top:28px;font-size:.9688rem;text-align:left}
+.table th,.table td{padding:14px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.table th{font-weight:600;color:var(--text-muted);font-size:.8125rem}
+.table td:first-child{white-space:nowrap;font-family:var(--mono);font-size:.85rem}
+@media (max-width:640px){.table td:first-child{white-space:normal}}
+
+/* 자주 묻는 질문 */
+details{background:var(--bg-soft);border-radius:var(--radius);padding:4px 22px;margin-top:12px}
+.soft details{background:#fff}
+summary{cursor:pointer;list-style:none;padding:16px 0;font-weight:600;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--text-muted);font-weight:400;font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"−"}
+details p{margin:0 0 18px;color:var(--text-mid)}
+
+footer{background:var(--bg-soft);color:var(--text-muted);font-size:.8125rem;padding:32px 0 48px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+footer a:hover{color:var(--text)}
+footer .grow{margin-right:auto}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Haru">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="../icon.png" alt="" width="24" height="24">Haru</a>
+    <div class="nav-links">
+      <a href="#features">機能</a>
+      <a href="#pc">Haru PC</a>
+      <a href="#connection">接続方法</a>
+      <a href="#install">インストール</a>
+      <a href="#use">使い方</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+    <select class="lang" aria-label="言語" data-base="../" onchange="haruLang(this.value)"><option value="">한국어</option><option value="en/">English</option><option value="ja/" selected>日本語</option><option value="zh-hans/">简体中文</option><option value="zh-hant/">繁體中文</option><option value="fr/">Français</option><option value="de/">Deutsch</option><option value="es/">Español</option><option value="pt-br/">Português (BR)</option></select>
+    <a class="nav-cta" href="#install">Haru PCを入手</a>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- 첫 화면 -->
+<section class="hero">
+  <div class="wrap">
+    <img class="hero-icon" src="../icon.png" alt="Haruアプリのアイコン" width="96" height="96">
+    <h1>Haru.<br><span class="accent">話しかければ、こなします。</span></h1>
+    <p class="lede" style="max-width:640px;margin-inline:auto">予定・やること・家計簿・メールをサポートするアシスタントが、スマートフォンの中で働きます。Haru PCをつなげば、自分のコンピュータの作業までスマートフォンから任せられます。</p>
+    <div class="badge-row" aria-label="特長">
+      <span class="badge">会員登録なし</span>
+      <span class="badge">デバイス内で判断</span>
+      <span class="badge">広告・トラッキングなし</span>
+      <span class="badge">無料</span>
+    </div>
+    <div class="actions" style="justify-content:center">
+      <a class="btn btn-primary" href="#install">Haru PCをインストール</a>
+      <a class="btn btn-ghost" href="#use">使い方を見る</a>
+    </div>
+    <p class="note">Haruアプリ（iPhone・Android）は、ストアでの公開に向けて準備中です。</p>
+
+    <div class="hero-phones" aria-hidden="true">
+      <div class="phone"><div class="screen">
+        <div class="bar"><span class="av"></span><div><b>Haru</b><small>アシスタント</small></div></div>
+        <div class="chat">
+          <div class="me">明日の午後3時に歯医者を入れて</div>
+          <div class="ai">カレンダーに追加しますか？</div>
+          <div class="card"><div class="k">予定<span class="st">確認が必要</span></div><div class="t">歯医者</div><div class="muted" style="color:#9a9aa0;font-size:.7rem">明日 午後3:00</div><div class="b" style="margin-top:8px"><span class="p">追加</span><span>キャンセル</span></div></div>
+          <div class="me">お昼のキンパで4,500ウォン使った</div>
+          <div class="ai">家計簿に記録しました。今月の食費は82,300ウォンです。</div>
+        </div>
+        <div class="input">Haruに話しかける</div>
+      </div></div>
+      <div class="phone"><div class="screen">
+        <div class="bar"><span class="av"></span><div><b>Haru</b><small>Haru PC接続中</small></div></div>
+        <div class="chat">
+          <div class="me">自分のPCでダウンロードフォルダのファイル数を数えて</div>
+          <div class="card"><div class="k">PC作業<span class="st ok">完了</span></div><div class="t">ダウンロードフォルダのファイル数を数えて</div></div>
+          <div class="ai">PCがこの作業をしようとしています。内容を確認して選んでください。</div>
+          <div class="card"><div class="k">PC承認リクエスト<span class="st">確認が必要</span></div><div class="t">Haru PC · コマンド実行</div><pre>コマンド / Command: ls -1 ~/Downloads</pre><div class="b"><span class="p">実行</span><span>キャンセル</span></div></div>
+          <div class="ai">PC：ダウンロードフォルダにファイルが23個あります。</div>
+        </div>
+        <div class="input">Haruに話しかける</div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 기능 -->
+<section id="features" class="soft">
+  <div class="wrap">
+    <p class="eyebrow">Haruにできること</p>
+    <h2>ひと言で、<br>十分です。</h2>
+    <p class="lede">Haruがすることは、まずカードでお見せします。確認をタップするまで実行しません。</p>
+    <div class="tiles">
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <h3>予定とやること</h3>
+        <ul><li><span class="say">明日の午後3時に歯医者を入れて</span></li><li><span class="say">それ4時に変えて</span></li><li><span class="say">牛乳を買うをやることに追加して</span></li></ul>
+      </div>
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>家計簿</h3>
+        <ul><li><span class="say">お昼のキンパで4,500ウォン使った</span></li><li><span class="say">今月いくら使った？</span></li><li><span class="say">さっきのを取り消して</span></li></ul>
+      </div>
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg></div>
+        <h3>メール・連絡・経路案内</h3>
+        <ul><li><span class="say">課長に30分遅れるとメールを書いて</span></li><li><span class="say">母にメッセージを送って</span></li><li><span class="say">渋谷駅への行き方</span></li></ul>
+        <p class="muted" style="font-size:.9rem">メールは下書きを作るだけで、送信はご自身でタップします。</p>
+      </div>
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>写真1枚で整理</h3>
+        <p>招待状・請求書・レシートを見せると、予定・やること・支出に整理します。写真の文字はデバイスの中だけで読み取ります。</p>
+      </div>
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></div>
+        <h3>声で話しかけ、音声で聞く</h3>
+        <p>マイクをタップして話すと、文字に変換されて送信されます。返事は音声で読み上げます。</p>
+      </div>
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h3>デバイスの中で</h3>
+        <p>判断はiPhoneのApple Intelligence（Androidは対応デバイスのGemini Nano）がデバイスの中で行います。会話と記録はこのデバイスにだけ保存されます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 하루 PC -->
+<section id="pc">
+  <div class="wrap center">
+    <p class="eyebrow">Haru PC</p>
+    <h2>スマートフォンで頼めば、<br>自分のコンピュータが働きます。</h2>
+    <p class="lede">自分のコンピュータでHaru PCを起動しておけば、「自分のPCで…」とコンピュータの作業を任せられます。ファイルを探し、整理し、書類を作り、コマンドを実行します。何かを変更する前には、必ずスマートフォンに承認カードが表示されます。</p>
+  </div>
+  <div class="wrap">
+    <div class="flow">
+      <div class="node" style="background:var(--bg-soft)">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
+        <h3>Haruアプリ</h3><p>「自分のPCで書類フォルダを整理して」</p>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node" style="background:var(--bg-soft)">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h3>エンドツーエンド暗号化</h3><p>Haruリレーか、セルフホストの直接接続かを選べます。どちらでも、内容を読めるのはスマートフォンとPCだけです。</p>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node" style="background:var(--bg-soft)">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Haru PC</h3><p>承認した作業だけを実行し、結果をスマートフォンにお知らせします。</p>
+      </div>
+    </div>
+    <div class="tiles tiles-4">
+      <div class="tile"><h3>接続方法は選べます</h3><p>Haruリレーでどこからでも。または、リレーなしのセルフホスト直接接続で。 <a class="link" href="#connection">比較</a></p></div>
+      <div class="tile"><h3>アプリを閉じても</h3><p>任せた作業はPCで続きます。もう一度開くと、待っていた承認カードが表示されます。</p></div>
+      <div class="tile"><h3>公開AIをそのまま</h3><p>ChatGPT · Claude · Geminiなどの公開AIにログインするかAPIキーで。または、自分のコンピュータの無料ローカルモデルで。</p></div>
+      <div class="tile"><h3>オープンソース</h3><p>オープンソースのAIアシスタント<a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>の上で動作し、ソースは<a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>で公開しています。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 연결 방식 -->
+<section id="connection">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">接続方法</p>
+      <h2>2つの方法から<br>選べます。</h2>
+      <p class="lede">インストール時に選び、いつでも<code>haru-pc relay on</code> · <code>off</code>で切り替えられます。</p>
+    </div>
+    <div class="tiles" style="grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))">
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 1 0 6 16.5"/><path d="M6 19h11.5"/></svg></div>
+        <h3>Haruリレー <span class="badge" style="margin-left:6px;font-size:.75rem">おすすめ</span></h3>
+        <ul>
+          <li>設定不要で、<b>家でも外出先でも</b>接続</li>
+          <li>エンドツーエンド暗号化 — リレーは内容を見られず、アクセストークンのハッシュだけを保存</li>
+          <li>アプリを閉じても任せた作業は続き、もう一度開くと承認カードが表示されます</li>
+          <li>CreativeLabが運営（Cloudflare）</li>
+        </ul>
+      </div>
+      <div class="tile">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>セルフホスト直接接続</h3>
+        <ul>
+          <li>私たちのリレーは使いません — スマートフォンが自分のコンピュータに<b>直接</b>接続</li>
+          <li>同じWi-Fiならすぐに。外出先からは自分のTailscaleか<b>自分で運営するリレー</b>で</li>
+          <li>承認カードはアプリを開いているときに受け取ります</li>
+          <li><a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/docs/self-host-relay.md">自分のリレーの運営方法</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 설치 -->
+<section id="install" class="soft">
+  <div class="wrap narrow">
+    <p class="eyebrow">インストール</p>
+    <h2>コマンド1行で<br>インストール。</h2>
+    <p class="lede">ターミナル（WindowsはPowerShell）を開いて、下の1行を貼り付けてください。5〜10分で完了します。</p>
+    <div class="tabs" role="tablist" aria-label="OS">
+      <button role="tab" id="tab-unix" aria-selected="true" aria-controls="pane-unix">Mac · Linux</button>
+      <button role="tab" id="tab-win" aria-selected="false" aria-controls="pane-win">Windows</button>
+    </div>
+    <div id="pane-unix" role="tabpanel" aria-labelledby="tab-unix">
+      <div class="code"><button class="copy" type="button">コピー</button><span data-copy>curl -fsSL https://raw.githubusercontent.com/inphilchoi/haru-pc/main/install.sh | bash</span></div>
+      <p class="note">Macは<b>ターミナル</b>アプリ（アプリケーション ▸ ユーティリティ）で実行します。Linuxはsystemdがあれば、起動時に自動で開始します。</p>
+    </div>
+    <div id="pane-win" role="tabpanel" aria-labelledby="tab-win" hidden>
+      <div class="code"><button class="copy" type="button">コピー</button><span data-copy>irm https://raw.githubusercontent.com/inphilchoi/haru-pc/main/install.ps1 | iex</span></div>
+      <p class="note">スタートメニューから<b>PowerShell</b>を開いて貼り付けます。Windows 10・11に対応しています。</p>
+    </div>
+    <ol class="steps">
+      <li><b>必要なものをインストール</b><p>Node.js（ない場合や古い場合は新規インストール・アップデート）、検証済みバージョンのOpenClaw、Haru PC安全プラグイン。</p></li>
+      <li><b>安全に設定</b><p>変更する作業はすべてスマートフォンで承認、暗号化接続（TLS）、直接アクセスは同じWi-Fi内のみ。</p></li>
+      <li><b>接続方法を選択</b><p>1) Haruリレー（おすすめ） 2) セルフホスト直接接続。あとから変更できます。</p></li>
+      <li><b>AIを選択</b><p>ChatGPT・Claude・Geminiなどの公開AIへのログイン・APIキー、または無料のローカルモデル。ログインは各社の公式ページでご自身で行います。</p></li>
+      <li><b>接続用QRが表示されます</b><p>バックグラウンドで起動し、スマートフォンで読み取るQRを表示します。</p></li>
+    </ol>
+    <p class="note">先にスクリプトを読んでおきたい場合は <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.sh">install.sh</a> · <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.ps1">install.ps1</a></p>
+  </div>
+</section>
+
+<!-- AI 고르기 -->
+<section id="model">
+  <div class="wrap narrow">
+    <p class="eyebrow">AIを選ぶ</p>
+    <h2>使い慣れた公開AIを<br>そのまま。</h2>
+    <p class="lede">Haru PCはパスワードを尋ねません。ログインは各社のページで行い、Haru PCは必要な権限だけを受け取ります。いつでも変更できます。</p>
+    <table class="table">
+      <thead><tr><th>コマンド</th><th>接続先</th></tr></thead>
+      <tbody>
+        <tr><td>haru-pc model login chatgpt</td><td>ChatGPTのプランでログイン（OpenAIのページ）</td></tr>
+        <tr><td>haru-pc model login claude</td><td>Claudeのプラン（先に<code>claude auth login</code>）</td></tr>
+        <tr><td>haru-pc model login copilot</td><td>GitHub Copilot</td></tr>
+        <tr><td>haru-pc model key openai</td><td>APIキー（openai・anthropic・gemini・mistral・deepseekなど）</td></tr>
+        <tr><td>haru-pc model local</td><td>自分のコンピュータの無料ローカルモデル — プライベートですが低速です。RAM 16GB以上を推奨</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><b>おすすめ構成</b> — 常時起動の<b>Mac mini</b>。消費電力が少なくモニタなしで動き、RAMが16GB以上あれば無料のローカルモデルまで使えます。</p>
+  </div>
+</section>
+
+<!-- 연결 -->
+<section id="connect" class="soft">
+  <div class="wrap narrow">
+    <p class="eyebrow">スマートフォンとの接続</p>
+    <h2>QRを1回読み取れば<br>完了です。</h2>
+    <ol class="steps">
+      <li><b>Haruアプリで「自分のPCに接続して」</b><p>または 設定（⚙） ▸ Haru PC ▸ QRスキャン。</p></li>
+      <li><b>コンピュータに表示されたQRを読み取ります</b><p>QRは10分間、1回だけ使えます。新しく表示するには<code>haru-pc pair</code>。</p></li>
+      <li><b>「接続済み」になれば準備完了</b><p>これで家でも外出先でも、スマートフォンから作業を任せられます。</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 사용 방법 -->
+<section id="use">
+  <div class="wrap">
+    <p class="eyebrow">使い方</p>
+    <h2>「自分のPCで」から<br>始めましょう。</h2>
+    <p class="lede">スマートフォンのHaruに、いつものように話しかけるだけ。PCの作業かどうかをHaruが聞き分け、任せる前に一度確認します。</p>
+    <div class="tiles">
+      <div class="tile"><h3>探す・数える</h3><ul><li><span class="say">自分のPCでデスクトップのファイル一覧を教えて</span></li><li><span class="say">ダウンロードフォルダのファイル数を数えて</span></li></ul></div>
+      <div class="tile"><h3>作る・整理する</h3><ul><li><span class="say">書類フォルダに議事録.txtを作って</span></li><li><span class="say">ダウンロードフォルダを種類別に整理して</span></li></ul></div>
+      <div class="tile"><h3>アプリを閉じても大丈夫</h3><p>任せたあとアプリを閉じても、PCは最大15分まで作業を続けます。もう一度開くと、待っていた承認カードが表示されます。</p></div>
+    </div>
+    <ol class="steps" style="margin-top:36px">
+      <li><b>話しかける</b><p>「自分のPCで書類フォルダにメモ.txtを作って、こんにちはと書いて」</p></li>
+      <li><b>PCに任せる</b><p>［PCに任せる］をタップすると、PCに送ります。</p></li>
+      <li><b>承認</b><p>PCは変更する前にカードを送ります — 「ファイル書き込み · 対象 · 内容」。合っていれば［実行］、違えば［キャンセル］。</p></li>
+      <li><b>結果</b><p>終わると「PC：…」でお知らせします。</p></li>
+    </ol>
+
+    <h3 style="margin-top:64px">コンピュータで使うコマンド</h3>
+    <table class="table">
+      <thead><tr><th>コマンド</th><th>機能</th></tr></thead>
+      <tbody>
+        <tr><td>haru-pc pair</td><td>スマートフォン接続用QRを表示（10分・1回）</td></tr>
+        <tr><td>haru-pc status</td><td>起動しているか、接続中のスマートフォン</td></tr>
+        <tr><td>haru-pc allow &lt;フォルダ&gt;</td><td>Haru PCが作業できるフォルダを追加（標準：書類・ダウンロード・デスクトップ）</td></tr>
+        <tr><td>haru-pc relay on | off</td><td>接続方法の切り替え — Haruリレー / セルフホスト直接接続</td></tr>
+        <tr><td>haru-pc relay url &lt;wss://…&gt;</td><td>自分で運営するリレーを使う（<code>default</code>で元に戻す）</td></tr>
+        <tr><td>haru-pc remote on</td><td>直接接続で外出先からも — 自分のTailscaleで</td></tr>
+        <tr><td>haru-pc readonly on</td><td>見るだけで何も変更しないようにする</td></tr>
+        <tr><td>haru-pc model</td><td>現在のAIモデルを確認・変更</td></tr>
+        <tr><td>haru-pc unpair</td><td>接続中のスマートフォンを削除</td></tr>
+        <tr><td>haru-pc update</td><td>検証済みの次のバージョンにアップデート</td></tr>
+        <tr><td>haru-pc uninstall</td><td>停止して削除</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 안전 -->
+<section id="safety" class="soft">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">安全</p>
+      <h2>許可しなければ、<br>何も変わりません。</h2>
+    </div>
+    <div class="tiles">
+      <div class="tile"><h3>変更のたびに承認</h3><p>ファイルの書き込み・移動、コマンドの実行は1件ずつスマートフォンで承認します。「常に許可」はありません。10分以内に応答しないと拒否されます。</p></div>
+      <div class="tile"><h3>許可したフォルダの中だけ</h3><p>標準は書類・ダウンロード・デスクトップ。それ以外はブロックされます。削除せず「整理箱」に移動します。</p></div>
+      <div class="tile"><h3>コマンドは一度に1つ</h3><p>パイプ・連結・リダイレクトのように、カードに表示される内容と実際に動く内容が変わりうるコマンドはブロックします。</p></div>
+      <div class="tile"><h3>AIは設定を変えられません</h3><p>許可フォルダ・読み取り専用などの安全設定は、人がコンピュータ上でしか変更できません。</p></div>
+      <div class="tile"><h3>決済・ログインはしません</h3><p>送金や購入、パスワードの入力はしません。</p></div>
+      <div class="tile"><h3>リレーは内容を見られません</h3><p>スマートフォンとPCだけが知る鍵でエンドツーエンド暗号化。リレーが保存するのはルーム番号とアクセストークンのハッシュだけです。リレーを使いたくない場合は、セルフホスト直接接続で。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 자주 묻는 질문 -->
+<section id="faq">
+  <div class="wrap narrow">
+    <p class="eyebrow">よくある質問</p>
+    <h2>気になること。</h2>
+    <details><summary>Haruアプリはどこで入手できますか？</summary><p>iPhone（App Store）・Android（Google Play）での公開に向けて準備中です。公開されたら、このページですぐにお知らせします。</p></details>
+    <details><summary>Haru PCは無料ですか？</summary><p>はい、無料でオープンソースです。ChatGPT・Claudeなどの外部AIを接続すると、その会社のプラン・利用上限が適用されます。ローカルモデルは費用がかかりません。</p></details>
+    <details><summary>Apple Intelligenceに対応していないスマートフォンでも使えますか？</summary><p>はい。AIとの会話の代わりにルールで動作するアシスタントモードで、予定・家計簿・Haru PCなどすべての機能を使えます。AIとの会話はiPhone 15 Pro以降で利用できます。</p></details>
+    <details><summary>承認カードが届きません。</summary><p>Haruアプリを開いてみてください。任せた作業が進行中なら、待っていたカードが表示されます。コンピュータで<code>haru-pc status</code>を実行し、Haru PCが起動しているか確認してください。小さなローカルモデルは、最初の返答に数分かかることがあります。</p></details>
+    <details><summary>許可したフォルダの外なのでブロックされました。</summary><p>コンピュータで<code>haru-pc allow ~/使いたいフォルダ</code>を実行すると、そのフォルダでも作業できるようになります。AIがこの設定を自分で変えることはできません。</p></details>
+    <details><summary>Haruリレーのサーバーを使いたくありません。</summary><p>インストール時に「セルフホスト直接接続」を選ぶか、<code>haru-pc relay off</code>を実行してください。同じWi-Fiではスマートフォンがコンピュータに直接接続し、外出先からは自分のTailscale（<code>haru-pc remote on</code>）か自分で運営するリレー（<code>haru-pc relay url wss://…</code>）を使えます。切り替えたあとは<code>haru-pc pair</code>で接続し直します。</p></details>
+    <details><summary>Haru PCはどのAIを使いますか？</summary><p>自分で選んだ公開AI（ChatGPT・Claude・Geminiなど）か、自分のコンピュータのローカルモデルを使います。スマートフォンのHaruアプリはデバイス内のApple Intelligenceを使い、Haru PCはコンピュータに接続したAIを使う、というように別々です。</p></details>
+    <details><summary>インストールでコンピュータの何が変わりますか？</summary><p>Node.jsがない場合や古い場合はインストール・アップデートし（MacはHomebrew）、OpenClawとHaru PCをインストールして<code>~/.haru-pc</code>に置き、バックグラウンドサービスとして登録します。<code>haru-pc uninstall</code>で停止して削除できます。</p></details>
+    <details><summary>自分のデータはどこに送られますか？</summary><p>スマートフォンの会話・記録はスマートフォンにだけ、任せた作業はスマートフォンと自分のPCの間だけでやり取りされます。詳しくは<a class="link" href="../../haru-privacy/">プライバシーポリシー</a>をご覧ください。</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="grow">Haru - AIアシスタント · <a href="https://creativelab-kr.github.io/">CreativeLab</a></span>
+    <a href="https://github.com/inphilchoi/haru-pc">GitHub</a>
+    <a href="../../haru-privacy/">プライバシーポリシー・利用規約</a>
+    <a href="mailto:creativelab.choi@gmail.com">creativelab.choi@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+// 운영체제 탭 — Windows 로 들어오면 Windows 탭을 먼저 보여 준다
+(function () {
+  var tabs = [document.getElementById('tab-unix'), document.getElementById('tab-win')];
+  function pick(i) {
+    tabs.forEach(function (t, j) {
+      t.setAttribute('aria-selected', String(i === j));
+      document.getElementById(t.getAttribute('aria-controls')).hidden = i !== j;
+    });
+  }
+  tabs.forEach(function (t, i) { t.addEventListener('click', function () { pick(i); }); });
+  if (/Windows/i.test(navigator.userAgent)) pick(1);
+
+  // 복사 버튼
+  document.querySelectorAll('.copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.parentNode.querySelector('[data-copy]').textContent;
+      var done = function () { b.textContent = 'コピーしました'; setTimeout(function () { b.textContent = 'コピー'; }, 1600); };
+      if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {});
+      else { var r = document.createRange(); r.selectNodeContents(b.parentNode.querySelector('[data-copy]')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); done(); }
+    });
+  });
+})();
+
+// 한국어 첫 페이지에 처음 온 다른 언어 브라우저는 그 언어 페이지로 (직접 고른 적이 있으면 그대로)
+(function () {
+  if (document.querySelector('.lang').getAttribute('data-base') !== '') return;
+  var saved = null;
+  try { saved = localStorage.getItem('haru.lang'); } catch (e) {}
+  if (saved) return;
+  var l = (navigator.language || 'ko').toLowerCase();
+  var dir = /^ko/.test(l) ? '' : /^ja/.test(l) ? 'ja/' : /^zh-(tw|hk|mo|hant)/.test(l) ? 'zh-hant/' : /^zh/.test(l) ? 'zh-hans/'
+    : /^fr/.test(l) ? 'fr/' : /^de/.test(l) ? 'de/' : /^es/.test(l) ? 'es/' : /^pt/.test(l) ? 'pt-br/' : 'en/';
+  if (dir) location.replace(dir + location.hash);
+})();
+
+// 언어 바꾸기 — 고른 언어는 이 브라우저에만 기억한다
+function haruLang(dir) {
+  try { localStorage.setItem('haru.lang', dir || 'ko'); } catch (e) {}
+  var base = document.querySelector('.lang').getAttribute('data-base');
+  location.href = base + dir + location.hash;
+}
+</script>
+</body>
+</html>
