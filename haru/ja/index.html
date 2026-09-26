@@ -215,13 +215,13 @@ footer .grow{margin-right:auto}
       <span class="badge">会員登録なし</span>
       <span class="badge">デバイス内で判断</span>
       <span class="badge">広告・トラッキングなし</span>
-      <span class="badge">無料</span>
+      <span class="badge">基本無料・サブスクなし</span>
     </div>
     <div class="actions" style="justify-content:center">
       <a class="btn btn-primary" href="#install">Haru PCをインストール</a>
       <a class="btn btn-ghost" href="#use">使い方を見る</a>
     </div>
-    <p class="note">Haruアプリ（iPhone・Android）は、ストアでの公開に向けて準備中です。</p>
+    <p class="note">Haruアプリ（iPhone・iPad・Android）は、ストアでの公開に向けて準備中です。</p>
 
     <div class="hero-phones" aria-hidden="true">
       <div class="phone"><div class="screen">
@@ -286,7 +286,7 @@ footer .grow{margin-right:auto}
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
         <h3>デバイスの中で</h3>
-        <p>判断はiPhoneのApple Intelligence（Androidは対応デバイスのGemini Nano）がデバイスの中で行います。会話と記録はこのデバイスにだけ保存されます。</p>
+        <p>判断はiPhone・iPadのApple Intelligence（Androidは対応デバイスのGemini Nano）がデバイスの中で行います。会話と記録はこのデバイスにだけ保存されます。</p>
       </div>
     </div>
   </div>
@@ -481,9 +481,10 @@ footer .grow{margin-right:auto}
   <div class="wrap narrow">
     <p class="eyebrow">よくある質問</p>
     <h2>気になること。</h2>
-    <details><summary>Haruアプリはどこで入手できますか？</summary><p>iPhone（App Store）・Android（Google Play）での公開に向けて準備中です。公開されたら、このページですぐにお知らせします。</p></details>
+    <details><summary>Haruアプリはどこで入手できますか？</summary><p>iPhone・iPad（App Store）・Android（Google Play）での公開に向けて準備中です。公開されたら、このページですぐにお知らせします。</p></details>
+    <details><summary>Haruアプリは無料ですか？</summary><p>はい。話して任せる・確認カード・予定・家計簿・メール・天気・Haru PC・アシスタント1人はずっと無料です。<b>Haru Plus</b>（₩9,900・買い切り）を購入すると、アシスタントを複数置けて、写真整理（招待状・請求書・レシート）が無制限になり、AIの自然な音声で聞けます。サブスクではなく一度買えばずっと使えます。広告・会員登録はありません。別のデバイスでは［購入を復元］で開けます。</p></details>
     <details><summary>Haru PCは無料ですか？</summary><p>はい、無料でオープンソースです。ChatGPT・Claudeなどの外部AIを接続すると、その会社のプラン・利用上限が適用されます。ローカルモデルは費用がかかりません。</p></details>
-    <details><summary>Apple Intelligenceに対応していないスマートフォンでも使えますか？</summary><p>はい。AIとの会話の代わりにルールで動作するアシスタントモードで、予定・家計簿・Haru PCなどすべての機能を使えます。AIとの会話はiPhone 15 Pro以降で利用できます。</p></details>
+    <details><summary>Apple Intelligenceに対応していないスマートフォンでも使えますか？</summary><p>はい。AIとの会話の代わりにルールで動作するアシスタントモードで、予定・家計簿・Haru PCなどすべての機能を使えます。AIとの会話はiPhone 15 Pro以降、M1チップ以降のiPad（iPad miniはA17 Pro）で利用できます。</p></details>
     <details><summary>承認カードが届きません。</summary><p>Haruアプリを開いてみてください。任せた作業が進行中なら、待っていたカードが表示されます。コンピュータで<code>haru-pc status</code>を実行し、Haru PCが起動しているか確認してください。小さなローカルモデルは、最初の返答に数分かかることがあります。</p></details>
     <details><summary>許可したフォルダの外なのでブロックされました。</summary><p>コンピュータで<code>haru-pc allow ~/使いたいフォルダ</code>を実行すると、そのフォルダでも作業できるようになります。AIがこの設定を自分で変えることはできません。</p></details>
     <details><summary>Haruリレーのサーバーを使いたくありません。</summary><p>インストール時に「セルフホスト直接接続」を選ぶか、<code>haru-pc relay off</code>を実行してください。同じWi-Fiではスマートフォンがコンピュータに直接接続し、外出先からは自分のTailscale（<code>haru-pc remote on</code>）か自分で運営するリレー（<code>haru-pc relay url wss://…</code>）を使えます。切り替えたあとは<code>haru-pc pair</code>で接続し直します。</p></details>

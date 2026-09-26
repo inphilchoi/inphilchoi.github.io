@@ -215,13 +215,13 @@ footer .grow{margin-right:auto}
       <span class="badge">无需注册</span>
       <span class="badge">在设备上判断</span>
       <span class="badge">无广告、无追踪</span>
-      <span class="badge">免费</span>
+      <span class="badge">基础免费・无订阅</span>
     </div>
     <div class="actions" style="justify-content:center">
       <a class="btn btn-primary" href="#install">安装 Haru PC</a>
       <a class="btn btn-ghost" href="#use">查看使用方法</a>
     </div>
-    <p class="note">Haru 应用（iPhone、Android）正在准备上架应用商店。</p>
+    <p class="note">Haru 应用（iPhone、iPad、Android）正在准备上架应用商店。</p>
 
     <div class="hero-phones" aria-hidden="true">
       <div class="phone"><div class="screen">
@@ -286,7 +286,7 @@ footer .grow{margin-right:auto}
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
         <h3>在设备上完成</h3>
-        <p>判断由 iPhone 的 Apple Intelligence（Android 为支持机型上的 Gemini Nano）在设备上完成。对话和记录只保存在这台设备上。</p>
+        <p>判断由 iPhone、iPad 的 Apple Intelligence（Android 为支持机型上的 Gemini Nano）在设备上完成。对话和记录只保存在这台设备上。</p>
       </div>
     </div>
   </div>
@@ -481,9 +481,10 @@ footer .grow{margin-right:auto}
   <div class="wrap narrow">
     <p class="eyebrow">常见问题</p>
     <h2>你可能想问。</h2>
-    <details><summary>Haru 应用在哪里下载？</summary><p>正在准备在 iPhone（App Store）和 Android（Google Play）上架。上架后会第一时间在本页公布。</p></details>
+    <details><summary>Haru 应用在哪里下载？</summary><p>正在准备在 iPhone、iPad（App Store）和 Android（Google Play）上架。上架后会第一时间在本页公布。</p></details>
+    <details><summary>Haru 应用免费吗？</summary><p>免费。用说话交办事情、确认卡片、日程、记账、邮件、天气、Haru PC 和 1 位助理始终免费。购买 <b>Haru Plus</b>（₩9,900，一次性购买）后，可以设置多位助理、不限次数整理照片（请柬、账单、收据），并用自然的 AI 语音收听。不是订阅，买一次一直能用，没有广告，也无需注册。在其他设备上用［恢复购买］即可打开。</p></details>
     <details><summary>Haru PC 免费吗？</summary><p>是的，免费且开源。如果连接 ChatGPT、Claude 等外部 AI，则适用该公司的订阅方案和使用限额。本地模型不产生费用。</p></details>
-    <details><summary>不支持 Apple Intelligence 的手机也能用吗？</summary><p>能。可以用基于规则运行的助理模式代替 AI 对话，使用日程、记账、Haru PC 等全部功能。AI 对话需要 iPhone 15 Pro 及以上机型。</p></details>
+    <details><summary>不支持 Apple Intelligence 的手机也能用吗？</summary><p>能。可以用基于规则运行的助理模式代替 AI 对话，使用日程、记账、Haru PC 等全部功能。AI 对话需要 iPhone 15 Pro 及以上机型，或搭载 M1 及以上芯片的 iPad（iPad mini 需 A17 Pro）。</p></details>
     <details><summary>收不到审批卡片。</summary><p>请打开 Haru 应用看看。如果交代的事正在进行，等待中的卡片会弹出来。请在电脑上用 <code>haru-pc status</code> 确认 Haru PC 是否在运行。较小的本地模型给出第一个回答可能需要几分钟。</p></details>
     <details><summary>因为在允许的文件夹之外被拦截了。</summary><p>在电脑上运行 <code>haru-pc allow ~/想要的文件夹</code>，就能在那个文件夹里操作。AI 无法自行更改这项设置。</p></details>
     <details><summary>我不想使用 Haru 中继服务器。</summary><p>安装时选择“自托管直连”，或运行 <code>haru-pc relay off</code>。在同一 Wi-Fi 下手机会直接连接电脑；在外面则可以用你自己的 Tailscale（<code>haru-pc remote on</code>）或你自己运营的中继（<code>haru-pc relay url wss://…</code>）。切换后请用 <code>haru-pc pair</code> 重新连接。</p></details>

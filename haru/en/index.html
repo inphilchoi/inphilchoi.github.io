@@ -215,13 +215,13 @@ footer .grow{margin-right:auto}
       <span class="badge">No sign-up</span>
       <span class="badge">Thinks on your device</span>
       <span class="badge">No ads or tracking</span>
-      <span class="badge">Free</span>
+      <span class="badge">Free core · No subscription</span>
     </div>
     <div class="actions" style="justify-content:center">
       <a class="btn btn-primary" href="#install">Install Haru PC</a>
       <a class="btn btn-ghost" href="#use">See how to use it</a>
     </div>
-    <p class="note">The Haru app (iPhone and Android) is getting ready for release on the stores.</p>
+    <p class="note">The Haru app (iPhone, iPad and Android) is getting ready for release on the stores.</p>
 
     <div class="hero-phones" aria-hidden="true">
       <div class="phone"><div class="screen">
@@ -286,7 +286,7 @@ footer .grow{margin-right:auto}
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
         <h3>On your device</h3>
-        <p>Apple Intelligence on iPhone (Gemini Nano on supported Android devices) does the thinking right on your device. Your conversations and records are stored only on this device.</p>
+        <p>Apple Intelligence on iPhone and iPad (Gemini Nano on supported Android devices) does the thinking right on your device. Your conversations and records are stored only on this device.</p>
       </div>
     </div>
   </div>
@@ -481,9 +481,10 @@ footer .grow{margin-right:auto}
   <div class="wrap narrow">
     <p class="eyebrow">Frequently asked questions</p>
     <h2>Questions.</h2>
-    <details><summary>Where do I get the Haru app?</summary><p>We're getting ready to release it for iPhone (App Store) and Android (Google Play). We'll announce it on this page as soon as it's out.</p></details>
+    <details><summary>Where do I get the Haru app?</summary><p>We're getting ready to release it for iPhone and iPad (App Store) and Android (Google Play). We'll announce it on this page as soon as it's out.</p></details>
+    <details><summary>Is the Haru app free?</summary><p>Yes. Handing things off by voice, confirmation cards, schedule, budget, mail, weather, Haru PC and one assistant are always free. <b>Haru Plus</b> (₩9,900, one-time purchase) lets you keep several assistants, organize photos (invitations, bills, receipts) without a daily limit and listen in a natural AI voice. It is not a subscription: buy once and keep it. No ads, no sign-up. On another device, open it with [Restore Purchase].</p></details>
     <details><summary>Is Haru PC free?</summary><p>Yes, it's free and open source. If you connect an outside AI like ChatGPT or Claude, that company's plan and usage limits apply. Local models cost nothing.</p></details>
-    <details><summary>Can I use it on a phone without Apple Intelligence?</summary><p>Yes. Instead of AI chat, a rule-based assistant mode lets you use every feature, including your schedule, budget and Haru PC. AI chat works on iPhone 15 Pro and later.</p></details>
+    <details><summary>Can I use it on a phone without Apple Intelligence?</summary><p>Yes. Instead of AI chat, a rule-based assistant mode lets you use every feature, including your schedule, budget and Haru PC. AI chat works on iPhone 15 Pro and later, and on iPad with M1 or later (iPad mini with A17 Pro).</p></details>
     <details><summary>I'm not getting approval cards.</summary><p>Try opening the Haru app. If a task you handed off is in progress, the waiting card will show up. On your computer, run <code>haru-pc status</code> to check that Haru PC is running. Small local models can take a few minutes to give their first answer.</p></details>
     <details><summary>It was blocked because it's outside an allowed folder.</summary><p>Run <code>haru-pc allow ~/YourFolder</code> on your computer, and Haru PC can work in that folder too. The AI can't change this setting on its own.</p></details>
     <details><summary>I don't want to use the Haru relay server.</summary><p>Choose "Self-hosted direct connection" when you install, or run <code>haru-pc relay off</code>. On the same Wi-Fi, your phone connects directly to your computer; on the go, use your own Tailscale (<code>haru-pc remote on</code>) or a relay you run yourself (<code>haru-pc relay url wss://…</code>). After switching, reconnect with <code>haru-pc pair</code>.</p></details>

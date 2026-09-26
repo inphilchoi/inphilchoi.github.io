@@ -215,13 +215,13 @@ footer .grow{margin-right:auto}
       <span class="badge">Ohne Registrierung</span>
       <span class="badge">Entscheidet auf dem Gerät</span>
       <span class="badge">Keine Werbung, kein Tracking</span>
-      <span class="badge">Kostenlos</span>
+      <span class="badge">Basis kostenlos · Kein Abo</span>
     </div>
     <div class="actions" style="justify-content:center">
       <a class="btn btn-primary" href="#install">Haru PC installieren</a>
       <a class="btn btn-ghost" href="#use">Zur Anleitung</a>
     </div>
-    <p class="note">Die Haru App (iPhone, Android) wird für den Store-Start vorbereitet.</p>
+    <p class="note">Die Haru App (iPhone, iPad, Android) wird für den Store-Start vorbereitet.</p>
 
     <div class="hero-phones" aria-hidden="true">
       <div class="phone"><div class="screen">
@@ -286,7 +286,7 @@ footer .grow{margin-right:auto}
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
         <h3>Auf dem Gerät</h3>
-        <p>Entscheidungen trifft Apple Intelligence auf dem iPhone (bei Android Gemini Nano auf unterstützten Geräten) direkt auf dem Gerät. Gespräche und Einträge werden nur auf diesem Gerät gespeichert.</p>
+        <p>Entscheidungen trifft Apple Intelligence auf iPhone und iPad (bei Android Gemini Nano auf unterstützten Geräten) direkt auf dem Gerät. Gespräche und Einträge werden nur auf diesem Gerät gespeichert.</p>
       </div>
     </div>
   </div>
@@ -481,9 +481,10 @@ footer .grow{margin-right:auto}
   <div class="wrap narrow">
     <p class="eyebrow">Häufige Fragen</p>
     <h2>Ihre Fragen.</h2>
-    <details><summary>Wo bekomme ich die Haru App?</summary><p>Der Start für iPhone (App Store) und Android (Google Play) wird vorbereitet. Sobald sie erscheint, informieren wir auf dieser Seite.</p></details>
+    <details><summary>Wo bekomme ich die Haru App?</summary><p>Der Start für iPhone und iPad (App Store) und Android (Google Play) wird vorbereitet. Sobald sie erscheint, informieren wir auf dieser Seite.</p></details>
+    <details><summary>Ist die Haru App kostenlos?</summary><p>Ja. Aufgaben per Sprache übergeben, Bestätigungskarten, Termine, Haushaltsbuch, Mail, Wetter, Haru PC und ein Assistent sind immer kostenlos. <b>Haru Plus</b> (9.900 ₩, Einmalkauf) ermöglicht mehrere Assistenten, Fotos (Einladungen, Rechnungen, Belege) ohne Tageslimit zu ordnen und eine natürliche KI-Stimme. Kein Abo: einmal kaufen, dauerhaft nutzen. Keine Werbung, keine Registrierung. Auf einem anderen Gerät mit [Kauf wiederherstellen] freischalten.</p></details>
     <details><summary>Ist Haru PC kostenlos?</summary><p>Ja, kostenlos und Open Source. Wenn Sie externe KI wie ChatGPT oder Claude verbinden, gelten deren Tarife und Nutzungslimits. Lokale Modelle kosten nichts.</p></details>
-    <details><summary>Funktioniert es auch auf Handys ohne Apple Intelligence?</summary><p>Ja. Statt KI-Gesprächen läuft ein regelbasierter Assistentenmodus, mit dem Sie alle Funktionen wie Termine, Haushaltsbuch und Haru PC nutzen. KI-Gespräche gibt es ab iPhone 15 Pro.</p></details>
+    <details><summary>Funktioniert es auch auf Handys ohne Apple Intelligence?</summary><p>Ja. Statt KI-Gesprächen läuft ein regelbasierter Assistentenmodus, mit dem Sie alle Funktionen wie Termine, Haushaltsbuch und Haru PC nutzen. KI-Gespräche gibt es ab iPhone 15 Pro und auf iPads mit M1 oder neuer (iPad mini mit A17 Pro).</p></details>
     <details><summary>Es kommt keine Freigabekarte.</summary><p>Öffnen Sie die Haru App. Läuft eine übergebene Aufgabe, erscheint die wartende Karte. Prüfen Sie am Computer mit <code>haru-pc status</code>, ob Haru PC läuft. Kleine lokale Modelle brauchen für die erste Antwort manchmal einige Minuten.</p></details>
     <details><summary>Blockiert, weil außerhalb erlaubter Ordner.</summary><p>Führen Sie am Computer <code>haru-pc allow ~/MeinOrdner</code> aus, dann kann Haru PC auch in diesem Ordner arbeiten. Die KI kann diese Einstellung nicht selbst ändern.</p></details>
     <details><summary>Ich möchte den Haru-Relay-Server nicht nutzen.</summary><p>Wählen Sie bei der Installation „selbst gehostete Direktverbindung“ oder führen Sie <code>haru-pc relay off</code> aus. Im selben WLAN verbindet sich das Handy direkt mit dem Computer, unterwegs nutzen Sie Ihr Tailscale (<code>haru-pc remote on</code>) oder Ihr eigenes Relay (<code>haru-pc relay url wss://…</code>). Nach dem Wechsel verbinden Sie neu mit <code>haru-pc pair</code>.</p></details>

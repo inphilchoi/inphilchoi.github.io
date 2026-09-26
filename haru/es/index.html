@@ -215,13 +215,13 @@ footer .grow{margin-right:auto}
       <span class="badge">Sin registro</span>
       <span class="badge">Decide dentro del dispositivo</span>
       <span class="badge">Sin anuncios ni rastreo</span>
-      <span class="badge">Gratis</span>
+      <span class="badge">Básico gratis · Sin suscripción</span>
     </div>
     <div class="actions" style="justify-content:center">
       <a class="btn btn-primary" href="#install">Instalar Haru PC</a>
       <a class="btn btn-ghost" href="#use">Ver cómo se usa</a>
     </div>
-    <p class="note">La app Haru (iPhone y Android) se está preparando para su lanzamiento en las tiendas.</p>
+    <p class="note">La app Haru (iPhone, iPad y Android) se está preparando para su lanzamiento en las tiendas.</p>
 
     <div class="hero-phones" aria-hidden="true">
       <div class="phone"><div class="screen">
@@ -286,7 +286,7 @@ footer .grow{margin-right:auto}
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
         <h3>Dentro del dispositivo</h3>
-        <p>Las decisiones las toma dentro del dispositivo Apple Intelligence en el iPhone (en Android, Gemini Nano en los dispositivos compatibles). Las conversaciones y los registros se guardan solo en este dispositivo.</p>
+        <p>Las decisiones las toma dentro del dispositivo Apple Intelligence en el iPhone y el iPad (en Android, Gemini Nano en los dispositivos compatibles). Las conversaciones y los registros se guardan solo en este dispositivo.</p>
       </div>
     </div>
   </div>
@@ -481,9 +481,10 @@ footer .grow{margin-right:auto}
   <div class="wrap narrow">
     <p class="eyebrow">Preguntas frecuentes</p>
     <h2>Sus dudas.</h2>
-    <details><summary>¿Dónde consigo la app Haru?</summary><p>Estamos preparando el lanzamiento para iPhone (App Store) y Android (Google Play). En cuanto salga, lo anunciaremos en esta página.</p></details>
+    <details><summary>¿Dónde consigo la app Haru?</summary><p>Estamos preparando el lanzamiento para iPhone y iPad (App Store) y Android (Google Play). En cuanto salga, lo anunciaremos en esta página.</p></details>
+    <details><summary>¿La app Haru es gratis?</summary><p>Sí. Encargar cosas con la voz, las tarjetas de confirmación, la agenda, las cuentas, el correo, el tiempo, Haru PC y un asistente son siempre gratis. <b>Haru Plus</b> (₩9.900, pago único) permite tener varios asistentes, ordenar fotos (invitaciones, facturas, recibos) sin límite diario y escuchar una voz de IA natural. No es una suscripción: se compra una vez y es para siempre. Sin anuncios ni registro. En otro dispositivo, ábralo con [Restaurar compra].</p></details>
     <details><summary>¿Haru PC es gratis?</summary><p>Sí, es gratis y de código abierto. Si conecta una IA externa como ChatGPT·Claude, se aplican el plan y los límites de uso de esa empresa. Los modelos locales no tienen costo.</p></details>
-    <details><summary>¿Puedo usarla en un teléfono sin Apple Intelligence?</summary><p>Sí. En lugar de la conversación con IA, un modo asistente basado en reglas le permite usar todas las funciones: agenda, cuentas de gastos, Haru PC y más. La conversación con IA funciona en iPhone 15 Pro o posterior.</p></details>
+    <details><summary>¿Puedo usarla en un teléfono sin Apple Intelligence?</summary><p>Sí. En lugar de la conversación con IA, un modo asistente basado en reglas le permite usar todas las funciones: agenda, cuentas de gastos, Haru PC y más. La conversación con IA funciona en iPhone 15 Pro o posterior y en iPad con M1 o posterior (iPad mini con A17 Pro).</p></details>
     <details><summary>No me llega la tarjeta de aprobación.</summary><p>Abra la app Haru. Si hay un trabajo encargado en curso, aparecerá la tarjeta pendiente. En la computadora, compruebe con <code>haru-pc status</code> que Haru PC esté encendido. Con un modelo local pequeño, la primera respuesta puede tardar unos minutos.</p></details>
     <details><summary>Se bloqueó porque está fuera de las carpetas permitidas.</summary><p>Si ejecuta <code>haru-pc allow ~/CarpetaDeseada</code> en la computadora, también podrá trabajar en esa carpeta. La IA no puede cambiar esta configuración por sí sola.</p></details>
     <details><summary>No quiero usar el servidor de relé de Haru.</summary><p>Al instalar, elija "Conexión directa autoalojada" o ejecute <code>haru-pc relay off</code>. En la misma Wi-Fi el teléfono se conecta directamente a la computadora, y fuera de casa puede usar su Tailscale (<code>haru-pc remote on</code>) o un relé que usted opere (<code>haru-pc relay url wss://…</code>). Después del cambio, vuelva a conectar con <code>haru-pc pair</code>.</p></details>

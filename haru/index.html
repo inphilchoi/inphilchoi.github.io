@@ -215,13 +215,13 @@ footer .grow{margin-right:auto}
       <span class="badge">회원가입 없음</span>
       <span class="badge">기기 안에서 판단</span>
       <span class="badge">광고·추적 없음</span>
-      <span class="badge">무료</span>
+      <span class="badge">기본 무료 · 구독 없음</span>
     </div>
     <div class="actions" style="justify-content:center">
       <a class="btn btn-primary" href="#install">하루 PC 설치하기</a>
       <a class="btn btn-ghost" href="#use">사용 방법 보기</a>
     </div>
-    <p class="note">하루 앱(iPhone·Android)은 스토어 출시를 준비하고 있어요.</p>
+    <p class="note">하루 앱(iPhone·iPad·Android)은 스토어 출시를 준비하고 있어요.</p>
 
     <div class="hero-phones" aria-hidden="true">
       <div class="phone"><div class="screen">
@@ -286,7 +286,7 @@ footer .grow{margin-right:auto}
       <div class="tile">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
         <h3>기기 안에서</h3>
-        <p>판단은 iPhone의 Apple Intelligence(Android는 지원 기기의 Gemini Nano)가 기기 안에서 해요. 대화와 기록은 이 기기에만 저장돼요.</p>
+        <p>판단은 iPhone·iPad의 Apple Intelligence(Android는 지원 기기의 Gemini Nano)가 기기 안에서 해요. 대화와 기록은 이 기기에만 저장돼요.</p>
       </div>
     </div>
   </div>
@@ -481,9 +481,10 @@ footer .grow{margin-right:auto}
   <div class="wrap narrow">
     <p class="eyebrow">자주 묻는 질문</p>
     <h2>궁금한 것.</h2>
-    <details><summary>하루 앱은 어디서 받나요?</summary><p>iPhone(App Store)·Android(Google Play) 출시를 준비하고 있어요. 나오면 이 페이지에 바로 알릴게요.</p></details>
+    <details><summary>하루 앱은 어디서 받나요?</summary><p>iPhone·iPad(App Store)·Android(Google Play) 출시를 준비하고 있어요. 나오면 이 페이지에 바로 알릴게요.</p></details>
+    <details><summary>하루 앱은 무료인가요?</summary><p>네. 말로 맡기기·확인 카드·일정·가계부·메일·날씨·하루 PC·비서 1명은 늘 무료예요. <b>하루 플러스</b>(₩9,900, 한 번 결제)를 사면 비서를 여러 명 두고, 사진 정리(청첩장·고지서·영수증)를 제한 없이 쓰고, AI 자연 음성으로 들을 수 있어요. 구독이 아니라 한 번 사면 계속 쓰고, 광고·회원가입은 없어요. 다른 기기에서는 [구입 복원]으로 열어요.</p></details>
     <details><summary>하루 PC는 무료인가요?</summary><p>네, 무료이고 오픈소스예요. ChatGPT·Claude 같은 외부 AI를 연결하면 그 회사의 요금제·사용 한도가 적용돼요. 로컬 모델은 비용이 없어요.</p></details>
-    <details><summary>Apple Intelligence가 안 되는 폰도 쓸 수 있나요?</summary><p>네. AI 대화 대신 규칙으로 동작하는 비서 모드로 일정·가계부·하루 PC 등 모든 기능을 쓸 수 있어요. AI 대화는 iPhone 15 Pro 이상에서 돼요.</p></details>
+    <details><summary>Apple Intelligence가 안 되는 폰도 쓸 수 있나요?</summary><p>네. AI 대화 대신 규칙으로 동작하는 비서 모드로 일정·가계부·하루 PC 등 모든 기능을 쓸 수 있어요. AI 대화는 iPhone 15 Pro 이상, M1 칩 이상 iPad(iPad mini는 A17 Pro)에서 돼요.</p></details>
     <details><summary>승인 카드가 오지 않아요.</summary><p>하루 앱을 열어 보세요. 맡긴 일이 진행 중이면 기다리던 카드가 떠요. 컴퓨터에서 <code>haru-pc status</code>로 하루 PC가 켜져 있는지 확인해 주세요. 작은 로컬 모델은 첫 답이 몇 분 걸릴 수 있어요.</p></details>
     <details><summary>허용한 폴더 밖이라 막혔어요.</summary><p>컴퓨터에서 <code>haru-pc allow ~/원하는폴더</code>를 실행하면 그 폴더에서도 일할 수 있어요. AI는 이 설정을 스스로 바꿀 수 없어요.</p></details>
     <details><summary>하루 중계 서버를 쓰고 싶지 않아요.</summary><p>설치할 때 "설치형 직접 연결"을 고르거나 <code>haru-pc relay off</code>를 실행하세요. 같은 Wi-Fi에서는 폰이 컴퓨터에 직접 연결되고, 밖에서는 내 Tailscale(<code>haru-pc remote on</code>)이나 내가 운영하는 중계(<code>haru-pc relay url wss://…</code>)를 쓰면 돼요. 바꾼 뒤에는 <code>haru-pc pair</code>로 다시 연결해요.</p></details>
