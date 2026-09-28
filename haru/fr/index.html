@@ -200,6 +200,31 @@ section{padding:clamp(48px,7vw,88px) 0}
   .tiles>.tile{flex:0 0 84%;scroll-snap-align:center;padding:22px}
   .tiles-hint{display:block}
 }
+
+/* 로컬 내비(9/28, 애플 제품 페이지식): 한 페이지에 다 보여 주지 않고 개요 · 하루 PC · 설치·사용 · 질문 을 한 번에 하나만.
+   컴퓨터: 왼쪽 지금 페이지 이름, 오른쪽 링크 / 폰: 이름 옆 ⌄ 를 누르면 목록 */
+.nav-links{display:none!important}
+.lnav{position:sticky;top:var(--nav-h);z-index:45;background:var(--nav-bg);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+.lnav .wrap{height:52px;display:flex;align-items:center;gap:16px}
+.lnav-title{font-size:1.3rem;font-weight:700;letter-spacing:-.01em;margin:0;white-space:nowrap}
+.lnav-toggle{display:none;border:0;background:transparent;padding:6px;margin-left:-4px;cursor:pointer;color:var(--text-mid)}
+.lnav-toggle svg{width:14px;height:14px;transition:transform .25s}
+.lnav-links{margin-left:auto;display:flex;gap:24px;font-size:.8125rem}
+.lnav-links a{color:var(--text-mid)}
+.lnav-links a:hover{color:var(--text)}
+.lnav-links a[aria-current="page"]{color:var(--text);font-weight:600;pointer-events:none}
+@media (max-width:720px){
+  .lnav-toggle{display:inline-flex}
+  .lnav.open .lnav-toggle svg{transform:rotate(180deg)}
+  .lnav-links{display:none;position:absolute;left:0;right:0;top:52px;flex-direction:column;gap:0;background:var(--bg,#fff);box-shadow:0 12px 24px rgba(0,0,0,.08);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08);padding:4px var(--gutter) 14px;font-size:1.05rem}
+  .lnav.open .lnav-links{display:flex}
+  .lnav-links a{padding:12px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+  .lnav-links a:last-child{border-bottom:0}
+  .lnav-links a[aria-current="page"]{color:var(--text-muted)}
+}
+[id]{scroll-margin-top:calc(var(--nav-h) + 64px)}
+.next-tab{text-align:center;padding:8px 0 64px;margin:0}
+.next-tab a{font-size:1.15rem;font-weight:600;color:var(--accent)}
 </style>
 </head>
 <body>
@@ -219,6 +244,16 @@ section{padding:clamp(48px,7vw,88px) 0}
     <a class="nav-cta" href="#install">Obtenir Haru PC</a>
   </div>
 </nav>
+<nav class="lnav" aria-label="Pages Haru"><div class="wrap">
+  <p class="lnav-title">Aperçu</p>
+  <button class="lnav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m2.5 5 4.5 4.5L11.5 5"/></svg></button>
+  <div class="lnav-links">
+    <a href="#top" data-page="overview">Aperçu</a>
+    <a href="#pc" data-page="pc">Haru PC</a>
+    <a href="#install" data-page="start">Installer et utiliser</a>
+    <a href="#faq" data-page="faq">FAQ</a>
+  </div>
+</div></nav>
 
 <main id="top">
 
@@ -553,6 +588,7 @@ section{padding:clamp(48px,7vw,88px) 0}
   </div>
 </section>
 
+<p class="next-tab" hidden><a href="#pc"></a></p>
 </main>
 
 <footer>
@@ -606,6 +642,37 @@ function haruLang(dir) {
   var base = document.querySelector('.lang').getAttribute('data-base');
   location.href = base + dir + location.hash;
 }
+</script>
+
+<script>
+/* 로컬 내비: 섹션을 페이지별로 하나씩만 보인다. 예전 주소(#install·#use·#connection…)는 그 페이지로 열린다(앱이 쓰는 주소) */
+(function(){
+  var map={overview:['hero','features','why'],pc:['pc','connection','model','safety'],start:['install','connect','use'],faq:['faq']};
+  var first={overview:'top',pc:'pc',start:'install',faq:'faq'}, order=['overview','pc','start','faq'];
+  var nav=document.querySelector('.lnav'), title=nav.querySelector('.lnav-title'), tog=nav.querySelector('.lnav-toggle');
+  var links=[].slice.call(nav.querySelectorAll('.lnav-links a'));
+  var secs=[].slice.call(document.querySelectorAll('main > section'));
+  secs.forEach(function(s){var k=s.id||(s.classList.contains('hero')?'hero':'');s.dataset.page='overview';for(var t in map){if(map[t].indexOf(k)>=0)s.dataset.page=t}});
+  function label(t){return (links.filter(function(a){return a.dataset.page===t})[0]||{}).textContent||''}
+  function show(p){
+    secs.forEach(function(s){s.hidden=s.dataset.page!==p});
+    links.forEach(function(a){if(a.dataset.page===p)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    title.textContent=label(p);
+    var nx=document.querySelector('.next-tab'), n=order[order.indexOf(p)+1];
+    nx.hidden=!n; if(n){var a=nx.querySelector('a');a.href='#'+first[n];a.textContent=label(n)+' \u203A'}
+    document.querySelectorAll('.reveal').forEach(function(x){x.classList.add('in','visible','show')});
+    nav.classList.remove('open'); tog.setAttribute('aria-expanded','false');
+  }
+  function route(){
+    var id=(location.hash||'').slice(1)||'top', el=id==='top'?null:document.getElementById(id);
+    var sec=el?el.closest('main > section'):null;
+    show(sec?sec.dataset.page:'overview');
+    if(el&&el!==sec)el.scrollIntoView();else window.scrollTo(0,0);
+  }
+  tog.addEventListener('click',function(){var o=nav.classList.toggle('open');tog.setAttribute('aria-expanded',o?'true':'false')});
+  window.addEventListener('hashchange',route);
+  route();
+})();
 </script>
 </body>
 </html>
