@@ -183,6 +183,23 @@ footer{background:var(--bg-soft);color:var(--text-muted);font-size:.8125rem;padd
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
 footer a:hover{color:var(--text)}
 footer .grow{margin-right:auto}
+
+/* 세로 길이 줄이기 (9/28): 섹션 여백 ↓, 폰에서는 카드 묶음을 옆으로 넘기기, 명령표는 접기 */
+section{padding:clamp(48px,7vw,88px) 0}
+.tiles{margin-top:32px}
+.cmds{margin-top:40px;border-top:1px solid var(--border)}
+.cmds summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;font-weight:700;font-size:1.15rem}
+.cmds summary::-webkit-details-marker{display:none}
+.cmds summary::after{content:"+";font-weight:400;font-size:1.5rem;color:var(--haru);line-height:1}
+.cmds[open] summary::after{content:"−"}
+.cmds .table{margin-top:0}
+.tiles-hint{display:none;margin:10px 0 0;text-align:center;color:var(--text-muted);font-size:.85rem}
+@media (max-width:700px){
+  .tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1*var(--gutter));padding:0 var(--gutter) 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .tiles::-webkit-scrollbar{display:none}
+  .tiles>.tile{flex:0 0 84%;scroll-snap-align:center;padding:22px}
+  .tiles-hint{display:block}
+}
 </style>
 </head>
 <body>
@@ -289,6 +306,7 @@ footer .grow{margin-right:auto}
         <p>Las decisiones las toma dentro del dispositivo Apple Intelligence en el iPhone y el iPad (en Android, Gemini Nano en los dispositivos compatibles). Las conversaciones y los registros se guardan solo en este dispositivo.</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Desliza para ver más →</p>
   </div>
 </section>
 
@@ -322,6 +340,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>La IA pública que ya usa</h3><p>Inicie sesión en una IA pública como ChatGPT · Claude · Gemini o use una clave de API, o bien un modelo local gratuito en su computadora.</p></div>
       <div class="tile"><h3>Código abierto</h3><p>Funciona sobre el asistente de IA de código abierto <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>, y el código fuente está publicado en <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Desliza para ver más →</p>
   </div>
 </section>
 
@@ -431,6 +450,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>Crear y ordenar</h3><ul><li><span class="say">Crea acta.txt en la carpeta Documentos</span></li><li><span class="say">Ordena la carpeta Descargas por tipo</span></li></ul></div>
       <div class="tile"><h3>Puede cerrar la app</h3><p>Aunque cierre la app después de encargar algo, el PC sigue trabajando hasta 15 minutos. Al volver a abrirla, aparece la tarjeta de aprobación pendiente.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Desliza para ver más →</p>
     <ol class="steps" style="margin-top:36px">
       <li><b>Decirlo</b><p>"En mi PC, crea nota.txt en la carpeta Documentos y escribe hola"</p></li>
       <li><b>Encargarlo al PC</b><p>Al pulsar [Encargar al PC], se envía al PC.</p></li>
@@ -438,7 +458,9 @@ footer .grow{margin-right:auto}
       <li><b>Resultado</b><p>Al terminar, le avisa con "PC: …".</p></li>
     </ol>
 
-    <h3 style="margin-top:64px">Comandos para usar en la computadora</h3>
+    <details class="cmds">
+
+      <summary>Comandos para usar en la computadora</summary>
     <table class="table">
       <thead><tr><th>Comando</th><th>Qué hace</th></tr></thead>
       <tbody>
@@ -455,6 +477,8 @@ footer .grow{margin-right:auto}
         <tr><td>haru-pc uninstall</td><td>Detener y eliminar</td></tr>
       </tbody>
     </table>
+
+    </details>
   </div>
 </section>
 
@@ -473,6 +497,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>No paga ni inicia sesión</h3><p>No envía dinero, no compra y no introduce contraseñas.</p></div>
       <div class="tile"><h3>El relé no ve el contenido</h3><p>Cifrado de extremo a extremo con una clave que solo conocen el teléfono y el PC. El relé solo guarda el número de sala y el hash del token de acceso. Si no quiere usar el relé, use la conexión directa autoalojada.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Desliza para ver más →</p>
   </div>
 </section>
 
@@ -506,6 +531,7 @@ footer .grow{margin-right:auto}
         <p>Las funciones básicas son gratis. Si quiere más, compre Haru Plus una sola vez y es suyo.</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Desliza para ver más →</p>
   </div>
 </section>
 

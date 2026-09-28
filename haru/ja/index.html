@@ -183,6 +183,23 @@ footer{background:var(--bg-soft);color:var(--text-muted);font-size:.8125rem;padd
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
 footer a:hover{color:var(--text)}
 footer .grow{margin-right:auto}
+
+/* 세로 길이 줄이기 (9/28): 섹션 여백 ↓, 폰에서는 카드 묶음을 옆으로 넘기기, 명령표는 접기 */
+section{padding:clamp(48px,7vw,88px) 0}
+.tiles{margin-top:32px}
+.cmds{margin-top:40px;border-top:1px solid var(--border)}
+.cmds summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;font-weight:700;font-size:1.15rem}
+.cmds summary::-webkit-details-marker{display:none}
+.cmds summary::after{content:"+";font-weight:400;font-size:1.5rem;color:var(--haru);line-height:1}
+.cmds[open] summary::after{content:"−"}
+.cmds .table{margin-top:0}
+.tiles-hint{display:none;margin:10px 0 0;text-align:center;color:var(--text-muted);font-size:.85rem}
+@media (max-width:700px){
+  .tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1*var(--gutter));padding:0 var(--gutter) 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .tiles::-webkit-scrollbar{display:none}
+  .tiles>.tile{flex:0 0 84%;scroll-snap-align:center;padding:22px}
+  .tiles-hint{display:block}
+}
 </style>
 </head>
 <body>
@@ -289,6 +306,7 @@ footer .grow{margin-right:auto}
         <p>判断はiPhone・iPadのApple Intelligence（Androidは対応デバイスのGemini Nano）がデバイスの中で行います。会話と記録はこのデバイスにだけ保存されます。</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">横にスワイプ →</p>
   </div>
 </section>
 
@@ -322,6 +340,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>公開AIをそのまま</h3><p>ChatGPT · Claude · Geminiなどの公開AIにログインするかAPIキーで。または、自分のコンピュータの無料ローカルモデルで。</p></div>
       <div class="tile"><h3>オープンソース</h3><p>オープンソースのAIアシスタント<a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>の上で動作し、ソースは<a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>で公開しています。</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">横にスワイプ →</p>
   </div>
 </section>
 
@@ -431,6 +450,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>作る・整理する</h3><ul><li><span class="say">書類フォルダに議事録.txtを作って</span></li><li><span class="say">ダウンロードフォルダを種類別に整理して</span></li></ul></div>
       <div class="tile"><h3>アプリを閉じても大丈夫</h3><p>任せたあとアプリを閉じても、PCは最大15分まで作業を続けます。もう一度開くと、待っていた承認カードが表示されます。</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">横にスワイプ →</p>
     <ol class="steps" style="margin-top:36px">
       <li><b>話しかける</b><p>「自分のPCで書類フォルダにメモ.txtを作って、こんにちはと書いて」</p></li>
       <li><b>PCに任せる</b><p>［PCに任せる］をタップすると、PCに送ります。</p></li>
@@ -438,7 +458,9 @@ footer .grow{margin-right:auto}
       <li><b>結果</b><p>終わると「PC：…」でお知らせします。</p></li>
     </ol>
 
-    <h3 style="margin-top:64px">コンピュータで使うコマンド</h3>
+    <details class="cmds">
+
+      <summary>コンピュータで使うコマンド</summary>
     <table class="table">
       <thead><tr><th>コマンド</th><th>機能</th></tr></thead>
       <tbody>
@@ -455,6 +477,8 @@ footer .grow{margin-right:auto}
         <tr><td>haru-pc uninstall</td><td>停止して削除</td></tr>
       </tbody>
     </table>
+
+    </details>
   </div>
 </section>
 
@@ -473,6 +497,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>決済・ログインはしません</h3><p>送金や購入、パスワードの入力はしません。</p></div>
       <div class="tile"><h3>リレーは内容を見られません</h3><p>スマートフォンとPCだけが知る鍵でエンドツーエンド暗号化。リレーが保存するのはルーム番号とアクセストークンのハッシュだけです。リレーを使いたくない場合は、セルフホスト直接接続で。</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">横にスワイプ →</p>
   </div>
 </section>
 
@@ -506,6 +531,7 @@ footer .grow{margin-right:auto}
         <p>基本機能は無料。もっと使いたいときだけ、Haru Plusを一度買えばずっと使えます。</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">横にスワイプ →</p>
   </div>
 </section>
 

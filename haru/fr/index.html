@@ -183,6 +183,23 @@ footer{background:var(--bg-soft);color:var(--text-muted);font-size:.8125rem;padd
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
 footer a:hover{color:var(--text)}
 footer .grow{margin-right:auto}
+
+/* 세로 길이 줄이기 (9/28): 섹션 여백 ↓, 폰에서는 카드 묶음을 옆으로 넘기기, 명령표는 접기 */
+section{padding:clamp(48px,7vw,88px) 0}
+.tiles{margin-top:32px}
+.cmds{margin-top:40px;border-top:1px solid var(--border)}
+.cmds summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;font-weight:700;font-size:1.15rem}
+.cmds summary::-webkit-details-marker{display:none}
+.cmds summary::after{content:"+";font-weight:400;font-size:1.5rem;color:var(--haru);line-height:1}
+.cmds[open] summary::after{content:"−"}
+.cmds .table{margin-top:0}
+.tiles-hint{display:none;margin:10px 0 0;text-align:center;color:var(--text-muted);font-size:.85rem}
+@media (max-width:700px){
+  .tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1*var(--gutter));padding:0 var(--gutter) 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .tiles::-webkit-scrollbar{display:none}
+  .tiles>.tile{flex:0 0 84%;scroll-snap-align:center;padding:22px}
+  .tiles-hint{display:block}
+}
 </style>
 </head>
 <body>
@@ -289,6 +306,7 @@ footer .grow{margin-right:auto}
         <p>Les décisions sont prises sur l'appareil par Apple Intelligence sur iPhone et iPad (Gemini Nano sur les appareils Android compatibles). Les conversations et les données sont enregistrées uniquement sur cet appareil.</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Faites glisser →</p>
   </div>
 </section>
 
@@ -322,6 +340,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>Vos IA publiques telles quelles</h3><p>Connectez-vous à une IA publique comme ChatGPT · Claude · Gemini ou utilisez une clé API, ou bien un modèle local gratuit sur votre ordinateur.</p></div>
       <div class="tile"><h3>Open source</h3><p>Il fonctionne sur l'assistant IA open source <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>, et son code source est publié sur <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Faites glisser →</p>
   </div>
 </section>
 
@@ -431,6 +450,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>Créer et ranger</h3><ul><li><span class="say">Crée compte-rendu.txt dans le dossier Documents</span></li><li><span class="say">Range le dossier Téléchargements par type</span></li></ul></div>
       <div class="tile"><h3>Vous pouvez fermer l'app</h3><p>Même si vous fermez l'app après avoir confié une tâche, le PC continue jusqu'à 15 minutes. Rouvrez-la et les cartes d'approbation en attente s'affichent.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Faites glisser →</p>
     <ol class="steps" style="margin-top:36px">
       <li><b>Parler</b><p>« Sur mon PC, crée memo.txt dans le dossier Documents et écris bonjour dedans »</p></li>
       <li><b>Confier au PC</b><p>Appuyez sur [Confier au PC] pour l'envoyer au PC.</p></li>
@@ -438,7 +458,9 @@ footer .grow{margin-right:auto}
       <li><b>Résultat</b><p>Une fois terminé, il vous prévient par « PC : … ».</p></li>
     </ol>
 
-    <h3 style="margin-top:64px">Commandes à utiliser sur l'ordinateur</h3>
+    <details class="cmds">
+
+      <summary>Commandes à utiliser sur l'ordinateur</summary>
     <table class="table">
       <thead><tr><th>Commande</th><th>Ce qu'elle fait</th></tr></thead>
       <tbody>
@@ -455,6 +477,8 @@ footer .grow{margin-right:auto}
         <tr><td>haru-pc uninstall</td><td>Arrêter et désinstaller</td></tr>
       </tbody>
     </table>
+
+    </details>
   </div>
 </section>
 
@@ -473,6 +497,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>Ni paiement ni connexion</h3><p>Il n'envoie pas d'argent, n'achète rien et ne saisit aucun mot de passe.</p></div>
       <div class="tile"><h3>Le relais ne voit pas le contenu</h3><p>Chiffrement de bout en bout avec une clé que seuls le téléphone et le PC connaissent. Le relais ne stocke que le numéro de salle et le hachage du jeton d'accès. Si vous ne voulez pas de relais, optez pour la connexion directe auto-hébergée.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Faites glisser →</p>
   </div>
 </section>
 
@@ -506,6 +531,7 @@ footer .grow{margin-right:auto}
         <p>Les fonctions de base sont gratuites. Pour aller plus loin, achetez Haru Plus une seule fois et gardez-le.</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Faites glisser →</p>
   </div>
 </section>
 

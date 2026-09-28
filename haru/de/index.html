@@ -183,6 +183,23 @@ footer{background:var(--bg-soft);color:var(--text-muted);font-size:.8125rem;padd
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
 footer a:hover{color:var(--text)}
 footer .grow{margin-right:auto}
+
+/* 세로 길이 줄이기 (9/28): 섹션 여백 ↓, 폰에서는 카드 묶음을 옆으로 넘기기, 명령표는 접기 */
+section{padding:clamp(48px,7vw,88px) 0}
+.tiles{margin-top:32px}
+.cmds{margin-top:40px;border-top:1px solid var(--border)}
+.cmds summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;font-weight:700;font-size:1.15rem}
+.cmds summary::-webkit-details-marker{display:none}
+.cmds summary::after{content:"+";font-weight:400;font-size:1.5rem;color:var(--haru);line-height:1}
+.cmds[open] summary::after{content:"−"}
+.cmds .table{margin-top:0}
+.tiles-hint{display:none;margin:10px 0 0;text-align:center;color:var(--text-muted);font-size:.85rem}
+@media (max-width:700px){
+  .tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1*var(--gutter));padding:0 var(--gutter) 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .tiles::-webkit-scrollbar{display:none}
+  .tiles>.tile{flex:0 0 84%;scroll-snap-align:center;padding:22px}
+  .tiles-hint{display:block}
+}
 </style>
 </head>
 <body>
@@ -289,6 +306,7 @@ footer .grow{margin-right:auto}
         <p>Entscheidungen trifft Apple Intelligence auf iPhone und iPad (bei Android Gemini Nano auf unterstützten Geräten) direkt auf dem Gerät. Gespräche und Einträge werden nur auf diesem Gerät gespeichert.</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Zum Weiterlesen wischen →</p>
   </div>
 </section>
 
@@ -322,6 +340,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>Öffentliche KI wie gewohnt</h3><p>Melden Sie sich bei öffentlicher KI wie ChatGPT · Claude · Gemini an oder nutzen Sie einen API-Schlüssel – oder ein kostenloses lokales Modell auf Ihrem Computer.</p></div>
       <div class="tile"><h3>Open Source</h3><p>Läuft auf dem Open-Source-KI-Assistenten <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>. Der Quellcode ist auf <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a> öffentlich.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Zum Weiterlesen wischen →</p>
   </div>
 </section>
 
@@ -431,6 +450,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>Erstellen und ordnen</h3><ul><li><span class="say">Erstelle Protokoll.txt im Dokumente-Ordner</span></li><li><span class="say">Sortiere den Download-Ordner nach Dateityp</span></li></ul></div>
       <div class="tile"><h3>App schließen? Kein Problem</h3><p>Auch wenn Sie die App nach der Übergabe schließen, arbeitet der PC bis zu 15 Minuten weiter. Öffnen Sie sie wieder, erscheinen wartende Freigabekarten.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Zum Weiterlesen wischen →</p>
     <ol class="steps" style="margin-top:36px">
       <li><b>Sprechen</b><p>„Erstelle auf meinem PC Notiz.txt im Dokumente-Ordner und schreib Hallo hinein“</p></li>
       <li><b>An den PC übergeben</b><p>Tippen Sie auf [An PC übergeben], und die Aufgabe geht an den PC.</p></li>
@@ -438,7 +458,9 @@ footer .grow{margin-right:auto}
       <li><b>Ergebnis</b><p>Wenn es fertig ist, meldet Haru „PC: …“.</p></li>
     </ol>
 
-    <h3 style="margin-top:64px">Befehle am Computer</h3>
+    <details class="cmds">
+
+      <summary>Befehle am Computer</summary>
     <table class="table">
       <thead><tr><th>Befehl</th><th>Funktion</th></tr></thead>
       <tbody>
@@ -455,6 +477,8 @@ footer .grow{margin-right:auto}
         <tr><td>haru-pc uninstall</td><td>Beenden und entfernen</td></tr>
       </tbody>
     </table>
+
+    </details>
   </div>
 </section>
 
@@ -473,6 +497,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>Keine Zahlungen, keine Logins</h3><p>Haru PC überweist kein Geld, kauft nichts und gibt keine Passwörter ein.</p></div>
       <div class="tile"><h3>Das Relay sieht keine Inhalte</h3><p>Ende-zu-Ende-verschlüsselt mit einem Schlüssel, den nur Handy und PC kennen. Das Relay speichert nur die Raumnummer und einen Hash des Zugangstokens. Ohne Relay nutzen Sie die selbst gehostete Direktverbindung.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Zum Weiterlesen wischen →</p>
   </div>
 </section>
 
@@ -506,6 +531,7 @@ footer .grow{margin-right:auto}
         <p>Die Grundfunktionen sind kostenlos. Wer mehr möchte, kauft Haru Plus einmal und behält es.</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Zum Weiterlesen wischen →</p>
   </div>
 </section>
 

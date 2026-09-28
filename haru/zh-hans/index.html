@@ -183,6 +183,23 @@ footer{background:var(--bg-soft);color:var(--text-muted);font-size:.8125rem;padd
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
 footer a:hover{color:var(--text)}
 footer .grow{margin-right:auto}
+
+/* 세로 길이 줄이기 (9/28): 섹션 여백 ↓, 폰에서는 카드 묶음을 옆으로 넘기기, 명령표는 접기 */
+section{padding:clamp(48px,7vw,88px) 0}
+.tiles{margin-top:32px}
+.cmds{margin-top:40px;border-top:1px solid var(--border)}
+.cmds summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;font-weight:700;font-size:1.15rem}
+.cmds summary::-webkit-details-marker{display:none}
+.cmds summary::after{content:"+";font-weight:400;font-size:1.5rem;color:var(--haru);line-height:1}
+.cmds[open] summary::after{content:"−"}
+.cmds .table{margin-top:0}
+.tiles-hint{display:none;margin:10px 0 0;text-align:center;color:var(--text-muted);font-size:.85rem}
+@media (max-width:700px){
+  .tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1*var(--gutter));padding:0 var(--gutter) 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .tiles::-webkit-scrollbar{display:none}
+  .tiles>.tile{flex:0 0 84%;scroll-snap-align:center;padding:22px}
+  .tiles-hint{display:block}
+}
 </style>
 </head>
 <body>
@@ -289,6 +306,7 @@ footer .grow{margin-right:auto}
         <p>判断由 iPhone、iPad 的 Apple Intelligence（Android 为支持机型上的 Gemini Nano）在设备上完成。对话和记录只保存在这台设备上。</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">左右滑动查看 →</p>
   </div>
 </section>
 
@@ -322,6 +340,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>直接用公开 AI</h3><p>登录 ChatGPT、Claude、Gemini 等公开 AI，或使用 API 密钥，也可以用自己电脑上的免费本地模型。</p></div>
       <div class="tile"><h3>开源</h3><p>基于开源 AI 助理 <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a> 运行，源代码公开在 <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a> 上。</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">左右滑动查看 →</p>
   </div>
 </section>
 
@@ -431,6 +450,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>创建与整理</h3><ul><li><span class="say">在文档文件夹里建一个 会议记录.txt</span></li><li><span class="say">把下载文件夹按类型整理一下</span></li></ul></div>
       <div class="tile"><h3>关掉应用也行</h3><p>交代之后即使关掉应用，电脑也会把事情继续做最多 15 分钟。重新打开时，等待中的审批卡片会弹出来。</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">左右滑动查看 →</p>
     <ol class="steps" style="margin-top:36px">
       <li><b>说出来</b><p>“在我的电脑上，在文档文件夹里建一个 备忘.txt，写上 你好”</p></li>
       <li><b>交给电脑</b><p>点 [交给电脑]，就会发送到电脑。</p></li>
@@ -438,7 +458,9 @@ footer .grow{margin-right:auto}
       <li><b>结果</b><p>完成后会用“电脑：……”告诉你。</p></li>
     </ol>
 
-    <h3 style="margin-top:64px">在电脑上使用的命令</h3>
+    <details class="cmds">
+
+      <summary>在电脑上使用的命令</summary>
     <table class="table">
       <thead><tr><th>命令</th><th>作用</th></tr></thead>
       <tbody>
@@ -455,6 +477,8 @@ footer .grow{margin-right:auto}
         <tr><td>haru-pc uninstall</td><td>停止并删除</td></tr>
       </tbody>
     </table>
+
+    </details>
   </div>
 </section>
 
@@ -473,6 +497,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>不付款、不登录</h3><p>不会转账或购物，也不会输入密码。</p></div>
       <div class="tile"><h3>中继看不到内容</h3><p>使用只有手机和电脑知道的密钥进行端到端加密。中继只保存房间号和访问令牌的哈希值。不想用中继的话，可以选择自托管直连。</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">左右滑动查看 →</p>
   </div>
 </section>
 
@@ -506,6 +531,7 @@ footer .grow{margin-right:auto}
         <p>基础功能免费。想用更多时，只需购买一次 Haru Plus，即可一直使用。</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">左右滑动查看 →</p>
   </div>
 </section>
 

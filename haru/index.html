@@ -183,6 +183,23 @@ footer{background:var(--bg-soft);color:var(--text-muted);font-size:.8125rem;padd
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
 footer a:hover{color:var(--text)}
 footer .grow{margin-right:auto}
+
+/* 세로 길이 줄이기 (9/28): 섹션 여백 ↓, 폰에서는 카드 묶음을 옆으로 넘기기, 명령표는 접기 */
+section{padding:clamp(48px,7vw,88px) 0}
+.tiles{margin-top:32px}
+.cmds{margin-top:40px;border-top:1px solid var(--border)}
+.cmds summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;font-weight:700;font-size:1.15rem}
+.cmds summary::-webkit-details-marker{display:none}
+.cmds summary::after{content:"+";font-weight:400;font-size:1.5rem;color:var(--haru);line-height:1}
+.cmds[open] summary::after{content:"−"}
+.cmds .table{margin-top:0}
+.tiles-hint{display:none;margin:10px 0 0;text-align:center;color:var(--text-muted);font-size:.85rem}
+@media (max-width:700px){
+  .tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1*var(--gutter));padding:0 var(--gutter) 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .tiles::-webkit-scrollbar{display:none}
+  .tiles>.tile{flex:0 0 84%;scroll-snap-align:center;padding:22px}
+  .tiles-hint{display:block}
+}
 </style>
 </head>
 <body>
@@ -289,6 +306,7 @@ footer .grow{margin-right:auto}
         <p>판단은 iPhone·iPad의 Apple Intelligence(Android는 지원 기기의 Gemini Nano)가 기기 안에서 해요. 대화와 기록은 이 기기에만 저장돼요.</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">옆으로 넘겨 보세요 →</p>
   </div>
 </section>
 
@@ -322,6 +340,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>공개 AI를 그대로</h3><p>ChatGPT · Claude · Gemini 같은 공개 AI에 로그인하거나 API 키로, 또는 내 컴퓨터의 무료 로컬 모델로.</p></div>
       <div class="tile"><h3>오픈소스</h3><p>오픈소스 AI 비서 <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a> 위에서 동작하고, 소스는 <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>에 공개돼 있어요.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">옆으로 넘겨 보세요 →</p>
   </div>
 </section>
 
@@ -431,6 +450,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>만들고 정리하기</h3><ul><li><span class="say">문서 폴더에 회의록.txt 만들어 줘</span></li><li><span class="say">다운로드 폴더를 종류별로 정리해 줘</span></li></ul></div>
       <div class="tile"><h3>앱을 닫아도 돼요</h3><p>맡긴 뒤 앱을 닫아도 PC는 15분까지 일을 이어 가요. 다시 열면 기다리던 승인 카드가 떠요.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">옆으로 넘겨 보세요 →</p>
     <ol class="steps" style="margin-top:36px">
       <li><b>말하기</b><p>"내 PC에서 문서 폴더에 메모.txt 만들고 안녕 이라고 써 줘"</p></li>
       <li><b>PC에 맡기기</b><p>[PC에 맡기기]를 누르면 PC로 보내요.</p></li>
@@ -438,7 +458,9 @@ footer .grow{margin-right:auto}
       <li><b>결과</b><p>끝나면 "PC: …"로 알려 줘요.</p></li>
     </ol>
 
-    <h3 style="margin-top:64px">컴퓨터에서 쓰는 명령</h3>
+    <details class="cmds">
+
+      <summary>컴퓨터에서 쓰는 명령</summary>
     <table class="table">
       <thead><tr><th>명령</th><th>하는 일</th></tr></thead>
       <tbody>
@@ -455,6 +477,8 @@ footer .grow{margin-right:auto}
         <tr><td>haru-pc uninstall</td><td>멈추고 지우기</td></tr>
       </tbody>
     </table>
+
+    </details>
   </div>
 </section>
 
@@ -473,6 +497,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>결제·로그인 안 해요</h3><p>돈을 보내거나 사거나, 비밀번호를 입력하지 않아요.</p></div>
       <div class="tile"><h3>중계는 내용을 못 봐요</h3><p>폰과 PC만 아는 키로 종단간 암호화. 중계는 방 번호와 접속 토큰의 해시만 저장해요. 중계가 싫다면 설치형 직접 연결로.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">옆으로 넘겨 보세요 →</p>
   </div>
 </section>
 
@@ -506,6 +531,7 @@ footer .grow{margin-right:auto}
         <p>기본 기능은 무료예요. 더 쓰고 싶을 때만 하루 플러스를 한 번 사면 계속 써요.</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">옆으로 넘겨 보세요 →</p>
   </div>
 </section>
 

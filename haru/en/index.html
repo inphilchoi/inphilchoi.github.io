@@ -183,6 +183,23 @@ footer{background:var(--bg-soft);color:var(--text-muted);font-size:.8125rem;padd
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
 footer a:hover{color:var(--text)}
 footer .grow{margin-right:auto}
+
+/* 세로 길이 줄이기 (9/28): 섹션 여백 ↓, 폰에서는 카드 묶음을 옆으로 넘기기, 명령표는 접기 */
+section{padding:clamp(48px,7vw,88px) 0}
+.tiles{margin-top:32px}
+.cmds{margin-top:40px;border-top:1px solid var(--border)}
+.cmds summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;font-weight:700;font-size:1.15rem}
+.cmds summary::-webkit-details-marker{display:none}
+.cmds summary::after{content:"+";font-weight:400;font-size:1.5rem;color:var(--haru);line-height:1}
+.cmds[open] summary::after{content:"−"}
+.cmds .table{margin-top:0}
+.tiles-hint{display:none;margin:10px 0 0;text-align:center;color:var(--text-muted);font-size:.85rem}
+@media (max-width:700px){
+  .tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1*var(--gutter));padding:0 var(--gutter) 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .tiles::-webkit-scrollbar{display:none}
+  .tiles>.tile{flex:0 0 84%;scroll-snap-align:center;padding:22px}
+  .tiles-hint{display:block}
+}
 </style>
 </head>
 <body>
@@ -289,6 +306,7 @@ footer .grow{margin-right:auto}
         <p>Apple Intelligence on iPhone and iPad (Gemini Nano on supported Android devices) does the thinking right on your device. Your conversations and records are stored only on this device.</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Swipe for more →</p>
   </div>
 </section>
 
@@ -322,6 +340,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>The public AI you already use</h3><p>Sign in to a public AI like ChatGPT, Claude or Gemini, use an API key, or use a free local model on your own computer.</p></div>
       <div class="tile"><h3>Open source</h3><p>It runs on the open-source AI assistant <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>, and the source code is public on <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Swipe for more →</p>
   </div>
 </section>
 
@@ -431,6 +450,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>Create and organize</h3><ul><li><span class="say">Create meeting-notes.txt in my Documents folder</span></li><li><span class="say">Sort my Downloads folder by file type</span></li></ul></div>
       <div class="tile"><h3>Go ahead, close the app</h3><p>After you hand off a task, your PC keeps working for up to 15 minutes even if you close the app. Open it again, and any waiting approval cards show up.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Swipe for more →</p>
     <ol class="steps" style="margin-top:36px">
       <li><b>Say it</b><p>"On my PC, create memo.txt in my Documents folder and write hello in it"</p></li>
       <li><b>Hand it to your PC</b><p>Tap [Hand off to PC] to send it to your PC.</p></li>
@@ -438,7 +458,9 @@ footer .grow{margin-right:auto}
       <li><b>Result</b><p>When it's done, you'll see "PC: …".</p></li>
     </ol>
 
-    <h3 style="margin-top:64px">Commands on your computer</h3>
+    <details class="cmds">
+
+      <summary>Commands on your computer</summary>
     <table class="table">
       <thead><tr><th>Command</th><th>What it does</th></tr></thead>
       <tbody>
@@ -455,6 +477,8 @@ footer .grow{margin-right:auto}
         <tr><td>haru-pc uninstall</td><td>Stop and remove</td></tr>
       </tbody>
     </table>
+
+    </details>
   </div>
 </section>
 
@@ -473,6 +497,7 @@ footer .grow{margin-right:auto}
       <div class="tile"><h3>No payments or sign-ins</h3><p>It never sends money, buys things or enters passwords.</p></div>
       <div class="tile"><h3>The relay can't see the contents</h3><p>End-to-end encrypted with a key only your phone and PC know. The relay stores only the room number and a hash of the access token. Prefer no relay? Use a self-hosted direct connection.</p></div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Swipe for more →</p>
   </div>
 </section>
 
@@ -506,6 +531,7 @@ footer .grow{margin-right:auto}
         <p>The core features are free. If you want more, buy Haru Plus once and keep it.</p>
       </div>
     </div>
+    <p class="tiles-hint" aria-hidden="true">Swipe for more →</p>
   </div>
 </section>
 
