@@ -94,7 +94,7 @@
   .sticky.add:hover{background:rgba(58,43,212,.06)}
 
   /* 제품 카드 */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:8px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:18px;margin-top:8px}
   .card{background:var(--surface);border:1.5px solid var(--ink);border-radius:16px;padding:22px;
     display:flex;flex-direction:column;gap:13px;transition:transform .22s ease,box-shadow .22s ease}
   .card:hover{transform:translateY(-4px);box-shadow:5px 6px 0 var(--ink)}
@@ -149,6 +149,31 @@
     font-size:13px;color:var(--soft);padding:30px 0 60px}
   .foot a{text-decoration:none}.foot a:hover{color:var(--ink)}
 
+
+  /* 언어 전환 */
+  .lang{display:inline-flex;align-items:center;gap:6px;color:var(--soft)}
+  .lang svg{flex:none}
+  .lang select{-webkit-appearance:none;appearance:none;font:500 13px var(--body);color:var(--ink);background:transparent;
+    border:1.5px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;max-width:9.5em}
+  .lang select:hover{border-color:var(--ink)}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  html[lang="ja"]{--hand:'Gaegu',"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",system-ui,sans-serif}
+  html[lang="zh-Hans"]{--hand:'Gaegu',"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif}
+  html[lang="zh-Hant"]{--hand:'Gaegu',"PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
+  html[lang="ja"] .hero h1,html[lang^="zh"] .hero h1{font-size:clamp(1.9rem,6vw,4.4rem)}
+  html[lang="ko"] .hero h1{word-break:keep-all}
+  .nw{white-space:nowrap}
+  @media (max-width:600px){
+    .bar{gap:10px}
+    .mark{font-size:16px;white-space:nowrap}
+    .bar nav{gap:8px;font-size:13px}
+    .bar nav a.navtext{display:none}
+    .bar nav a.cta{padding:8px 12px;white-space:nowrap}
+    .lang svg{display:none}
+    .lang select{padding:6px 10px;font-size:12.5px}
+  }
+  @media (max-width:360px){ .bar nav a.cta{display:none} }
+
   .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
   .reveal.in{opacity:1;transform:none}
   :focus-visible{outline:2.5px solid var(--indigo);outline-offset:3px;border-radius:4px}
@@ -162,587 +187,675 @@
   <div class="wrap bar">
     <span class="mark">creativelab<span>·</span>everyone</span>
     <nav>
-      <a href="#products">제품</a>
-      <a href="#how">공정</a>
-      <a class="cta" href="mailto:creativelab.choi@gmail.com?subject=%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%A0%9C%EC%95%88">아이디어 보내기</a>
+      <a class="navtext" href="#products" data-i18n="nav.products">제품</a>
+      <a class="navtext" href="#how" data-i18n="nav.how">공정</a>
+      <label class="lang"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span class="sr" data-i18n="lang.label">언어</span><select id="langSel">
+        <option value="ko" lang="ko">한국어</option>
+        <option value="en" lang="en">English</option>
+        <option value="ja" lang="ja">日本語</option>
+        <option value="zh-Hans" lang="zh-Hans">简体中文</option>
+        <option value="zh-Hant" lang="zh-Hant">繁體中文</option>
+      </select></label>
+      <a class="cta" href="mailto:creativelab.choi@gmail.com?subject=%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%A0%9C%EC%95%88" data-i18n="nav.cta">아이디어 보내기</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
   <section class="hero">
-    <div class="eyebrow reveal">creative lab · 모두의 아이디어</div>
-    <h1 class="reveal">모두의 아이디어가<br><span class="hl">앱과 서비스</span>가 됩니다.</h1>
-    <p class="reveal">떠오른 생각을 보내주세요. 메모 한 줄이 진짜 쓰는 제품이 됩니다.
+    <div class="eyebrow reveal" data-i18n="hero.eyebrow">creative lab · 모두의 아이디어</div>
+    <h1 class="reveal" data-i18n="hero.h1" data-i18n-html>모두의 아이디어가<br><span class="hl">앱과 서비스</span>가 됩니다.</h1>
+    <p class="reveal" data-i18n="hero.p">떠오른 생각을 보내주세요. 메모 한 줄이 진짜 쓰는 제품이 됩니다.
       누구의 아이디어든 환영합니다.</p>
 
     <div class="flow reveal" aria-hidden="true">
-      <div class="note">"음력도 같이 보이는 달력 없나?"</div>
-      <div class="arrow">─ 만들고 ─▶</div>
-      <div class="prod"><span class="d">앱</span> 대한민국 달력</div>
+      <div class="note" data-i18n="flow.note">"음력도 같이 보이는 달력 없나?"</div>
+      <div class="arrow" data-i18n="flow.arrow">─ 만들고 ─▶</div>
+      <div class="prod" data-i18n="flow.prod" data-i18n-html><span class="d">앱</span> 대한민국 달력</div>
     </div>
   </section>
 
   <!-- 아이디어 월 -->
-  <div class="label reveal" id="ideas"><h2>아이디어 월</h2><div class="rule"></div></div>
-  <p class="note-line reveal">여기 붙은 건 다 누군가의 한 줄에서 시작했어요.</p>
+  <div class="label reveal" id="ideas"><h2 data-i18n="ideas.h2">아이디어 월</h2><div class="rule"></div></div>
+  <p class="note-line reveal" data-i18n="ideas.note">여기 붙은 건 다 누군가의 한 줄에서 시작했어요.</p>
   <section class="ideawall reveal" id="ideaWall">
-    <div class="sticky">음력도 같이 보이는 달력</div>
-    <div class="sticky">약 먹을 시간 알려주는 앱</div>
-    <div class="sticky">우리 동네 쓰레기 버리는 날 알림</div>
-    <div class="sticky">가족이 같이 쓰는 장보기 목록</div>
-    <div class="sticky">30일 운동 습관 챌린지</div>
-    <div class="sticky">오늘 날씨에 맞는 노래 추천</div>
-    <div class="sticky">웹 영상을 TV로 크게 보기</div>
-    <div class="sticky">인터넷 없이 두는 AI 바둑</div>
-    <div class="sticky">기타 코드 짚는 법 알려주는 앱</div>
-    <div class="sticky">로또 번호 대신 뽑아주는 앱</div>
-    <div class="sticky">집에서도 노래방처럼 부르기</div>
-    <div class="sticky">명함 찍으면 연락처로 정리</div>
-    <div class="sticky">부모님 두뇌 훈련 게임</div>
-    <div class="sticky">내 주변 가게 찾아주는 지도</div>
-    <div class="sticky">답장 메일 대신 써주는 AI</div>
-    <div class="sticky">외국인 친구 TOPIK 공부 앱</div>
-    <div class="sticky">사진관 안 가고 규격 사진 만들기</div>
-    <div class="sticky">일본어 시험 준비 단어장</div>
-    <div class="sticky">인터넷 없어도 되는 통역기</div>
-    <div class="sticky">한국 온 유학생 도우미 앱</div>
-    <div class="sticky">내 성격에 맞는 전공 찾기</div>
-    <div class="sticky">체스 둘 상대가 없네</div>
-    <div class="sticky">장기 한 판 둘 상대가 없네</div>
-    <div class="sticky">내 손으로 도시 키워보기</div>
-    <div class="sticky">급수 한자 시험 준비 앱</div>
-    <div class="sticky">가입 없이 푸는 토익 공부 앱</div>
-    <div class="sticky">이웃끼리만 하는 중고거래</div>
-    <a class="sticky add" href="mailto:creativelab.choi@gmail.com?subject=%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%A0%9C%EC%95%88">+ 당신의<br>아이디어</a>
+    <div class="sticky" data-i18n="s.1">음력도 같이 보이는 달력</div>
+    <div class="sticky" data-i18n="s.2">약 먹을 시간 알려주는 앱</div>
+    <div class="sticky" data-i18n="s.3">우리 동네 쓰레기 버리는 날 알림</div>
+    <div class="sticky" data-i18n="s.4">가족이 같이 쓰는 장보기 목록</div>
+    <div class="sticky" data-i18n="s.5">30일 운동 습관 챌린지</div>
+    <div class="sticky" data-i18n="s.6">오늘 날씨에 맞는 노래 추천</div>
+    <div class="sticky" data-i18n="s.7">웹 영상을 TV로 크게 보기</div>
+    <div class="sticky" data-i18n="s.8">인터넷 없이 두는 AI 바둑</div>
+    <div class="sticky" data-i18n="s.9">기타 코드 짚는 법 알려주는 앱</div>
+    <div class="sticky" data-i18n="s.10">로또 번호 대신 뽑아주는 앱</div>
+    <div class="sticky" data-i18n="s.11">집에서도 노래방처럼 부르기</div>
+    <div class="sticky" data-i18n="s.12">명함 찍으면 연락처로 정리</div>
+    <div class="sticky" data-i18n="s.13">부모님 두뇌 훈련 게임</div>
+    <div class="sticky" data-i18n="s.14">내 주변 가게 찾아주는 지도</div>
+    <div class="sticky" data-i18n="s.15">답장 메일 대신 써주는 AI</div>
+    <div class="sticky" data-i18n="s.16">외국인 친구 TOPIK 공부 앱</div>
+    <div class="sticky" data-i18n="s.17">사진관 안 가고 규격 사진 만들기</div>
+    <div class="sticky" data-i18n="s.18">일본어 시험 준비 단어장</div>
+    <div class="sticky" data-i18n="s.19">인터넷 없어도 되는 통역기</div>
+    <div class="sticky" data-i18n="s.20">한국 온 유학생 도우미 앱</div>
+    <div class="sticky" data-i18n="s.21">내 성격에 맞는 전공 찾기</div>
+    <div class="sticky" data-i18n="s.22">체스 둘 상대가 없네</div>
+    <div class="sticky" data-i18n="s.23">장기 한 판 둘 상대가 없네</div>
+    <div class="sticky" data-i18n="s.24">내 손으로 도시 키워보기</div>
+    <div class="sticky" data-i18n="s.25">급수 한자 시험 준비 앱</div>
+    <div class="sticky" data-i18n="s.26">가입 없이 푸는 토익 공부 앱</div>
+    <div class="sticky" data-i18n="s.27">이웃끼리만 하는 중고거래</div>
+    <div class="sticky" data-i18n="s.28">뽑기 없는 삼국지 한 판</div>
+    <a class="sticky add" data-i18n="ideas.add" data-i18n-html href="mailto:creativelab.choi@gmail.com?subject=%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%A0%9C%EC%95%88">+ 당신의<br>아이디어</a>
   </section>
 
   <!-- 만들어진 제품 -->
-  <div class="label reveal" id="products"><h2>만들어진 제품</h2><div class="rule"></div></div>
-  <p class="note-line reveal">아이디어가 실제로 출시된 것들.</p>
+  <div class="label reveal" id="products"><h2 data-i18n="products.h2">만들어진 제품</h2><div class="rule"></div></div>
+  <p class="note-line reveal" data-i18n="products.note">아이디어가 실제로 출시된 것들.</p>
   <section class="grid" id="productGrid">
     <!-- ▼ 제품 카드 (복사해서 추가 — 6장 넘으면 페이저가 자동 생성됨) ▼ -->
-    <article class="card reveal">
+    <article class="card reveal" data-app="janggi">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/janggi.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>AI 장기</h3>
-          <div class="from">← "장기 한 판 둘 상대가 없네" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.janggi.name">AI 장기</h3>
+          <div class="from" data-i18n="a.janggi.from">← "장기 한 판 둘 상대가 없네" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">한국 전통 장기를 정식 규칙 그대로 — 차림 4종, 한수쉼, 반복수 무승부, 점수제(덤 1.5점)까지. 난이도 5단계 AI가 기기 안에서 돌아 비행기 모드에서도 두고, 훈수·복기·묘수풀이에 5개 언어를 지원합니다. 서버와 로그인이 없고, 광고는 힌트를 더 받고 싶을 때 직접 누를 때만 나옵니다.</p>
+      <p class="desc" data-i18n="a.janggi.desc">한국 전통 장기를 정식 규칙 그대로 — 차림 4종, 한수쉼, 반복수 무승부, 점수제(덤 1.5점)까지. 난이도 5단계 AI가 기기 안에서 돌아 비행기 모드에서도 두고, 새 엔진은 높은 난이도일수록 실제로 더 깊이 읽으며 대국 화면에 방금 읽은 깊이를 그대로 보여 줍니다. 훈수는 언제든 무료이고, 광고는 앱을 열 때만 가끔 나오며 대국·묘수풀이 중에는 나오지 않습니다. 5개 언어, 서버·로그인 없음.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6807261608"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.janggi">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/janggi-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.janggi" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/janggi-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="idphoto">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/idphoto.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>증명사진관</h3>
-          <div class="from">← "규격 사진 하나 찍으러 사진관까지 가야 하나" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.idphoto.name">증명사진관</h3>
+          <div class="from" data-i18n="a.idphoto.from">← "규격 사진 하나 찍으러 사진관까지 가야 하나" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">인물 사진 한 장을 35×45mm·반명함 같은 규격 크기 수십 가지로 맞춰 주는 사진 크기 도구. 얼굴 위치를 인식해 자동으로 자르고 배경을 단색으로 바꾼 뒤, 머리 높이·눈높이·조명까지 11개 항목을 점검해 알려 줍니다. 사진은 기기 밖으로 나가지 않습니다.</p>
+      <p class="desc" data-i18n="a.idphoto.desc">인물 사진 한 장을 35×45mm·반명함 같은 규격 크기 수십 가지로 맞춰 주는 사진 크기 도구. 얼굴 위치를 인식해 자동으로 자르고 배경을 단색으로 바꾼 뒤, 머리 높이·눈높이·조명까지 11개 항목을 점검해 알려 줍니다. 사진은 기기 밖으로 나가지 않습니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6805292038"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.idphoto">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/idphoto-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.idphoto" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/idphoto-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="calendar">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/calendar.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>대한민국 달력</h3>
-          <div class="from">← "음력 보이는 달력" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store · Google Play 출시</span>
+          <h3 data-i18n="a.calendar.name">대한민국 달력</h3>
+          <div class="from" data-i18n="a.calendar.from">← "음력 보이는 달력" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live2">App Store · Google Play 출시</span></span>
         </div>
       </div>
-      <p class="desc">음력·공휴일·간지를 한눈에 보는 한국형 달력. 모든 계산은 기기 안에서 처리됩니다.</p>
+      <p class="desc" data-i18n="a.calendar.desc">음력·공휴일·간지를 한눈에 보는 한국형 달력. 홈 화면 위젯에도 음력 날짜가 나오고, 모든 계산은 기기 안에서 처리됩니다. 광고는 앱을 켠 직후나 화면을 누르는 도중에는 뜨지 않습니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6786585716"> App Store (iPhone)</a>
         <a class="primary" href="https://play.google.com/store/apps/details?id=com.modeun.kookmin_calendar">▶ Google Play (Android)</a>
-        <a href="https://inphilchoi.github.io/everyonecalendar-privacy/">개인정보처리방침</a>
+        <a href="https://inphilchoi.github.io/everyonecalendar-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="song">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/song.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>오늘의 노래</h3>
-          <div class="from">← "오늘 들을 노래 추천해줘" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store · Google Play 출시</span>
+          <h3 data-i18n="a.song.name">오늘의 노래</h3>
+          <div class="from" data-i18n="a.song.from">← "오늘 들을 노래 추천해줘" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live2">App Store · Google Play 출시</span></span>
         </div>
       </div>
-      <p class="desc">그날의 날씨·기분·취향·운세로 매일 한 곡을 추천. 국가별 인기차트·장르별 둘러보기·라이브 방송(라디오)까지. 끝까지 듣기 한 번이면 추천곡을 유튜브에서 이어서 들을 수 있습니다.</p>
+      <p class="desc" data-i18n="a.song.desc">그날의 날씨·기분·취향·운세로 매일 한 곡을 추천. 국가별 인기차트·장르별 둘러보기·라이브 방송(라디오)까지. 끝까지 듣기 한 번이면 추천곡을 유튜브에서 이어서 들을 수 있습니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6785766359"> App Store (iPhone)</a>
         <a class="primary" href="https://play.google.com/store/apps/details?id=com.creativelab.todays_song">▶ Google Play (Android)</a>
-        <a href="https://inphilchoi.github.io/todays-song-privacy/">개인정보처리방침</a>
+        <a href="https://inphilchoi.github.io/todays-song-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="mytv">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/mytv.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>myTV</h3>
-          <div class="from">← "웹 영상을 TV로 크게 보고 싶다" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.mytv.name">myTV</h3>
+          <div class="from" data-i18n="a.mytv.from">← "웹 영상을 TV로 크게 보고 싶다" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">웹에서 보던 영상을 감지해 크롬캐스트·스마트TV로 바로 캐스팅. 화면 미러링이 아니라 원본 스트림을 보내 원화질로 재생되고, 폰은 리모컨이 됩니다. 캐스팅은 언제나 무료이고, 재생 큐·자막 검색 같은 추가 기능은 한 번 결제(구독 아님)로 엽니다.</p>
+      <p class="desc" data-i18n="a.mytv.desc">웹에서 보던 영상을 감지해 크롬캐스트·스마트TV로 바로 캐스팅. 화면 미러링이 아니라 원본 스트림을 보내 원화질로 재생되고, 폰은 리모컨이 됩니다. 캐스팅은 언제나 무료이고, 재생 큐·자막 검색 같은 추가 기능은 한 번 결제(구독 아님)로 엽니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6792300908"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/mytv_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.mytv">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/mytv-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/mytv_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.mytv" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/mytv-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="sudam">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/sudam.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>수담(手談)</h3>
-          <div class="from">← "인터넷 없이 두는 AI 바둑" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store · Google Play 출시</span>
+          <h3 data-i18n="a.sudam.name">수담(手談)</h3>
+          <div class="from" data-i18n="a.sudam.from">← "인터넷 없이 두는 AI 바둑" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live2">App Store · Google Play 출시</span></span>
         </div>
       </div>
-      <p class="desc">KataGo AI와 오프라인 대국하고, 승률 그래프로 복기하고, 사활 320제로 실력을 키우는 온디바이스 바둑 앱. 한국어·영어·일본어·중국어 지원, 계정도 광고도 데이터 수집도 없습니다.</p>
+      <p class="desc" data-i18n="a.sudam.desc">KataGo AI와 오프라인 대국하고, 승률 그래프로 복기하고, 사활 320제로 실력을 키우는 온디바이스 바둑 앱. 판에 돌을 놓으면 돌 무리마다 삶·죽음을 판정하고 급소와 수순을 보여 주는 사활 분석도 들어 있습니다(하루 3회 전체 결과 무료, 판정은 계속 무료). 한국어·영어·일본어·중국어 지원, 계정도 광고도 데이터 수집도 없습니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6795918519"> App Store (iPhone)</a>
         <a class="primary" href="https://play.google.com/store/apps/details?id=com.creativelab.sudam">▶ Google Play (Android)</a>
-        <a href="https://inphilchoi.github.io/sudam-privacy/">개인정보처리방침</a>
+        <a href="https://inphilchoi.github.io/sudam-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="voicenotes">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/voicenotes.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>음성노트</h3>
-          <div class="from">← "녹음이 회의록이 되면 좋겠다" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.voicenotes.name">음성노트</h3>
+          <div class="from" data-i18n="a.voicenotes.from">← "녹음이 회의록이 되면 좋겠다" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">녹음하면 기기 안의 AI가 실시간으로 받아 적는 온디바이스 회의록. 요약·타임코드·다시 듣기까지, 오디오는 어디로도 전송되지 않습니다. 인터넷 없이 동작합니다.</p>
+      <p class="desc" data-i18n="a.voicenotes.desc">녹음하면 기기 안의 AI가 실시간으로 받아 적는 온디바이스 회의록. 요약·타임코드·다시 듣기까지, 오디오는 어디로도 전송되지 않습니다. 인터넷 없이 동작합니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6795930564"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/voicenotes_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.voicenotes">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/voicenotes-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/voicenotes_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.voicenotes" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/voicenotes-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="singon">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/singon.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>씽온 — 노래방 마이크</h3>
-          <div class="from">← "집에서도 노래방처럼 부르고 싶다" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.singon.name">씽온 — 노래방 마이크</h3>
+          <div class="from" data-i18n="a.singon.from">← "집에서도 노래방처럼 부르고 싶다" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">유튜브 노래방 영상에 목소리를 얹어 부르는 노래방 앱. 폰이 마이크가 되고 블루투스 스피커에 연결하면 거실이 노래방이 됩니다. 음정·박자를 채점하고 키를 추천해 주며, 계정이 필요 없고 녹음은 기기에만 남습니다. 곡을 마친 뒤 가끔 광고가 나오며, 한 번 구매로 없앨 수 있습니다.</p>
+      <p class="desc" data-i18n="a.singon.desc">유튜브 노래방 영상에 목소리를 얹어 부르는 노래방 앱. 폰이 마이크가 되고 블루투스 스피커에 연결하면 거실이 노래방이 됩니다. 음정·박자를 채점하고 키를 추천해 주며, 계정이 필요 없고 녹음은 기기에만 남습니다. 곡을 마친 뒤 가끔 광고가 나오며, 한 번 구매로 없앨 수 있습니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6801400420"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.singon">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/singon-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.singon" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/singon-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="fretwise">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/fretwise.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>Fretwise — 기타 배우기</h3>
-          <div class="from">← "기타 코드 짚는 법 알려줘" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.fretwise.name">Fretwise — 기타 배우기</h3>
+          <div class="from" data-i18n="a.fretwise.from">← "기타 코드 짚는 법 알려줘" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">코드 운지를 프렛보드로 익히고 진행으로 연습하는 기타 학습 앱. 실력을 추적하는 AI 코치가 오늘 연습할 코드를 골라주며, 전부 기기 안에서 동작합니다.</p>
+      <p class="desc" data-i18n="a.fretwise.desc">코드 운지를 프렛보드로 익히고 진행으로 연습하는 기타·우쿨렐레 학습 앱. 실력을 추적하는 AI 코치가 오늘 연습할 코드를 골라 주고, 민요·동요 곡집을 앱이 박자에 맞춰 연주해 들으며 함께 칠 수 있습니다. 무음 스위치를 켜도 소리가 나고, 전부 기기 안에서 동작합니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6797015161"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.fretwise">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/fretwise-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.fretwise" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/fretwise-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="lottolab">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/lottolab.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>로또랩</h3>
-          <div class="from">← "로또 번호 대신 뽑아줘" 에서 시작</div>
-          <span class="status prod"><span class="led"></span>해외 App Store 출시 · 국내 준비 중</span>
+          <h3 data-i18n="a.lottolab.name">로또랩</h3>
+          <div class="from" data-i18n="a.lottolab.from">← "로또 번호 대신 뽑아줘" 에서 시작</div>
+          <span class="status prod"><span class="led"></span><span data-i18n="st.intl">해외 App Store 출시 · 국내 준비 중</span></span>
         </div>
       </div>
-      <p class="desc">역대 당첨 데이터를 통계로 분석해 번호를 생성하고 저장·관리하는 로또 도우미. 당첨 데이터가 앱에 내장돼 인터넷 없이도 동작합니다. 국내 App Store에서는 아직 받을 수 없습니다.</p>
+      <p class="desc" data-i18n="a.lottolab.desc">역대 당첨 데이터를 통계로 분석해 번호를 생성하고 저장·관리하는 로또 도우미. 당첨 데이터가 앱에 내장돼 인터넷 없이도 동작합니다. 국내 App Store에서는 아직 받을 수 없습니다.</p>
       <div class="links">
-        <a class="primary" href="https://apps.apple.com/us/app/id6796949878"> App Store (해외)</a>
-        <a href="https://groups.google.com/g/lottolab_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.lottolab">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/lottolab-privacy/">개인정보처리방침</a>
+        <a class="primary" href="https://apps.apple.com/us/app/id6796949878" data-i18n="l.intl"> App Store (해외)</a>
+        <a href="https://groups.google.com/g/lottolab_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.lottolab" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/lottolab-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="cardly">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/cardly.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>Cardly</h3>
-          <div class="from">← "명함 찍으면 연락처로 정리" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.cardly.name">Cardly</h3>
+          <div class="from" data-i18n="a.cardly.from">← "명함 찍으면 연락처로 정리" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">명함을 카메라로 찍으면 기기 안의 OCR이 이름·연락처를 읽어 정리하는 명함 CRM. 연락처 저장과 엑셀 내보내기까지, 명함 데이터는 어디로도 전송되지 않습니다. 명함 50장까지 무료이고, 무제한 저장은 한 번 결제로 엽니다.</p>
+      <p class="desc" data-i18n="a.cardly.desc">명함을 카메라로 찍으면 기기 안의 OCR이 이름·연락처를 읽어 정리하는 명함 CRM. 연락처 저장과 엑셀 내보내기까지, 명함 데이터는 어디로도 전송되지 않습니다. 명함 50장까지 무료이고, 무제한 저장은 한 번 결제로 엽니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6802890268"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.cardly">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/cardly-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.cardly" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/cardly-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="ttorang">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/ttorang.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>또랑</h3>
-          <div class="from">← "부모님 두뇌 훈련 게임" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.ttorang.name">또랑</h3>
+          <div class="from" data-i18n="a.ttorang.from">← "부모님 두뇌 훈련 게임" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">기억력·집중력을 깨우는 두뇌 훈련 게임 모음. 큰 글씨와 쉬운 조작으로 어르신도 편하게 즐기고, 기록은 기기 안에만 저장됩니다. 모든 훈련이 무료이고, 한국어·영어·일본어·중국어(간체·번체) 5개 언어를 지원합니다.</p>
+      <p class="desc" data-i18n="a.ttorang.desc">기억력·집중력을 깨우는 두뇌 훈련 게임 모음. 큰 글씨와 쉬운 조작으로 어르신도 편하게 즐기고, 기록은 기기 안에만 저장됩니다. 모든 훈련이 무료이고, 한국어·영어·일본어·중국어(간체·번체) 5개 언어를 지원합니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6802948321"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/ttorang_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.ttorang">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/ttorang-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/ttorang_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.ttorang" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/ttorang-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="dailymap">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/dailymap.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>DailyMap</h3>
-          <div class="from">← "내 주변 가게 찾아주는 지도" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.dailymap.name">DailyMap</h3>
+          <div class="from" data-i18n="a.dailymap.from">← "내 주변 가게 찾아주는 지도" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">내 주변 장소를 검색하고 즐겨찾기·길찾기까지 이어주는 지도 앱. 오픈스트리트맵 기반으로 계정 없이 쓰고, 검색 기록은 기기 안에만 남습니다.</p>
+      <p class="desc" data-i18n="a.dailymap.desc">내 주변 장소를 검색하고 즐겨찾기·길찾기까지 이어주는 지도 앱. 오픈스트리트맵 기반으로 계정 없이 쓰고, 검색 기록은 기기 안에만 남습니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6802897224"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.dailymap">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/dailymap-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.dailymap" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/dailymap-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="aiemail">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/aiemailreply.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>AI 메일답장</h3>
-          <div class="from">← "답장 메일 대신 써주는 AI" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.aiemail.name">AI 메일답장</h3>
+          <div class="from" data-i18n="a.aiemail.from">← "답장 메일 대신 써주는 AI" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">받은 메일을 붙여넣으면 AI가 상황과 말투에 맞는 답장을 대신 써주는 앱. 격식·친근함 같은 톤을 골라 다듬을 수 있습니다.</p>
+      <p class="desc" data-i18n="a.aiemail.desc">받은 메일을 붙여넣으면 AI가 상황과 말투에 맞는 답장을 대신 써주는 앱. 격식·친근함 같은 톤을 골라 다듬을 수 있습니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6802934901"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.ai_email_reply">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/ai-email-reply-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.ai_email_reply" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/ai-email-reply-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="malmoi">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/malmoi.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>말모이 (Malmoi)</h3>
-          <div class="from">← "외국인 친구 TOPIK 공부 앱" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.malmoi.name">말모이 (Malmoi)</h3>
+          <div class="from" data-i18n="a.malmoi.from">← "외국인 친구 TOPIK 공부 앱" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">국립국어원 기초사전 어휘 4만 4천여 개와 문법·읽기·듣기·쓰기로 TOPIK을 준비하는 한국어 학습 앱. 표준 발음법 규칙 엔진이 값이[갑씨]·국물[궁물] 같은 실제 발음을 가르치고, 초급·중급 낱말은 5개 언어 뜻풀이까지 전부 기기 안에서 동작합니다. 1급 전체는 무료이고, 전체는 구독 또는 평생 이용권으로 엽니다.</p>
+      <p class="desc" data-i18n="a.malmoi.desc">국립국어원 기초사전 어휘 4만 4천여 개와 문법·읽기·듣기·쓰기로 TOPIK을 준비하는 한국어 학습 앱. 표준 발음법 규칙 엔진이 값이[갑씨]·국물[궁물] 같은 실제 발음을 가르치고, 초급·중급 낱말은 5개 언어 뜻풀이까지 전부 기기 안에서 동작합니다. 1급 전체는 무료이고, 전체는 구독 또는 평생 이용권으로 엽니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6804689666"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.malmoi">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/malmoi-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.malmoi" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/malmoi-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="kotoba">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/kotoba.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>코토바</h3>
-          <div class="from">← "일본어 시험 준비 단어장" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.kotoba.name">코토바</h3>
+          <div class="from" data-i18n="a.kotoba.from">← "일본어 시험 준비 단어장" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">한자 2,230자와 어휘 2만 1천여 개를 N5~N1 레벨로 익히고 문장 청해까지 연습하는 JLPT 대비 앱. 음성은 기기 내장 TTS로 재생돼 인터넷 없이 공부할 수 있습니다.</p>
+      <p class="desc" data-i18n="a.kotoba.desc">한자 2,230자와 어휘 2만 1천여 개를 N5~N1 레벨로 익히고 문장 청해까지 연습하는 JLPT 대비 앱. 음성은 기기 내장 TTS로 재생돼 인터넷 없이 공부할 수 있습니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6804533682"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/kotoba_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.kotoba">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/kotoba-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/kotoba_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.kotoba" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/kotoba-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="voca">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/voca.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>Voca 통역</h3>
-          <div class="from">← "인터넷 없어도 되는 통역기" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.voca.name">Voca 통역</h3>
+          <div class="from" data-i18n="a.voca.from">← "인터넷 없어도 되는 통역기" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">말하면 바로 번역해 읽어주는 오프라인 통역 앱. 음성 인식·번역·읽어주기가 전부 기기 안에서 돌아 해외에서 인터넷 없이도 동작하고, 대화 내용은 어디로도 전송되지 않습니다. 통역은 모두 무료이고, 상황별 회화집 전체는 한 번 결제로 엽니다.</p>
+      <p class="desc" data-i18n="a.voca.desc">말하면 바로 번역해 읽어주는 오프라인 통역 앱. 음성 인식·번역·읽어주기가 전부 기기 안에서 돌아 해외에서 인터넷 없이도 동작하고, 대화 내용은 어디로도 전송되지 않습니다. 통역은 모두 무료이고, 상황별 회화집 전체는 한 번 결제로 엽니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6807239009"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.voca">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/voca-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.voca" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/voca-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="studentlife">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/studentlife.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>유학생활</h3>
-          <div class="from">← "한국 온 유학생 도우미 앱" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.studentlife.name">유학생활</h3>
+          <div class="from" data-i18n="a.studentlife.from">← "한국 온 유학생 도우미 앱" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">한국 유학생을 위한 필수 도우미. 체류만료 D-day 알림, 시간제취업 시간 계산, 정착 체크리스트, GPA 변환에 생활 가이드까지 — 6개 언어로, 계정 없이 기기 안에서 동작합니다.</p>
+      <p class="desc" data-i18n="a.studentlife.desc">한국 유학생을 위한 필수 도우미. 체류만료 D-day 알림, 시간제취업 시간 계산, 정착 체크리스트, GPA 변환에 생활 가이드까지 — 6개 언어로, 계정 없이 기기 안에서 동작합니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6807406672"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.studentlife">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/studentlife-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.studentlife" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/studentlife-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="careercompass">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/careercompass.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>진로나침반</h3>
-          <div class="from">← "내 성격에 맞는 전공 찾기" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.careercompass.name">진로나침반</h3>
+          <div class="from" data-i18n="a.careercompass.from">← "내 성격에 맞는 전공 찾기" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">성향 검사로 나에게 맞는 전공과 직업을 추천하는 진로 탐색 앱. 결과 기록·유형 비교·공유 카드에 5개 언어를 지원하고, 검사와 채점은 전부 기기 안에서 이뤄집니다.</p>
+      <p class="desc" data-i18n="a.careercompass.desc">성향 검사로 나에게 맞는 전공과 직업을 추천하는 진로 탐색 앱. 결과 기록·유형 비교·공유 카드에 5개 언어를 지원하고, 검사와 채점은 전부 기기 안에서 이뤄집니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6807407170"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.careercompass">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/careercompass-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.careercompass" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/careercompass-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="chess">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/chesscoach.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>체스코치</h3>
-          <div class="from">← "체스 둘 상대가 없네" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.chess.name">체스코치</h3>
+          <div class="from" data-i18n="a.chess.from">← "체스 둘 상대가 없네" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">기기 안의 AI와 체스를 두고 훈수와 복기까지 받는 체스 앱. 퍼즐 1,000문제와 5개 언어를 지원하며, 인터넷 없이도 동작합니다. 광고는 힌트를 더 받고 싶을 때 직접 누를 때만 나옵니다.</p>
+      <p class="desc" data-i18n="a.chess.desc">기기 안의 AI와 체스를 두고 훈수와 복기까지 받는 체스 앱. 퍼즐 1,000문제와 5개 언어를 지원하며, 인터넷 없이도 동작합니다. 힌트는 언제든 무료이고, 광고는 앱을 열 때만 가끔 나오며 대국·퍼즐 중에는 나오지 않습니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6807283401"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/apps/testing/com.creativelab.chesscoach">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/chesscoach-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/apps/testing/com.creativelab.chesscoach" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/chesscoach-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="qcity">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/qcity.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>Q-City</h3>
-          <div class="from">← "내 손으로 도시 키워보기" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.qcity.name">Q-City</h3>
+          <div class="from" data-i18n="a.qcity.from">← "내 손으로 도시 키워보기" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">구역을 놓고 전력·수도·교통·예산을 굴려 도시를 키우는 시뮬레이션. 오염·범죄·재해까지 하나의 경제로 얽혀 있고, 계산은 전부 기기 안에서 돌아 인터넷 없이 즐길 수 있습니다. 5개 언어 지원.</p>
+      <p class="desc" data-i18n="a.qcity.desc">구역을 놓고 전력·수도·교통·예산을 굴려 도시를 키우는 시뮬레이션. 오염·범죄·재해까지 하나의 경제로 얽혀 있고, 지도를 네 방향으로 돌려 건물 뒤까지 살피며 불난 곳으로 바로 이동할 수 있습니다. 계산은 전부 기기 안에서 돌아 인터넷 없이 즐길 수 있습니다. 5개 언어 지원.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6811327268"> App Store (iPhone)</a>
-        <a href="https://inphilchoi.github.io/q-city-privacy/">개인정보처리방침</a>
+        <a href="https://inphilchoi.github.io/q-city-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="arcade">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/retroarcade.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>추억의 오락실</h3>
-          <div class="from">← "동네 오락실 그 게임들 다시 해보고 싶다" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.arcade.name">추억의 오락실</h3>
+          <div class="from" data-i18n="a.arcade.from">← "동네 오락실 그 게임들 다시 해보고 싶다" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">직접 만든 오리지널 아케이드 게임 27종을 모은 오락실. 한 판이 짧아 틈날 때 바로 즐기고, 광고도 결제도 계정도 없습니다.</p>
+      <p class="desc" data-i18n="a.arcade.desc">직접 만든 오리지널 아케이드 게임 27종을 모은 오락실. 한 판이 짧아 틈날 때 바로 즐기고, 광고도 결제도 계정도 없습니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6814755524"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.retro_arcade">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/retroarcade-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.retro_arcade" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/retroarcade-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="bpdiary">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/bpdiary.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>혈압수첩</h3>
-          <div class="from">← "병원 가기 전 집에서 잰 혈압 평균이 얼마냐고 묻던데" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.bpdiary.name">혈압수첩</h3>
+          <div class="from" data-i18n="a.bpdiary.from">← "병원 가기 전 집에서 잰 혈압 평균이 얼마냐고 묻던데" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">진료 전 7일 동안 아침·저녁 혈압을 재도록 안내하고, 의사가 보는 가정혈압 평균을 한 줄로 만들어 주는 수첩. 큰 숫자판으로 넣고 7·30·90일 평균과 추이를 진료실 화면 하나로 봅니다. 기록은 기기 안에만 남습니다.</p>
+      <p class="desc" data-i18n="a.bpdiary.desc">진료 전 7일 동안 아침·저녁 혈압을 재도록 안내하고, 의사가 보는 가정혈압 평균을 한 줄로 만들어 주는 수첩. 큰 숫자판으로 넣고 7·30·90일 평균과 추이를 진료실 화면 하나로 봅니다. 기록은 기기 안에만 남습니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6813703005"> App Store (iPhone)</a>
-        <a href="https://inphilchoi.github.io/bpdiary-privacy/">개인정보처리방침</a>
+        <a href="https://inphilchoi.github.io/bpdiary-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="tsumego">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/tsumego.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>수담 사활</h3>
-          <div class="from">← "바둑 사활 문제를 매일 조금씩 풀고 싶다" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.tsumego.name">수담 사활</h3>
+          <div class="from" data-i18n="a.tsumego.from">← "바둑 사활 문제를 매일 조금씩 풀고 싶다" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">정답이 하나뿐임을 증명한 사활 318문제를 입문부터 최상급까지 6단계로. 1–2단계 106문제는 무료이고, 틀린 문제는 자동으로 모아 다시 풉니다. 광고·회원가입 없이 인터넷 없이 풀립니다.</p>
+      <p class="desc" data-i18n="a.tsumego.desc">정답이 하나뿐임을 증명한 사활 318문제를 입문부터 최상급까지 6단계로. 1–2단계 106문제는 무료이고, 틀린 문제는 자동으로 모아 다시 풉니다. 광고·회원가입 없이 인터넷 없이 풀립니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6815160889"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.tsumego">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/tsumego-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.tsumego" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/tsumego-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="hanja">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/hanja.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>한자급수</h3>
-          <div class="from">← "급수 한자 시험, 폰 하나로 준비하고 싶다" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.hanja.name">한자급수</h3>
+          <div class="from" data-i18n="a.hanja.from">← "급수 한자 시험, 폰 하나로 준비하고 싶다" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">8급~4급 배정한자 1,000자와 한자어 1,787개를 훈음·부수·총획과 함께 익히는 한자 학습 앱. 실제 시험 구성 그대로의 모의시험, 따라 쓰며 획수를 맞히는 쓰기 연습, 틀린 것만 다시 묻는 간격 반복 복습까지 전 급수 무료이고, 서버·로그인·광고 없이 기기 안에서 동작합니다.</p>
+      <p class="desc" data-i18n="a.hanja.desc">8급~4급 배정한자 1,000자와 한자어 1,787개를 훈음·부수·총획과 함께 익히는 한자 학습 앱. 실제 시험 구성 그대로의 모의시험, 따라 쓰며 획수를 맞히는 쓰기 연습, 틀린 것만 다시 묻는 간격 반복 복습까지 전 급수 무료이고, 서버·로그인·광고 없이 기기 안에서 동작합니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6807291189"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.hanja">② ▶ Android 테스트 참여</a>
-        <a href="https://creativelab-lee.github.io/hanja-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.hanja" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://creativelab-lee.github.io/hanja-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="english">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/englishtrainer.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>영어시험 트레이너</h3>
-          <div class="from">← "가입 없이 바로 푸는 토익 공부 앱" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.english.name">영어시험 트레이너</h3>
+          <div class="from" data-i18n="a.english.from">← "가입 없이 바로 푸는 토익 공부 앱" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">TOEIC 유형 LC Part 2~4·RC Part 5~7을 자체 제작 문항과 한국어 해설로 연습하는 앱. 받아쓰기 훈련, 간격 반복 단어장, 자동으로 쌓이는 오답노트, 미니 모의고사까지 전 기능 무료이며, 회원가입 없이 학습 기록은 기기에만 남습니다.</p>
+      <p class="desc" data-i18n="a.english.desc">TOEIC 유형 LC Part 2~4·RC Part 5~7을 자체 제작 문항과 한국어 해설로 연습하는 앱. 받아쓰기 훈련, 간격 반복 단어장, 자동으로 쌓이는 오답노트, 미니 모의고사까지 전 기능 무료이며, 회원가입 없이 학습 기록은 기기에만 남습니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6807410596"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.english_trainer">② ▶ Android 테스트 참여</a>
-        <a href="https://creativelab-lee.github.io/english-trainer-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.english_trainer" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://creativelab-lee.github.io/english-trainer-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="market">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/dongnemarket.png" alt="" width="48" height="48" /></div>
         <div>
-          <h3>우리동네마켓</h3>
-          <div class="from">← "이웃끼리만 믿고 주고받는 중고거래" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <h3 data-i18n="a.market.name">우리동네마켓</h3>
+          <div class="from" data-i18n="a.market.from">← "이웃끼리만 믿고 주고받는 중고거래" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
         </div>
       </div>
-      <p class="desc">회사 서버 없이 이웃과 초대 코드를 주고받아 기기끼리 직접 연결하는 동네 중고거래·나눔 앱. 물건 목록과 1:1 채팅은 서로의 기기에만 남고, 신고·차단과 6개 언어를 지원합니다. 계정·광고 없이 전부 무료입니다.</p>
+      <p class="desc" data-i18n="a.market.desc">회사 서버 없이 이웃과 초대 코드를 주고받아 기기끼리 직접 연결하는 동네 중고거래·나눔 앱. 물건 목록과 1:1 채팅은 서로의 기기에만 남고, 신고·차단과 6개 언어를 지원합니다. 계정·광고 없이 전부 무료입니다.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6807415086"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.dongne_market">② ▶ Android 테스트 참여</a>
-        <a href="https://creativelab-lee.github.io/dongnemarket-privacy/">개인정보처리방침</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.dongne_market" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://creativelab-lee.github.io/dongnemarket-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
       </div>
     </article>
 
-    <article class="card reveal">
+    <article class="card reveal" data-app="warlords">
+      <div class="top">
+        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/warlords-han.png" alt="" width="48" height="48" /></div>
+        <div>
+          <h3 data-i18n="a.warlords.name">군웅천하</h3>
+          <div class="from" data-i18n="a.warlords.from">← "뽑기 없이 한 판 끝까지 두는 삼국지" 에서 시작</div>
+          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+        </div>
+      </div>
+      <p class="desc" data-i18n="a.warlords.desc">후한 말 중원을 무대로 내정·외교·계략·전투·맞대결을 한 달씩 두는 턴제 전략 시뮬레이션. 시나리오 4개와 짧은 도전 4개, 난이도 4단계를 담았고, 초상·능력치는 자체 제작입니다. 뽑기·광고·인앱 결제·계정이 없어 완전 무료이고, 비행기 모드에서도 끝까지 플레이됩니다. 5개 언어 지원.</p>
+      <div class="links">
+        <a class="primary" href="https://apps.apple.com/app/id6815300497"> App Store (iPhone)</a>
+        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+        <a href="https://play.google.com/store/apps/details?id=com.creativelab.warlords_han" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+        <a href="https://inphilchoi.github.io/warlords-han-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+      </div>
+    </article>
+
+    <article class="card reveal" data-app="next">
       <div class="top">
         <div class="icon" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
             <path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3.2"/></svg>
         </div>
         <div>
-          <h3>다음 제품</h3>
-          <div class="from">← 지금 받는 중인 아이디어로</div>
-          <span class="status proto"><span class="led"></span>설계 중</span>
+          <h3 data-i18n="a.next.name">다음 제품</h3>
+          <div class="from" data-i18n="a.next.from">← 지금 받는 중인 아이디어로</div>
+          <span class="status proto"><span class="led"></span><span data-i18n="st.proto">설계 중</span></span>
         </div>
       </div>
-      <p class="desc">여러분이 보내준 아이디어 중 하나가 다음 제품이 됩니다.</p>
-      <div class="links"><a href="mailto:creativelab.choi@gmail.com?subject=%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%A0%9C%EC%95%88">아이디어 보내기</a></div>
+      <p class="desc" data-i18n="a.next.desc">여러분이 보내준 아이디어 중 하나가 다음 제품이 됩니다.</p>
+      <div class="links"><a href="mailto:creativelab.choi@gmail.com?subject=%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%A0%9C%EC%95%88" data-i18n="l.idea">아이디어 보내기</a></div>
     </article>
     <!-- ▲ 출시되면 status를 'live'로, primary 링크를 App Store 주소로 교체 ▲ -->
   </section>
 
   <!-- 공정 -->
-  <div class="label reveal" id="how"><h2>어떻게 만드나요</h2><div class="rule"></div></div>
+  <div class="label reveal" id="how"><h2 data-i18n="how.h2">어떻게 만드나요</h2><div class="rule"></div></div>
   <section class="steps">
-    <div class="step reveal"><div class="n">01</div><h4>아이디어</h4><p>누구나 한 줄로 보냅니다. "이런 거 있으면 좋겠다" 면 충분합니다.</p></div>
-    <div class="step reveal"><div class="n">02</div><h4>함께 다듬기</h4><p>꼭 필요한 기능만 추려 작동하는 형태로 빠르게 만듭니다.</p></div>
-    <div class="step reveal"><div class="n">03</div><h4>출시</h4><p>앱과 서비스로 내보냅니다. 쓰면서 계속 손봅니다.</p></div>
+    <div class="step reveal"><div class="n">01</div><h4 data-i18n="step1.h">아이디어</h4><p data-i18n="step1.p">누구나 한 줄로 보냅니다. "이런 거 있으면 좋겠다" 면 충분합니다.</p></div>
+    <div class="step reveal"><div class="n">02</div><h4 data-i18n="step2.h">함께 다듬기</h4><p data-i18n="step2.p">꼭 필요한 기능만 추려 작동하는 형태로 빠르게 만듭니다.</p></div>
+    <div class="step reveal"><div class="n">03</div><h4 data-i18n="step3.h">출시</h4><p data-i18n="step3.p">앱과 서비스로 내보냅니다. 쓰면서 계속 손봅니다.</p></div>
   </section>
 
   <!-- 참여 배너 -->
   <section class="invite reveal">
-    <h3>당신의 아이디어를 보내주세요</h3>
-    <p>거창하지 않아도 됩니다. 한 문장이면 시작할 수 있어요.</p>
-    <a href="mailto:creativelab.choi@gmail.com?subject=%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%A0%9C%EC%95%88">아이디어 보내기 →</a>
+    <h3 data-i18n="invite.h">당신의 아이디어를 보내주세요</h3>
+    <p data-i18n="invite.p">거창하지 않아도 됩니다. 한 문장이면 시작할 수 있어요.</p>
+    <a href="mailto:creativelab.choi@gmail.com?subject=%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%A0%9C%EC%95%88" data-i18n="invite.a">아이디어 보내기 →</a>
   </section>
 </main>
 
 <footer>
   <div class="wrap foot">
-    <span>© <span id="year">2026</span> creativelab-everyone — 모두의 아이디어를 앱과 서비스로</span>
-    <span><a href="mailto:creativelab.choi@gmail.com">메일 보내기</a></span>
-    <span><a href="https://creativelab-kr.github.io/">회사 소개</a></span>
+    <span>© <span id="year">2026</span> creativelab-everyone — <span data-i18n="foot.tag">모두의 아이디어를 앱과 서비스로</span></span>
+    <span><a href="mailto:creativelab.choi@gmail.com" data-i18n="foot.mail">메일 보내기</a></span>
+    <span><a href="https://creativelab-kr.github.io/" data-i18n="foot.about">회사 소개</a></span>
   </div>
 </footer>
 
+<script>
+  /* 언어 전환 — 한국어는 페이지 원문, 나머지는 아래 사전(I18N). 네트워크 호출 없음.
+     카드를 새로 넣을 때: article 에 data-app, h3/.from/.desc 에 data-i18n="a.<키>.name|from|desc" 를 달고
+     I18N 의 en·ja·zh-Hans·zh-Hant 에 같은 키를 넣는다(간체·번체는 따로 쓴다). 키가 없으면 한국어가 그대로 보인다.
+     주소 뒤에 ?lang=en 처럼 붙이면 그 언어로 연다. */
+  var I18N = {"en":{"title":"creativelab-everyone — Everyone's ideas become apps","meta.desc":"We turn anyone's idea into apps and services. Send us the one line that just came to mind.","lang.label":"Language","pg.prev":"Previous page","pg.next":"Next page","pg.products":"Product list pages","pg.ideas":"Idea wall pages","nav.products":"Products","nav.how":"How it works","nav.cta":"Send an idea","hero.eyebrow":"creative lab · everyone's ideas","hero.h1":"Everyone's ideas<br>become <span class=\"hl\">apps &amp; services<\/span>.","hero.p":"Send us the thought that just crossed your mind. A one-line note becomes a product people actually use. Ideas from anyone are welcome.","flow.note":"“Isn't there a calendar that shows lunar dates too?”","flow.arrow":"─ we build ─▶","flow.prod":"<span class=\"d\">App<\/span> Korean Calendar","ideas.h2":"Idea wall","ideas.note":"Everything pinned here started as someone's one-liner.","ideas.add":"+ Your<br>idea","products.h2":"What we've made","products.note":"Ideas that actually shipped.","how.h2":"How we make it","step1.h":"Idea","step1.p":"Anyone can send one line. “I wish this existed” is enough.","step2.h":"Shape it together","step2.p":"We keep only what's essential and quickly build something that works.","step3.h":"Launch","step3.p":"We ship it as an app or service, and keep refining it as people use it.","invite.h":"Send us your idea","invite.p":"It doesn't have to be grand. One sentence is enough to start.","invite.a":"Send an idea →","foot.tag":"everyone's ideas, made into apps and services","foot.mail":"Email us","foot.about":"About the company","l.tester":"① Join the tester group","l.android":"② ▶ Join the Android test","l.privacy":"Privacy Policy","l.intl":" App Store (outside Korea)","l.idea":"Send an idea","st.live":"On the App Store","st.live2":"On the App Store · Google Play","st.intl":"On the App Store outside Korea · Korea coming","st.proto":"In design","s.1":"A calendar that shows lunar dates too","s.2":"An app that reminds me to take my meds","s.3":"Trash-day reminders for my neighborhood","s.4":"A shopping list the whole family shares","s.5":"A 30-day workout habit challenge","s.6":"Songs that match today's weather","s.7":"Watch web videos big on the TV","s.8":"AI Go without the internet","s.9":"An app that shows guitar chord shapes","s.10":"An app that picks lottery numbers for me","s.11":"Karaoke-style singing at home","s.12":"Snap a business card, save a contact","s.13":"Brain games for my parents","s.14":"A map that finds shops nearby","s.15":"An AI that writes my email replies","s.16":"A TOPIK app for my foreign friend","s.17":"ID photos without the photo studio","s.18":"A word book for the Japanese exam","s.19":"An interpreter that needs no internet","s.20":"A helper for students new to Korea","s.21":"Find a major that fits me","s.22":"No one to play chess with","s.23":"No one to play janggi with","s.24":"Grow a city with my own hands","s.25":"An app for the Hanja level exam","s.26":"TOEIC practice with no sign-up","s.27":"Secondhand trading just among neighbors","s.28":"A Three Kingdoms game with no gacha","a.janggi.name":"AI Janggi","a.janggi.from":"← Started from “No one to play janggi with”","a.janggi.desc":"Traditional Korean janggi with the official rules — four starting setups, passing, draws by repetition and scoring (1.5-point komi). A five-level AI runs on your device, so you can play in airplane mode; the new engine truly reads deeper at higher levels and shows the depth it just searched. Hints are always free; ads appear only occasionally when you open the app, never during a game or puzzle. 5 languages, no servers, no login.","a.idphoto.name":"ID Photo Studio","a.idphoto.from":"← Started from “Do I really have to go to a photo studio for one ID photo?”","a.idphoto.desc":"A photo-sizing tool that fits one portrait to dozens of standard sizes such as 35×45 mm. It finds your face to crop automatically, swaps the background for a solid color, then checks 11 points including head height, eye line and lighting. Your photo never leaves the device.","a.calendar.name":"Korean Calendar","a.calendar.from":"← Started from “A calendar that shows the lunar date”","a.calendar.desc":"A Korean calendar showing lunar dates, public holidays and the sexagenary cycle at a glance. The home-screen widget shows lunar dates too, and every calculation happens on the device. Ads never appear right after launch or while you're tapping.","a.song.name":"Today's Song","a.song.from":"← Started from “Recommend a song for today”","a.song.desc":"One song a day, picked for the weather, your mood, your taste and your horoscope. Country charts, genre browsing and live radio included. One tap on “Listen to the end” plays the picks back-to-back on YouTube.","a.mytv.name":"myTV","a.mytv.from":"← Started from “I want to watch web videos big on the TV”","a.mytv.desc":"Detects the video you're watching on the web and casts it straight to Chromecast or a smart TV. It sends the original stream rather than mirroring your screen, so it plays at full quality while your phone becomes the remote. Casting is always free; extras like a play queue and subtitle search unlock with a one-time purchase (not a subscription).","a.sudam.name":"Sudam","a.sudam.from":"← Started from “AI Go I can play without internet”","a.sudam.desc":"An on-device Go app: play KataGo offline, review games with a win-rate graph, and build strength with 320 life-and-death problems. Place stones on the board and the life-and-death analysis judges each group as alive or dead, showing the vital point and the sequence (full results free 3 times a day; the verdict itself stays free). Korean, English, Japanese and Chinese. No account, no ads, no data collection.","a.voicenotes.name":"Voice Notes","a.voicenotes.from":"← Started from “I wish my recordings turned into meeting notes”","a.voicenotes.desc":"On-device meeting notes: record, and the AI on your phone transcribes in real time. Summaries, timecodes and playback included — your audio is never sent anywhere. Works without internet.","a.singon.name":"SingOn — Karaoke Mic","a.singon.from":"← Started from “I want to sing like at karaoke, at home”","a.singon.desc":"A karaoke app that lets you sing over YouTube karaoke videos. Your phone becomes the mic — connect a Bluetooth speaker and your living room turns into a karaoke room. It scores pitch and rhythm and recommends a key; no account needed, and recordings stay on your device. An ad occasionally appears after a song, removable with a one-time purchase.","a.fretwise.name":"Fretwise — Learn Guitar","a.fretwise.from":"← Started from “Show me how to finger guitar chords”","a.fretwise.desc":"Learn guitar and ukulele chord shapes on the fretboard and practice them in progressions. An AI coach that tracks your skill picks today's chords, and the app plays songbook tunes — folk and children's songs — in time so you can play along. Sound works even with the silent switch on, and everything runs on your device.","a.lottolab.name":"LottoLab","a.lottolab.from":"← Started from “Pick my lottery numbers for me”","a.lottolab.desc":"A lottery helper that analyzes past draw statistics to generate, save and manage numbers. The draw data is built in, so it works offline. Not yet available on the Korean App Store.","a.cardly.name":"Cardly","a.cardly.from":"← Started from “Snap a business card, get a contact”","a.cardly.desc":"A business-card CRM: snap a card and on-device OCR reads the name and contact details. From saving to Contacts to exporting to Excel, your card data is never sent anywhere. Up to 50 cards free; unlimited storage with a one-time purchase.","a.ttorang.name":"Ttorang","a.ttorang.from":"← Started from “Brain-training games for my parents”","a.ttorang.desc":"A collection of brain-training games that wake up memory and focus. Large text and simple controls make it comfortable for older adults, and records stay on the device. All training is free, in 5 languages: Korean, English, Japanese and Chinese (Simplified and Traditional).","a.dailymap.name":"DailyMap","a.dailymap.from":"← Started from “A map that finds shops near me”","a.dailymap.desc":"A map app for searching places near you, with favorites and directions. Built on OpenStreetMap, it needs no account, and your search history stays on your device.","a.aiemail.name":"AI Email Reply","a.aiemail.from":"← Started from “An AI that writes my email replies”","a.aiemail.desc":"Paste an email you received and AI drafts a reply that fits the situation and tone. Pick a tone — formal, friendly and more — to polish it.","a.malmoi.name":"Malmoi","a.malmoi.from":"← Started from “A TOPIK study app for my foreign friend”","a.malmoi.desc":"A Korean-learning app for TOPIK with some 44,000 words from the National Institute of Korean Language's Basic Korean Dictionary, plus grammar, reading, listening and writing. A standard-pronunciation rule engine teaches how words are really said — 값이 [갑씨], 국물 [궁물] — and beginner and intermediate words come with meanings in 5 languages, all on your device. All of Level 1 is free; everything else unlocks with a subscription or a lifetime pass.","a.kotoba.name":"Kotoba","a.kotoba.from":"← Started from “A word book for the Japanese exam”","a.kotoba.desc":"A JLPT prep app with 2,230 kanji and about 21,000 words from N5 to N1, plus sentence listening practice. Audio plays through the device's built-in text-to-speech, so you can study offline.","a.voca.name":"Voca Interpreter","a.voca.from":"← Started from “An interpreter that works without internet”","a.voca.desc":"An offline interpreter that translates what you say and reads it aloud instantly. Speech recognition, translation and read-aloud all run on the device, so it works abroad without internet, and conversations are never sent anywhere. Interpreting is completely free; the full situational phrasebook unlocks with a one-time purchase.","a.studentlife.name":"Korea Student Life","a.studentlife.from":"← Started from “A helper app for students who came to Korea”","a.studentlife.desc":"The essential helper for international students in Korea: visa-expiry D-day reminders, part-time work hour calculations, a settling-in checklist, GPA conversion and living guides — in 6 languages, with no account, all on your device.","a.careercompass.name":"Career Compass","a.careercompass.from":"← Started from “Find a major that fits my personality”","a.careercompass.desc":"A career-exploration app that recommends majors and careers that suit you, based on a personality-type test. Result history, type comparison and share cards in 5 languages — the test and scoring happen entirely on your device.","a.chess.name":"ChessCoach","a.chess.from":"← Started from “No one to play chess with”","a.chess.desc":"Play chess against on-device AI and get hints and post-game review. 1,000 puzzles and 5 languages, and it works without internet. Hints are always free; ads appear only occasionally when you open the app, never during a game or puzzle.","a.qcity.name":"Q-City","a.qcity.from":"← Started from “Build a city with my own hands”","a.qcity.desc":"A city-building sim: zone land and juggle power, water, transport and budget to grow your city. Pollution, crime and disasters are all tied into one economy; rotate the map in four directions to see behind buildings and jump straight to a fire. Everything is computed on the device, so you can play offline. 5 languages.","a.arcade.name":"Retro Arcade","a.arcade.from":"← Started from “I want to play those neighborhood arcade games again”","a.arcade.desc":"An arcade of 27 original games we made ourselves. Rounds are short, so you can jump in whenever you have a minute — no ads, no purchases, no account.","a.bpdiary.name":"BP Diary","a.bpdiary.from":"← Started from “The doctor asked for my average home blood pressure”","a.bpdiary.desc":"A notebook that guides you to measure blood pressure morning and evening for the 7 days before an appointment, and turns it into the one-line home average your doctor looks for. Enter readings on a large keypad and see 7-, 30- and 90-day averages and trends on a single clinic screen. Records stay on your device.","a.tsumego.name":"Sudam Tsumego","a.tsumego.from":"← Started from “I want to solve a few Go problems every day”","a.tsumego.desc":"318 life-and-death problems, each proven to have a single correct answer, in 6 levels from beginner to expert. Levels 1–2 (106 problems) are free, and problems you miss are gathered automatically for another try. No ads, no sign-up, no internet needed.","a.hanja.name":"Hanja Level Prep","a.hanja.from":"← Started from “Prepare for the Hanja exam with just my phone”","a.hanja.desc":"A Hanja app for Korea's Hanja proficiency test: learn the 1,000 characters assigned to levels 8 to 4 and 1,787 Hanja words with their Korean meaning and sound, radical and stroke count. Mock exams laid out like the real test, tracing practice that checks stroke counts, and spaced-repetition review of what you missed — every level free, with no server, login or ads, all on your device.","a.english.name":"English Test Trainer","a.english.from":"← Started from “A TOEIC app I can use without signing up”","a.english.desc":"Practice TOEIC-style LC Parts 2–4 and RC Parts 5–7 with original questions and explanations in Korean. Dictation drills, a spaced-repetition word list, an automatic mistake notebook and mini mock tests — every feature is free, no sign-up, and your study history stays on your device.","a.market.name":"Our Town Market","a.market.from":"← Started from “Secondhand trading only among neighbors I trust”","a.market.desc":"A neighborhood buy, sell and give-away app with no company server: swap an invite code with a neighbor and your devices connect directly. Listings and 1:1 chats stay only on your two devices, with reporting, blocking and 6 languages. No account, no ads, completely free.","a.warlords.name":"Warlords of Han","a.warlords.from":"← Started from “A Three Kingdoms strategy game with no gacha, played to the end”","a.warlords.desc":"A turn-based strategy sim set in the late Han dynasty: govern, negotiate, scheme, fight battles and duels one month at a time. Four scenarios, four short challenges and four difficulty levels, with original portraits and stats. No gacha, ads, in-app purchases or account — completely free, and playable to the end in airplane mode. 5 languages.","a.next.name":"Next product","a.next.from":"← From the ideas coming in now","a.next.desc":"One of the ideas you send becomes the next product."},"ja":{"title":"creativelab-everyone — みんなのアイデアがアプリになる","meta.desc":"どなたのアイデアでも、アプリとサービスにします。思いついた一行を送ってください。","lang.label":"言語","pg.prev":"前のページ","pg.next":"次のページ","pg.products":"プロダクト一覧のページ","pg.ideas":"アイデアウォールのページ","nav.products":"プロダクト","nav.how":"つくり方","nav.cta":"アイデアを送る","hero.eyebrow":"creative lab · みんなのアイデア","hero.h1":"みんなのアイデアが<br><span class=\"hl\">アプリとサービス<\/span><span class=\"nw\">になる。<\/span>","hero.p":"思いついたことを送ってください。メモ一行が、本当に使われるプロダクトになります。どなたのアイデアでも歓迎です。","flow.note":"「旧暦も一緒に見られるカレンダー、ないかな？」","flow.arrow":"─ つくって ─▶","flow.prod":"<span class=\"d\">App<\/span> 韓国カレンダー","ideas.h2":"アイデアウォール","ideas.note":"ここに貼られたものは、どれも誰かの一行から始まりました。","ideas.add":"+ あなたの<br>アイデア","products.h2":"できあがったプロダクト","products.note":"実際にリリースされたアイデアたち。","how.h2":"どうやってつくるの？","step1.h":"アイデア","step1.p":"誰でも一行で送れます。「こんなのがあったらいいな」で十分です。","step2.h":"一緒に磨く","step2.p":"本当に必要な機能だけに絞り、動く形にすばやく仕上げます。","step3.h":"リリース","step3.p":"アプリやサービスとして世に出し、使われながら手を入れ続けます。","invite.h":"あなたのアイデアを送ってください","invite.p":"大げさでなくて大丈夫。一文あれば始められます。","invite.a":"アイデアを送る →","foot.tag":"みんなのアイデアをアプリとサービスに","foot.mail":"メールを送る","foot.about":"会社紹介","l.tester":"① テスターグループに参加","l.android":"② ▶ Androidテストに参加","l.privacy":"プライバシーポリシー","l.intl":" App Store（韓国以外）","l.idea":"アイデアを送る","st.live":"App Storeで配信中","st.live2":"App Store・Google Playで配信中","st.intl":"海外のApp Storeで配信中・韓国は準備中","st.proto":"設計中","s.1":"旧暦も一緒に見えるカレンダー","s.2":"薬の時間を教えてくれるアプリ","s.3":"うちの地域のゴミの日のお知らせ","s.4":"家族で使える買い物リスト","s.5":"30日間の運動習慣チャレンジ","s.6":"今日の天気に合う歌のおすすめ","s.7":"Webの動画をテレビで大きく","s.8":"ネットなしで打てるAI囲碁","s.9":"ギターコードの押さえ方を教えるアプリ","s.10":"ロトの番号を選んでくれるアプリ","s.11":"家でもカラオケみたいに歌う","s.12":"名刺を撮ったら連絡先に整理","s.13":"親のための脳トレゲーム","s.14":"近くのお店を探す地図","s.15":"返信メールを書いてくれるAI","s.16":"外国人の友だちのTOPIK勉強アプリ","s.17":"写真館に行かずに規格写真","s.18":"日本語試験の単語帳","s.19":"ネットがなくても使える通訳機","s.20":"韓国に来た留学生のアシスタント","s.21":"性格に合う専攻さがし","s.22":"チェスの相手がいない","s.23":"チャンギの相手がいない","s.24":"自分の手で街を育てる","s.25":"漢字検定の対策アプリ","s.26":"登録なしで解けるTOEIC勉強アプリ","s.27":"ご近所どうしだけのフリマ","s.28":"ガチャなしの三国戦略","a.janggi.name":"AIチャンギ","a.janggi.from":"← 「チャンギの相手がいない」から始まりました","a.janggi.desc":"韓国の伝統将棋チャンギを公式ルールどおりに — 4種の初期配置、パス、同一局面の繰り返しによる引き分け、点数制（コミ1.5点）まで。5段階のAIが端末内で動くので機内モードでも対局でき、新エンジンは難易度が上がるほど本当に深く読み、直前に読んだ深さをそのまま表示します。ヒントはいつでも無料。広告はアプリを開いたときにたまに出るだけで、対局中・詰め問題中には出ません。5言語対応、サーバー・ログインなし。","a.idphoto.name":"証明写真スタジオ","a.idphoto.from":"← 「規格写真1枚のために写真館まで行かなきゃいけないの？」から始まりました","a.idphoto.desc":"人物写真1枚を35×45mmなど数十種類の規格サイズに合わせる写真サイズツール。顔の位置を認識して自動でトリミングし、背景を単色に変えたうえで、頭の高さ・目の高さ・照明など11項目をチェックしてお知らせします。写真は端末の外に出ません。","a.calendar.name":"韓国カレンダー","a.calendar.from":"← 「旧暦も見えるカレンダー」から始まりました","a.calendar.desc":"旧暦・祝日・干支がひと目でわかる韓国式カレンダー。ホーム画面のウィジェットにも旧暦の日付が表示され、計算はすべて端末内で行います。起動直後や画面をタップしている最中には広告が出ません。","a.song.name":"今日の歌","a.song.from":"← 「今日聴く歌をおすすめして」から始まりました","a.song.desc":"その日の天気・気分・好み・運勢から、毎日1曲をおすすめ。国別の人気チャート、ジャンル別の閲覧、ライブ配信（ラジオ）まで。「最後まで聴く」を一度押せば、おすすめ曲をYouTubeで続けて聴けます。","a.mytv.name":"myTV","a.mytv.from":"← 「Webの動画をテレビで大きく見たい」から始まりました","a.mytv.desc":"Webで見ている動画を検出して、Chromecastやスマートテレビにすぐキャスト。画面ミラーリングではなく元のストリームを送るので元の画質で再生され、スマホはリモコンになります。キャストはいつでも無料。再生キューや字幕検索などの追加機能は買い切り（サブスクではありません）で使えます。","a.sudam.name":"手談","a.sudam.from":"← 「ネットなしで打てるAI囲碁」から始まりました","a.sudam.desc":"KataGoとオフラインで対局し、勝率グラフで検討し、死活320題で実力を伸ばすオンデバイス囲碁アプリ。盤に石を置くと石のグループごとに生き・死にを判定し、急所と手順を示す死活分析も搭載（全結果は1日3回まで無料、判定はずっと無料）。韓国語・英語・日本語・中国語に対応し、アカウントも広告もデータ収集もありません。","a.voicenotes.name":"音声ノート","a.voicenotes.from":"← 「録音が議事録になればいいのに」から始まりました","a.voicenotes.desc":"録音すると端末内のAIがリアルタイムで書き起こすオンデバイス議事録。要約・タイムコード・聞き直しまで、音声はどこにも送信されません。インターネットなしで動作します。","a.singon.name":"シングオン — カラオケマイク","a.singon.from":"← 「家でもカラオケみたいに歌いたい」から始まりました","a.singon.desc":"YouTubeのカラオケ動画に歌声を重ねて歌うカラオケアプリ。スマホがマイクになり、Bluetoothスピーカーにつなげばリビングがカラオケルームに。音程とリズムを採点してキーをおすすめし、アカウント不要、録音は端末内にだけ残ります。曲の後にたまに広告が出ますが、買い切りで消せます。","a.fretwise.name":"Fretwise — ギター練習","a.fretwise.from":"← 「ギターコードの押さえ方を教えて」から始まりました","a.fretwise.desc":"指板でコードの押さえ方を覚え、進行で練習するギター・ウクレレ学習アプリ。上達を追うAIコーチが今日練習するコードを選び、民謡・童謡の曲集をアプリがテンポに合わせて演奏するので一緒に弾けます。消音スイッチがオンでも音が鳴り、すべて端末内で動作します。","a.lottolab.name":"ロトラボ","a.lottolab.from":"← 「ロトの番号を代わりに選んで」から始まりました","a.lottolab.desc":"過去の当選データを統計で分析して番号を生成し、保存・管理できるロト補助アプリ。当選データをアプリに内蔵しているので、インターネットなしでも動作します。韓国のApp Storeではまだ入手できません。","a.cardly.name":"Cardly","a.cardly.from":"← 「名刺を撮ったら連絡先に整理」から始まりました","a.cardly.desc":"名刺をカメラで撮ると、端末内のOCRが名前と連絡先を読み取って整理する名刺CRM。連絡先への保存からExcel書き出しまで、名刺データはどこにも送信されません。名刺50枚まで無料、無制限の保存は買い切りで使えます。","a.ttorang.name":"Ttorang","a.ttorang.from":"← 「親のための脳トレゲーム」から始まりました","a.ttorang.desc":"記憶力と集中力を目覚めさせる脳トレゲーム集。大きな文字とかんたんな操作でシニアの方も気軽に楽しめ、記録は端末内にだけ保存されます。すべてのトレーニングが無料で、韓国語・英語・日本語・中国語（簡体字・繁体字）の5言語に対応しています。","a.dailymap.name":"DailyMap","a.dailymap.from":"← 「近くのお店を探してくれる地図」から始まりました","a.dailymap.desc":"周辺のスポットを検索し、お気に入りや経路案内までつなぐ地図アプリ。OpenStreetMapベースでアカウント不要、検索履歴は端末内にだけ残ります。","a.aiemail.name":"AIメール返信","a.aiemail.from":"← 「返信メールを代わりに書いてくれるAI」から始まりました","a.aiemail.desc":"受け取ったメールを貼り付けると、AIが状況と口調に合った返信を代わりに書くアプリ。丁寧・親しみやすいなどのトーンを選んで仕上げられます。","a.malmoi.name":"マルモイ","a.malmoi.from":"← 「外国人の友だちのためのTOPIK勉強アプリ」から始まりました","a.malmoi.desc":"国立国語院『韓国語基礎辞典』の語彙約4万4千語と、文法・読解・聴解・作文でTOPIKに備える韓国語学習アプリ。標準発音法のルールエンジンが 값이[갑씨]・국물[궁물] のような実際の発音を教え、初級・中級の単語は5言語の語釈まで、すべて端末内で動作します。1級はすべて無料、全体はサブスクまたは買い切りの永久ライセンスで使えます。","a.kotoba.name":"コトバ","a.kotoba.from":"← 「日本語試験対策の単語帳」から始まりました","a.kotoba.desc":"漢字2,230字と語彙約2万1千語をN5〜N1のレベル別に覚え、文の聴解まで練習できるJLPT対策アプリ。音声は端末内蔵の読み上げで再生されるので、インターネットなしで勉強できます。","a.voca.name":"Voca 通訳","a.voca.from":"← 「ネットがなくても使える通訳機」から始まりました","a.voca.desc":"話すとすぐに翻訳して読み上げるオフライン通訳アプリ。音声認識・翻訳・読み上げがすべて端末内で動くので、海外でもインターネットなしで使え、会話の内容はどこにも送信されません。通訳はすべて無料、シーン別会話集の全体は買い切りで使えます。","a.studentlife.name":"留学生活","a.studentlife.from":"← 「韓国に来た留学生のためのアプリ」から始まりました","a.studentlife.desc":"韓国の留学生のための必須アシスタント。在留期限のD-day通知、アルバイト時間の計算、定着チェックリスト、GPA換算に生活ガイドまで — 6言語で、アカウントなしに端末内で動作します。","a.careercompass.name":"進路コンパス","a.careercompass.from":"← 「自分の性格に合う専攻を探したい」から始まりました","a.careercompass.desc":"性格タイプ診断で自分に合う専攻と職業をおすすめする進路探しアプリ。結果の記録・タイプ比較・シェアカードに5言語で対応し、診断と採点はすべて端末内で行われます。","a.chess.name":"チェスコーチ","a.chess.from":"← 「チェスの相手がいない」から始まりました","a.chess.desc":"端末内のAIとチェスを指し、ヒントや振り返りまで受けられるチェスアプリ。パズル1,000問と5言語に対応し、インターネットなしでも動作します。ヒントはいつでも無料。広告はアプリを開いたときにたまに出るだけで、対局中・パズル中には出ません。","a.qcity.name":"Q-City","a.qcity.from":"← 「自分の手で街を育ててみたい」から始まりました","a.qcity.desc":"区画を置き、電力・水道・交通・予算をやりくりして街を育てるシミュレーション。汚染・犯罪・災害までがひとつの経済でつながり、マップを4方向に回して建物の裏まで確認でき、火災現場へすぐ移動できます。計算はすべて端末内で行うので、インターネットなしで楽しめます。5言語対応。","a.arcade.name":"思い出のゲームセンター","a.arcade.from":"← 「近所のゲームセンターのあのゲームをもう一度」から始まりました","a.arcade.desc":"自作のオリジナルアーケードゲーム27種を集めたゲームセンター。1回が短いのですきま時間にすぐ遊べ、広告も課金もアカウントもありません。","a.bpdiary.name":"血圧手帳","a.bpdiary.from":"← 「受診前に家で測った血圧の平均を聞かれた」から始まりました","a.bpdiary.desc":"受診前の7日間、朝と夜に血圧を測るよう案内し、医師が見る家庭血圧の平均を1行にまとめる手帳。大きな数字パッドで入力し、7・30・90日の平均と推移を診察用の1画面で確認できます。記録は端末内にだけ残ります。","a.tsumego.name":"手談 詰碁","a.tsumego.from":"← 「囲碁の死活問題を毎日少しずつ解きたい」から始まりました","a.tsumego.desc":"正解がひとつだけであることを証明した死活318問を、入門から最上級まで6段階で。1〜2段階の106問は無料、間違えた問題は自動で集めて解き直せます。広告なし・会員登録なし、インターネットなしで解けます。","a.hanja.name":"漢字級数","a.hanja.from":"← 「漢字検定をスマホひとつで準備したい」から始まりました","a.hanja.desc":"韓国の漢字検定（8級〜4級）の配当漢字1,000字と漢字語1,787語を、訓と音・部首・総画数とともに覚える漢字学習アプリ。本番どおりの構成の模擬試験、なぞり書きで画数を当てる書き取り練習、間違えたものだけを出し直す間隔反復の復習まで全級無料で、サーバー・ログイン・広告なしに端末内で動作します。","a.english.name":"英語試験トレーナー","a.english.from":"← 「登録なしですぐ解けるTOEIC勉強アプリ」から始まりました","a.english.desc":"TOEIC形式のLC Part 2〜4・RC Part 5〜7を、オリジナル問題と韓国語の解説で練習するアプリ。ディクテーション訓練、間隔反復の単語帳、自動でたまる間違いノート、ミニ模試まで全機能無料で、会員登録なしに学習記録は端末内にだけ残ります。","a.market.name":"ご近所マーケット","a.market.from":"← 「ご近所どうしで安心してやり取りするフリマ」から始まりました","a.market.desc":"会社のサーバーを使わず、ご近所さんと招待コードを交換して端末どうしを直接つなぐ地域のフリマ・おゆずりアプリ。出品リストと1対1チャットはお互いの端末にだけ残り、通報・ブロックと6言語に対応。アカウントも広告もなく、すべて無料です。","a.warlords.name":"群雄天下","a.warlords.from":"← 「ガチャなしで天下統一まで遊べる三国戦略」から始まりました","a.warlords.desc":"後漢末の中原を舞台に、内政・外交・計略・戦闘・対決を1か月ずつ進めるターン制戦略シミュレーション。シナリオ4本と短いチャレンジ4本、難易度4段階を収録し、肖像と能力値はオリジナルです。ガチャ・広告・アプリ内課金・アカウントがなく完全無料、機内モードでも最後まで遊べます。5言語対応。","a.next.name":"次のプロダクト","a.next.from":"← いま届いているアイデアから","a.next.desc":"皆さんから届いたアイデアのひとつが、次のプロダクトになります。"},"zh-Hans":{"title":"creativelab-everyone — 每个人的创意都能变成应用","meta.desc":"无论是谁的创意，我们都能把它做成应用和服务。把你想到的那一句话发给我们吧。","lang.label":"语言","pg.prev":"上一页","pg.next":"下一页","pg.products":"产品列表分页","pg.ideas":"创意墙分页","nav.products":"产品","nav.how":"流程","nav.cta":"提交创意","hero.eyebrow":"creative lab · 大家的创意","hero.h1":"每个人的创意<br>都能变成<span class=\"hl\">应用和服务<\/span>。","hero.p":"把脑海中闪过的想法发给我们。一行笔记，就能变成真正有人在用的产品。欢迎任何人的创意。","flow.note":"“有没有能同时看农历的日历？”","flow.arrow":"─ 动手做 ─▶","flow.prod":"<span class=\"d\">应用<\/span> 韩国日历","ideas.h2":"创意墙","ideas.note":"这里贴着的每一张，都始于某个人的一句话。","ideas.add":"+ 你的<br>创意","products.h2":"已经做成的产品","products.note":"真正上线的创意。","how.h2":"我们怎么做","step1.h":"创意","step1.p":"任何人都可以用一句话发来。“要是有这样的东西就好了”就够了。","step2.h":"一起打磨","step2.p":"只留下真正需要的功能，迅速做成能用的样子。","step3.h":"上线","step3.p":"以应用和服务的形式发布，并在使用中不断改进。","invite.h":"把你的创意发给我们","invite.p":"不必多宏大，一句话就能开始。","invite.a":"提交创意 →","foot.tag":"把大家的创意做成应用和服务","foot.mail":"发送邮件","foot.about":"公司介绍","l.tester":"① 加入测试者群组","l.android":"② ▶ 参与 Android 测试","l.privacy":"隐私政策","l.intl":" App Store（韩国以外）","l.idea":"提交创意","st.live":"已在 App Store 上架","st.live2":"App Store · Google Play 已上架","st.intl":"已在海外 App Store 上架 · 韩国区筹备中","st.proto":"设计中","s.1":"能同时看农历的日历","s.2":"提醒我吃药的应用","s.3":"我们小区的倒垃圾日提醒","s.4":"全家一起用的购物清单","s.5":"30天运动习惯挑战","s.6":"推荐适合今天天气的歌","s.7":"把网页视频放到电视上看","s.8":"不用联网的AI围棋","s.9":"教我按吉他和弦的应用","s.10":"替我选乐透号码的应用","s.11":"在家也能像KTV一样唱","s.12":"拍下名片就存成联系人","s.13":"给爸妈的大脑训练游戏","s.14":"找附近店铺的地图","s.15":"替我写回信的AI","s.16":"给外国朋友的TOPIK学习应用","s.17":"不去照相馆也能拍证件照","s.18":"备考日语的单词本","s.19":"没网也能用的翻译机","s.20":"来韩留学生的助手应用","s.21":"找适合我性格的专业","s.22":"没人陪我下国际象棋","s.23":"没人陪我下韩国象棋","s.24":"亲手打造一座城市","s.25":"汉字等级考试备考应用","s.26":"免注册的TOEIC学习应用","s.27":"只在邻居之间的二手交易","s.28":"没有抽卡的三国策略","a.janggi.name":"AI韩国象棋","a.janggi.from":"← 源自“没人陪我下一盘韩国象棋”","a.janggi.desc":"按正式规则下韩国传统象棋——4种开局摆法、停一手、重复局面判和、计分制（贴1.5分）一应俱全。5级难度的AI在设备内运行，开着飞行模式也能下；新引擎难度越高就真的算得越深，并在对局画面如实显示刚刚计算的深度。提示随时免费；广告只在打开应用时偶尔出现，对局和解题时不会出现。支持5种语言，无服务器、无需登录。","a.idphoto.name":"证件照工作室","a.idphoto.from":"← 源自“拍一张证件照还得跑去照相馆吗？”","a.idphoto.desc":"把一张人像照片调整成35×45mm等几十种规格尺寸的照片尺寸工具。识别脸部位置自动裁切，把背景换成纯色，再检查头部高度、眼睛高度、光线等11个项目并给出提示。照片不会离开设备。","a.calendar.name":"韩国日历","a.calendar.from":"← 源自“能看农历的日历”","a.calendar.desc":"一眼看清农历、公众假日和干支的韩国日历。主屏幕小组件也显示农历日期，所有计算都在设备内完成。刚打开应用时或正在点按屏幕时不会弹出广告。","a.song.name":"今日之歌","a.song.from":"← 源自“推荐一首今天听的歌”","a.song.desc":"根据当天的天气、心情、喜好和运势，每天推荐一首歌。还有各国热门榜、按曲风浏览和直播电台。点一下“完整收听”，就能在YouTube上连续播放推荐曲目。","a.mytv.name":"myTV","a.mytv.from":"← 源自“想把网页视频放到电视上看”","a.mytv.desc":"自动识别你在网页上看的视频，一键投到Chromecast或智能电视。不是屏幕镜像，而是直接传送原始视频流，以原画质播放，手机则变成遥控器。投屏永久免费；播放队列、字幕搜索等附加功能一次性购买即可解锁（非订阅）。","a.sudam.name":"手谈","a.sudam.from":"← 源自“不用联网也能下的AI围棋”","a.sudam.desc":"离线与KataGo对弈、用胜率曲线复盘、靠320道死活题提升棋力的本地围棋应用。在棋盘上摆好棋子，死活分析会逐块判定死活，并给出要点和后续手顺（完整结果每天免费3次，死活判定始终免费）。支持韩语、英语、日语和中文，无账号、无广告、不收集数据。","a.voicenotes.name":"语音笔记","a.voicenotes.from":"← 源自“要是录音能直接变成会议记录就好了”","a.voicenotes.desc":"录音时由设备内的AI实时转写的本地会议记录。摘要、时间码、回放一应俱全，音频不会被传送到任何地方。无需联网即可使用。","a.singon.name":"SingOn — 卡拉OK麦克风","a.singon.from":"← 源自“在家也想像在KTV一样唱歌”","a.singon.desc":"跟着YouTube卡拉OK视频开唱的K歌应用。手机变成麦克风，连上蓝牙音箱，客厅就成了KTV。会给音准和节拍打分并推荐合适的调，无需账号，录音只保存在设备上。唱完一首后偶尔会出现广告，一次性购买即可去除。","a.fretwise.name":"Fretwise — 学吉他","a.fretwise.from":"← 源自“教我吉他和弦怎么按”","a.fretwise.desc":"在指板上学和弦指法、用和弦进行来练习的吉他·尤克里里学习应用。追踪你进度的AI教练会挑选今天要练的和弦，应用还会按节拍弹奏民谣、童谣曲集，让你跟着一起弹。即使打开静音开关也有声音，全部在设备内运行。","a.lottolab.name":"LottoLab","a.lottolab.from":"← 源自“帮我选乐透号码”","a.lottolab.desc":"用统计方法分析历届开奖数据来生成号码，并可保存、管理的乐透助手。开奖数据内置在应用中，无需联网也能使用。目前在韩国区App Store还无法下载。","a.cardly.name":"Cardly","a.cardly.from":"← 源自“拍下名片就整理成联系人”","a.cardly.desc":"用相机拍下名片，设备内的OCR就会读取姓名和联系方式并整理好的名片CRM。从存入通讯录到导出Excel，名片数据不会传送到任何地方。50张以内免费，一次性购买即可无限保存。","a.ttorang.name":"Ttorang","a.ttorang.from":"← 源自“给爸妈玩的大脑训练游戏”","a.ttorang.desc":"唤醒记忆力和专注力的大脑训练游戏合集。大字体、操作简单，长辈也能轻松上手，记录只保存在设备内。所有训练全部免费，支持韩语、英语、日语、中文（简体、繁体）5种语言。","a.dailymap.name":"DailyMap","a.dailymap.from":"← 源自“帮我找附近店铺的地图”","a.dailymap.desc":"搜索身边地点，还能收藏、导航的地图应用。基于OpenStreetMap，无需账号，搜索记录只保存在设备内。","a.aiemail.name":"AI邮件回复","a.aiemail.from":"← 源自“替我写回信的AI”","a.aiemail.desc":"粘贴收到的邮件，AI就会按场合和语气替你写好回复。可以选择正式、亲切等语气再加以润色。","a.malmoi.name":"Malmoi","a.malmoi.from":"← 源自“给外国朋友用的TOPIK学习应用”","a.malmoi.desc":"收录韩国国立国语院《韩国语基础词典》约4.4万个词汇，并通过语法、阅读、听力、写作备考TOPIK的韩语学习应用。标准发音规则引擎教你 값이[갑씨]、국물[궁물] 这样的实际读音，初级和中级词汇还附有5种语言释义，全部在设备内运行。1级内容全部免费，完整内容可通过订阅或终身买断解锁。","a.kotoba.name":"Kotoba","a.kotoba.from":"← 源自“备考日语的单词本”","a.kotoba.desc":"按N5～N1级别学习2,230个汉字和约2.1万个词汇，还能练习句子听力的JLPT备考应用。语音由设备内置的TTS播放，无需联网也能学习。","a.voca.name":"Voca 口译","a.voca.from":"← 源自“没网也能用的翻译机”","a.voca.desc":"一开口就立即翻译并朗读的离线口译应用。语音识别、翻译、朗读全部在设备内完成，出国在外没有网络也能用，对话内容不会传送到任何地方。口译功能全部免费，完整的情景会话手册一次性购买即可解锁。","a.studentlife.name":"韩国留学生活","a.studentlife.from":"← 源自“给来韩国的留学生用的助手应用”","a.studentlife.desc":"在韩留学生的必备助手。居留到期D-day提醒、打工时长计算、定居清单、GPA换算以及生活指南——支持6种语言，无需账号，全部在设备内运行。","a.careercompass.name":"职业罗盘","a.careercompass.from":"← 源自“找到适合我性格的专业”","a.careercompass.desc":"通过性格类型测试推荐适合你的专业和职业的升学就业探索应用。支持结果记录、类型对比和分享卡片，提供5种语言，测试和评分全部在设备内完成。","a.chess.name":"国际象棋教练","a.chess.from":"← 源自“没人陪我下国际象棋”","a.chess.desc":"与设备内的AI下国际象棋，还能获得提示和复盘的国际象棋应用。收录1,000道棋谜，支持5种语言，无需联网也能使用。提示随时免费；广告只在打开应用时偶尔出现，对局和解谜时不会出现。","a.qcity.name":"Q-City","a.qcity.from":"← 源自“亲手打造一座城市”","a.qcity.desc":"规划分区，统筹电力、供水、交通和预算，让城市不断成长的模拟游戏。污染、犯罪和灾害都交织在同一个经济系统里；地图可向四个方向旋转，看清建筑背后，还能一键跳到火灾现场。所有计算都在设备内完成，无需联网也能玩。支持5种语言。","a.arcade.name":"怀旧游戏厅","a.arcade.from":"← 源自“想再玩一次街边游戏厅的那些游戏”","a.arcade.desc":"汇集27款自制原创街机游戏的游戏厅。一局很短，有空就能马上玩，没有广告、没有内购，也不用账号。","a.bpdiary.name":"血压手账","a.bpdiary.from":"← 源自“医生问我在家量的血压平均是多少”","a.bpdiary.desc":"引导你在就诊前7天每天早晚测量血压，并把医生要看的家庭血压平均值整理成一行的血压手账。用大号数字键盘输入，在一个就诊画面里查看7天、30天、90天的平均值与趋势。记录只保存在设备内。","a.tsumego.name":"手谈死活","a.tsumego.from":"← 源自“想每天做几道围棋死活题”","a.tsumego.desc":"318道经证明只有唯一正解的死活题，从入门到最高级分为6个阶段。第1–2阶段的106题免费，做错的题会自动收集起来重做。无广告、免注册，不联网也能解题。","a.hanja.name":"汉字级数","a.hanja.from":"← 源自“只用一部手机准备汉字等级考试”","a.hanja.desc":"面向韩国汉字等级考试，学习8级～4级配定汉字1,000字和汉字词1,787个（附训读音、部首、总笔画）的汉字学习应用。与真实考试结构一致的模拟考试、描写并判断笔画数的书写练习、只复习错题的间隔重复复习——所有级别全部免费，无服务器、无需登录、无广告，全部在设备内运行。","a.english.name":"英语考试训练","a.english.from":"← 源自“不用注册就能刷题的TOEIC学习应用”","a.english.desc":"用原创题目和韩语解析练习TOEIC题型LC Part 2～4、RC Part 5～7的应用。听写训练、间隔重复单词本、自动积累的错题本、迷你模拟考全部免费，无需注册，学习记录只保存在设备上。","a.market.name":"我们小区市场","a.market.from":"← 源自“只在信得过的邻居之间交易二手”","a.market.desc":"不经过公司服务器，与邻居交换邀请码、让设备直接相连的社区二手交易与赠送应用。物品列表和一对一聊天只保存在双方的设备上，支持举报、拉黑和6种语言。无需账号、没有广告，完全免费。","a.warlords.name":"群雄天下","a.warlords.from":"← 源自“没有抽卡、能一局玩到底的三国策略”","a.warlords.desc":"以东汉末年的中原为舞台，按月推进内政、外交、计略、战斗与对决的回合制策略模拟游戏。收录4个剧本、4个短篇挑战和4级难度，头像与能力值均为原创。没有抽卡、广告、内购和账号，完全免费，开着飞行模式也能玩到最后。支持5种语言。","a.next.name":"下一个产品","a.next.from":"← 来自正在征集的创意","a.next.desc":"你们发来的创意之一，将成为下一个产品。"},"zh-Hant":{"title":"creativelab-everyone — 每個人的點子都能變成 App","meta.desc":"無論是誰的點子，我們都能把它做成 App 與服務。把你想到的那一句話寄給我們吧。","lang.label":"語言","pg.prev":"上一頁","pg.next":"下一頁","pg.products":"產品列表分頁","pg.ideas":"點子牆分頁","nav.products":"產品","nav.how":"流程","nav.cta":"提交點子","hero.eyebrow":"creative lab · 大家的點子","hero.h1":"每個人的點子<br>都能變成<span class=\"hl\">App 與服務<\/span>。","hero.p":"把腦中閃過的想法寄給我們。一行筆記，就能變成真正有人在用的產品。歡迎任何人的點子。","flow.note":"「有沒有能同時看農曆的月曆？」","flow.arrow":"─ 動手做 ─▶","flow.prod":"<span class=\"d\">App<\/span> 韓國月曆","ideas.h2":"點子牆","ideas.note":"這裡貼著的每一張，都始於某個人的一句話。","ideas.add":"+ 你的<br>點子","products.h2":"已經做成的產品","products.note":"真正上架的點子。","how.h2":"我們怎麼做","step1.h":"點子","step1.p":"任何人都能用一句話寄來。「要是有這種東西就好了」就夠了。","step2.h":"一起打磨","step2.p":"只留下真正需要的功能，快速做成能用的樣子。","step3.h":"上架","step3.p":"以 App 與服務的形式推出，並在使用中持續調整。","invite.h":"把你的點子寄給我們","invite.p":"不必多了不起，一句話就能開始。","invite.a":"提交點子 →","foot.tag":"把大家的點子做成 App 與服務","foot.mail":"寄送郵件","foot.about":"公司介紹","l.tester":"① 加入測試者群組","l.android":"② ▶ 參與 Android 測試","l.privacy":"隱私權政策","l.intl":" App Store（韓國以外）","l.idea":"提交點子","st.live":"已於 App Store 上架","st.live2":"App Store · Google Play 已上架","st.intl":"已於海外 App Store 上架 · 韓國區準備中","st.proto":"設計中","s.1":"能同時看農曆的月曆","s.2":"提醒我吃藥的 App","s.3":"我們社區的倒垃圾日提醒","s.4":"全家一起用的購物清單","s.5":"30天運動習慣挑戰","s.6":"推薦適合今天天氣的歌","s.7":"把網頁影片放到電視上看","s.8":"不用連網的AI圍棋","s.9":"教我按吉他和弦的 App","s.10":"替我選樂透號碼的 App","s.11":"在家也能像KTV一樣唱","s.12":"拍下名片就存成聯絡人","s.13":"給爸媽的大腦訓練遊戲","s.14":"找附近店家的地圖","s.15":"替我寫回信的AI","s.16":"給外國朋友的TOPIK學習 App","s.17":"不去照相館也能拍證件照","s.18":"準備日語考試的單字本","s.19":"沒網路也能用的翻譯機","s.20":"來韓留學生的助手 App","s.21":"找適合我個性的科系","s.22":"沒人陪我下西洋棋","s.23":"沒人陪我下韓國象棋","s.24":"親手打造一座城市","s.25":"漢字等級考試備考 App","s.26":"免註冊的TOEIC學習 App","s.27":"只在鄰居之間的二手交易","s.28":"沒有抽卡的三國策略","a.janggi.name":"AI韓國象棋","a.janggi.from":"← 源自「沒人陪我下一盤韓國象棋」","a.janggi.desc":"依正式規則下韓國傳統象棋——4種開局擺法、停一手、重複局面判和、計分制（貼1.5分）一應俱全。5級難度的AI在裝置內運行，開著飛航模式也能下；新引擎難度越高就真的算得越深，並在對局畫面如實顯示剛剛計算的深度。提示隨時免費；廣告只在打開App時偶爾出現，對局與解題時不會出現。支援5種語言，無伺服器、免登入。","a.idphoto.name":"證件照工作室","a.idphoto.from":"← 源自「拍一張證件照還得跑去照相館嗎？」","a.idphoto.desc":"把一張人像照片調整成35×45mm等數十種規格尺寸的照片尺寸工具。辨識臉部位置自動裁切，把背景換成純色，再檢查頭部高度、眼睛高度、光線等11個項目並給予提示。照片不會離開裝置。","a.calendar.name":"韓國月曆","a.calendar.from":"← 源自「能看農曆的月曆」","a.calendar.desc":"一眼看清農曆、國定假日與干支的韓國月曆。主畫面小工具也顯示農曆日期，所有計算都在裝置內完成。剛開啟App時或正在點按螢幕時不會跳出廣告。","a.song.name":"今日之歌","a.song.from":"← 源自「推薦一首今天聽的歌」","a.song.desc":"依當天的天氣、心情、喜好與運勢，每天推薦一首歌。還有各國熱門榜、依曲風瀏覽與直播電台。點一下「完整收聽」，就能在YouTube上連續播放推薦歌曲。","a.mytv.name":"myTV","a.mytv.from":"← 源自「想把網頁影片放到電視上看」","a.mytv.desc":"自動偵測你在網頁上看的影片，一鍵投放到Chromecast或智慧電視。不是螢幕鏡像，而是直接傳送原始串流，以原畫質播放，手機則變成遙控器。投放永遠免費；播放佇列、字幕搜尋等附加功能一次購買即可解鎖（非訂閱）。","a.sudam.name":"手談","a.sudam.from":"← 源自「不用連網也能下的AI圍棋」","a.sudam.desc":"離線與KataGo對弈、用勝率曲線復盤、靠320道死活題提升棋力的本機圍棋App。在棋盤上擺好棋子，死活分析會逐塊判定死活，並給出要點與後續手順（完整結果每天免費3次，死活判定始終免費）。支援韓語、英語、日語與中文，無帳號、無廣告、不蒐集資料。","a.voicenotes.name":"語音筆記","a.voicenotes.from":"← 源自「要是錄音能直接變成會議紀錄就好了」","a.voicenotes.desc":"錄音時由裝置內的AI即時轉寫的本機會議紀錄。摘要、時間碼、重聽一應俱全，音訊不會被傳送到任何地方。不需連網即可使用。","a.singon.name":"SingOn — 卡拉OK麥克風","a.singon.from":"← 源自「在家也想像在KTV一樣唱歌」","a.singon.desc":"跟著YouTube卡拉OK影片開唱的K歌App。手機變成麥克風，接上藍牙喇叭，客廳就成了KTV。會為音準與節拍評分並推薦合適的調，免帳號，錄音只留在裝置上。唱完一首後偶爾會出現廣告，一次購買即可移除。","a.fretwise.name":"Fretwise — 學吉他","a.fretwise.from":"← 源自「教我吉他和弦怎麼按」","a.fretwise.desc":"在指板上學和弦按法、用和弦進行來練習的吉他·烏克麗麗學習App。追蹤你進度的AI教練會挑選今天要練的和弦，App還會依節拍彈奏民謠、童謠曲集，讓你跟著一起彈。即使開啟靜音開關也有聲音，全部在裝置內運行。","a.lottolab.name":"LottoLab","a.lottolab.from":"← 源自「幫我選樂透號碼」","a.lottolab.desc":"以統計分析歷屆開獎資料來產生號碼，並可儲存、管理的樂透小幫手。開獎資料內建於App中，不需連網也能使用。目前在韓國區App Store尚無法下載。","a.cardly.name":"Cardly","a.cardly.from":"← 源自「拍下名片就整理成聯絡人」","a.cardly.desc":"用相機拍下名片，裝置內的OCR就會讀取姓名與聯絡資料並整理好的名片CRM。從存入聯絡人到匯出Excel，名片資料不會傳送到任何地方。50張以內免費，一次購買即可無限儲存。","a.ttorang.name":"Ttorang","a.ttorang.from":"← 源自「給爸媽玩的大腦訓練遊戲」","a.ttorang.desc":"喚醒記憶力與專注力的大腦訓練遊戲合集。大字體、操作簡單，長輩也能輕鬆上手，紀錄只儲存在裝置內。所有訓練全部免費，支援韓語、英語、日語、中文（簡體、繁體）5種語言。","a.dailymap.name":"DailyMap","a.dailymap.from":"← 源自「幫我找附近店家的地圖」","a.dailymap.desc":"搜尋身邊地點，還能收藏、導航的地圖App。以OpenStreetMap為基礎，免帳號，搜尋紀錄只留在裝置內。","a.aiemail.name":"AI郵件回覆","a.aiemail.from":"← 源自「替我寫回信的AI」","a.aiemail.desc":"貼上收到的郵件，AI就會依情境與語氣替你寫好回覆。可以選擇正式、親切等語氣再加以潤飾。","a.malmoi.name":"Malmoi","a.malmoi.from":"← 源自「給外國朋友用的TOPIK學習App」","a.malmoi.desc":"收錄韓國國立國語院《韓國語基礎辭典》約4.4萬個詞彙，並透過文法、閱讀、聽力、寫作準備TOPIK的韓語學習App。標準發音規則引擎教你 값이[갑씨]、국물[궁물] 這樣的實際讀音，初級與中級詞彙還附有5種語言釋義，全部在裝置內運行。1級內容全部免費，完整內容可透過訂閱或終身買斷解鎖。","a.kotoba.name":"Kotoba","a.kotoba.from":"← 源自「準備日語考試的單字本」","a.kotoba.desc":"依N5～N1級別學習2,230個漢字與約2.1萬個詞彙，還能練習句子聽力的JLPT備考App。語音由裝置內建的TTS播放，不需連網也能學習。","a.voca.name":"Voca 口譯","a.voca.from":"← 源自「沒網路也能用的翻譯機」","a.voca.desc":"一開口就立即翻譯並朗讀的離線口譯App。語音辨識、翻譯、朗讀全部在裝置內完成，出國在外沒有網路也能用，對話內容不會傳送到任何地方。口譯功能全部免費，完整的情境會話手冊一次購買即可解鎖。","a.studentlife.name":"韓國留學生活","a.studentlife.from":"← 源自「給來韓國的留學生用的助手App」","a.studentlife.desc":"在韓留學生的必備助手。居留到期D-day提醒、打工時數計算、定居清單、GPA換算以及生活指南——支援6種語言，免帳號，全部在裝置內運行。","a.careercompass.name":"職涯羅盤","a.careercompass.from":"← 源自「找到適合我個性的科系」","a.careercompass.desc":"透過性格類型測驗推薦適合你的科系與職業的生涯探索App。支援結果紀錄、類型比較與分享卡片，提供5種語言，測驗與計分全部在裝置內完成。","a.chess.name":"西洋棋教練","a.chess.from":"← 源自「沒人陪我下西洋棋」","a.chess.desc":"與裝置內的AI下西洋棋，還能獲得提示與覆盤的西洋棋App。收錄1,000道棋謎，支援5種語言，不需連網也能使用。提示隨時免費；廣告只在打開App時偶爾出現，對局與解謎時不會出現。","a.qcity.name":"Q-City","a.qcity.from":"← 源自「親手打造一座城市」","a.qcity.desc":"規劃分區，統籌電力、供水、交通與預算，讓城市不斷成長的模擬遊戲。汙染、犯罪與災害都交織在同一個經濟系統裡；地圖可向四個方向旋轉，看清建築背後，還能一鍵跳到火災現場。所有計算都在裝置內完成，不需連網也能玩。支援5種語言。","a.arcade.name":"懷舊遊戲廳","a.arcade.from":"← 源自「想再玩一次巷口遊戲廳的那些遊戲」","a.arcade.desc":"匯集27款自製原創街機遊戲的遊戲廳。一局很短，有空就能馬上玩，沒有廣告、沒有內購，也不用帳號。","a.bpdiary.name":"血壓手帳","a.bpdiary.from":"← 源自「醫師問我在家量的血壓平均是多少」","a.bpdiary.desc":"引導你在看診前7天每天早晚量血壓，並把醫師要看的居家血壓平均值整理成一行的血壓手帳。用大號數字鍵盤輸入，在一個看診畫面裡查看7天、30天、90天的平均值與趨勢。紀錄只留在裝置內。","a.tsumego.name":"手談死活","a.tsumego.from":"← 源自「想每天做幾道圍棋死活題」","a.tsumego.desc":"318道經證明只有唯一正解的死活題，從入門到最高級分為6個階段。第1–2階段的106題免費，做錯的題會自動收集起來重做。無廣告、免註冊，不連網也能解題。","a.hanja.name":"漢字級數","a.hanja.from":"← 源自「只用一支手機準備漢字等級考試」","a.hanja.desc":"針對韓國漢字等級考試，學習8級～4級配定漢字1,000字與漢字詞1,787個（附訓讀音、部首、總筆畫）的漢字學習App。與真實考試結構一致的模擬考、描寫並判斷筆畫數的書寫練習、只複習錯題的間隔重複複習——所有級別全部免費，無伺服器、免登入、無廣告，全部在裝置內運行。","a.english.name":"英語考試訓練","a.english.from":"← 源自「不用註冊就能練題的TOEIC學習App」","a.english.desc":"用原創題目與韓語解析練習TOEIC題型LC Part 2～4、RC Part 5～7的App。聽寫訓練、間隔重複單字本、自動累積的錯題本、迷你模擬考全部免費，免註冊，學習紀錄只留在裝置上。","a.market.name":"我們社區市場","a.market.from":"← 源自「只在信得過的鄰居之間交易二手」","a.market.desc":"不經過公司伺服器，與鄰居交換邀請碼、讓裝置直接相連的社區二手交易與贈送App。物品清單與一對一聊天只留在雙方的裝置上，支援檢舉、封鎖與6種語言。免帳號、無廣告，完全免費。","a.warlords.name":"群雄天下","a.warlords.from":"← 源自「沒有抽卡、能一局玩到底的三國策略」","a.warlords.desc":"以東漢末年的中原為舞台，按月推進內政、外交、計略、戰鬥與對決的回合制策略模擬遊戲。收錄4個劇本、4個短篇挑戰與4級難度，頭像與能力值皆為原創。沒有抽卡、廣告、內購與帳號，完全免費，開著飛航模式也能玩到最後。支援5種語言。","a.next.name":"下一個產品","a.next.from":"← 來自正在徵集的點子","a.next.desc":"你們寄來的點子之一，將成為下一個產品。"},"ko":{"title":"creativelab-everyone — 모두의 아이디어가 앱이 됩니다","meta.desc":"누구의 아이디어든 앱과 서비스로 만들어 드립니다. 떠오른 한 줄을 보내주세요.","lang.label":"언어","pg.prev":"이전 페이지","pg.next":"다음 페이지","pg.products":"제품 목록 페이지","pg.ideas":"아이디어 월 페이지"}};
+  var LANGS = ['ko', 'en', 'ja', 'zh-Hans', 'zh-Hant'];
+  var CUR = 'ko';
+  var ORIG = {};
+  var i18nEls = document.querySelectorAll('[data-i18n]');
+  Array.prototype.forEach.call(i18nEls, function (el) {
+    var k = el.getAttribute('data-i18n');
+    if (!(k in ORIG)) ORIG[k] = el.hasAttribute('data-i18n-html') ? el.innerHTML : el.textContent;
+  });
+  function tr(k) {
+    var t = I18N[CUR] && I18N[CUR][k];
+    if (t == null) t = I18N.ko[k];
+    if (t == null) t = ORIG[k];
+    return t == null ? '' : t;
+  }
+  function norm(tag) {
+    tag = String(tag || '').toLowerCase();
+    if (tag.indexOf('zh') === 0) return /hant|-tw|-hk|-mo/.test(tag) ? 'zh-Hant' : 'zh-Hans';
+    var b = tag.split('-')[0];
+    return (b === 'ko' || b === 'en' || b === 'ja') ? b : null;
+  }
+  function pickLang() {
+    var q = /[?&]lang=([^&#]+)/.exec(location.search);
+    if (q) { var n = norm(decodeURIComponent(q[1])); if (n) return n; }
+    try { var s = localStorage.getItem('ce-lang'); if (LANGS.indexOf(s) >= 0) return s; } catch (e) {}
+    var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language];
+    for (var i = 0; i < list.length; i++) { var m = norm(list[i]); if (m) return m; }
+    return 'ko';
+  }
+  function applyLang(lang) {
+    CUR = LANGS.indexOf(lang) >= 0 ? lang : 'ko';
+    document.documentElement.lang = CUR;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i18n]'), function (el) {
+      var k = el.getAttribute('data-i18n');
+      var t = CUR === 'ko' ? ORIG[k] : tr(k);
+      if (t == null) return;
+      if (el.hasAttribute('data-i18n-html')) el.innerHTML = t; else el.textContent = t;
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-aria]'), function (el) {
+      el.setAttribute('aria-label', tr(el.getAttribute('data-i18n-aria')));
+    });
+    document.title = tr('title');
+    var md = document.querySelector('meta[name="description"]');
+    if (md) md.setAttribute('content', tr('meta.desc'));
+    var sel = document.getElementById('langSel');
+    if (sel) { sel.value = CUR; sel.setAttribute('aria-label', tr('lang.label')); }
+  }
+  applyLang(pickLang());
+  (function () {
+    var sel = document.getElementById('langSel');
+    if (!sel) return;
+    sel.addEventListener('change', function () {
+      applyLang(sel.value);
+      try { localStorage.setItem('ce-lang', CUR); } catch (e) {}
+    });
+  })();
+</script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
   var els = document.querySelectorAll('.reveal');
@@ -761,7 +874,8 @@
     var total = Math.ceil(items.length / PAGE_SIZE);
     var pager = document.createElement('nav');
     pager.className = 'pager';
-    pager.setAttribute('aria-label', opts.ariaLabel);
+    pager.setAttribute('aria-label', tr(opts.ariaKey));
+    pager.setAttribute('data-i18n-aria', opts.ariaKey);
     opts.container.parentNode.insertBefore(pager, opts.container.nextSibling);
 
     function show(page, scroll){
@@ -777,13 +891,14 @@
         b.textContent = label;
         if (o && o.current) b.setAttribute('aria-current', 'true');
         if (o && o.label) b.setAttribute('aria-label', o.label);
+        if (o && o.key) b.setAttribute('data-i18n-aria', o.key);
         if (target == null) b.disabled = true;
         else b.addEventListener('click', function(){ show(target, true); });
         pager.appendChild(b);
       }
-      btn('‹', page > 0 ? page - 1 : null, {label: '이전 페이지'});
+      btn('‹', page > 0 ? page - 1 : null, {label: tr('pg.prev'), key: 'pg.prev'});
       for (var p = 0; p < total; p++) btn(String(p + 1), p, {current: p === page});
-      btn('›', page < total - 1 ? page + 1 : null, {label: '다음 페이지'});
+      btn('›', page < total - 1 ? page + 1 : null, {label: tr('pg.next'), key: 'pg.next'});
       if (scroll) opts.scrollTo.scrollIntoView();
     }
     show(0, false);
@@ -794,7 +909,7 @@
     container: grid,
     items: Array.prototype.slice.call(grid.children),
     pageSize: 6,
-    ariaLabel: '제품 목록 페이지',
+    ariaKey: 'pg.products',
     scrollTo: document.getElementById('products')
   });
 
@@ -803,7 +918,7 @@
     container: wall,
     items: Array.prototype.slice.call(wall.querySelectorAll('.sticky:not(.add)')),
     pageSize: 8,
-    ariaLabel: '아이디어 월 페이지',
+    ariaKey: 'pg.ideas',
     scrollTo: document.getElementById('ideas')
   });
 </script>
