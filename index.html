@@ -3,182 +3,270 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<meta name="theme-color" content="#ffffff" />
 <link rel="icon" href="data:," />
-<title>creativelab-everyone — 모두의 아이디어가 앱이 됩니다</title>
-<meta name="description" content="누구의 아이디어든 앱과 서비스로 만들어 드립니다. 떠오른 한 줄을 보내주세요." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600&family=Gaegu:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet" />
+<title>creativelab-everyone — 모두의 아이디어가 앱이 됩니다</title>
+<meta name="description" content="누구의 아이디어든 앱과 서비스로 만들어 드립니다. 떠오른 한 줄을 보내주세요." />
 <style>
   :root{
-    --bg:#F7F6F2; --surface:#FFFFFF; --ink:#191815; --soft:#615E57; --line:#E0DDD4;
-    --indigo:#3A2BD4; --amber:#F4C95D; --mint:#A6DBAE; --sky:#A4CBF2; --coral:#F4A78D;
-    --display:'Fraunces',serif; --body:'Inter',sans-serif; --hand:'Gaegu',cursive;
+    color-scheme: light;
+    --bg:#ffffff; --bg-soft:#fbfbfd; --surface-2:#f5f5f7; --paddle:#e8e8ed;
+    --border:rgba(0,0,0,.09); --border-strong:rgba(0,0,0,.16);
+    --text:#1d1d1f; --text-mid:#424245; --text-muted:#6e6e73;
+    --accent:#0071e3; --accent-hover:#0077ed; --accent-link:#0066cc; --accent-soft:#f0f6ff; --accent-ink:#fff;
+    --live:#0a7d45; --new:#b64400; --violet:#8e5cf7;
+    --nav-bg:rgba(255,255,255,.72); --nav-border:rgba(0,0,0,.12);
+    --shadow-hover:0 14px 34px rgba(0,0,0,.10);
+    --fs-hero:clamp(2.6rem,1.1rem + 6.2vw,5.5rem);
+    --fs-display:clamp(2rem,1.25rem + 3.1vw,3.5rem);
+    --fs-h3:clamp(1.125rem,1rem + .6vw,1.5rem);
+    --fs-lede:clamp(1.0625rem,.95rem + .55vw,1.4375rem);
+    --fs-body:1.0625rem;
+    --radius:18px; --radius-lg:28px; --radius-full:980px;
+    --nav-h:48px; --gutter:22px; --wrap:1024px;
+    --ease:cubic-bezier(.28,.11,.32,1);
+    --font:-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Pretendard','Noto Sans KR','Malgun Gothic','Segoe UI','Helvetica Neue',sans-serif;
+    --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 6 6 6-6 6'/%3E%3C/svg%3E");
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
-  a{color:inherit}
-  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+  @media (max-width:640px){ :root{ --gutter:16px } }
+  html[lang="en"]{--font:-apple-system,BlinkMacSystemFont,system-ui,'Segoe UI','Helvetica Neue','Pretendard',Arial,sans-serif}
+  html[lang="ja"]{--font:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic','YuGothic','Meiryo','Noto Sans JP',system-ui,sans-serif}
+  html[lang="zh-Hans"]{--font:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',system-ui,sans-serif}
+  html[lang="zh-Hant"]{--font:-apple-system,BlinkMacSystemFont,'PingFang TC','Microsoft JhengHei','Noto Sans TC',system-ui,sans-serif}
 
-  /* 헤더 */
-  header{position:sticky;top:0;z-index:20;background:rgba(247,246,242,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .mark{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.02em}
-  .mark span{color:var(--indigo)}
-  .bar nav{display:flex;gap:22px;font-size:14px;color:var(--soft);align-items:center}
-  .bar nav a{text-decoration:none}
-  .bar nav a:hover{color:var(--ink)}
-  .bar nav a.cta{background:var(--ink);color:var(--bg);padding:9px 15px;border-radius:999px}
-  .bar nav a.cta:hover{background:var(--indigo)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg);scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:var(--fs-body);line-height:1.55;letter-spacing:-.01em;
+    overflow-wrap:anywhere;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  html[lang="ko"] body{word-break:keep-all}
+  html[lang="ja"] body,html[lang^="zh"] body{word-break:normal;line-break:strict;letter-spacing:0;line-height:1.65}
+  h1,h2,h3,h4{text-wrap:balance}
+  p{text-wrap:pretty}
+  a{color:inherit}
+  img{max-width:100%}
+  .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  :where(a,button,select,[tabindex]):focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+  /* 헤더 — 얇은 반투명 막대 */
+  header{position:sticky;top:0;z-index:100;height:var(--nav-h);background:var(--nav-bg);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--nav-border)}
+  @supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){ header{background:rgba(255,255,255,.96)} }
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;height:100%}
+  .mark{font-size:17px;font-weight:600;letter-spacing:-.02em;color:var(--text);white-space:nowrap}
+  .mark span{color:var(--accent)}
+  .bar nav{display:flex;align-items:center;gap:clamp(14px,2.4vw,28px);font-size:13px;letter-spacing:-.01em}
+  .bar nav a{text-decoration:none;color:var(--text)}
+  .bar nav a.navtext{opacity:.82;transition:opacity .2s var(--ease)}
+  .bar nav a.navtext:hover{opacity:1}
+  .bar nav a.cta{position:relative;display:inline-flex;align-items:center;min-height:28px;padding:5px 12px;border-radius:var(--radius-full);
+    background:var(--accent);color:var(--accent-ink);font-size:12px;font-weight:500;white-space:nowrap;transition:background-color .2s var(--ease)}
+  .bar nav a.cta::after{content:"";position:absolute;inset:-8px}
+  .bar nav a.cta:hover{background:var(--accent-hover)}
+  .lang{display:inline-flex;align-items:center;gap:6px;color:var(--text-muted)}
+  .lang svg{flex:none;width:14px;height:14px}
+  .lang select{-webkit-appearance:none;appearance:none;font:inherit;font-size:12px;font-weight:500;line-height:1;color:var(--text);cursor:pointer;
+    background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 9px center/10px;
+    border:1px solid var(--border-strong);border-radius:var(--radius-full);padding:6px 26px 6px 11px;min-height:28px;max-width:9.5em;transition:border-color .2s var(--ease)}
+  .lang select:hover{border-color:var(--text)}
+
+  /* 띠 — 흰색과 옅은 회색을 번갈아 */
+  .band{padding-block:clamp(64px,9vw,120px)}
+  .band-soft{background:var(--surface-2)}
+  .section-head{margin-bottom:clamp(36px,5vw,60px)}
+  .label h2{font-size:var(--fs-display);font-weight:700;letter-spacing:-.025em;line-height:1.07}
+  .note-line{font-size:var(--fs-lede);line-height:1.45;color:var(--text-muted);max-width:44ch;margin-top:16px}
 
   /* 히어로 */
-  .hero{padding:84px 0 30px;text-align:center}
-  .eyebrow{font-family:var(--hand);font-size:22px;color:var(--indigo);margin-bottom:14px}
-  .hero h1{font-family:var(--display);font-weight:700;letter-spacing:-.025em;line-height:1.06;
-    font-size:clamp(2.5rem,6.5vw,4.8rem);max-width:18ch;margin:0 auto}
-  .hero h1 .hl{position:relative;white-space:nowrap}
-  .hero h1 .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.08em;height:.34em;
-    background:var(--amber);z-index:-1;border-radius:3px;transform:rotate(-1deg)}
-  .hero p{margin:24px auto 0;font-size:clamp(1rem,2.2vw,1.18rem);color:var(--soft);max-width:42ch}
+  .hero{padding-top:clamp(72px,12vw,160px);padding-bottom:clamp(56px,8vw,110px);text-align:center}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--text-muted);margin-bottom:14px}
+  .hero h1{font-size:var(--fs-hero);font-weight:700;letter-spacing:-.035em;line-height:1.04;max-width:20ch;margin-inline:auto}
+  .hero h1 .hl{background:linear-gradient(95deg,var(--accent) 10%,var(--violet) 95%);-webkit-background-clip:text;background-clip:text;color:transparent;
+    -webkit-box-decoration-break:clone;box-decoration-break:clone}
+  html[lang="ko"] .hero h1 .hl,html[lang="en"] .hero h1 .hl{white-space:nowrap}
+  html[lang="ja"] .hero h1,html[lang^="zh"] .hero h1{font-size:clamp(2.2rem,.9rem + 5.4vw,4.75rem);letter-spacing:-.02em;line-height:1.12}
+  .hero p{font-size:var(--fs-lede);line-height:1.5;color:var(--text-muted);max-width:40ch;margin:clamp(20px,3vw,30px) auto 0}
+  @media (prefers-contrast:more){ .hero h1 .hl,.step .n{background:none;color:var(--accent)} }
 
-  /* 변환 플로우 (시그니처 1) */
-  .flow{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:44px}
-  .flow .note{font-family:var(--hand);font-size:19px;background:var(--amber);padding:14px 16px;border-radius:4px 12px 6px 14px;
-    box-shadow:2px 3px 0 rgba(25,24,21,.14);transform:rotate(-3deg);max-width:170px;line-height:1.2}
-  .flow .arrow{font-family:var(--hand);color:var(--soft);font-size:20px;white-space:nowrap}
-  .flow .prod{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1.5px solid var(--ink);
-    border-radius:12px;padding:12px 16px;font-weight:600;box-shadow:3px 4px 0 var(--ink)}
-  .flow .prod .d{width:30px;height:30px;border-radius:8px;background:var(--indigo);color:#fff;display:grid;place-items:center;font-size:13px}
+  /* 변환 흐름 — 메모 한 줄 → 앱 */
+  .flow{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:clamp(28px,4vw,42px)}
+  .flow .note{background:var(--surface-2);border-radius:var(--radius);padding:14px 18px;font-size:17px;font-weight:500;line-height:1.35;color:var(--text);max-width:240px;text-align:left}
+  .flow .arrow{font-size:15px;color:var(--text-muted);white-space:nowrap}
+  .flow .prod{display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:var(--radius-full);padding:8px 18px 8px 8px;
+    font-size:17px;font-weight:600;letter-spacing:-.015em;box-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.08)}
+  .flow .prod .d{width:32px;height:32px;border-radius:8px;background:linear-gradient(160deg,#2997ff,var(--accent));color:#fff;
+    display:grid;place-items:center;font-size:12px;font-weight:700;letter-spacing:0;flex:none}
 
-  /* 섹션 라벨 */
-  .label{display:flex;align-items:baseline;gap:14px;margin:78px 0 6px}
-  .label h2{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.02em}
-  .label .rule{flex:1;height:1.5px;background:var(--line)}
-  .note-line{font-family:var(--hand);font-size:18px;color:var(--soft);margin-bottom:26px}
-
-  /* 아이디어 월 (시그니처 2) */
-  .ideawall{position:relative;background:var(--surface);border:1.5px solid var(--line);border-radius:18px;
-    padding:34px 26px;display:flex;flex-wrap:wrap;gap:18px;justify-content:center;
-    background-image:radial-gradient(var(--line) 1px,transparent 1px);background-size:22px 22px}
-  .sticky{font-family:var(--hand);font-size:20px;line-height:1.25;padding:18px;border-radius:3px 14px 6px 12px;
-    box-shadow:2px 4px 0 rgba(25,24,21,.13);width:165px;min-height:120px;display:flex;align-items:center;
-    transition:transform .2s ease}
-  .sticky:hover{transform:scale(1.05) rotate(0deg) !important}
-  .sticky:nth-child(1){background:var(--amber);transform:rotate(-4deg)}
-  .sticky:nth-child(2){background:var(--mint);transform:rotate(3deg)}
-  .sticky:nth-child(3){background:var(--sky);transform:rotate(-2deg)}
-  .sticky:nth-child(4){background:var(--coral);transform:rotate(4deg)}
-  .sticky:nth-child(5){background:var(--amber);transform:rotate(2deg)}
-  .sticky:nth-child(6){background:var(--mint);transform:rotate(-3deg)}
-  .sticky:nth-child(7){background:var(--sky);transform:rotate(3deg)}
-  .sticky:nth-child(8){background:var(--coral);transform:rotate(-2deg)}
-  .sticky:nth-child(9){background:var(--amber);transform:rotate(3deg)}
-  .sticky:nth-child(10){background:var(--mint);transform:rotate(-4deg)}
-  .sticky:nth-child(11){background:var(--sky);transform:rotate(2deg)}
-  .sticky:nth-child(12){background:var(--coral);transform:rotate(-3deg)}
-  .sticky:nth-child(13){background:var(--amber);transform:rotate(2deg)}
-  .sticky:nth-child(14){background:var(--mint);transform:rotate(-2deg)}
-  .sticky:nth-child(15){background:var(--sky);transform:rotate(3deg)}
-  .sticky:nth-child(16){background:var(--coral);transform:rotate(-2deg)}
-  .sticky:nth-child(17){background:var(--amber);transform:rotate(3deg)}
-  .sticky:nth-child(18){background:var(--mint);transform:rotate(-3deg)}
-  .sticky:nth-child(19){background:var(--sky);transform:rotate(-2deg)}
-  .sticky:nth-child(20){background:var(--coral);transform:rotate(3deg)}
-  .sticky:nth-child(21){background:var(--amber);transform:rotate(-3deg)}
-  .sticky:nth-child(22){background:var(--mint);transform:rotate(2deg)}
-  .sticky:nth-child(23){background:var(--sky);transform:rotate(-3deg)}
-  .sticky:nth-child(24){background:var(--coral);transform:rotate(2deg)}
-  .sticky.add{background:transparent;border:2.5px dashed var(--indigo);color:var(--indigo);
-    justify-content:center;text-align:center;font-weight:700;text-decoration:none;transform:rotate(-1deg)}
-  .sticky.add:hover{background:rgba(58,43,212,.06)}
-
-  /* 제품 카드 */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:18px;margin-top:8px}
-  .card{background:var(--surface);border:1.5px solid var(--ink);border-radius:16px;padding:22px;
-    display:flex;flex-direction:column;gap:13px;transition:transform .22s ease,box-shadow .22s ease}
-  .card:hover{transform:translateY(-4px);box-shadow:5px 6px 0 var(--ink)}
-  .card .top{display:flex;align-items:center;gap:13px}
-  .icon{width:48px;height:48px;border-radius:13px;flex:none;display:grid;place-items:center;background:var(--indigo);color:#fff;overflow:hidden}
-  .icon.photo{background:transparent;box-shadow:inset 0 0 0 1px rgba(25,24,21,.08)}
-  .icon img{width:100%;height:100%;object-fit:cover;display:block}
-  .card h3{font-family:var(--display);font-weight:700;font-size:1.18rem;letter-spacing:-.01em}
-  .from{font-family:var(--hand);font-size:16px;color:var(--soft);margin-top:1px}
-  .status{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;
-    padding:3px 10px;border-radius:999px;margin-top:4px;border:1.5px solid var(--line)}
-  .status .led{width:7px;height:7px;border-radius:50%}
-  .status.prod{color:var(--indigo);border-color:#c5bff7} .status.prod .led{background:var(--indigo)}
-  .status.proto{color:#9a7715;border-color:#ecd7a6} .status.proto .led{background:var(--amber)}
-  .status.live{color:#1f7a51;border-color:#bfe3cf} .status.live .led{background:#2E7D5B}
-  .status.soon{color:#b4552a;border-color:#f4cdb9} .status.soon .led{background:var(--coral)}
-  .desc{font-size:.93rem;color:var(--soft);flex:1}
-  .links{display:flex;flex-wrap:wrap;gap:8px}
-  .links a{font-size:13px;text-decoration:none;padding:8px 14px;border-radius:9px;border:1.5px solid var(--ink);transition:background .2s,color .2s}
-  .links a.primary{background:var(--ink);color:var(--surface)}
-  .links a.primary:hover{background:var(--indigo);border-color:var(--indigo)}
-  .links a:not(.primary):hover{background:var(--ink);color:var(--surface)}
-
-  /* 페이저(제품 그리드·아이디어 월 공용) — JS가 없으면 전체가 그대로 보인다 */
-  .page-hidden{display:none}
-  .pager{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:24px}
-  .pager button{font:600 14px var(--body);min-width:38px;height:38px;padding:0 12px;border-radius:10px;
-    border:1.5px solid var(--ink);background:var(--surface);color:var(--ink);cursor:pointer;
-    transition:background .2s,color .2s}
-  .pager button:hover{background:var(--ink);color:var(--surface)}
-  .pager button[aria-current="true"]{background:var(--indigo);border-color:var(--indigo);color:#fff}
-  .pager button:disabled{opacity:.35;cursor:default}
-  .pager button:disabled:hover{background:var(--surface);color:var(--ink)}
-
-  /* 공정 (실제 순서라 번호 사용) */
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:8px}
-  .step{padding:22px;border-radius:14px;background:var(--surface);border:1.5px solid var(--line)}
-  .step .n{font-family:var(--display);font-weight:700;font-size:2rem;color:var(--indigo);line-height:1}
-  .step h4{font-family:var(--display);font-weight:600;font-size:1.1rem;margin:10px 0 6px}
-  .step p{font-size:.92rem;color:var(--soft)}
-
-  /* 참여 배너 */
-  .invite{margin-top:74px;background:var(--ink);color:var(--bg);border-radius:20px;padding:48px 32px;text-align:center}
-  .invite h3{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-.02em}
-  .invite p{color:#c9c6bd;margin:14px auto 24px;max-width:38ch}
-  .invite a{display:inline-block;background:var(--amber);color:var(--ink);font-weight:600;
-    text-decoration:none;padding:14px 26px;border-radius:999px;transition:transform .2s}
-  .invite a:hover{transform:translateY(-2px)}
-
-  footer{margin-top:40px}
-  .foot{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;
-    font-size:13px;color:var(--soft);padding:30px 0 60px}
-  .foot a{text-decoration:none}.foot a:hover{color:var(--ink)}
-
-
-  /* 언어 전환 */
-  .lang{display:inline-flex;align-items:center;gap:6px;color:var(--soft)}
-  .lang svg{flex:none}
-  .lang select{-webkit-appearance:none;appearance:none;font:500 13px var(--body);color:var(--ink);background:transparent;
-    border:1.5px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;max-width:9.5em}
-  .lang select:hover{border-color:var(--ink)}
-  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  html[lang="ja"]{--hand:'Gaegu',"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",system-ui,sans-serif}
-  html[lang="zh-Hans"]{--hand:'Gaegu',"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif}
-  html[lang="zh-Hant"]{--hand:'Gaegu',"PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-  html[lang="ja"] .hero h1,html[lang^="zh"] .hero h1{font-size:clamp(1.9rem,6vw,4.4rem)}
-  html[lang="ko"] .hero h1{word-break:keep-all}
-  .nw{white-space:nowrap}
-  @media (max-width:600px){
-    .bar{gap:10px}
-    .mark{font-size:16px;white-space:nowrap}
-    .bar nav{gap:8px;font-size:13px}
-    .bar nav a.navtext{display:none}
-    .bar nav a.cta{padding:8px 12px;white-space:nowrap}
-    .lang svg{display:none}
-    .lang select{padding:6px 10px;font-size:12.5px}
+  /* 아이디어 월 */
+  .ideawall{display:grid;gap:16px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  /* 쪽지 — 손으로 적은 한 줄 메모. 애플풍으로 색은 옅게, 기울기는 살짝 */
+  :root{--hand:'Gaegu','Kaiti SC','Kaiti TC','STKaiti','BiauKai','Klee',cursive;
+    --paper1:#fff6c9; --paper2:#e6f4ea; --paper3:#e8f0fe; --paper4:#fde8e4; --paper5:#f1e8fd}
+  .sticky{position:relative;display:flex;align-items:flex-end;min-height:clamp(112px,12vw,140px);padding:30px 22px 22px;
+    background:var(--paper1);border-radius:6px 6px 14px 6px;color:#2b2a27;font-family:var(--hand);
+    font-size:clamp(1.3rem,1.1rem + .6vw,1.65rem);font-weight:700;letter-spacing:0;line-height:1.25;
+    box-shadow:0 1px 1px rgba(0,0,0,.04),0 10px 22px -12px rgba(0,0,0,.22);
+    transform:rotate(-1.2deg);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .sticky:not(.add)::before{content:"";position:absolute;top:-8px;left:50%;width:62px;height:18px;margin-left:-31px;
+    background:rgba(255,255,255,.62);border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,.06);transform:rotate(-3deg)}
+  .sticky:nth-child(5n+2){background:var(--paper2);transform:rotate(1deg)}
+  .sticky:nth-child(5n+3){background:var(--paper3);transform:rotate(-.6deg)}
+  .sticky:nth-child(5n+4){background:var(--paper4);transform:rotate(1.4deg)}
+  .sticky:nth-child(5n+5){background:var(--paper5);transform:rotate(-1.6deg)}
+  .sticky.add{align-items:center;justify-content:center;text-align:center;text-decoration:none;transform:none;
+    background:transparent;border:2px dashed rgba(0,102,204,.45);color:var(--accent-link);box-shadow:none;transition:background-color .2s var(--ease)}
+  .sticky.add:hover{background:var(--accent-soft)}
+  html[lang="ja"] .sticky,html[lang^="zh"] .sticky{font-weight:400;font-size:clamp(1.15rem,1rem + .5vw,1.45rem)}
+  @media (hover:hover){ .sticky:not(.add):hover{transform:rotate(0) scale(1.03);box-shadow:var(--shadow-hover)} }
+  @media (prefers-reduced-motion:reduce){ .sticky{transition:none} }
+  @media (max-width:899px){
+    .ideawall{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
+    .sticky.add{grid-column:1/-1;min-height:72px}
   }
-  @media (max-width:360px){ .bar nav a.cta{display:none} }
+  @media (max-width:480px){
+    .sticky{padding:26px 14px 16px;font-size:1.2rem;min-height:108px}
+  }
 
-  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-  .reveal.in{opacity:1;transform:none}
-  :focus-visible{outline:2.5px solid var(--indigo);outline-offset:3px;border-radius:4px}
+  /* 페이저 (아이디어 월) — JS 가 없으면 전부 그대로 보인다 */
+  .page-hidden{display:none}
+  .pager{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px;margin-top:28px}
+  .pager button{min-width:36px;height:36px;padding:0 10px;border:0;border-radius:var(--radius-full);background:transparent;color:var(--text-mid);
+    font:inherit;font-size:15px;font-weight:500;line-height:1;cursor:pointer;transition:background-color .2s var(--ease),color .2s var(--ease)}
+  .pager button:hover:not(:disabled){background:var(--paddle)}
+  .pager button[aria-current="true"],.pager button[aria-current="true"]:hover{background:var(--text);color:#fff}
+  .pager button:first-child,.pager button:last-child{background:var(--paddle);width:36px;padding:0;font-size:20px}
+  .pager button:first-child:hover:not(:disabled),.pager button:last-child:hover:not(:disabled){background:#dcdce1}
+  .pager button:disabled{opacity:.38;cursor:default}
+  .band:not(.band-soft) .pager button:not([aria-current]):hover:not(:disabled){background:var(--surface-2)}
+
+  /* 제품 — 가로 선반 */
+  .shelf-section{overflow:hidden}
+  .carousel{--edge:max(var(--gutter),calc((100% - var(--wrap)) / 2 + var(--gutter)));position:relative;width:100%}
+  .carousel-track{display:flex;gap:20px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+    scroll-padding-inline:var(--edge);padding:6px var(--edge) 28px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .carousel-track::-webkit-scrollbar{display:none}
+  .carousel-track:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:var(--radius)}
+  @media (prefers-reduced-motion:no-preference){ .carousel-track{scroll-behavior:smooth} }
+  @media (hover:hover) and (pointer:fine){ .carousel-track{cursor:grab} }
+  .carousel-track.is-dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto;user-select:none;-webkit-user-select:none}
+  .carousel-track.is-dragging a{pointer-events:none}
+  .carousel-nav{display:flex;justify-content:flex-end;gap:14px;margin-top:4px}
+  .carousel-nav[hidden]{display:none}
+  .carousel-btn{width:40px;height:40px;border:0;border-radius:50%;background:var(--paddle);color:var(--text-mid);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background-color .2s var(--ease),opacity .2s var(--ease)}
+  .carousel-btn svg{width:18px;height:18px}
+  .carousel-btn:hover:not(:disabled){background:#dcdce1}
+  .carousel-btn:disabled{opacity:.38;cursor:default}
+
+  .card{flex:0 0 auto;width:340px;scroll-snap-align:start;display:flex;flex-direction:column;background:var(--surface-2);
+    border-radius:var(--radius-lg);overflow:hidden;padding:28px 28px 0;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+  @media (hover:hover){
+    .card:hover{transform:scale(1.012);box-shadow:var(--shadow-hover)}
+    .card:hover .phone{transform:translateY(-6px)}
+  }
+  .card .top{display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:14px;align-items:center}
+  .card .top>div{display:contents}
+  .card .top .status{grid-column:1/-1;grid-row:1;margin-bottom:14px}
+  .card .top .icon{grid-column:1;grid-row:2}
+  .card .top h3{grid-column:2;grid-row:2}
+  .card .top .from{grid-column:1/-1;grid-row:3;margin-top:14px}
+  .icon{width:56px;height:56px;border-radius:13px;flex:none;display:grid;place-items:center;background:var(--accent);color:#fff;overflow:hidden;
+    box-shadow:0 1px 2px rgba(0,0,0,.06),0 6px 16px -6px rgba(0,0,0,.20)}
+  .icon.photo{background:#fff}
+  .icon img{width:100%;height:100%;object-fit:cover;display:block}
+  .card h3{font-size:1.375rem;font-weight:700;letter-spacing:-.024em;line-height:1.15}
+  html[lang="ja"] .card h3,html[lang^="zh"] .card h3{letter-spacing:-.01em}
+  .from{position:relative;display:block;font-family:var(--hand);font-size:1.2rem;font-weight:700;line-height:1.3;color:#2b2a27;
+    background:var(--paper1);padding:12px 14px 12px;border-radius:4px 4px 12px 4px;transform:rotate(-.8deg);
+    box-shadow:0 8px 16px -12px rgba(0,0,0,.25)}
+  html[lang="ja"] .from,html[lang^="zh"] .from{font-weight:400;font-size:1.05rem}
+  .status{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;line-height:1.3;letter-spacing:0;color:var(--live)}
+  .status .led{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+  .status.live{color:var(--live)}
+  .status.prod{color:var(--accent-link)}
+  .status.proto,.status.soon{color:var(--new)}
+  .desc{font-size:15px;line-height:1.55;color:var(--text-mid);margin-top:14px}
+  .links{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:18px}
+  .links a{display:inline-flex;align-items:center;min-height:30px;color:var(--accent-link);font-size:15px;line-height:1.3;text-decoration:none}
+  .links a:not(.primary)::after{content:"";flex:none;width:12px;height:12px;margin-left:3px;background:currentColor;
+    -webkit-mask:var(--chev) center/contain no-repeat;mask:var(--chev) center/contain no-repeat}
+  .links a:not(.primary):hover{text-decoration:underline;text-underline-offset:3px}
+  .links a.primary{min-height:34px;padding:7px 15px;border-radius:var(--radius-full);background:var(--accent);color:var(--accent-ink);
+    font-size:14px;font-weight:500;white-space:nowrap;transition:background-color .2s var(--ease),transform .12s var(--ease)}
+  .links a.primary:hover{background:var(--accent-hover)}
+  .links a.primary:active{transform:scale(.975)}
+  .links a.primary + a.primary{background:#fff;color:var(--accent-link);box-shadow:inset 0 0 0 1px var(--border-strong)}
+  .links a.primary + a.primary:hover{box-shadow:inset 0 0 0 1px var(--accent);color:var(--accent)}
+
+  .card-shot{margin-top:auto;height:210px;display:flex;justify-content:center;align-items:flex-start;padding-top:26px;overflow:hidden;margin-inline:-28px;flex:none}
+  .phone{width:176px;flex:none;margin:0;padding:2.8%;border-radius:14%/6.6%;background:linear-gradient(160deg,#3a3a3d 0%,#1d1d1f 38%,#111113 100%);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.10),0 1px 2px rgba(0,0,0,.10),0 30px 60px -24px rgba(0,0,0,.35);transition:transform .5s var(--ease)}
+  .phone-screen{display:block;width:100%;aspect-ratio:600/1304;border-radius:11.5%/5.3%;overflow:hidden;background:var(--surface-2)}
+  .phone-screen img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0;color:transparent}
+  .card-shot.iconic{align-items:center;padding-top:0}
+  .card-shot .tile{width:132px;height:132px;border-radius:30px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+  .card-shot .tile svg{width:72px;height:72px}
+  @media (max-width:640px){
+    .card{width:min(84vw,340px);padding:24px 24px 0}
+    .card-shot{height:200px;margin-inline:-24px}
+    .phone{width:160px}
+  }
+
+  /* 어떻게 만드나요 */
+  .steps{display:grid;gap:16px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .step{background:#fff;border-radius:var(--radius-lg);padding:clamp(24px,3vw,36px)}
+  .step .n{display:inline-block;font-size:clamp(2.5rem,1.8rem + 2vw,3.5rem);font-weight:700;letter-spacing:-.03em;line-height:1;
+    background:linear-gradient(95deg,var(--accent) 10%,var(--violet) 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .step h4{font-size:var(--fs-h3);font-weight:700;letter-spacing:-.02em;line-height:1.2;margin:14px 0 8px}
+  .step p{font-size:var(--fs-body);line-height:1.55;color:var(--text-muted)}
+  @media (max-width:760px){ .steps{grid-template-columns:1fr} }
+
+  /* 참여 */
+  .invite{background:var(--surface-2);border-radius:var(--radius-lg);padding:clamp(48px,7vw,88px) clamp(24px,5vw,64px);text-align:center}
+  .invite h3{font-size:var(--fs-display);font-weight:700;letter-spacing:-.025em;line-height:1.07}
+  .invite p{font-size:var(--fs-lede);line-height:1.5;color:var(--text-muted);max-width:38ch;margin:16px auto 28px}
+  .invite a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:var(--radius-full);
+    background:var(--accent);color:var(--accent-ink);font-size:17px;font-weight:500;letter-spacing:-.012em;text-decoration:none;
+    transition:background-color .2s var(--ease),transform .12s var(--ease)}
+  .invite a:hover{background:var(--accent-hover)}
+  .invite a:active{transform:scale(.975)}
+  html[lang="ja"] .label h2,html[lang^="zh"] .label h2,html[lang="ja"] .invite h3,html[lang^="zh"] .invite h3{letter-spacing:-.01em;line-height:1.18}
+
+  /* 바닥글 */
+  footer{background:var(--bg);border-top:1px solid var(--border)}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 22px;padding-block:36px 48px;font-size:13px;line-height:1.5;color:var(--text-muted);letter-spacing:0}
+  .foot>span:first-child{margin-right:auto}
+  .foot a{color:var(--text-muted);text-decoration:none}
+  .foot a:hover{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+
+  @media (max-width:640px){
+    .hero{text-align:left}
+    .hero h1,.hero p{margin-inline:0}
+    .flow{justify-content:flex-start}
+    .foot{flex-direction:column;gap:6px}
+    .foot>span:first-child{margin-right:0}
+  }
+  @media (max-width:600px){
+    .bar nav{gap:10px}
+    .bar nav a.navtext{display:none}
+    .lang svg{display:none}
+  }
+  @media (max-width:360px){
+    .bar nav a.cta{display:none}
+    .mark{font-size:16px}
+  }
+
+  /* 나타나기 — 첫 화면은 숨기지 않는다 */
+  .js-reveal .reveal:not(.in){opacity:0;transform:translateY(20px)}
+  .reveal.in{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
   @media (prefers-reduced-motion:reduce){
-    .reveal{opacity:1;transform:none;transition:none}.card,.sticky,.invite a{transition:none}html{scroll-behavior:auto}
+    .js-reveal .reveal:not(.in){opacity:1;transform:none}
+    html{scroll-behavior:auto}
+    *,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important}
   }
 </style>
 </head>
@@ -201,8 +289,9 @@
   </div>
 </header>
 
-<main class="wrap">
-  <section class="hero">
+<main>
+  <section class="band hero">
+    <div class="wrap">
     <div class="eyebrow reveal" data-i18n="hero.eyebrow">creative lab · 모두의 아이디어</div>
     <h1 class="reveal" data-i18n="hero.h1" data-i18n-html>모두의 아이디어가<br><span class="hl">앱과 서비스</span>가 됩니다.</h1>
     <p class="reveal" data-i18n="hero.p">떠오른 생각을 보내주세요. 메모 한 줄이 진짜 쓰는 제품이 됩니다.
@@ -213,12 +302,17 @@
       <div class="arrow" data-i18n="flow.arrow">─ 만들고 ─▶</div>
       <div class="prod" data-i18n="flow.prod" data-i18n-html><span class="d">앱</span> 대한민국 달력</div>
     </div>
+  </div>
   </section>
 
   <!-- 아이디어 월 -->
-  <div class="label reveal" id="ideas"><h2 data-i18n="ideas.h2">아이디어 월</h2><div class="rule"></div></div>
-  <p class="note-line reveal" data-i18n="ideas.note">여기 붙은 건 다 누군가의 한 줄에서 시작했어요.</p>
-  <section class="ideawall reveal" id="ideaWall">
+  <section class="band band-soft">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="label reveal" id="ideas"><h2 data-i18n="ideas.h2">아이디어 월</h2></div>
+        <p class="note-line reveal" data-i18n="ideas.note">여기 붙은 건 다 누군가의 한 줄에서 시작했어요.</p>
+      </div>
+      <section class="ideawall reveal" id="ideaWall">
     <div class="sticky" data-i18n="s.1">음력도 같이 보이는 달력</div>
     <div class="sticky" data-i18n="s.2">약 먹을 시간 알려주는 앱</div>
     <div class="sticky" data-i18n="s.3">우리 동네 쓰레기 버리는 날 알림</div>
@@ -249,541 +343,594 @@
     <div class="sticky" data-i18n="s.28">뽑기 없는 삼국지 한 판</div>
     <a class="sticky add" data-i18n="ideas.add" data-i18n-html href="mailto:creativelab.choi@gmail.com?subject=%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%A0%9C%EC%95%88">+ 당신의<br>아이디어</a>
   </section>
+    </div>
+  </section>
 
-  <!-- 만들어진 제품 -->
-  <div class="label reveal" id="products"><h2 data-i18n="products.h2">만들어진 제품</h2><div class="rule"></div></div>
-  <p class="note-line reveal" data-i18n="products.note">아이디어가 실제로 출시된 것들.</p>
-  <section class="grid" id="productGrid">
-    <!-- ▼ 제품 카드 (복사해서 추가 — 6장 넘으면 페이저가 자동 생성됨) ▼ -->
-    <article class="card reveal" data-app="janggi">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/janggi.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.janggi.name">AI 장기</h3>
-          <div class="from" data-i18n="a.janggi.from">← "장기 한 판 둘 상대가 없네" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+  <!-- 만들어진 제품 — 가로 선반 -->
+  <section class="band shelf-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="label reveal" id="products"><h2 data-i18n="products.h2">만들어진 제품</h2></div>
+        <p class="note-line reveal" data-i18n="products.note">아이디어가 실제로 출시된 것들.</p>
+      </div>
+    </div>
+    <div class="carousel reveal">
+      <section class="carousel-track" id="productGrid" tabindex="0" role="group" aria-label="제품 목록 페이지" data-i18n-aria="pg.products">
+      <!-- ▼ 제품 카드 (복사해서 추가 — 6장 넘으면 페이저가 자동 생성됨) ▼ -->
+      <article class="card" data-app="janggi">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/janggi.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.janggi.name">AI 장기</h3>
+            <div class="from" data-i18n="a.janggi.from">← "장기 한 판 둘 상대가 없네" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.janggi.desc">한국 전통 장기를 정식 규칙 그대로 — 차림 4종, 한수쉼, 반복수 무승부, 점수제(덤 1.5점)까지. 난이도 5단계 AI가 기기 안에서 돌아 비행기 모드에서도 두고, 새 엔진은 높은 난이도일수록 실제로 더 깊이 읽으며 대국 화면에 방금 읽은 깊이를 그대로 보여 줍니다. 훈수는 언제든 무료이고, 광고는 앱을 열 때만 가끔 나오며 대국·묘수풀이 중에는 나오지 않습니다. 5개 언어, 서버·로그인 없음.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6807261608"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.janggi" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/janggi-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.janggi.desc">한국 전통 장기를 정식 규칙 그대로 — 차림 4종, 한수쉼, 반복수 무승부, 점수제(덤 1.5점)까지. 난이도 5단계 AI가 기기 안에서 돌아 비행기 모드에서도 두고, 새 엔진은 높은 난이도일수록 실제로 더 깊이 읽으며 대국 화면에 방금 읽은 깊이를 그대로 보여 줍니다. 훈수는 언제든 무료이고, 광고는 앱을 열 때만 가끔 나오며 대국·묘수풀이 중에는 나오지 않습니다. 5개 언어, 서버·로그인 없음.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6807261608"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.janggi" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/janggi-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/janggi.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="idphoto">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/idphoto.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.idphoto.name">증명사진관</h3>
-          <div class="from" data-i18n="a.idphoto.from">← "규격 사진 하나 찍으러 사진관까지 가야 하나" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="idphoto">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/idphoto.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.idphoto.name">증명사진관</h3>
+            <div class="from" data-i18n="a.idphoto.from">← "규격 사진 하나 찍으러 사진관까지 가야 하나" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.idphoto.desc">인물 사진 한 장을 35×45mm·반명함 같은 규격 크기 수십 가지로 맞춰 주는 사진 크기 도구. 얼굴 위치를 인식해 자동으로 자르고 배경을 단색으로 바꾼 뒤, 머리 높이·눈높이·조명까지 11개 항목을 점검해 알려 줍니다. 사진은 기기 밖으로 나가지 않습니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6805292038"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.idphoto" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/idphoto-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.idphoto.desc">인물 사진 한 장을 35×45mm·반명함 같은 규격 크기 수십 가지로 맞춰 주는 사진 크기 도구. 얼굴 위치를 인식해 자동으로 자르고 배경을 단색으로 바꾼 뒤, 머리 높이·눈높이·조명까지 11개 항목을 점검해 알려 줍니다. 사진은 기기 밖으로 나가지 않습니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6805292038"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.idphoto" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/idphoto-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/idphoto.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="calendar">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/calendar.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.calendar.name">대한민국 달력</h3>
-          <div class="from" data-i18n="a.calendar.from">← "음력 보이는 달력" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live2">App Store · Google Play 출시</span></span>
+      <article class="card" data-app="calendar">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/calendar.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.calendar.name">대한민국 달력</h3>
+            <div class="from" data-i18n="a.calendar.from">← "음력 보이는 달력" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live2">App Store · Google Play 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.calendar.desc">음력·공휴일·간지를 한눈에 보는 한국형 달력. 홈 화면 위젯에도 음력 날짜가 나오고, 모든 계산은 기기 안에서 처리됩니다. 광고는 앱을 켠 직후나 화면을 누르는 도중에는 뜨지 않습니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6786585716"> App Store (iPhone)</a>
-        <a class="primary" href="https://play.google.com/store/apps/details?id=com.modeun.kookmin_calendar">▶ Google Play (Android)</a>
-        <a href="https://inphilchoi.github.io/everyonecalendar-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.calendar.desc">음력·공휴일·간지를 한눈에 보는 한국형 달력. 홈 화면 위젯에도 음력 날짜가 나오고, 모든 계산은 기기 안에서 처리됩니다. 광고는 앱을 켠 직후나 화면을 누르는 도중에는 뜨지 않습니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6786585716"> App Store (iPhone)</a>
+          <a class="primary" href="https://play.google.com/store/apps/details?id=com.modeun.kookmin_calendar">▶ Google Play (Android)</a>
+          <a href="https://inphilchoi.github.io/everyonecalendar-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/calendar.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="song">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/song.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.song.name">오늘의 노래</h3>
-          <div class="from" data-i18n="a.song.from">← "오늘 들을 노래 추천해줘" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live2">App Store · Google Play 출시</span></span>
+      <article class="card" data-app="song">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/song.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.song.name">오늘의 노래</h3>
+            <div class="from" data-i18n="a.song.from">← "오늘 들을 노래 추천해줘" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live2">App Store · Google Play 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.song.desc">그날의 날씨·기분·취향·운세로 매일 한 곡을 추천. 국가별 인기차트·장르별 둘러보기·라이브 방송(라디오)까지. 끝까지 듣기 한 번이면 추천곡을 유튜브에서 이어서 들을 수 있습니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6785766359"> App Store (iPhone)</a>
-        <a class="primary" href="https://play.google.com/store/apps/details?id=com.creativelab.todays_song">▶ Google Play (Android)</a>
-        <a href="https://inphilchoi.github.io/todays-song-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.song.desc">그날의 날씨·기분·취향·운세로 매일 한 곡을 추천. 국가별 인기차트·장르별 둘러보기·라이브 방송(라디오)까지. 끝까지 듣기 한 번이면 추천곡을 유튜브에서 이어서 들을 수 있습니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6785766359"> App Store (iPhone)</a>
+          <a class="primary" href="https://play.google.com/store/apps/details?id=com.creativelab.todays_song">▶ Google Play (Android)</a>
+          <a href="https://inphilchoi.github.io/todays-song-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/song.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="mytv">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/mytv.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.mytv.name">myTV</h3>
-          <div class="from" data-i18n="a.mytv.from">← "웹 영상을 TV로 크게 보고 싶다" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="mytv">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/mytv.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.mytv.name">myTV</h3>
+            <div class="from" data-i18n="a.mytv.from">← "웹 영상을 TV로 크게 보고 싶다" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.mytv.desc">웹에서 보던 영상을 감지해 크롬캐스트·스마트TV로 바로 캐스팅. 화면 미러링이 아니라 원본 스트림을 보내 원화질로 재생되고, 폰은 리모컨이 됩니다. 캐스팅은 언제나 무료이고, 재생 큐·자막 검색 같은 추가 기능은 한 번 결제(구독 아님)로 엽니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6792300908"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/mytv_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.mytv" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/mytv-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.mytv.desc">웹에서 보던 영상을 감지해 크롬캐스트·스마트TV로 바로 캐스팅. 화면 미러링이 아니라 원본 스트림을 보내 원화질로 재생되고, 폰은 리모컨이 됩니다. 캐스팅은 언제나 무료이고, 재생 큐·자막 검색 같은 추가 기능은 한 번 결제(구독 아님)로 엽니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6792300908"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/mytv_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.mytv" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/mytv-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/mytv.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="sudam">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/sudam.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.sudam.name">수담(手談)</h3>
-          <div class="from" data-i18n="a.sudam.from">← "인터넷 없이 두는 AI 바둑" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live2">App Store · Google Play 출시</span></span>
+      <article class="card" data-app="sudam">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/sudam.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.sudam.name">수담(手談)</h3>
+            <div class="from" data-i18n="a.sudam.from">← "인터넷 없이 두는 AI 바둑" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live2">App Store · Google Play 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.sudam.desc">KataGo AI와 오프라인 대국하고, 승률 그래프로 복기하고, 사활 320제로 실력을 키우는 온디바이스 바둑 앱. 판에 돌을 놓으면 돌 무리마다 삶·죽음을 판정하고 급소와 수순을 보여 주는 사활 분석도 들어 있습니다(하루 3회 전체 결과 무료, 판정은 계속 무료). 한국어·영어·일본어·중국어 지원, 계정도 광고도 데이터 수집도 없습니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6795918519"> App Store (iPhone)</a>
-        <a class="primary" href="https://play.google.com/store/apps/details?id=com.creativelab.sudam">▶ Google Play (Android)</a>
-        <a href="https://inphilchoi.github.io/sudam-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.sudam.desc">KataGo AI와 오프라인 대국하고, 승률 그래프로 복기하고, 사활 320제로 실력을 키우는 온디바이스 바둑 앱. 판에 돌을 놓으면 돌 무리마다 삶·죽음을 판정하고 급소와 수순을 보여 주는 사활 분석도 들어 있습니다(하루 3회 전체 결과 무료, 판정은 계속 무료). 한국어·영어·일본어·중국어 지원, 계정도 광고도 데이터 수집도 없습니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6795918519"> App Store (iPhone)</a>
+          <a class="primary" href="https://play.google.com/store/apps/details?id=com.creativelab.sudam">▶ Google Play (Android)</a>
+          <a href="https://inphilchoi.github.io/sudam-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/sudam.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="voicenotes">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/voicenotes.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.voicenotes.name">음성노트</h3>
-          <div class="from" data-i18n="a.voicenotes.from">← "녹음이 회의록이 되면 좋겠다" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="voicenotes">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/voicenotes.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.voicenotes.name">음성노트</h3>
+            <div class="from" data-i18n="a.voicenotes.from">← "녹음이 회의록이 되면 좋겠다" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.voicenotes.desc">녹음하면 기기 안의 AI가 실시간으로 받아 적는 온디바이스 회의록. 요약·타임코드·다시 듣기까지, 오디오는 어디로도 전송되지 않습니다. 인터넷 없이 동작합니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6795930564"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/voicenotes_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.voicenotes" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/voicenotes-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.voicenotes.desc">녹음하면 기기 안의 AI가 실시간으로 받아 적는 온디바이스 회의록. 요약·타임코드·다시 듣기까지, 오디오는 어디로도 전송되지 않습니다. 인터넷 없이 동작합니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6795930564"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/voicenotes_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.voicenotes" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/voicenotes-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/voicenotes.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="singon">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/singon.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.singon.name">씽온 — 노래방 마이크</h3>
-          <div class="from" data-i18n="a.singon.from">← "집에서도 노래방처럼 부르고 싶다" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="singon">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/singon.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.singon.name">씽온 — 노래방 마이크</h3>
+            <div class="from" data-i18n="a.singon.from">← "집에서도 노래방처럼 부르고 싶다" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.singon.desc">유튜브 노래방 영상에 목소리를 얹어 부르는 노래방 앱. 폰이 마이크가 되고 블루투스 스피커에 연결하면 거실이 노래방이 됩니다. 음정·박자를 채점하고 키를 추천해 주며, 계정이 필요 없고 녹음은 기기에만 남습니다. 곡을 마친 뒤 가끔 광고가 나오며, 한 번 구매로 없앨 수 있습니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6801400420"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.singon" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/singon-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.singon.desc">유튜브 노래방 영상에 목소리를 얹어 부르는 노래방 앱. 폰이 마이크가 되고 블루투스 스피커에 연결하면 거실이 노래방이 됩니다. 음정·박자를 채점하고 키를 추천해 주며, 계정이 필요 없고 녹음은 기기에만 남습니다. 곡을 마친 뒤 가끔 광고가 나오며, 한 번 구매로 없앨 수 있습니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6801400420"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.singon" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/singon-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/singon.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="fretwise">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/fretwise.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.fretwise.name">Fretwise — 기타 배우기</h3>
-          <div class="from" data-i18n="a.fretwise.from">← "기타 코드 짚는 법 알려줘" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="fretwise">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/fretwise.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.fretwise.name">Fretwise — 기타 배우기</h3>
+            <div class="from" data-i18n="a.fretwise.from">← "기타 코드 짚는 법 알려줘" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.fretwise.desc">코드 운지를 프렛보드로 익히고 진행으로 연습하는 기타·우쿨렐레 학습 앱. 실력을 추적하는 AI 코치가 오늘 연습할 코드를 골라 주고, 민요·동요 곡집을 앱이 박자에 맞춰 연주해 들으며 함께 칠 수 있습니다. 무음 스위치를 켜도 소리가 나고, 전부 기기 안에서 동작합니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6797015161"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.fretwise" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/fretwise-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.fretwise.desc">코드 운지를 프렛보드로 익히고 진행으로 연습하는 기타·우쿨렐레 학습 앱. 실력을 추적하는 AI 코치가 오늘 연습할 코드를 골라 주고, 민요·동요 곡집을 앱이 박자에 맞춰 연주해 들으며 함께 칠 수 있습니다. 무음 스위치를 켜도 소리가 나고, 전부 기기 안에서 동작합니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6797015161"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.fretwise" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/fretwise-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/fretwise.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="lottolab">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/lottolab.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.lottolab.name">로또랩</h3>
-          <div class="from" data-i18n="a.lottolab.from">← "로또 번호 대신 뽑아줘" 에서 시작</div>
-          <span class="status prod"><span class="led"></span><span data-i18n="st.intl">해외 App Store 출시 · 국내 준비 중</span></span>
+      <article class="card" data-app="lottolab">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/lottolab.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.lottolab.name">로또랩</h3>
+            <div class="from" data-i18n="a.lottolab.from">← "로또 번호 대신 뽑아줘" 에서 시작</div>
+            <span class="status prod"><span class="led"></span><span data-i18n="st.intl">해외 App Store 출시 · 국내 준비 중</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.lottolab.desc">역대 당첨 데이터를 통계로 분석해 번호를 생성하고 저장·관리하는 로또 도우미. 당첨 데이터가 앱에 내장돼 인터넷 없이도 동작합니다. 국내 App Store에서는 아직 받을 수 없습니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/us/app/id6796949878" data-i18n="l.intl"> App Store (해외)</a>
-        <a href="https://groups.google.com/g/lottolab_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.lottolab" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/lottolab-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.lottolab.desc">역대 당첨 데이터를 통계로 분석해 번호를 생성하고 저장·관리하는 로또 도우미. 당첨 데이터가 앱에 내장돼 인터넷 없이도 동작합니다. 국내 App Store에서는 아직 받을 수 없습니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/us/app/id6796949878" data-i18n="l.intl"> App Store (해외)</a>
+          <a href="https://groups.google.com/g/lottolab_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.lottolab" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/lottolab-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/lotto.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="cardly">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/cardly.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.cardly.name">Cardly</h3>
-          <div class="from" data-i18n="a.cardly.from">← "명함 찍으면 연락처로 정리" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="cardly">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/cardly.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.cardly.name">Cardly</h3>
+            <div class="from" data-i18n="a.cardly.from">← "명함 찍으면 연락처로 정리" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.cardly.desc">명함을 카메라로 찍으면 기기 안의 OCR이 이름·연락처를 읽어 정리하는 명함 CRM. 연락처 저장과 엑셀 내보내기까지, 명함 데이터는 어디로도 전송되지 않습니다. 명함 50장까지 무료이고, 무제한 저장은 한 번 결제로 엽니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6802890268"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.cardly" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/cardly-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.cardly.desc">명함을 카메라로 찍으면 기기 안의 OCR이 이름·연락처를 읽어 정리하는 명함 CRM. 연락처 저장과 엑셀 내보내기까지, 명함 데이터는 어디로도 전송되지 않습니다. 명함 50장까지 무료이고, 무제한 저장은 한 번 결제로 엽니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6802890268"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.cardly" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/cardly-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/cardly.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="ttorang">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/ttorang.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.ttorang.name">또랑</h3>
-          <div class="from" data-i18n="a.ttorang.from">← "부모님 두뇌 훈련 게임" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="ttorang">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/ttorang.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.ttorang.name">또랑</h3>
+            <div class="from" data-i18n="a.ttorang.from">← "부모님 두뇌 훈련 게임" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.ttorang.desc">기억력·집중력을 깨우는 두뇌 훈련 게임 모음. 큰 글씨와 쉬운 조작으로 어르신도 편하게 즐기고, 기록은 기기 안에만 저장됩니다. 모든 훈련이 무료이고, 한국어·영어·일본어·중국어(간체·번체) 5개 언어를 지원합니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6802948321"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/ttorang_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.ttorang" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/ttorang-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.ttorang.desc">기억력·집중력을 깨우는 두뇌 훈련 게임 모음. 큰 글씨와 쉬운 조작으로 어르신도 편하게 즐기고, 기록은 기기 안에만 저장됩니다. 모든 훈련이 무료이고, 한국어·영어·일본어·중국어(간체·번체) 5개 언어를 지원합니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6802948321"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/ttorang_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.ttorang" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/ttorang-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/ttorang.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="dailymap">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/dailymap.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.dailymap.name">DailyMap</h3>
-          <div class="from" data-i18n="a.dailymap.from">← "내 주변 가게 찾아주는 지도" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="dailymap">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/dailymap.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.dailymap.name">DailyMap</h3>
+            <div class="from" data-i18n="a.dailymap.from">← "내 주변 가게 찾아주는 지도" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.dailymap.desc">내 주변 장소를 검색하고 즐겨찾기·길찾기까지 이어주는 지도 앱. 오픈스트리트맵 기반으로 계정 없이 쓰고, 검색 기록은 기기 안에만 남습니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6802897224"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.dailymap" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/dailymap-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.dailymap.desc">내 주변 장소를 검색하고 즐겨찾기·길찾기까지 이어주는 지도 앱. 오픈스트리트맵 기반으로 계정 없이 쓰고, 검색 기록은 기기 안에만 남습니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6802897224"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.dailymap" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/dailymap-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/dailymap.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="aiemail">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/aiemailreply.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.aiemail.name">AI 메일답장</h3>
-          <div class="from" data-i18n="a.aiemail.from">← "답장 메일 대신 써주는 AI" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="aiemail">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/aiemailreply.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.aiemail.name">AI 메일답장</h3>
+            <div class="from" data-i18n="a.aiemail.from">← "답장 메일 대신 써주는 AI" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.aiemail.desc">받은 메일을 붙여넣으면 AI가 상황과 말투에 맞는 답장을 대신 써주는 앱. 격식·친근함 같은 톤을 골라 다듬을 수 있습니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6802934901"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.ai_email_reply" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/ai-email-reply-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.aiemail.desc">받은 메일을 붙여넣으면 AI가 상황과 말투에 맞는 답장을 대신 써주는 앱. 격식·친근함 같은 톤을 골라 다듬을 수 있습니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6802934901"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.ai_email_reply" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/ai-email-reply-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/mailreply.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="malmoi">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/malmoi.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.malmoi.name">말모이 (Malmoi)</h3>
-          <div class="from" data-i18n="a.malmoi.from">← "외국인 친구 TOPIK 공부 앱" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="malmoi">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/malmoi.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.malmoi.name">말모이 (Malmoi)</h3>
+            <div class="from" data-i18n="a.malmoi.from">← "외국인 친구 TOPIK 공부 앱" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.malmoi.desc">국립국어원 기초사전 어휘 4만 4천여 개와 문법·읽기·듣기·쓰기로 TOPIK을 준비하는 한국어 학습 앱. 표준 발음법 규칙 엔진이 값이[갑씨]·국물[궁물] 같은 실제 발음을 가르치고, 초급·중급 낱말은 5개 언어 뜻풀이까지 전부 기기 안에서 동작합니다. 1급 전체는 무료이고, 전체는 구독 또는 평생 이용권으로 엽니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6804689666"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.malmoi" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/malmoi-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.malmoi.desc">국립국어원 기초사전 어휘 4만 4천여 개와 문법·읽기·듣기·쓰기로 TOPIK을 준비하는 한국어 학습 앱. 표준 발음법 규칙 엔진이 값이[갑씨]·국물[궁물] 같은 실제 발음을 가르치고, 초급·중급 낱말은 5개 언어 뜻풀이까지 전부 기기 안에서 동작합니다. 1급 전체는 무료이고, 전체는 구독 또는 평생 이용권으로 엽니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6804689666"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.malmoi" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/malmoi-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/malmoi.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="kotoba">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/kotoba.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.kotoba.name">코토바</h3>
-          <div class="from" data-i18n="a.kotoba.from">← "일본어 시험 준비 단어장" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="kotoba">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/kotoba.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.kotoba.name">코토바</h3>
+            <div class="from" data-i18n="a.kotoba.from">← "일본어 시험 준비 단어장" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.kotoba.desc">한자 2,230자와 어휘 2만 1천여 개를 N5~N1 레벨로 익히고 문장 청해까지 연습하는 JLPT 대비 앱. 음성은 기기 내장 TTS로 재생돼 인터넷 없이 공부할 수 있습니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6804533682"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/kotoba_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.kotoba" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/kotoba-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.kotoba.desc">한자 2,230자와 어휘 2만 1천여 개를 N5~N1 레벨로 익히고 문장 청해까지 연습하는 JLPT 대비 앱. 음성은 기기 내장 TTS로 재생돼 인터넷 없이 공부할 수 있습니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6804533682"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/kotoba_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.kotoba" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/kotoba-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/kotoba.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="voca">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/voca.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.voca.name">Voca 통역</h3>
-          <div class="from" data-i18n="a.voca.from">← "인터넷 없어도 되는 통역기" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="voca">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/voca.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.voca.name">Voca 통역</h3>
+            <div class="from" data-i18n="a.voca.from">← "인터넷 없어도 되는 통역기" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.voca.desc">말하면 바로 번역해 읽어주는 오프라인 통역 앱. 음성 인식·번역·읽어주기가 전부 기기 안에서 돌아 해외에서 인터넷 없이도 동작하고, 대화 내용은 어디로도 전송되지 않습니다. 통역은 모두 무료이고, 상황별 회화집 전체는 한 번 결제로 엽니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6807239009"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.voca" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/voca-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.voca.desc">말하면 바로 번역해 읽어주는 오프라인 통역 앱. 음성 인식·번역·읽어주기가 전부 기기 안에서 돌아 해외에서 인터넷 없이도 동작하고, 대화 내용은 어디로도 전송되지 않습니다. 통역은 모두 무료이고, 상황별 회화집 전체는 한 번 결제로 엽니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6807239009"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.voca" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/voca-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/voca.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="studentlife">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/studentlife.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.studentlife.name">유학생활</h3>
-          <div class="from" data-i18n="a.studentlife.from">← "한국 온 유학생 도우미 앱" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="studentlife">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/studentlife.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.studentlife.name">유학생활</h3>
+            <div class="from" data-i18n="a.studentlife.from">← "한국 온 유학생 도우미 앱" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.studentlife.desc">한국 유학생을 위한 필수 도우미. 체류만료 D-day 알림, 시간제취업 시간 계산, 정착 체크리스트, GPA 변환에 생활 가이드까지 — 6개 언어로, 계정 없이 기기 안에서 동작합니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6807406672"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.studentlife" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/studentlife-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.studentlife.desc">한국 유학생을 위한 필수 도우미. 체류만료 D-day 알림, 시간제취업 시간 계산, 정착 체크리스트, GPA 변환에 생활 가이드까지 — 6개 언어로, 계정 없이 기기 안에서 동작합니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6807406672"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.studentlife" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/studentlife-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/student.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="careercompass">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/careercompass.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.careercompass.name">진로나침반</h3>
-          <div class="from" data-i18n="a.careercompass.from">← "내 성격에 맞는 전공 찾기" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="careercompass">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/careercompass.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.careercompass.name">진로나침반</h3>
+            <div class="from" data-i18n="a.careercompass.from">← "내 성격에 맞는 전공 찾기" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.careercompass.desc">성향 검사로 나에게 맞는 전공과 직업을 추천하는 진로 탐색 앱. 결과 기록·유형 비교·공유 카드에 5개 언어를 지원하고, 검사와 채점은 전부 기기 안에서 이뤄집니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6807407170"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.careercompass" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/careercompass-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.careercompass.desc">성향 검사로 나에게 맞는 전공과 직업을 추천하는 진로 탐색 앱. 결과 기록·유형 비교·공유 카드에 5개 언어를 지원하고, 검사와 채점은 전부 기기 안에서 이뤄집니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6807407170"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.careercompass" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/careercompass-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/mbti.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="chess">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/chesscoach.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.chess.name">체스코치</h3>
-          <div class="from" data-i18n="a.chess.from">← "체스 둘 상대가 없네" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="chess">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/chesscoach.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.chess.name">체스코치</h3>
+            <div class="from" data-i18n="a.chess.from">← "체스 둘 상대가 없네" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.chess.desc">기기 안의 AI와 체스를 두고 훈수와 복기까지 받는 체스 앱. 퍼즐 1,000문제와 5개 언어를 지원하며, 인터넷 없이도 동작합니다. 힌트는 언제든 무료이고, 광고는 앱을 열 때만 가끔 나오며 대국·퍼즐 중에는 나오지 않습니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6807283401"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/apps/testing/com.creativelab.chesscoach" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/chesscoach-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.chess.desc">기기 안의 AI와 체스를 두고 훈수와 복기까지 받는 체스 앱. 퍼즐 1,000문제와 5개 언어를 지원하며, 인터넷 없이도 동작합니다. 힌트는 언제든 무료이고, 광고는 앱을 열 때만 가끔 나오며 대국·퍼즐 중에는 나오지 않습니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6807283401"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/apps/testing/com.creativelab.chesscoach" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/chesscoach-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/chess.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="qcity">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/qcity.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.qcity.name">Q-City</h3>
-          <div class="from" data-i18n="a.qcity.from">← "내 손으로 도시 키워보기" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="qcity">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/qcity.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.qcity.name">Q-City</h3>
+            <div class="from" data-i18n="a.qcity.from">← "내 손으로 도시 키워보기" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.qcity.desc">구역을 놓고 전력·수도·교통·예산을 굴려 도시를 키우는 시뮬레이션. 오염·범죄·재해까지 하나의 경제로 얽혀 있고, 지도를 네 방향으로 돌려 건물 뒤까지 살피며 불난 곳으로 바로 이동할 수 있습니다. 계산은 전부 기기 안에서 돌아 인터넷 없이 즐길 수 있습니다. 5개 언어 지원.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6811327268"> App Store (iPhone)</a>
-        <a href="https://inphilchoi.github.io/q-city-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.qcity.desc">구역을 놓고 전력·수도·교통·예산을 굴려 도시를 키우는 시뮬레이션. 오염·범죄·재해까지 하나의 경제로 얽혀 있고, 지도를 네 방향으로 돌려 건물 뒤까지 살피며 불난 곳으로 바로 이동할 수 있습니다. 계산은 전부 기기 안에서 돌아 인터넷 없이 즐길 수 있습니다. 5개 언어 지원.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6811327268"> App Store (iPhone)</a>
+          <a href="https://inphilchoi.github.io/q-city-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/qcity.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="arcade">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/retroarcade.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.arcade.name">추억의 오락실</h3>
-          <div class="from" data-i18n="a.arcade.from">← "동네 오락실 그 게임들 다시 해보고 싶다" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="arcade">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/retroarcade.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.arcade.name">추억의 오락실</h3>
+            <div class="from" data-i18n="a.arcade.from">← "동네 오락실 그 게임들 다시 해보고 싶다" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.arcade.desc">직접 만든 오리지널 아케이드 게임 27종을 모은 오락실. 한 판이 짧아 틈날 때 바로 즐기고, 광고도 결제도 계정도 없습니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6814755524"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.retro_arcade" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/retroarcade-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.arcade.desc">직접 만든 오리지널 아케이드 게임 27종을 모은 오락실. 한 판이 짧아 틈날 때 바로 즐기고, 광고도 결제도 계정도 없습니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6814755524"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.retro_arcade" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/retroarcade-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/arcade.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="bpdiary">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/bpdiary.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.bpdiary.name">혈압수첩</h3>
-          <div class="from" data-i18n="a.bpdiary.from">← "병원 가기 전 집에서 잰 혈압 평균이 얼마냐고 묻던데" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="bpdiary">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/bpdiary.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.bpdiary.name">혈압수첩</h3>
+            <div class="from" data-i18n="a.bpdiary.from">← "병원 가기 전 집에서 잰 혈압 평균이 얼마냐고 묻던데" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.bpdiary.desc">진료 전 7일 동안 아침·저녁 혈압을 재도록 안내하고, 의사가 보는 가정혈압 평균을 한 줄로 만들어 주는 수첩. 큰 숫자판으로 넣고 7·30·90일 평균과 추이를 진료실 화면 하나로 봅니다. 기록은 기기 안에만 남습니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6813703005"> App Store (iPhone)</a>
-        <a href="https://inphilchoi.github.io/bpdiary-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.bpdiary.desc">진료 전 7일 동안 아침·저녁 혈압을 재도록 안내하고, 의사가 보는 가정혈압 평균을 한 줄로 만들어 주는 수첩. 큰 숫자판으로 넣고 7·30·90일 평균과 추이를 진료실 화면 하나로 봅니다. 기록은 기기 안에만 남습니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6813703005"> App Store (iPhone)</a>
+          <a href="https://inphilchoi.github.io/bpdiary-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/bpdiary.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="tsumego">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/tsumego.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.tsumego.name">수담 사활</h3>
-          <div class="from" data-i18n="a.tsumego.from">← "바둑 사활 문제를 매일 조금씩 풀고 싶다" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="tsumego">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/tsumego.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.tsumego.name">수담 사활</h3>
+            <div class="from" data-i18n="a.tsumego.from">← "바둑 사활 문제를 매일 조금씩 풀고 싶다" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.tsumego.desc">정답이 하나뿐임을 증명한 사활 318문제를 입문부터 최상급까지 6단계로. 1–2단계 106문제는 무료이고, 틀린 문제는 자동으로 모아 다시 풉니다. 광고·회원가입 없이 인터넷 없이 풀립니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6815160889"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.tsumego" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/tsumego-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.tsumego.desc">정답이 하나뿐임을 증명한 사활 318문제를 입문부터 최상급까지 6단계로. 1–2단계 106문제는 무료이고, 틀린 문제는 자동으로 모아 다시 풉니다. 광고·회원가입 없이 인터넷 없이 풀립니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6815160889"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.tsumego" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/tsumego-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/tsumego.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="hanja">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/hanja.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.hanja.name">한자급수</h3>
-          <div class="from" data-i18n="a.hanja.from">← "급수 한자 시험, 폰 하나로 준비하고 싶다" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="hanja">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/hanja.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.hanja.name">한자급수</h3>
+            <div class="from" data-i18n="a.hanja.from">← "급수 한자 시험, 폰 하나로 준비하고 싶다" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.hanja.desc">8급~4급 배정한자 1,000자와 한자어 1,787개를 훈음·부수·총획과 함께 익히는 한자 학습 앱. 실제 시험 구성 그대로의 모의시험, 따라 쓰며 획수를 맞히는 쓰기 연습, 틀린 것만 다시 묻는 간격 반복 복습까지 전 급수 무료이고, 서버·로그인·광고 없이 기기 안에서 동작합니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6807291189"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.hanja" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://creativelab-lee.github.io/hanja-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.hanja.desc">8급~4급 배정한자 1,000자와 한자어 1,787개를 훈음·부수·총획과 함께 익히는 한자 학습 앱. 실제 시험 구성 그대로의 모의시험, 따라 쓰며 획수를 맞히는 쓰기 연습, 틀린 것만 다시 묻는 간격 반복 복습까지 전 급수 무료이고, 서버·로그인·광고 없이 기기 안에서 동작합니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6807291189"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.hanja" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://creativelab-lee.github.io/hanja-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/hanja.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="english">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/englishtrainer.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.english.name">영어시험 트레이너</h3>
-          <div class="from" data-i18n="a.english.from">← "가입 없이 바로 푸는 토익 공부 앱" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="english">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/englishtrainer.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.english.name">영어시험 트레이너</h3>
+            <div class="from" data-i18n="a.english.from">← "가입 없이 바로 푸는 토익 공부 앱" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.english.desc">TOEIC 유형 LC Part 2~4·RC Part 5~7을 자체 제작 문항과 한국어 해설로 연습하는 앱. 받아쓰기 훈련, 간격 반복 단어장, 자동으로 쌓이는 오답노트, 미니 모의고사까지 전 기능 무료이며, 회원가입 없이 학습 기록은 기기에만 남습니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6807410596"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.english_trainer" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://creativelab-lee.github.io/english-trainer-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.english.desc">TOEIC 유형 LC Part 2~4·RC Part 5~7을 자체 제작 문항과 한국어 해설로 연습하는 앱. 받아쓰기 훈련, 간격 반복 단어장, 자동으로 쌓이는 오답노트, 미니 모의고사까지 전 기능 무료이며, 회원가입 없이 학습 기록은 기기에만 남습니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6807410596"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.english_trainer" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://creativelab-lee.github.io/english-trainer-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/english.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="market">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/dongnemarket.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.market.name">우리동네마켓</h3>
-          <div class="from" data-i18n="a.market.from">← "이웃끼리만 믿고 주고받는 중고거래" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="market">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/dongnemarket.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.market.name">우리동네마켓</h3>
+            <div class="from" data-i18n="a.market.from">← "이웃끼리만 믿고 주고받는 중고거래" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.market.desc">회사 서버 없이 이웃과 초대 코드를 주고받아 기기끼리 직접 연결하는 동네 중고거래·나눔 앱. 물건 목록과 1:1 채팅은 서로의 기기에만 남고, 신고·차단과 6개 언어를 지원합니다. 계정·광고 없이 전부 무료입니다.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6807415086"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.dongne_market" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://creativelab-lee.github.io/dongnemarket-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.market.desc">회사 서버 없이 이웃과 초대 코드를 주고받아 기기끼리 직접 연결하는 동네 중고거래·나눔 앱. 물건 목록과 1:1 채팅은 서로의 기기에만 남고, 신고·차단과 6개 언어를 지원합니다. 계정·광고 없이 전부 무료입니다.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6807415086"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.dongne_market" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://creativelab-lee.github.io/dongnemarket-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/market.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="warlords">
-      <div class="top">
-        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/warlords-han.png" alt="" width="48" height="48" /></div>
-        <div>
-          <h3 data-i18n="a.warlords.name">군웅천하</h3>
-          <div class="from" data-i18n="a.warlords.from">← "뽑기 없이 한 판 끝까지 두는 삼국지" 에서 시작</div>
-          <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+      <article class="card" data-app="warlords">
+        <div class="top">
+          <div class="icon photo" aria-hidden="true"><img src="/assets/icons/warlords-han.png" alt="" width="48" height="48" /></div>
+          <div>
+            <h3 data-i18n="a.warlords.name">군웅천하</h3>
+            <div class="from" data-i18n="a.warlords.from">← "뽑기 없이 한 판 끝까지 두는 삼국지" 에서 시작</div>
+            <span class="status live"><span class="led"></span><span data-i18n="st.live">App Store 출시</span></span>
+          </div>
         </div>
-      </div>
-      <p class="desc" data-i18n="a.warlords.desc">후한 말 중원을 무대로 내정·외교·계략·전투·맞대결을 한 달씩 두는 턴제 전략 시뮬레이션. 시나리오 4개와 짧은 도전 4개, 난이도 4단계를 담았고, 초상·능력치는 자체 제작입니다. 뽑기·광고·인앱 결제·계정이 없어 완전 무료이고, 비행기 모드에서도 끝까지 플레이됩니다. 5개 언어 지원.</p>
-      <div class="links">
-        <a class="primary" href="https://apps.apple.com/app/id6815300497"> App Store (iPhone)</a>
-        <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.warlords_han" data-i18n="l.android">② ▶ Android 테스트 참여</a>
-        <a href="https://inphilchoi.github.io/warlords-han-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
-      </div>
-    </article>
+        <p class="desc" data-i18n="a.warlords.desc">후한 말 중원을 무대로 내정·외교·계략·전투·맞대결을 한 달씩 두는 턴제 전략 시뮬레이션. 시나리오 4개와 짧은 도전 4개, 난이도 4단계를 담았고, 초상·능력치는 자체 제작입니다. 뽑기·광고·인앱 결제·계정이 없어 완전 무료이고, 비행기 모드에서도 끝까지 플레이됩니다. 5개 언어 지원.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/app/id6815300497"> App Store (iPhone)</a>
+          <a href="https://groups.google.com/g/studentlife_tester" data-i18n="l.tester">① 테스터 그룹 가입</a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativelab.warlords_han" data-i18n="l.android">② ▶ Android 테스트 참여</a>
+          <a href="https://inphilchoi.github.io/warlords-han-privacy/" data-i18n="l.privacy">개인정보처리방침</a>
+        </div>
+        <div class="card-shot" aria-hidden="true"><figure class="phone"><span class="phone-screen"><img src="/assets/shots/warlords.webp" alt="" width="360" height="782" loading="lazy" decoding="async"></span></figure></div>
+      </article>
 
-    <article class="card reveal" data-app="next">
-      <div class="top">
-        <div class="icon" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-            <path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3.2"/></svg>
+      <article class="card" data-app="next">
+        <div class="top">
+          <div class="icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3.2"/></svg>
+          </div>
+          <div>
+            <h3 data-i18n="a.next.name">다음 제품</h3>
+            <div class="from" data-i18n="a.next.from">← 지금 받는 중인 아이디어로</div>
+            <span class="status proto"><span class="led"></span><span data-i18n="st.proto">설계 중</span></span>
+          </div>
         </div>
-        <div>
-          <h3 data-i18n="a.next.name">다음 제품</h3>
-          <div class="from" data-i18n="a.next.from">← 지금 받는 중인 아이디어로</div>
-          <span class="status proto"><span class="led"></span><span data-i18n="st.proto">설계 중</span></span>
-        </div>
+        <p class="desc" data-i18n="a.next.desc">여러분이 보내준 아이디어 중 하나가 다음 제품이 됩니다.</p>
+        <div class="links"><a href="mailto:creativelab.choi@gmail.com?subject=%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%A0%9C%EC%95%88" data-i18n="l.idea">아이디어 보내기</a></div>
+        <div class="card-shot iconic" aria-hidden="true"><span class="tile"><svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3.2"/></svg></span></div>
+      </article>
+      <!-- ▲ 출시되면 status를 'live'로, primary 링크를 App Store 주소로 교체 ▲ -->
+      </section>
+      <div class="carousel-nav wrap" data-parity-chrome hidden>
+        <button class="carousel-btn" type="button" data-dir="-1" aria-label="이전 페이지" data-i18n-aria="pg.prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+        <button class="carousel-btn" type="button" data-dir="1" aria-label="다음 페이지" data-i18n-aria="pg.next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
       </div>
-      <p class="desc" data-i18n="a.next.desc">여러분이 보내준 아이디어 중 하나가 다음 제품이 됩니다.</p>
-      <div class="links"><a href="mailto:creativelab.choi@gmail.com?subject=%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%A0%9C%EC%95%88" data-i18n="l.idea">아이디어 보내기</a></div>
-    </article>
-    <!-- ▲ 출시되면 status를 'live'로, primary 링크를 App Store 주소로 교체 ▲ -->
+    </div>
   </section>
 
   <!-- 공정 -->
-  <div class="label reveal" id="how"><h2 data-i18n="how.h2">어떻게 만드나요</h2><div class="rule"></div></div>
-  <section class="steps">
+  <section class="band band-soft">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="label reveal" id="how"><h2 data-i18n="how.h2">어떻게 만드나요</h2></div>
+      </div>
+      <section class="steps">
     <div class="step reveal"><div class="n">01</div><h4 data-i18n="step1.h">아이디어</h4><p data-i18n="step1.p">누구나 한 줄로 보냅니다. "이런 거 있으면 좋겠다" 면 충분합니다.</p></div>
     <div class="step reveal"><div class="n">02</div><h4 data-i18n="step2.h">함께 다듬기</h4><p data-i18n="step2.p">꼭 필요한 기능만 추려 작동하는 형태로 빠르게 만듭니다.</p></div>
     <div class="step reveal"><div class="n">03</div><h4 data-i18n="step3.h">출시</h4><p data-i18n="step3.p">앱과 서비스로 내보냅니다. 쓰면서 계속 손봅니다.</p></div>
   </section>
+    </div>
+  </section>
 
-  <!-- 참여 배너 -->
-  <section class="invite reveal">
+  <!-- 참여 -->
+  <div class="band">
+    <div class="wrap">
+      <section class="invite reveal">
     <h3 data-i18n="invite.h">당신의 아이디어를 보내주세요</h3>
     <p data-i18n="invite.p">거창하지 않아도 됩니다. 한 문장이면 시작할 수 있어요.</p>
     <a href="mailto:creativelab.choi@gmail.com?subject=%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%A0%9C%EC%95%88" data-i18n="invite.a">아이디어 보내기 →</a>
   </section>
+    </div>
+  </div>
 </main>
 
 <footer>
@@ -858,16 +1005,26 @@
 </script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  var els = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
-    },{threshold:.12});
-    els.forEach(function(el){ io.observe(el); });
-  } else { els.forEach(function(el){ el.classList.add('in'); }); }
 
-  // 페이징 공용 — items가 pageSize를 넘을 때만 컨테이너 뒤에 페이저를 만든다.
-  // pinned 요소(예: "+ 당신의 아이디어")는 모든 페이지에 항상 보인다.
+  // 나타나기 — 처음부터 보이는 자리에 있는 것은 숨기지 않고, 2초 뒤에는 무조건 다 보여 준다.
+  // 움직임을 줄이도록 설정했거나 IntersectionObserver 가 없으면 아무것도 숨기지 않는다.
+  (function(){
+    var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function showAll(){ els.forEach(function(el){ el.classList.add('in'); }); }
+    if (reduce || !('IntersectionObserver' in window)) { showAll(); return; }
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    els.forEach(function(el){ if (el.getBoundingClientRect().top < vh * 0.9) el.classList.add('in'); });
+    document.documentElement.classList.add('js-reveal');
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {rootMargin: '0px 0px -10% 0px', threshold: .05});
+    els.forEach(function(el){ if (!el.classList.contains('in')) io.observe(el); });
+    setTimeout(function(){ showAll(); io.disconnect(); }, 2000);
+  })();
+
+  // 페이징 — items 가 pageSize 를 넘을 때만 컨테이너 뒤에 페이저를 만든다.
+  // pinned 요소("+ 당신의 아이디어")는 모든 페이지에 항상 보인다.
   function paginate(opts){
     var items = opts.items, PAGE_SIZE = opts.pageSize;
     if (items.length <= PAGE_SIZE) return;
@@ -882,7 +1039,7 @@
       items.forEach(function(item, i){
         var visible = i >= page * PAGE_SIZE && i < (page + 1) * PAGE_SIZE;
         item.classList.toggle('page-hidden', !visible);
-        if (visible) item.classList.add('in'); // 숨김 상태로는 IntersectionObserver가 못 깨우므로 직접 표시
+        if (visible) item.classList.add('in');
       });
       pager.innerHTML = '';
       function btn(label, target, o){
@@ -904,15 +1061,6 @@
     show(0, false);
   }
 
-  var grid = document.getElementById('productGrid');
-  if (grid) paginate({
-    container: grid,
-    items: Array.prototype.slice.call(grid.children),
-    pageSize: 6,
-    ariaKey: 'pg.products',
-    scrollTo: document.getElementById('products')
-  });
-
   var wall = document.getElementById('ideaWall');
   if (wall) paginate({
     container: wall,
@@ -921,6 +1069,76 @@
     ariaKey: 'pg.ideas',
     scrollTo: document.getElementById('ideas')
   });
+
+  // 제품 선반 — 스크롤은 브라우저 것(터치·트랙패드·스냅). 버튼은 한 화면씩, 끝에 닿으면 꺼진다.
+  // ←/→ 는 선반에 초점이 있을 때, 마우스는 잡아 끌기. JS 가 없어도 가로로 스크롤되는 줄이라 숨는 카드가 없다.
+  (function(){
+    var track = document.getElementById('productGrid');
+    if (!track) return;
+    var nav = track.parentNode.querySelector('.carousel-nav');
+    if (!nav) return;
+    var prev = nav.querySelector('[data-dir="-1"]'), next = nav.querySelector('[data-dir="1"]');
+    nav.hidden = false;
+    function reduce(){ return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+    function update(){
+      var max = track.scrollWidth - track.clientWidth - 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max;
+    }
+    function page(dir){
+      var card = track.firstElementChild;
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      var step = card ? card.getBoundingClientRect().width + gap : track.clientWidth;
+      var n = Math.max(1, Math.floor((track.clientWidth - 40) / step));
+      track.scrollBy({left: dir * n * step, behavior: reduce() ? 'auto' : 'smooth'});
+    }
+    prev.addEventListener('click', function(){ page(-1); });
+    next.addEventListener('click', function(){ page(1); });
+    track.addEventListener('scroll', function(){ requestAnimationFrame(update); }, {passive: true});
+    track.addEventListener('keydown', function(e){
+      if (e.target !== track) return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); page(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); page(-1); }
+    });
+    window.addEventListener('resize', update);
+
+    // 마우스로 잡아 끌기 — 끄는 동안 스냅을 끄고, 빠르게 튕기면 한 화면, 끈 직후의 클릭은 막는다.
+    var down = false, moved = false, startX = 0, startLeft = 0, lastX = 0, lastT = 0, v = 0;
+    track.addEventListener('dragstart', function(e){ e.preventDefault(); });
+    track.addEventListener('pointerdown', function(e){
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      down = true; moved = false;
+      startX = lastX = e.clientX; startLeft = track.scrollLeft; lastT = performance.now(); v = 0;
+    });
+    window.addEventListener('pointermove', function(e){
+      if (!down) return;
+      var dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) > 5) {
+        moved = true;
+        track.classList.add('is-dragging');
+        try { track.setPointerCapture(e.pointerId); } catch (err) {}
+      }
+      if (!moved) return;
+      track.scrollLeft = startLeft - dx;
+      var now = performance.now();
+      v = (e.clientX - lastX) / Math.max(1, now - lastT);
+      lastX = e.clientX; lastT = now;
+    });
+    function end(){
+      if (!down) return;
+      down = false;
+      if (!moved) return;
+      track.classList.remove('is-dragging');
+      if (Math.abs(v) > 0.6) page(v < 0 ? 1 : -1);
+      setTimeout(function(){ moved = false; }, 0);
+    }
+    window.addEventListener('pointerup', end);
+    window.addEventListener('pointercancel', end);
+    track.addEventListener('click', function(e){ if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+    update();
+    setTimeout(update, 600);
+  })();
 </script>
 </body>
 </html>
