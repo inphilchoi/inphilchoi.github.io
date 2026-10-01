@@ -350,7 +350,7 @@ section{padding:clamp(48px,7vw,88px) 0}
   <div class="wrap center">
     <p class="eyebrow">Haru PC</p>
     <h2>スマートフォンで頼めば、<br>自分のコンピュータが働きます。</h2>
-    <p class="lede">自分のコンピュータでHaru PCを起動しておけば、「自分のPCで…」とコンピュータの作業を任せられます。ファイルを探し、整理し、書類を作り、コマンドを実行します。何かを変更する前には、必ずスマートフォンに承認カードが表示されます。</p>
+    <p class="lede">自分のコンピュータでHaru PCを起動しておけば、「自分のPCで…」とコンピュータの作業を任せられます。ファイルを探し、整理し、書類を作り、コマンドを実行します。何かを変更する前には、必ずスマートフォンに承認カードが表示されます。パソコンにopencodeが入っていれば、コーディングの作業も任せられます。</p>
   </div>
   <div class="wrap">
     <div class="flow">
@@ -372,7 +372,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <div class="tiles tiles-4">
       <div class="tile"><h3>接続方法は選べます</h3><p>Haruリレーでどこからでも。または、リレーなしのセルフホスト直接接続で。 <a class="link" href="#connection">比較</a></p></div>
       <div class="tile"><h3>アプリを閉じても</h3><p>任せた作業はPCで続きます。もう一度開くと、待っていた承認カードが表示されます。</p></div>
-      <div class="tile"><h3>公開AIをそのまま</h3><p>ChatGPT · Claude · Geminiなどの公開AIにログインするかAPIキーで。または、自分のコンピュータの無料ローカルモデルで。</p></div>
+      <div class="tile"><h3>公開AIをそのまま</h3><p>ChatGPT · Claude · Geminiなどの公開AIにログインするかAPIキーで。登録不要の無料クラウドモデルや、自分のコンピュータの無料ローカルモデルでも。</p></div>
       <div class="tile"><h3>オープンソース</h3><p>オープンソースのAIアシスタント<a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>の上で動作し、ソースは<a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>で公開しています。</p></div>
     </div>
     <p class="tiles-hint" aria-hidden="true">横にスワイプ →</p>
@@ -455,6 +455,7 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model login copilot</td><td>GitHub Copilot</td></tr>
         <tr><td>haru-pc model key openai</td><td>APIキー（openai・anthropic・gemini・mistral・deepseekなど）</td></tr>
         <tr><td>haru-pc model local</td><td>自分のコンピュータの無料ローカルモデル — プライベートですが低速です。RAM 16GB以上を推奨</td></tr>
+        <tr><td>haru-pc model free</td><td>登録不要の無料クラウドモデル（OpenCode Zen、期間限定）— 今のモデルは予備として残ります</td></tr>
       </tbody>
     </table>
     <p class="note"><b>おすすめ構成</b> — 常時起動の<b>Mac mini</b>。消費電力が少なくモニタなしで動き、RAMが16GB以上あれば無料のローカルモデルまで使えます。</p>
@@ -585,6 +586,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <details><summary>Haru PCはどのAIを使いますか？</summary><p>自分で選んだ公開AI（ChatGPT・Claude・Geminiなど）か、自分のコンピュータのローカルモデルを使います。スマートフォンのHaruアプリはデバイス内のApple Intelligenceを使い、Haru PCはコンピュータに接続したAIを使う、というように別々です。</p></details>
     <details><summary>インストールでコンピュータの何が変わりますか？</summary><p>Node.jsがない場合や古い場合はインストール・アップデートし（MacはHomebrew）、OpenClawとHaru PCをインストールして<code>~/.haru-pc</code>に置き、バックグラウンドサービスとして登録します。<code>haru-pc uninstall</code>で停止して削除できます。</p></details>
     <details><summary>自分のデータはどこに送られますか？</summary><p>スマートフォンの会話・記録はスマートフォンにだけ、任せた作業はスマートフォンと自分のPCの間だけでやり取りされます。詳しくは<a class="link" href="../../haru-privacy/">プライバシーポリシー</a>をご覧ください。</p></details>
+    <details><summary>コーディングも任せられますか？</summary><p>はい。パソコンに<a class="link" href="https://opencode.ai">opencode</a>（オープンソースのコーディングAI）を入れておけば、「自分のPCで ~/Documents/my-app のログインのバグを直して」のように任せられます。作業ごとにスマートフォンで承認し、opencodeは許可したそのフォルダー内のファイルだけを読み書きします。コマンド実行・インターネット・フォルダー外・.git・.envファイルは禁止で、終わると変更したファイルをお知らせします。</p></details>
   </div>
 </section>
 

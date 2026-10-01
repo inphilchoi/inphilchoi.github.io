@@ -350,7 +350,7 @@ section{padding:clamp(48px,7vw,88px) 0}
   <div class="wrap center">
     <p class="eyebrow">Haru PC</p>
     <h2>手机上吩咐，<br>电脑来干活。</h2>
-    <p class="lede">在自己的电脑上开着 Haru PC，就能用“在我的电脑上……”把电脑上的事交给它。找文件、整理、做文档、执行命令。任何改动之前，手机上都会先弹出审批卡片。</p>
+    <p class="lede">在自己的电脑上开着 Haru PC，就能用“在我的电脑上……”把电脑上的事交给它。找文件、整理、做文档、执行命令。任何改动之前，手机上都会先弹出审批卡片。电脑上装了 opencode 的话，写代码的事也能交给它。</p>
   </div>
   <div class="wrap">
     <div class="flow">
@@ -372,7 +372,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <div class="tiles tiles-4">
       <div class="tile"><h3>连接方式自己选</h3><p>用 Haru 中继随时随地连接，或不经中继、自托管直连。<a class="link" href="#connection">对比</a></p></div>
       <div class="tile"><h3>关掉应用也没关系</h3><p>交代的事会在电脑上继续进行。重新打开时，等待中的审批卡片会弹出来。</p></div>
-      <div class="tile"><h3>直接用公开 AI</h3><p>登录 ChatGPT、Claude、Gemini 等公开 AI，或使用 API 密钥，也可以用自己电脑上的免费本地模型。</p></div>
+      <div class="tile"><h3>直接用公开 AI</h3><p>登录 ChatGPT、Claude、Gemini 等公开 AI，或使用 API 密钥，也可以用无需注册的免费云端模型，或自己电脑上的免费本地模型。</p></div>
       <div class="tile"><h3>开源</h3><p>基于开源 AI 助理 <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a> 运行，源代码公开在 <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a> 上。</p></div>
     </div>
     <p class="tiles-hint" aria-hidden="true">左右滑动查看 →</p>
@@ -455,6 +455,7 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model login copilot</td><td>GitHub Copilot</td></tr>
         <tr><td>haru-pc model key openai</td><td>API 密钥（openai、anthropic、gemini、mistral、deepseek 等）</td></tr>
         <tr><td>haru-pc model local</td><td>自己电脑上的免费本地模型 — 私密但较慢。建议 RAM 16GB 以上</td></tr>
+        <tr><td>haru-pc model free</td><td>无需注册的免费云端模型（OpenCode Zen，限时）— 当前模型保留为备用</td></tr>
       </tbody>
     </table>
     <p class="note"><b>推荐配置</b> — 一直开着的 <b>Mac mini</b>。耗电少，无需显示器也能运行；RAM 16GB 以上的话，还能用免费本地模型。</p>
@@ -585,6 +586,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <details><summary>Haru PC 用的是什么 AI？</summary><p>使用你选择的公开 AI（ChatGPT、Claude、Gemini 等）或你电脑上的本地模型。手机上的 Haru 应用使用设备上的 Apple Intelligence，Haru PC 使用连接到电脑的 AI，两者相互独立。</p></details>
     <details><summary>安装会对我的电脑做哪些改动？</summary><p>如果没有 Node.js 或版本过旧，会进行安装或更新（Mac 通过 Homebrew），把 OpenClaw 和 Haru PC 安装到 <code>~/.haru-pc</code>，并注册为后台服务。可以用 <code>haru-pc uninstall</code> 停止并删除。</p></details>
     <details><summary>我的数据会去哪里？</summary><p>手机上的对话和记录只保存在手机上，交代的事只在手机和你的电脑之间传输。详情请参阅<a class="link" href="../../haru-privacy/">隐私政策</a>。</p></details>
+    <details><summary>也能交给它写代码吗？</summary><p>可以。在电脑上安装 <a class="link" href="https://opencode.ai">opencode</a>（开源编程 AI）后，可以说“在我的电脑上修复 ~/Documents/my-app 的登录错误”。每个任务都要在手机上批准，opencode 只能读取和修改那个已允许文件夹里的文件。执行命令、上网、文件夹以外的位置以及 .git、.env 文件都会被阻止，完成后会告诉你改了哪些文件。</p></details>
   </div>
 </section>
 

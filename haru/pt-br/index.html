@@ -350,7 +350,7 @@ section{padding:clamp(48px,7vw,88px) 0}
   <div class="wrap center">
     <p class="eyebrow">Haru PC</p>
     <h2>Você pede pelo celular,<br>seu computador trabalha.</h2>
-    <p class="lede">Deixe o Haru PC ligado no seu computador e peça tarefas dele com "No meu PC, …". Ele encontra e organiza arquivos, cria documentos e executa comandos. Antes de mudar qualquer coisa, um cartão de aprovação aparece primeiro no seu celular.</p>
+    <p class="lede">Deixe o Haru PC ligado no seu computador e peça tarefas dele com "No meu PC, …". Ele encontra e organiza arquivos, cria documentos e executa comandos. Antes de mudar qualquer coisa, um cartão de aprovação aparece primeiro no seu celular. Se o opencode estiver instalado no computador, o Haru PC também cuida de tarefas de programação.</p>
   </div>
   <div class="wrap">
     <div class="flow">
@@ -372,7 +372,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <div class="tiles tiles-4">
       <div class="tile"><h3>Você escolhe a conexão</h3><p>Pelo relay do Haru, de qualquer lugar, ou sem relay, com a conexão direta auto-hospedada. <a class="link" href="#connection">Comparar</a></p></div>
       <div class="tile"><h3>Mesmo com o app fechado</h3><p>A tarefa que você pediu continua no PC. Ao abrir de novo, aparece o cartão de aprovação que estava esperando.</p></div>
-      <div class="tile"><h3>As IAs públicas de sempre</h3><p>Entre em IAs públicas como ChatGPT · Claude · Gemini com login ou chave de API, ou use um modelo local gratuito no seu computador.</p></div>
+      <div class="tile"><h3>As IAs públicas de sempre</h3><p>Entre em uma IA pública como ChatGPT, Claude ou Gemini, use uma chave de API, um modelo em nuvem gratuito sem cadastro ou um modelo local gratuito no seu próprio computador.</p></div>
       <div class="tile"><h3>Código aberto</h3><p>Funciona sobre o assistente de IA de código aberto <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>, e o código-fonte está publicado no <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>.</p></div>
     </div>
     <p class="tiles-hint" aria-hidden="true">Deslize para ver mais →</p>
@@ -455,6 +455,7 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model login copilot</td><td>GitHub Copilot</td></tr>
         <tr><td>haru-pc model key openai</td><td>Chave de API (openai·anthropic·gemini·mistral·deepseek etc.)</td></tr>
         <tr><td>haru-pc model local</td><td>Modelo local gratuito no seu computador — privado, mas lento. Recomendado 16 GB de RAM ou mais</td></tr>
+        <tr><td>haru-pc model free</td><td>Modelo em nuvem gratuito, sem cadastro (OpenCode Zen, por tempo limitado) — o modelo atual fica como reserva</td></tr>
       </tbody>
     </table>
     <p class="note"><b>Configuração recomendada</b> — um <b>Mac mini</b> sempre ligado. Gasta pouca energia, funciona sem monitor e, com 16 GB de RAM ou mais, roda até o modelo local gratuito.</p>
@@ -585,6 +586,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <details><summary>Qual IA o Haru PC usa?</summary><p>A IA pública que você escolher (ChatGPT·Claude·Gemini etc.) ou um modelo local no seu computador. O app Haru no celular usa o Apple Intelligence dentro do aparelho, e o Haru PC usa a IA conectada ao computador: são coisas separadas.</p></details>
     <details><summary>O que a instalação muda no meu computador?</summary><p>Se o Node.js não existir ou estiver desatualizado, ele é instalado ou atualizado (no Mac, via Homebrew); o OpenClaw e o Haru PC são instalados em <code>~/.haru-pc</code> e registrados como serviço em segundo plano. Você pode parar e desinstalar com <code>haru-pc uninstall</code>.</p></details>
     <details><summary>Para onde vão os meus dados?</summary><p>As conversas e registros do celular ficam só no celular, e as tarefas pedidas circulam apenas entre o celular e o seu PC. Para mais detalhes, veja a <a class="link" href="../../haru-privacy/">Política de Privacidade</a>.</p></details>
+    <details><summary>Ele também programa?</summary><p>Sim. Instale o <a class="link" href="https://opencode.ai">opencode</a> (um agente de programação de código aberto) no computador e diga algo como "No meu PC, corrija o bug de login em ~/Documents/my-app". Você aprova cada tarefa no celular, e o opencode só pode ler e editar arquivos dentro dessa pasta permitida. Comandos, acesso à internet, qualquer coisa fora da pasta e arquivos .git e .env ficam bloqueados, e no fim você fica sabendo quais arquivos mudaram.</p></details>
   </div>
 </section>
 

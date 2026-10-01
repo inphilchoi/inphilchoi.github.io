@@ -350,7 +350,7 @@ section{padding:clamp(48px,7vw,88px) 0}
   <div class="wrap center">
     <p class="eyebrow">Haru PC</p>
     <h2>Ask from your phone,<br>and your computer does the work.</h2>
-    <p class="lede">Keep Haru PC running on your computer, and you can hand off computer work by saying "On my PC, …". It finds files, organizes them, creates documents and runs commands. Before anything changes, an approval card shows up on your phone first.</p>
+    <p class="lede">Keep Haru PC running on your computer, and you can hand off computer work by saying "On my PC, …". It finds files, organizes them, creates documents and runs commands. Before anything changes, an approval card shows up on your phone first. If opencode is installed on the computer, it can take coding jobs too.</p>
   </div>
   <div class="wrap">
     <div class="flow">
@@ -372,7 +372,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <div class="tiles tiles-4">
       <div class="tile"><h3>Your choice of connection</h3><p>Haru relay from anywhere, or a self-hosted direct connection with no relay. <a class="link" href="#connection">Compare</a></p></div>
       <div class="tile"><h3>Even with the app closed</h3><p>The work you handed off keeps going on your PC. Open the app again, and any waiting approval cards show up.</p></div>
-      <div class="tile"><h3>The public AI you already use</h3><p>Sign in to a public AI like ChatGPT, Claude or Gemini, use an API key, or use a free local model on your own computer.</p></div>
+      <div class="tile"><h3>The public AI you already use</h3><p>Sign in to a public AI like ChatGPT, Claude or Gemini, use an API key, use a free cloud model with no sign-up, or use a free local model on your own computer.</p></div>
       <div class="tile"><h3>Open source</h3><p>It runs on the open-source AI assistant <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>, and the source code is public on <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>.</p></div>
     </div>
     <p class="tiles-hint" aria-hidden="true">Swipe for more →</p>
@@ -455,6 +455,7 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model login copilot</td><td>GitHub Copilot</td></tr>
         <tr><td>haru-pc model key openai</td><td>API key (openai, anthropic, gemini, mistral, deepseek and more)</td></tr>
         <tr><td>haru-pc model local</td><td>A free local model on your own computer — private but slow. 16GB of RAM or more recommended</td></tr>
+        <tr><td>haru-pc model free</td><td>A free cloud model, no sign-up (OpenCode Zen, limited time) — your current model stays as the backup</td></tr>
       </tbody>
     </table>
     <p class="note"><b>Recommended setup</b> — a <b>Mac mini</b> that's always on. It uses little power, runs without a monitor, and with 16GB of RAM or more it can even run a free local model.</p>
@@ -585,6 +586,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <details><summary>Which AI does Haru PC use?</summary><p>It uses the public AI you choose (ChatGPT, Claude, Gemini and others) or a local model on your computer. The two are separate: the Haru app on your phone uses Apple Intelligence on the device, and Haru PC uses the AI connected to your computer.</p></details>
     <details><summary>What does installing change on my computer?</summary><p>If Node.js is missing or out of date, it installs or updates it (with Homebrew on Mac), installs OpenClaw and Haru PC in <code>~/.haru-pc</code>, and registers them as a background service. You can stop and remove it with <code>haru-pc uninstall</code>.</p></details>
     <details><summary>Where does my data go?</summary><p>Conversations and records on your phone stay only on your phone, and handed-off work travels only between your phone and your PC. For details, see the <a class="link" href="../../haru-privacy/">Privacy Policy</a>.</p></details>
+    <details><summary>Can it do coding jobs?</summary><p>Yes. Install <a class="link" href="https://opencode.ai">opencode</a> (an open-source coding agent) on the computer and say something like "On my PC, fix the login bug in ~/Documents/my-app". You approve each job on your phone, and opencode can only read and edit files inside that allowed folder. Commands, internet access, anything outside the folder, and .git or .env files are blocked, and when it's done you're told which files changed.</p></details>
   </div>
 </section>
 

@@ -350,7 +350,7 @@ section{padding:clamp(48px,7vw,88px) 0}
   <div class="wrap center">
     <p class="eyebrow">Haru PC</p>
     <h2>Sie sagen es am Handy,<br>Ihr Computer arbeitet.</h2>
-    <p class="lede">Läuft Haru PC auf Ihrem Computer, können Sie mit „Auf meinem PC …“ Computeraufgaben übergeben. Haru PC findet und ordnet Dateien, erstellt Dokumente und führt Befehle aus. Bevor etwas geändert wird, erscheint zuerst eine Freigabekarte auf Ihrem Handy.</p>
+    <p class="lede">Läuft Haru PC auf Ihrem Computer, können Sie mit „Auf meinem PC …“ Computeraufgaben übergeben. Haru PC findet und ordnet Dateien, erstellt Dokumente und führt Befehle aus. Bevor etwas geändert wird, erscheint zuerst eine Freigabekarte auf Ihrem Handy. Ist opencode auf dem Computer installiert, übernimmt Haru PC auch Programmieraufgaben.</p>
   </div>
   <div class="wrap">
     <div class="flow">
@@ -372,7 +372,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <div class="tiles tiles-4">
       <div class="tile"><h3>Verbindung nach Wahl</h3><p>Über Haru-Relay von überall, oder ohne Relay per selbst gehosteter Direktverbindung. <a class="link" href="#connection">Vergleich</a></p></div>
       <div class="tile"><h3>Auch bei geschlossener App</h3><p>Übergebene Aufgaben laufen auf dem PC weiter. Öffnen Sie die App wieder, erscheinen wartende Freigabekarten.</p></div>
-      <div class="tile"><h3>Öffentliche KI wie gewohnt</h3><p>Melden Sie sich bei öffentlicher KI wie ChatGPT · Claude · Gemini an oder nutzen Sie einen API-Schlüssel – oder ein kostenloses lokales Modell auf Ihrem Computer.</p></div>
+      <div class="tile"><h3>Öffentliche KI wie gewohnt</h3><p>Melden Sie sich bei einer öffentlichen KI wie ChatGPT, Claude oder Gemini an, nutzen Sie einen API-Schlüssel, ein kostenloses Cloud-Modell ohne Anmeldung oder ein kostenloses lokales Modell auf Ihrem eigenen Computer.</p></div>
       <div class="tile"><h3>Open Source</h3><p>Läuft auf dem Open-Source-KI-Assistenten <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>. Der Quellcode ist auf <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a> öffentlich.</p></div>
     </div>
     <p class="tiles-hint" aria-hidden="true">Zum Weiterlesen wischen →</p>
@@ -455,6 +455,7 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model login copilot</td><td>GitHub Copilot</td></tr>
         <tr><td>haru-pc model key openai</td><td>API-Schlüssel (openai·anthropic·gemini·mistral·deepseek u. a.)</td></tr>
         <tr><td>haru-pc model local</td><td>Kostenloses lokales Modell auf Ihrem Computer – privat, aber langsam. 16 GB RAM oder mehr empfohlen</td></tr>
+        <tr><td>haru-pc model free</td><td>Kostenloses Cloud-Modell ohne Anmeldung (OpenCode Zen, zeitlich begrenzt) — Ihr bisheriges Modell bleibt als Reserve</td></tr>
       </tbody>
     </table>
     <p class="note"><b>Empfohlenes Setup</b> – ein dauerhaft laufender <b>Mac mini</b>. Er braucht wenig Strom, läuft ohne Monitor und kann ab 16 GB RAM auch ein kostenloses lokales Modell nutzen.</p>
@@ -585,6 +586,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <details><summary>Welche KI nutzt Haru PC?</summary><p>Die öffentliche KI Ihrer Wahl (ChatGPT, Claude, Gemini u. a.) oder ein lokales Modell auf Ihrem Computer. Die Haru App am Handy nutzt Apple Intelligence auf dem Gerät, Haru PC die KI, die Sie am Computer verbunden haben – beides ist getrennt.</p></details>
     <details><summary>Was ändert die Installation an meinem Computer?</summary><p>Fehlt Node.js oder ist es veraltet, wird es installiert oder aktualisiert (auf dem Mac über Homebrew). OpenClaw und Haru PC werden in <code>~/.haru-pc</code> installiert und als Hintergrunddienst registriert. Mit <code>haru-pc uninstall</code> beenden und entfernen Sie alles.</p></details>
     <details><summary>Wohin gehen meine Daten?</summary><p>Gespräche und Einträge bleiben auf dem Handy, übergebene Aufgaben gehen nur zwischen Handy und Ihrem PC hin und her. Details finden Sie in der <a class="link" href="../../haru-privacy/">Datenschutzerklärung</a>.</p></details>
+    <details><summary>Kann Haru PC auch programmieren?</summary><p>Ja. Installieren Sie <a class="link" href="https://opencode.ai">opencode</a> (einen Open-Source-Coding-Agenten) auf dem Computer und sagen Sie etwa „Auf meinem PC: Behebe den Login-Fehler in ~/Documents/my-app“. Sie bestätigen jede Aufgabe auf dem Smartphone, und opencode darf nur Dateien in diesem freigegebenen Ordner lesen und bearbeiten. Befehle, Internetzugriff, alles außerhalb des Ordners sowie .git- und .env-Dateien sind gesperrt; danach erfahren Sie, welche Dateien geändert wurden.</p></details>
   </div>
 </section>
 
