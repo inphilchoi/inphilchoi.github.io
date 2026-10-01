@@ -434,7 +434,7 @@ section{padding:clamp(48px,7vw,88px) 0}
       <li><b>필요한 것을 설치해요</b><p>Node.js(없거나 오래됐으면 새로 설치·업데이트)와 검증한 버전의 OpenClaw, 하루 PC 안전 플러그인.</p></li>
       <li><b>안전하게 설정해요</b><p>바꾸는 일은 모두 폰 승인, 암호화 연결(TLS), 같은 Wi-Fi 안에서만 직접 접속.</p></li>
       <li><b>연결 방식을 골라요</b><p>1) 하루 중계(추천) 2) 설치형 직접 연결. 나중에 바꿀 수 있어요.</p></li>
-      <li><b>AI를 골라요</b><p>ChatGPT·Claude·Gemini 같은 공개 AI 로그인·API 키, 또는 무료 로컬 모델. 로그인은 각 회사의 공식 페이지에서 직접 해요.</p></li>
+      <li><b>AI를 골라요</b><p>ChatGPT·Claude·Gemini 같은 공개 AI 로그인·API 키, 가입 없는 무료 클라우드 모델, 또는 무료 로컬 모델. 로그인은 각 회사의 공식 페이지에서 직접 해요.</p></li>
       <li><b>연결 QR이 떠요</b><p>백그라운드에서 켜 두고, 폰으로 찍을 QR을 보여 줘요.</p></li>
     </ol>
     <p class="note">스크립트를 먼저 읽어 보고 싶다면 <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.sh">install.sh</a> · <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.ps1">install.ps1</a></p>
@@ -458,6 +458,13 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model free</td><td>가입 없는 무료 클라우드 모델 (OpenCode Zen, 기간 한정) — 쓰던 모델은 예비로 남아요</td></tr>
       </tbody>
     </table>
+    <p class="note" style="margin-top:28px"><b>무료 모델로 시작하기</b></p>
+    <ol class="steps">
+      <li><b>켜기</b><p>설치 중 AI 고르기에서 <strong>6) 무료 클라우드 모델</strong>을 고르거나, 이미 설치했다면 <code>haru-pc model free</code>를 실행해요. 가입·키·결제가 필요 없어요.</p></li>
+      <li><b>확인하기</b><p><code>haru-pc model</code> — <code>opencode/space-bunny-free</code>가 보이면 끝이에요. 폰에서 평소처럼 맡기면 돼요.</p></li>
+      <li><b>무료가 끝나면</b><p>전에 쓰던 모델이 있으면 저절로 그 모델로 바뀌어요. 없으면 <code>haru-pc model choose</code>로 다른 AI를 골라요.</p></li>
+      <li><b>알아 둘 점</b><p>메시지는 OpenCode 서버를 거쳐요(OpenCode는 저장하지 않고 학습에도 쓰지 않는다고 밝혀요). 기간 한정 무료이고 끝나는 날은 공개되지 않았어요.</p></li>
+    </ol>
     <p class="note"><b>추천 구성</b> — 늘 켜 두는 <b>Mac mini</b>. 전기를 적게 쓰고 모니터 없이 돌아가며, RAM 16GB 이상이면 무료 로컬 모델까지 쓸 수 있어요.</p>
   </div>
 </section>

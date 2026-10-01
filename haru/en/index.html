@@ -434,7 +434,7 @@ section{padding:clamp(48px,7vw,88px) 0}
       <li><b>Installs what it needs</b><p>Node.js (installed or updated if it's missing or out of date), a tested version of OpenClaw, and the Haru PC safety plug-in.</p></li>
       <li><b>Sets things up safely</b><p>Every change needs approval on your phone, connections are encrypted (TLS), and direct access works only within the same Wi-Fi.</p></li>
       <li><b>Choose how to connect</b><p>1) Haru relay (recommended) 2) Self-hosted direct connection. You can change it later.</p></li>
-      <li><b>Choose your AI</b><p>Sign in to a public AI like ChatGPT, Claude or Gemini, use an API key, or pick a free local model. You sign in yourself on each company's official page.</p></li>
+      <li><b>Choose your AI</b><p>Sign in to a public AI like ChatGPT, Claude or Gemini, use an API key, a free cloud model with no sign-up, or a free local model. Sign-ins happen on each company's own page.</p></li>
       <li><b>A pairing QR code appears</b><p>Haru PC keeps running in the background and shows a QR code for your phone to scan.</p></li>
     </ol>
     <p class="note">Want to read the script first? <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.sh">install.sh</a> · <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.ps1">install.ps1</a></p>
@@ -458,6 +458,13 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model free</td><td>A free cloud model, no sign-up (OpenCode Zen, limited time) — your current model stays as the backup</td></tr>
       </tbody>
     </table>
+    <p class="note" style="margin-top:28px"><b>Start with the free model</b></p>
+    <ol class="steps">
+      <li><b>Turn it on</b><p>Pick <strong>6) Free cloud model</strong> when the installer asks for an AI, or run <code>haru-pc model free</code> if Haru PC is already installed. No sign-up, key or payment.</p></li>
+      <li><b>Check it</b><p><code>haru-pc model</code> — when you see <code>opencode/space-bunny-free</code>, you're done. Ask from your phone as usual.</p></li>
+      <li><b>When the free period ends</b><p>If you used another model before, Haru PC switches back to it on its own. If not, choose another AI with <code>haru-pc model choose</code>.</p></li>
+      <li><b>Good to know</b><p>Your messages go through OpenCode's servers (OpenCode says it doesn't store them or use them for training). It's free for a limited time, with no end date announced.</p></li>
+    </ol>
     <p class="note"><b>Recommended setup</b> — a <b>Mac mini</b> that's always on. It uses little power, runs without a monitor, and with 16GB of RAM or more it can even run a free local model.</p>
   </div>
 </section>

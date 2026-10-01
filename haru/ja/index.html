@@ -434,7 +434,7 @@ section{padding:clamp(48px,7vw,88px) 0}
       <li><b>必要なものをインストール</b><p>Node.js（ない場合や古い場合は新規インストール・アップデート）、検証済みバージョンのOpenClaw、Haru PC安全プラグイン。</p></li>
       <li><b>安全に設定</b><p>変更する作業はすべてスマートフォンで承認、暗号化接続（TLS）、直接アクセスは同じWi-Fi内のみ。</p></li>
       <li><b>接続方法を選択</b><p>1) Haruリレー（おすすめ） 2) セルフホスト直接接続。あとから変更できます。</p></li>
-      <li><b>AIを選択</b><p>ChatGPT・Claude・Geminiなどの公開AIへのログイン・APIキー、または無料のローカルモデル。ログインは各社の公式ページでご自身で行います。</p></li>
+      <li><b>AIを選択</b><p>ChatGPT・Claude・Geminiなどの公開AIへのログインやAPIキー、登録不要の無料クラウドモデル、または無料ローカルモデル。ログインは各社の公式ページで行います。</p></li>
       <li><b>接続用QRが表示されます</b><p>バックグラウンドで起動し、スマートフォンで読み取るQRを表示します。</p></li>
     </ol>
     <p class="note">先にスクリプトを読んでおきたい場合は <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.sh">install.sh</a> · <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.ps1">install.ps1</a></p>
@@ -458,6 +458,13 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model free</td><td>登録不要の無料クラウドモデル（OpenCode Zen、期間限定）— 今のモデルは予備として残ります</td></tr>
       </tbody>
     </table>
+    <p class="note" style="margin-top:28px"><b>無料モデルではじめる</b></p>
+    <ol class="steps">
+      <li><b>オンにする</b><p>インストール中のAI選択で<strong>6) 無料クラウドモデル</strong>を選ぶか、インストール済みなら<code>haru-pc model free</code>を実行します。登録・キー・支払いは不要です。</p></li>
+      <li><b>確認する</b><p><code>haru-pc model</code> — <code>opencode/space-bunny-free</code>と表示されれば完了です。いつもどおりスマートフォンから任せてください。</p></li>
+      <li><b>無料期間が終わったら</b><p>以前使っていたモデルがあれば自動でそちらに切り替わります。なければ<code>haru-pc model choose</code>で別のAIを選んでください。</p></li>
+      <li><b>知っておくこと</b><p>メッセージはOpenCodeのサーバーを経由します（OpenCodeは保存せず学習にも使わないとしています）。期間限定の無料で、終了日は発表されていません。</p></li>
+    </ol>
     <p class="note"><b>おすすめ構成</b> — 常時起動の<b>Mac mini</b>。消費電力が少なくモニタなしで動き、RAMが16GB以上あれば無料のローカルモデルまで使えます。</p>
   </div>
 </section>

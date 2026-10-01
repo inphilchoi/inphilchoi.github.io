@@ -434,7 +434,7 @@ section{padding:clamp(48px,7vw,88px) 0}
       <li><b>Installation des prérequis</b><p>Node.js (installé ou mis à jour s'il est absent ou trop ancien), une version vérifiée d'OpenClaw et le plugin de sécurité Haru PC.</p></li>
       <li><b>Configuration sécurisée</b><p>Toute modification passe par une approbation sur le téléphone, connexion chiffrée (TLS), accès direct uniquement sur le même Wi-Fi.</p></li>
       <li><b>Choix de la connexion</b><p>1) Relais Haru (recommandé) 2) Connexion directe auto-hébergée. Vous pourrez changer plus tard.</p></li>
-      <li><b>Choix de l'IA</b><p>Connexion ou clé API d'une IA publique comme ChatGPT·Claude·Gemini, ou modèle local gratuit. La connexion se fait directement sur la page officielle de chaque entreprise.</p></li>
+      <li><b>Choix de l'IA</b><p>Connexion à une IA publique comme ChatGPT, Claude ou Gemini, clé API, modèle cloud gratuit sans inscription ou modèle local gratuit. Les connexions se font sur la page officielle de chaque entreprise.</p></li>
       <li><b>Le QR de connexion s'affiche</b><p>Haru PC reste actif en arrière-plan et affiche un QR à scanner avec le téléphone.</p></li>
     </ol>
     <p class="note">Pour lire le script avant de l'exécuter : <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.sh">install.sh</a> · <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.ps1">install.ps1</a></p>
@@ -458,6 +458,13 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model free</td><td>Modèle cloud gratuit, sans inscription (OpenCode Zen, durée limitée) — votre modèle actuel reste en secours</td></tr>
       </tbody>
     </table>
+    <p class="note" style="margin-top:28px"><b>Commencer avec le modèle gratuit</b></p>
+    <ol class="steps">
+      <li><b>Activez-le</b><p>Choisissez <strong>6) Modèle cloud gratuit</strong> quand l'installateur demande une IA, ou lancez <code>haru-pc model free</code> si Haru PC est déjà installé. Ni inscription, ni clé, ni paiement.</p></li>
+      <li><b>Vérifiez</b><p><code>haru-pc model</code> : si vous voyez <code>opencode/space-bunny-free</code>, c'est prêt. Confiez vos tâches depuis le téléphone comme d'habitude.</p></li>
+      <li><b>À la fin de la période gratuite</b><p>Si vous utilisiez un autre modèle avant, Haru PC y revient tout seul. Sinon, choisissez une autre IA avec <code>haru-pc model choose</code>.</p></li>
+      <li><b>Bon à savoir</b><p>Vos messages passent par les serveurs d'OpenCode (qui indique ne pas les conserver ni les utiliser pour l'entraînement). C'est gratuit pour une durée limitée, sans date de fin annoncée.</p></li>
+    </ol>
     <p class="note"><b>Configuration recommandée</b> — un <b>Mac mini</b> toujours allumé. Il consomme peu d'électricité, tourne sans écran et, avec 16 Go de RAM ou plus, peut même faire tourner le modèle local gratuit.</p>
   </div>
 </section>

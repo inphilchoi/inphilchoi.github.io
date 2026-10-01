@@ -434,7 +434,7 @@ section{padding:clamp(48px,7vw,88px) 0}
       <li><b>安裝所需元件</b><p>Node.js（沒有或版本太舊時會重新安裝・更新）、經過驗證版本的 OpenClaw，以及 Haru PC 安全外掛。</p></li>
       <li><b>安全地完成設定</b><p>所有變更都要經手機核准、加密連線（TLS）、僅限同一個 Wi-Fi 內直接連線。</p></li>
       <li><b>選擇連線方式</b><p>1) Haru 中繼（推薦）2) 自架直接連線。之後可以更改。</p></li>
-      <li><b>選擇 AI</b><p>ChatGPT・Claude・Gemini 等公開 AI 的登入・API 金鑰，或免費本機模型。登入是在各家公司的官方頁面上由你親自進行。</p></li>
+      <li><b>選擇 AI</b><p>登入 ChatGPT、Claude、Gemini 等公開 AI 或使用 API 金鑰，也可以用不必註冊的免費雲端模型或免費本機模型。登入都在各公司的官方頁面完成。</p></li>
       <li><b>顯示連線 QR 碼</b><p>在背景保持執行，並顯示要用手機掃描的 QR 碼。</p></li>
     </ol>
     <p class="note">想先看看腳本內容的話：<a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.sh">install.sh</a> · <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.ps1">install.ps1</a></p>
@@ -458,6 +458,13 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model free</td><td>不必註冊的免費雲端模型（OpenCode Zen，限時）— 目前的模型保留為備援</td></tr>
       </tbody>
     </table>
+    <p class="note" style="margin-top:28px"><b>用免費模型開始</b></p>
+    <ol class="steps">
+      <li><b>開啟</b><p>安裝時選擇 AI 的步驟中選 <strong>6) 免費雲端模型</strong>；如果已經裝好，執行 <code>haru-pc model free</code>。不必註冊、金鑰或付款。</p></li>
+      <li><b>確認</b><p><code>haru-pc model</code> — 看到 <code>opencode/space-bunny-free</code> 就完成了。像平常一樣在手機上交代就好。</p></li>
+      <li><b>免費期結束後</b><p>如果之前用過其他模型，會自動切回那個模型；如果沒有，用 <code>haru-pc model choose</code> 選擇其他 AI。</p></li>
+      <li><b>須知</b><p>訊息會經過 OpenCode 的伺服器（OpenCode 表示不會保存，也不會用於訓練）。限時免費，尚未公布結束日期。</p></li>
+    </ol>
     <p class="note"><b>推薦配置</b> — 一直開著的 <b>Mac mini</b>。耗電少、不接螢幕也能運作，RAM 16GB 以上連免費本機模型都能用。</p>
   </div>
 </section>
