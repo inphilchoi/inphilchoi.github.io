@@ -32,9 +32,10 @@
 <header><div class="wrap bar"><a class="back" href="/">← CreativeLab</a></div></header>
 <main class="wrap">
   <h1>Demotape 개인정보처리방침 · 이용약관</h1>
-  <div class="date">최종 수정일: 2026년 9월 23일 · 운영자: creativelab · 문의: <a href="mailto:creativelab.choi@gmail.com">creativelab.choi@gmail.com</a> · Privacy Policy &amp; Terms (English below)</div>
+  <div class="date">최종 수정일: 2026년 10월 2일 · 운영자: creativelab · 문의: <a href="mailto:creativelab.choi@gmail.com">creativelab.choi@gmail.com</a> · Privacy Policy &amp; Terms (English below)</div>
 
   <div class="summary">
+    <p>이 방침은 iOS(App Store)와 Android(Google Play)용 Demotape 에 모두 적용됩니다.</p>
     <p><strong>요약 — Demotape 는 직접 만든 곡을 같은 Wi-Fi 의 옆 사람 폰으로 보내는 앱입니다. 회원가입이 없고, 개발자가 운영하는 서버가 없으며, 개인정보를 수집하지 않습니다.</strong>
     곡·메모·설정은 이 기기에만 저장되고, 보낼 때만 두 기기 사이에서 암호화되어 직접 전달됩니다. 광고·분석·추적 SDK 가 없습니다.</p>
   </div>
@@ -50,9 +51,9 @@
     <tr><td>구간 메모</td><td>이 기기의 앱 저장소</td></tr>
     <tr><td>보낼 때 보이는 이름(선택), 차단한 창작자 목록, 앱 설정</td><td>이 기기의 앱 저장소</td></tr>
     <tr><td>창작자 ID(서명 키) — 처음 실행할 때 기기에서 만듭니다. 개인 키는 기기 밖으로 나가지 않습니다.</td><td>이 기기의 앱 저장소</td></tr>
-    <tr><td>창작자 팩 구매 여부(결제는 Apple 이 처리하며 개발자는 결제 정보를 받지 않습니다)</td><td>이 기기의 앱 저장소</td></tr>
+    <tr><td>창작자 팩 구매 여부(결제는 iOS 에서는 Apple, Android 에서는 Google Play 가 처리하며 개발자는 결제 정보를 받지 않습니다)</td><td>이 기기의 앱 저장소</td></tr>
   </table>
-  <p>이 정보는 개발자나 제3자에게 전송되지 않으며, 서버 사본은 없습니다.</p>
+  <p>이 정보는 개발자나 제3자에게 전송되지 않으며, 서버 사본은 없습니다. Android에서는 앱 설정에서 백업을 막지 않으므로, 기기의 시스템 백업(Google 계정 백업 등)을 켠 경우 앱 데이터가 그 백업에 포함될 수 있습니다. 이는 운영자가 아니라 사용자의 기기·계정 설정에 따르며, 운영자는 그 백업에 접근하지 않습니다.</p>
 
   <h2>3. 다른 사람에게 전달되는 것</h2>
   <p>사용자가 곡을 <strong>직접 보낼 때만</strong>, 받는 사람의 기기로 곡 파일과 제목·보낸 사람 이름·장르·가사·길이, 창작자 ID(공개키 지문)와 서명, "직접 만든 곡" 확인 시각이 전달됩니다.
@@ -65,6 +66,13 @@
     <li><strong>로컬 네트워크</strong> — 같은 Wi-Fi 의 기기와 곡을 주고받을 때만 사용합니다.</li>
   </ul>
   <p>두 권한 모두 거부해도 앱의 나머지 기능은 그대로 쓸 수 있습니다.</p>
+  <p>Android 앱이 선언한 권한은 다음과 같습니다.</p>
+  <ul>
+    <li><strong>마이크(RECORD_AUDIO)</strong> — 곡을 녹음할 때만 사용하며, 녹음할 때 허용을 묻습니다. 거부해도 녹음을 뺀 나머지 기능은 그대로 쓸 수 있습니다.</li>
+    <li><strong>인터넷·네트워크 상태·Wi-Fi 상태·Wi-Fi 멀티캐스트(INTERNET, ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE, CHANGE_WIFI_MULTICAST_STATE)</strong> — 같은 Wi-Fi 의 기기를 찾고 두 기기 사이에서 곡을 직접 주고받을 때 사용합니다. 개발자 서버와의 통신에는 쓰지 않습니다.</li>
+    <li><strong>Google Play 결제(com.android.vending.BILLING)</strong> — 창작자 팩 구매와 개발자 응원에 사용합니다.</li>
+  </ul>
+  <p>연락처·위치·카메라·사진·저장소 접근 권한은 요청하지 않으며, 광고 식별자(AD_ID)도 사용하지 않습니다. 오디오 파일을 가져올 때는 사용자가 시스템 파일 선택기에서 고른 파일만 읽습니다.</p>
 
   <h2>5. 신고 처리</h2>
   <p>신고 기능은 사용자의 메일 앱에 개발자 주소로 보낼 메일 초안(곡 제목·창작자 ID·파일 해시)을 만듭니다. 사용자가 직접 보낼 때만 전송되며 <strong>곡 파일은 첨부되지 않습니다</strong>.
@@ -90,20 +98,20 @@
   <h3>6. 권리자 신고</h3>
   <p>본인의 저작물이 권리 없이 Demotape 로 전달되고 있다면 creativelab.choi@gmail.com 으로 (1) 권리자 정보 (2) 대상 곡 제목·창작자 ID 또는 파일 해시 (3) 권리 근거를 보내 주세요. 확인되면 해당 창작자 ID·음원 해시를 신고 처리 목록에 추가해 앱 업데이트로 배포합니다.</p>
   <h3>7. 앱 내 구입</h3>
-  <p>창작자 팩(한 번 결제, 자동 갱신 없음)과 개발자 응원에는 <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple 표준 이용약관(EULA)</a>이 함께 적용됩니다.</p>
+  <p>창작자 팩(한 번 결제, 자동 갱신 없음)과 개발자 응원에는 iOS 에서는 <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple 표준 이용약관(EULA)</a>이, Android 에서는 <a href="https://play.google.com/about/play-terms/">Google Play 이용약관</a>이 함께 적용됩니다.</p>
 
   <h2>English</h2>
-  <p class="en"><strong>Privacy Policy.</strong> Demotape collects no personal data. There is no account, no server run by the developer, and no analytics, advertising or tracking SDK.
-  Your songs, titles, lyrics, timestamp notes, display name, blocked creators, settings, your creator signing key (the private key never leaves the device) and whether you bought the Creator Pack are stored only on your device; deleting the app deletes all of it.
+  <p class="en"><strong>Privacy Policy.</strong> This policy applies to both the iOS (App Store) and Android (Google Play) versions of Demotape. Demotape collects no personal data. There is no account, no server run by the developer, and no analytics, advertising or tracking SDK.
+  Your songs, titles, lyrics, timestamp notes, display name, blocked creators, settings, your creator signing key (the private key never leaves the device) and whether you bought the Creator Pack are stored only on your device; deleting the app deletes all of it. On Android the app does not opt out of system backup, so if you turn on device backup (for example Google account backup) this data may be included in it; that depends on your device and account settings and we have no access to it.
   Content is shared only when you send a song: the audio, its title, your display name, genre, lyrics, length, your creator ID and signature, and the time you confirmed it is your own work — sent directly and encrypted (X25519 + AES-256-GCM) to the receiving device, never through a server. While "Send nearby" is open, your display name is visible to devices on the same Wi-Fi.
-  Permissions: microphone (recording only) and local network (sending/receiving on the same Wi-Fi only). Reports open an email draft to us (title, creator ID, file hash — no audio) and are sent only if you send them; we keep them for one year after resolution. We collect no data from anyone, including children. Changes will be posted on this page.</p>
+  Permissions: microphone (recording only) and local network (sending/receiving on the same Wi-Fi only). The Android app declares only the microphone (RECORD_AUDIO), INTERNET, ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE and CHANGE_WIFI_MULTICAST_STATE (used to find devices on the same Wi-Fi and exchange songs directly between two devices, not to contact any server of ours) and Google Play Billing (com.android.vending.BILLING); it requests no contacts, location, camera, photos or storage access and does not use the advertising ID (AD_ID), and audio files you import are read through the system file picker only. Reports open an email draft to us (title, creator ID, file hash — no audio) and are sent only if you send them; we keep them for one year after resolution. We collect no data from anyone, including children. Changes will be posted on this page.</p>
   <p class="en"><strong>Terms of Use.</strong> (1) Add only songs whose lyrics, composition, performance and recording you created and own — no other people's recordings, unlicensed covers or remixes, or uncleared samples. You confirm this each time, and the confirmation is signed into the song card.
   (2) Zero tolerance for hate, harassment, sexual content, violence, threats and spam in songs, titles or lyrics; creator IDs found in violation are added to the takedown list and blocked in every user's app.
   (3) Songs you receive belong to their creators — you may pass one on only if its creator allowed re-sharing.
   (4) Report or block from any received song; reported songs are hidden immediately and we review reports within 24 hours (creativelab.choi@gmail.com).
   (5) There is no server; deleting the app deletes your songs, so keep backups.
   (6) Rights holders: email us with your details, the song title and creator ID or file hash, and the basis of your rights; confirmed items are added to the takedown list and shipped in an app update.
-  (7) In-app purchases (Creator Pack, one-time, non-renewing; and tips) are also governed by <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple's Standard EULA</a>.</p>
+  (7) In-app purchases (Creator Pack, one-time, non-renewing; and tips) are also governed by <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple's Standard EULA</a> (iOS) or <a href="https://play.google.com/about/play-terms/">Google Play Terms of Service</a> (Android).</p>
 
   <footer>Demotape · CreativeLab · creativelab.choi@gmail.com</footer>
 </main>
