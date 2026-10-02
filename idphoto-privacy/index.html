@@ -32,19 +32,20 @@
 <header><div class="wrap bar"><a class="back" href="/">← CreativeLab</a></div></header>
 <main class="wrap">
   <h1>증명사진관 개인정보처리방침</h1>
-  <div class="date">최종 수정일: 2026년 9월 25일(앱 1.0.3 빌드 10 — 보정 기능 제거, 광고는 저장 후 한 자리) · Privacy Policy (English summary below)</div>
+  <div class="date">최종 수정일: 2026년 10월 2일(앱 1.0.3 빌드 10 — Android 버전 추가) · Privacy Policy (English summary below)</div>
 
   <div class="summary">
+    <p>이 방침은 iOS(App Store)와 Android(Google Play)용 증명사진관에 모두 적용됩니다. 광고와 결제에 관한 설명 중 iOS 에만 해당하는 부분은 본문에 따로 표시했습니다.</p>
     <p><strong>요약 — 증명사진관은 계정이 없고 자체 서버도 없습니다. 사진은 기기 밖으로 나가지 않습니다.</strong>
     얼굴 위치 인식·배경 분리·크기 점검까지 모든 처리가 이 앱을 설치한 기기 안에서 이루어집니다.
     원본 사진과 결과물은 개발자와 광고 회사를 포함한 누구에게도 전송되지 않습니다.
-    버전 1.0.3부터 무료 운영을 위해 광고(Google AdMob)가 표시되며, 광고 표시에 필요한 기기 정보만 광고 SDK가 처리합니다.
-    한 번 결제로 광고를 없앨 수 있습니다.</p>
+    iOS 버전은 1.0.3부터 무료 운영을 위해 광고(Google AdMob)가 표시되며, 광고 표시에 필요한 기기 정보만 광고 SDK가 처리합니다.
+    한 번 결제로 광고를 없앨 수 있습니다. Android 버전은 광고를 표시하지 않습니다.</p>
   </div>
 
   <h2>1. 수집하는 개인정보</h2>
   <p><strong>개발자가 수집하는 개인정보는 없습니다.</strong> 계정·이메일·전화번호를 받지 않으며, 개발자가 운영하는 서버도 없습니다.</p>
-  <p>다만 앱에 포함된 <strong>Google AdMob 광고 SDK</strong>는 광고를 보여 주고 부정 클릭을 막기 위해 다음 정보를 처리할 수 있습니다:
+  <p>다만 iOS 앱에 포함된 <strong>Google AdMob 광고 SDK</strong>는 광고를 보여 주고 부정 클릭을 막기 위해 다음 정보를 처리할 수 있습니다:
   대략적인 위치(IP 주소 기반), 기기 식별자(광고 식별자 등), 광고 노출·클릭 같은 앱 내 상호작용, 앱 멈춤·성능 같은 진단 정보.
   이 정보는 Google이 처리하며 개발자에게 개인을 식별할 수 있는 형태로 전달되지 않습니다.
   자세한 내용은 <a href="https://policies.google.com/privacy">Google 개인정보처리방침</a>을 참고해 주세요.</p>
@@ -58,24 +59,33 @@
     <tr><td>최근 작업 목록(최대 20건)</td><td>앱 전용 저장 공간</td><td>개별 삭제 가능, 앱 삭제 시 전체 삭제</td></tr>
   </table>
 
+  <p>Android에서는 앱 설정에서 백업을 막지 않으므로, 기기의 시스템 백업(Google 계정 백업 등)을 켠 경우 앱 데이터가 그 백업에 포함될 수 있습니다. 이는 운영자가 아니라 사용자의 기기·계정 설정에 따르며, 운영자는 그 백업에 접근하지 않습니다.</p>
+
   <h2>3. 권한</h2>
   <ul>
     <li><strong>사진 접근</strong> — 편집할 사진을 사용자가 직접 고를 때만 사용합니다.</li>
     <li><strong>카메라</strong> — 앱 안에서 촬영을 선택할 때만 사용합니다. 촬영 가이드의 실시간 분석도 기기 안에서만 이루어지며, 프레임은 저장되지 않습니다.</li>
   </ul>
   <p>두 권한 모두 사용하는 시점에 요청하며, 거부해도 나머지 기능은 그대로 쓸 수 있습니다.</p>
+  <p>Android 앱이 선언한 권한은 카메라(CAMERA), 오디오 녹음(RECORD_AUDIO), 저장소 읽기(READ_EXTERNAL_STORAGE)와 Android 9 이하에서만 쓰이는 저장소 쓰기(WRITE_EXTERNAL_STORAGE), 인터넷·네트워크 상태 확인(INTERNET, ACCESS_NETWORK_STATE), Google Play 결제(com.android.vending.BILLING), 그리고 앱에 포함된 라이브러리가 함께 선언하는 항목(WAKE_LOCK, FOREGROUND_SERVICE, ACCESS_ADSERVICES_AD_ID, ACCESS_ADSERVICES_ATTRIBUTION, ACCESS_ADSERVICES_TOPICS)입니다.
+  촬영 가이드 카메라는 소리를 녹음하지 않도록 오디오를 꺼 둡니다. 사진은 사용자가 직접 고르거나 촬영한 것만 쓰며, 결과물은 앱 전용 저장 공간에 만들어 운영체제 공유 화면으로 내보냅니다.
+  연락처·위치 권한은 요청하지 않으며, 광고 식별자(AD_ID) 권한은 선언하지 않습니다.</p>
 
   <h2>4. 광고와 결제</h2>
   <ul>
-    <li><strong>광고</strong> — Google AdMob 전면 광고가 사진 저장을 마치고 첫 화면으로 돌아왔을 때 나올 수 있습니다
+    <li><strong>광고(iOS)</strong> — Google AdMob 전면 광고가 사진 저장을 마치고 첫 화면으로 돌아왔을 때 나올 수 있습니다
     (첫 저장에는 나오지 않고, 하루 최대 3번). 앱을 열 때와 촬영·편집·저장 중에는 광고가 나오지 않습니다. <strong>개인 맞춤이 아닌 광고만</strong> 요청하며,
     앱 간 추적(App Tracking Transparency)은 요청하지 않습니다.</li>
-    <li><strong>광고 제거 결제</strong> — App Store 인앱 결제로 처리되며, 결제 정보는 Apple이 처리합니다.
+    <li><strong>광고 제거 결제(iOS)</strong> — App Store 인앱 결제로 처리되며, 결제 정보는 Apple이 처리합니다.
     개발자는 결제 여부만 기기 안에 기록합니다. 재설치나 기기 변경 시에는 앱의 '구매 복원'으로 되살릴 수 있습니다.</li>
+    <li><strong>Android 버전</strong> — 광고를 표시하지 않으며 광고 요청도 하지 않습니다(빌드에 광고 단위가 없습니다). 사진·얼굴 정보·편집 내용은 광고 라이브러리에 전달되지 않습니다.
+    Android에서는 새 결제 상품을 판매하지 않고 설정에 '구매 복원'만 있습니다. 구매 확인이 필요한 경우 Google Play 결제(Google Play Billing)로 처리되며,
+    결제 정보는 Google이 처리하고 개발자는 받지 않습니다(<a href="https://policies.google.com/privacy">Google 개인정보처리방침</a>).</li>
   </ul>
 
   <h2>5. 제3자 제공·분석</h2>
-  <p>위 광고 SDK 외에 분석 도구는 넣지 않았습니다. 저장·공유 기능은 사용자가 직접 고른 대상(사진 앱,
+  <p>iOS의 광고 SDK 외에 분석 도구는 넣지 않았습니다. Android 버전은 얼굴 위치 인식과 배경 분리에 Google ML Kit 라이브러리를 앱에 포함해 기기 안에서 실행하며, 사진은 이 라이브러리를 통해서도 기기 밖으로 전송되지 않습니다.
+  ML Kit 라이브러리가 기술 정보를 Google에 보내는 경우에는 Google 개인정보처리방침을 따릅니다. 저장·공유 기능은 사용자가 직접 고른 대상(사진 앱,
   메신저, 인화 서비스 등)으로 <strong>운영체제의 공유 기능</strong>을 통해 파일을 넘기는 것이며,
   이 동작은 사용자의 조작으로만 시작됩니다.</p>
 
@@ -90,19 +100,24 @@
   <p>creativelab.choi@gmail.com</p>
 
   <h2 class="en">Privacy Policy (English)</h2>
-  <p class="en"><strong>Photo Size Studio (증명사진관) does not collect your photos or personal data.</strong>
+  <p class="en">This policy applies to both the iOS (App Store) and Android (Google Play) versions. <strong>Photo Size Studio (증명사진관) does not collect your photos or personal data.</strong>
   Face position detection, background separation and the size check all run entirely on your device.
   Your photos never leave the device. There is no account, no server of ours and no analytics.
-  From version 1.0.3 the app shows ads through Google AdMob; a one-time purchase removes them.</p>
+  From version 1.0.3 the iOS app shows ads through Google AdMob; a one-time purchase removes them. The Android version shows no ads.</p>
   <ul class="en">
     <li><strong>Data collected by us:</strong> none.</li>
-    <li><strong>Ads (Google AdMob):</strong> an interstitial ad may appear when you return to the home screen after saving a photo
+    <li><strong>Ads (Google AdMob, iOS):</strong> an interstitial ad may appear when you return to the home screen after saving a photo
       (not after your first save, at most 3 a day), never when the app opens or while you shoot, edit or save. Only non-personalized ads are requested and no cross-app tracking is requested.
       The AdMob SDK may process approximate location (from IP), device identifiers, ad interactions and diagnostics under
       <a href="https://policies.google.com/privacy">Google's privacy policy</a>. <strong>Photos, face data and edits are never
       passed to the ad SDK.</strong></li>
-    <li><strong>Remove ads purchase:</strong> handled by Apple through in-app purchase; only whether you bought it is stored on
+    <li><strong>Remove ads purchase (iOS):</strong> handled by Apple through in-app purchase; only whether you bought it is stored on
       the device. Use "Restore purchase" after reinstalling.</li>
+    <li><strong>Android version:</strong> no ads are shown or requested and photos, face data and edits are never passed to the ads library bundled in the app.
+      No new purchase is sold on Android; Settings only offers "Restore purchase", which goes through Google Play Billing and we never receive payment details.
+      Face detection and background separation run on the device with Google ML Kit libraries bundled in the app; photos are not sent through them.</li>
+    <li><strong>Android permissions:</strong> CAMERA, RECORD_AUDIO (the shooting-guide camera has audio turned off and records no sound), READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE (Android 9 and below only), INTERNET, ACCESS_NETWORK_STATE, Google Play Billing (com.android.vending.BILLING), plus entries declared by bundled libraries (WAKE_LOCK, FOREGROUND_SERVICE, ACCESS_ADSERVICES_AD_ID, ACCESS_ADSERVICES_ATTRIBUTION, ACCESS_ADSERVICES_TOPICS). No contacts or location access, and the advertising ID permission (AD_ID) is not declared.</li>
+    <li><strong>Android backup:</strong> the app does not opt out of system backup, so if you turn on device backup (for example Google account backup) app data may be included in it; that depends on your device and account settings and we have no access to it.</li>
     <li><strong>Photos / camera:</strong> accessed only when you pick or take a photo. Camera frames used for the
       shooting guide are analysed on device and never stored.</li>
     <li><strong>On-device storage:</strong> originals, edit settings and up to 20 recent projects live in the app's
