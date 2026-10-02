@@ -32,7 +32,7 @@
 <header><div class="wrap bar"><a class="back" href="/">← CreativeLab</a></div></header>
 <main class="wrap">
   <h1>증명사진관 개인정보처리방침</h1>
-  <div class="date">최종 수정일: 2026년 10월 2일(앱 1.0.3 빌드 11 — Android 버전 추가) · Privacy Policy (English summary below)</div>
+  <div class="date">최종 수정일: 2026년 10월 2일(앱 1.0.3 — Android 빌드 1.0.3+10, Google Play vc12) · Privacy Policy (English summary below)</div>
 
   <div class="summary">
     <p>이 방침은 iOS(App Store)와 Android(Google Play)용 증명사진관에 모두 적용됩니다. 광고와 결제에 관한 설명 중 iOS 에만 해당하는 부분은 본문에 따로 표시했습니다.</p>
@@ -67,9 +67,9 @@
     <li><strong>카메라</strong> — 앱 안에서 촬영을 선택할 때만 사용합니다. 촬영 가이드의 실시간 분석도 기기 안에서만 이루어지며, 프레임은 저장되지 않습니다.</li>
   </ul>
   <p>두 권한 모두 사용하는 시점에 요청하며, 거부해도 나머지 기능은 그대로 쓸 수 있습니다.</p>
-  <p>Android 앱이 선언한 권한은 카메라(CAMERA), 오디오 녹음(RECORD_AUDIO), 저장소 읽기(READ_EXTERNAL_STORAGE)와 Android 9 이하에서만 쓰이는 저장소 쓰기(WRITE_EXTERNAL_STORAGE), 인터넷·네트워크 상태 확인(INTERNET, ACCESS_NETWORK_STATE), Google Play 결제(com.android.vending.BILLING), 그리고 앱에 포함된 라이브러리가 함께 선언하는 항목(WAKE_LOCK, FOREGROUND_SERVICE)입니다.
-  촬영 가이드 카메라는 소리를 녹음하지 않도록 오디오를 꺼 둡니다. 사진은 사용자가 직접 고르거나 촬영한 것만 쓰며, 결과물은 앱 전용 저장 공간에 만들어 운영체제 공유 화면으로 내보냅니다.
-  연락처·위치 권한은 요청하지 않으며, 광고 식별자 관련 권한(AD_ID, ACCESS_ADSERVICES_*)은 선언하지 않습니다.</p>
+  <p>Android 앱이 선언한 권한은 카메라(CAMERA), 인터넷·네트워크 상태 확인(INTERNET, ACCESS_NETWORK_STATE), Google Play 결제(com.android.vending.BILLING), 그리고 앱에 포함된 라이브러리가 함께 선언하는 항목(WAKE_LOCK, FOREGROUND_SERVICE)입니다.
+  사진은 사용자가 직접 고르거나 촬영한 것만 쓰며, 사진 선택은 운영체제의 사진 선택기(파일 선택 화면)를, 결과물 저장·내보내기는 앱 전용 저장 공간에 만든 뒤 운영체제 공유 화면을 이용하므로 넓은 범위의 저장소 권한이 필요하지 않습니다.
+  앱은 소리를 녹음하지 않으며, 연락처·위치 권한은 요청하지 않고, 광고 식별자 관련 권한(AD_ID, ACCESS_ADSERVICES_*)은 선언하지 않습니다.</p>
 
   <h2>4. 광고와 결제</h2>
   <ul>
@@ -116,7 +116,7 @@
     <li><strong>Android version:</strong> no ads are shown or requested and photos, face data and edits are never passed to the ads library bundled in the app.
       No new purchase is sold on Android; Settings only offers "Restore purchase", which goes through Google Play Billing and we never receive payment details.
       Face detection and background separation run on the device with Google ML Kit libraries bundled in the app; photos are not sent through them.</li>
-    <li><strong>Android permissions:</strong> CAMERA, RECORD_AUDIO (the shooting-guide camera has audio turned off and records no sound), READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE (Android 9 and below only), INTERNET, ACCESS_NETWORK_STATE, Google Play Billing (com.android.vending.BILLING), plus entries declared by bundled libraries (WAKE_LOCK, FOREGROUND_SERVICE). No contacts or location access, and the advertising ID permissions (AD_ID, ACCESS_ADSERVICES_*) are not declared.</li>
+    <li><strong>Android permissions:</strong> CAMERA, INTERNET, ACCESS_NETWORK_STATE, Google Play Billing (com.android.vending.BILLING), plus entries declared by bundled libraries (WAKE_LOCK, FOREGROUND_SERVICE). Photos are chosen through the system photo picker / file chooser, and results are written to the app's own storage and exported through the system share sheet, so no broad storage permission is needed. The app does not record sound, requests no contacts or location access, and the advertising ID permissions (AD_ID, ACCESS_ADSERVICES_*) are not declared.</li>
     <li><strong>Android backup:</strong> the app does not opt out of system backup, so if you turn on device backup (for example Google account backup) app data may be included in it; that depends on your device and account settings and we have no access to it.</li>
     <li><strong>Photos / camera:</strong> accessed only when you pick or take a photo. Camera frames used for the
       shooting guide are analysed on device and never stored.</li>
