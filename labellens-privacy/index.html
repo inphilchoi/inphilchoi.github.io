@@ -32,7 +32,7 @@
 <header><div class="wrap bar"><a class="back" href="/">← CreativeLab</a></div></header>
 <main class="wrap">
   <h1>라벨렌즈(LabelLens) 개인정보처리방침</h1>
-  <div class="date">최종 수정일: 2026년 9월 22일(앱 1.0) · 운영자: creativelab · English · 日本語 · 中文 below</div>
+  <div class="date">최종 수정일: 2026년 10월 8일(앱 1.0.1, Android 안내 추가) · 운영자: creativelab · English · 日本語 · 中文 below</div>
 
   <div class="summary">
     <p><strong>요약 — 라벨렌즈는 개인정보를 수집하지 않습니다.</strong>
@@ -65,6 +65,14 @@
   <h2>5. 제3자 제공·광고·분석</h2>
   <p>없습니다. 광고 SDK, 분석 도구, 추적 기술을 쓰지 않으며 앱 간 추적(App Tracking Transparency)도 요청하지 않습니다.</p>
 
+  <h2>Android(Google Play) 앱 안내</h2>
+  <ul>
+    <li><strong>요청하는 권한:</strong> 앱이 직접 요청하는 권한은 없습니다. 카메라·저장공간·위치·연락처 권한을 선언하지 않으며, 사진은 시스템 카메라 앱과 시스템 사진 선택기로 받습니다. 빌드에 합쳐지는 라이브러리가 <code>com.android.vending.BILLING</code>(Google Play 결제), <code>INTERNET</code>·<code>ACCESS_NETWORK_STATE</code>(Google ML Kit·결제 라이브러리가 쓰는 네트워크 권한)를 추가합니다. 앱 자체는 개발자 서버와 통신하지 않습니다.</li>
+    <li><strong>글자 인식(Google ML Kit):</strong> 한국어 인식 모델이 앱 안에 들어 있어 사진은 기기 안에서 처리되며 Google 이나 개발자 서버로 전송되지 않습니다. 다만 ML Kit 는 서비스 개선을 위해 진단·사용 정보(기기 제조사·모델·OS 버전, 앱 패키지 이름·버전, 처리 지연 시간 같은 성능 지표, 이미지 형식·해상도 같은 설정, 초기화·인식·해제 같은 이벤트 종류)를 HTTPS 로 Google 에 보낼 수 있으며, 사진 내용은 포함되지 않습니다. 라벨렌즈는 이 전송을 끄는 설정을 따로 두지 않았습니다. 자세한 내용은 <a href="https://developers.google.com/ml-kit/android-data-disclosure">ML Kit 데이터 공개</a>와 Google의 <a href="https://policies.google.com/privacy">개인정보처리방침</a>을 참고하세요.</li>
+    <li><strong>결제:</strong> 'Plus' 구매는 Google Play 결제로 처리되며 개발자는 카드 등 결제 정보를 받거나 저장하지 않습니다. Google의 <a href="https://policies.google.com/privacy">개인정보처리방침</a>이 적용됩니다.</li>
+    <li><strong>Android 백업:</strong> 앱은 자동 백업을 끄지 않았습니다(<code>allowBackup</code> 기본값, 별도 백업 제외 규칙 없음). 기기 설정에서 Google 백업을 켠 경우 앱 전용 저장 공간의 내용(피할 성분, 서랍의 제품 이름·성분 글자, 언어 설정, 구매 기록)이 Google 계정에 백업되거나 새 기기로 옮겨질 수 있습니다. 이는 이용자의 기기·Google 계정 설정에 따르며 개발자는 접근하지 못합니다. 사진은 저장하지 않으므로 백업되지 않습니다.</li>
+  </ul>
+
   <h2>6. 정보에 관한 고지</h2>
   <p>성분 정보는 참고용입니다. 라벨렌즈는 제품의 효능이나 안전성을 평가하지 않으며, 피부 상태가 걱정되면 전문가와 상의해 주세요.</p>
 
@@ -82,6 +90,7 @@
     <li><strong>On-device storage:</strong> your avoid list, product names and ingredient text saved to your shelf (not photos), language setting
       and purchase status. Delete them in Settings &gt; Delete all saved data, or by deleting the app.</li>
     <li><strong>Purchase:</strong> LabelLens Plus (one-time, no auto-renewal) is handled by Apple; we never receive payment details.</li>
+    <li><strong>Android (Google Play):</strong> The app itself requests no runtime permissions (no camera, storage, location or contacts; photos come from the system camera app and system photo picker). Libraries merged into the build add <code>com.android.vending.BILLING</code> (Google Play billing) and <code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code> (used by Google ML Kit and the billing library). Text recognition uses Google ML Kit with the Korean model bundled in the app, so photos are processed on the device and not uploaded. ML Kit may, however, send diagnostics and usage data to Google over HTTPS (device make/model/OS version, app package name and version, performance metrics such as latency, API configuration such as image format and resolution, and event types such as initialization or detection) but not the photo contents; LabelLens provides no setting to turn this off. See <a href="https://developers.google.com/ml-kit/android-data-disclosure">ML Kit data disclosure</a> and <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>. Purchases are processed by Google Play; we never receive or store card or payment details. Android auto-backup is not disabled (default <code>allowBackup</code>, no exclusion rules): if you use Google backup, the app's private data (avoid list, shelf product names and ingredient text, language, purchase status; never photos) may be backed up to your Google account or transferred to a new device, under your device and Google account settings.</li>
     <li><strong>No ads, analytics or tracking.</strong></li>
     <li><strong>Disclaimer:</strong> ingredient information is for reference only; the app does not rate product efficacy or safety.</li>
     <li><strong>Contact:</strong> creativelab.choi@gmail.com</li>
@@ -92,15 +101,20 @@
   文字認識は端末内(Apple Vision)で行い、写真はすぐに削除され、どこにも送信されません。避けたい成分・保存した製品名と成分の文字・言語設定・購入状況は端末内にのみ保存されます。
   広告・分析・トラッキングはありません。お問い合わせ: creativelab.choi@gmail.com</p>
 
+  <p class="en"><strong>Android(Google Play)について:</strong> アプリ自体が要求する権限はありません(カメラ・ストレージ・位置情報・連絡先なし。写真はシステムのカメラアプリと写真選択画面から受け取ります)。ビルドに含まれるライブラリが <code>com.android.vending.BILLING</code>(Google Play 課金)と <code>INTERNET</code>・<code>ACCESS_NETWORK_STATE</code>(Google ML Kit と課金ライブラリが使用)を追加します。文字認識は韓国語モデルをアプリに内蔵した Google ML Kit で行うため、写真は端末内で処理され送信されません。ただし ML Kit は診断・利用情報(端末のメーカー・機種・OS バージョン、アプリのパッケージ名とバージョン、遅延などの性能指標、画像形式・解像度などの設定、初期化・認識などのイベント種別)を HTTPS で Google に送信する場合があり、写真の内容は含まれません。LabelLens にはこれを無効にする設定はありません。詳しくは <a href="https://developers.google.com/ml-kit/android-data-disclosure">ML Kit データ開示</a> と Google の<a href="https://policies.google.com/privacy">プライバシーポリシー</a>をご覧ください。購入は Google Play が処理し、カード情報等は受け取りません。Android の自動バックアップは無効化していません(<code>allowBackup</code> 既定値)。Google バックアップを使うと、アプリ内データ(避けたい成分・保存した製品名と成分の文字・言語設定・購入状況。写真は含まれません)が Google アカウントにバックアップされたり新しい端末に移行されたりする場合があります。</p>
+
   <h2 class="en">隐私政策(简体中文)</h2>
   <p class="en">LabelLens 不收集任何个人信息。没有账号、登录，也没有开发者服务器。相机(或您选择的照片)只用于识别化妆品全成分表的文字,
   文字识别在本设备上(Apple Vision)完成，照片识别后立即删除，不会上传。想避开的成分、保存的产品名称和成分文字、语言设置、购买状态只保存在本设备上。
   没有广告、分析或追踪。联系方式: creativelab.choi@gmail.com</p>
 
+  <p class="en"><strong>Android(Google Play)说明:</strong>应用本身不申请任何权限(不使用相机、存储、位置、通讯录权限;照片通过系统相机应用和系统相册选择器获取)。构建时合并的库会加入 <code>com.android.vending.BILLING</code>(Google Play 结算)以及 <code>INTERNET</code>、<code>ACCESS_NETWORK_STATE</code>(由 Google ML Kit 和结算库使用)。文字识别使用已内置韩语模型的 Google ML Kit,照片在本设备上处理,不会上传。不过 ML Kit 可能通过 HTTPS 向 Google 发送诊断和使用信息(设备厂商、型号、系统版本,应用包名和版本,延迟等性能指标,图片格式、分辨率等配置,以及初始化、识别等事件类型),不包含照片内容;LabelLens 未提供关闭该发送的设置。详见 <a href="https://developers.google.com/ml-kit/android-data-disclosure">ML Kit 数据披露</a>和 Google <a href="https://policies.google.com/privacy">隐私权政策</a>。购买由 Google Play 处理,我们不会接收或保存银行卡等支付信息。Android 自动备份未被关闭(<code>allowBackup</code> 默认值):如果您开启了 Google 备份,应用内的数据(想避开的成分、保存的产品名称和成分文字、语言设置、购买状态;不含照片)可能会备份到您的 Google 账号或迁移到新设备,具体取决于您的设备和 Google 账号设置。</p>
+
   <h2 class="en">隱私權政策(繁體中文)</h2>
   <p class="en">LabelLens 不蒐集任何個人資料。沒有帳號、登入，也沒有開發者伺服器。相機(或您選擇的照片)只用於辨識化妝品全成分標示的文字,
   文字辨識在本裝置上(Apple Vision)完成，照片辨識後立即刪除，不會上傳。想避開的成分、儲存的產品名稱與成分文字、語言設定、購買狀態只儲存在本裝置上。
   沒有廣告、分析或追蹤。聯絡方式: creativelab.choi@gmail.com</p>
+  <p class="en"><strong>Android(Google Play)說明:</strong>應用程式本身不申請任何權限(不使用相機、儲存空間、位置、聯絡人權限;照片經由系統相機應用程式與系統相簿選擇器取得)。建置時合併的程式庫會加入 <code>com.android.vending.BILLING</code>(Google Play 結帳)以及 <code>INTERNET</code>、<code>ACCESS_NETWORK_STATE</code>(由 Google ML Kit 與結帳程式庫使用)。文字辨識使用已內建韓文模型的 Google ML Kit,照片在本裝置上處理,不會上傳。不過 ML Kit 可能透過 HTTPS 向 Google 傳送診斷與使用資訊(裝置廠牌、型號、系統版本,應用程式套件名稱與版本,延遲等效能指標,影像格式、解析度等設定,以及初始化、辨識等事件類型),不包含照片內容;LabelLens 未提供關閉此傳送的設定。詳見 <a href="https://developers.google.com/ml-kit/android-data-disclosure">ML Kit 資料揭露</a>與 Google <a href="https://policies.google.com/privacy">隱私權政策</a>。購買由 Google Play 處理,我們不會接收或儲存信用卡等付款資訊。Android 自動備份並未關閉(<code>allowBackup</code> 預設值):若您開啟 Google 備份,應用程式內的資料(想避開的成分、儲存的產品名稱與成分文字、語言設定、購買狀態;不含照片)可能會備份到您的 Google 帳號或轉移到新裝置,視您的裝置與 Google 帳號設定而定。</p>
 </main>
 <footer><div class="wrap">© 2026 CreativeLab</div></footer>
 </body>
