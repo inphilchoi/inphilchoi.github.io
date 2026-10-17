@@ -372,7 +372,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <div class="tiles tiles-4">
       <div class="tile"><h3>接続方法は選べます</h3><p>Haruリレーでどこからでも。または、リレーなしのセルフホスト直接接続で。 <a class="link" href="#connection">比較</a></p></div>
       <div class="tile"><h3>アプリを閉じても</h3><p>任せた作業はPCで続きます。もう一度開くと、待っていた承認カードが表示されます。</p></div>
-      <div class="tile"><h3>公開AIをそのまま</h3><p>ChatGPT · Claude · Geminiなどの公開AIにログインするかAPIキーで。登録不要の無料クラウドモデルや、自分のコンピュータの無料ローカルモデルでも。</p></div>
+      <div class="tile"><h3>公開AIをそのまま</h3><p>ChatGPT · Claude · Geminiなどの公開AIにログインするかAPIキーで（無料のGeminiキーでも可）。自分のコンピュータの無料ローカルモデルでも。</p></div>
       <div class="tile"><h3>オープンソース</h3><p>オープンソースのAIアシスタント<a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>の上で動作し、ソースは<a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>で公開しています。</p></div>
     </div>
     <p class="tiles-hint" aria-hidden="true">横にスワイプ →</p>
@@ -428,13 +428,13 @@ section{padding:clamp(48px,7vw,88px) 0}
     </div>
     <div id="pane-win" role="tabpanel" aria-labelledby="tab-win" hidden>
       <div class="code"><button class="copy" type="button">コピー</button><span data-copy>irm https://raw.githubusercontent.com/inphilchoi/haru-pc/main/install.ps1 | iex</span></div>
-      <p class="note">スタートメニューから<b>PowerShell</b>を開いて貼り付けます。Windows 10・11に対応しています。</p>
+      <p class="note">スタートメニューから<b>PowerShell</b>を開いて貼り付けます。Windows 10・11に対応しています。インストーラーは暗号化接続に必要な<b>OpenSSL</b>もwingetでインストールします。管理者の確認（UAC）画面が出たら<b>はい</b>を選んでください。あとで新しいペアリングQRが必要なら<code>haru-pc pair</code>（10分間有効・1回のみ）、バックグラウンドの動作確認は<code>openclaw --profile haru gateway status</code>です。</p>
     </div>
     <ol class="steps">
       <li><b>必要なものをインストール</b><p>Node.js（ない場合や古い場合は新規インストール・アップデート）、検証済みバージョンのOpenClaw、Haru PC安全プラグイン。</p></li>
       <li><b>安全に設定</b><p>変更する作業はすべてスマートフォンで承認、暗号化接続（TLS）、直接アクセスは同じWi-Fi内のみ。</p></li>
       <li><b>接続方法を選択</b><p>1) Haruリレー（おすすめ） 2) セルフホスト直接接続。あとから変更できます。</p></li>
-      <li><b>AIを選択</b><p>ChatGPT・Claude・Geminiなどの公開AIへのログインやAPIキー、登録不要の無料クラウドモデル、または無料ローカルモデル。ログインは各社の公式ページで行います。</p></li>
+      <li><b>AIを選択</b><p>ChatGPT・Claude・Geminiなどの公開AIへのログインやAPIキー（無料のGeminiキーが既定）、またはOllamaの無料ローカルモデル。ログインは各社の公式ページで行います。</p></li>
       <li><b>接続用QRが表示されます</b><p>バックグラウンドで起動し、スマートフォンで読み取るQRを表示します。</p></li>
     </ol>
     <p class="note">先にスクリプトを読んでおきたい場合は <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.sh">install.sh</a> · <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.ps1">install.ps1</a></p>
@@ -457,15 +457,15 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model key openai</td><td>APIキー（openai・anthropic・gemini・mistral・deepseekなど）</td></tr>
         <tr><td>haru-pc model key gemini</td><td>Gemini・MetaはAPIキーのみ（Geminiの無料キー: aistudio.google.com）</td></tr>
         <tr><td>haru-pc model local</td><td>自分のコンピュータの無料ローカルモデル — プライベートですが低速です。RAM 16GB以上を推奨</td></tr>
-        <tr><td>haru-pc model free</td><td>登録不要の無料クラウドモデル（OpenCode Zen、期間限定）— 今のモデルは予備として残ります</td></tr>
+        <tr><td>haru-pc model free</td><td>無料クラウドモデル（OpenCode Zen）は2026年10月に終了しました — 無料のGeminiキーかローカルモデルをお使いください</td></tr>
       </tbody>
     </table>
-    <p class="note" style="margin-top:28px"><b>無料モデルではじめる</b></p>
+    <p class="note" style="margin-top:28px"><b>無料ではじめる方法</b></p>
     <ol class="steps">
-      <li><b>オンにする</b><p>インストール中のAI選択でEnterを押すか、<strong>6) 無料クラウドモデル</strong>を選びます。インストール済みなら<code>haru-pc model free</code>を実行します。登録・キー・支払いは不要です。</p></li>
-      <li><b>確認する</b><p><code>haru-pc model</code> — <code>opencode/space-bunny-free</code>と表示されれば完了です。いつもどおりスマートフォンから任せてください。</p></li>
-      <li><b>無料期間が終わったら</b><p>以前使っていたモデルがあれば自動でそちらに切り替わります。なければ<code>haru-pc model choose</code>で別のAIを選んでください。</p></li>
-      <li><b>知っておくこと</b><p>メッセージはOpenCodeのサーバーを経由します（OpenCodeは保存せず学習にも使わないとしています）。期間限定の無料で、終了日は発表されていません。</p></li>
+      <li><b>Gemini無料キー（既定）</b><p>インストール中のAI選択でEnterを押し、<a class="link" href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a>で無料キーを取得して貼り付けます。あとから<code>haru-pc model key gemini</code>でも設定できます。メッセージはGoogleの規約に従ってGoogleに送られます。</p></li>
+      <li><b>Ollamaのローカルモデル</b><p><a class="link" href="https://ollama.com">Ollama</a>をインストールして<code>haru-pc model local</code>を実行します。無料でプライベートですが、高性能なGPUか16GB以上のRAMが必要です。<code>qwen3:8b</code>を使い、読み取り専用モードをオンにします。</p></li>
+      <li><b>確認する</b><p><code>haru-pc model</code>で使用中のモデルを確認できます。未設定の場合、インストーラーは警告を出し、ペアリングコードはそのまま表示します。そのあと<code>haru-pc model choose</code>を実行してください。</p></li>
+      <li><b>以前の無料クラウドモデルは終了しました</b><p>OpenCode Zenの無料「Space Bunny」は2026年10月に終了し、現在はエラー（403 <code>FreeTierError</code>）になります。上のいずれかに切り替えてください。</p></li>
     </ol>
     <p class="note"><b>おすすめ構成</b> — 常時起動の<b>Mac mini</b>。消費電力が少なくモニタなしで動き、RAMが16GB以上あれば無料のローカルモデルまで使えます。</p>
   </div>

@@ -372,7 +372,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <div class="tiles tiles-4">
       <div class="tile"><h3>Connexion au choix</h3><p>Partout avec le relais Haru, ou sans relais avec la connexion directe auto-hébergée. <a class="link" href="#connection">Comparer</a></p></div>
       <div class="tile"><h3>Même app fermée</h3><p>Les tâches confiées continuent sur le PC. Rouvrez l'app et les cartes d'approbation en attente s'affichent.</p></div>
-      <div class="tile"><h3>Vos IA publiques telles quelles</h3><p>Connectez-vous à une IA publique comme ChatGPT, Claude ou Gemini, utilisez une clé API, un modèle cloud gratuit sans inscription ou un modèle local gratuit sur votre propre ordinateur.</p></div>
+      <div class="tile"><h3>Vos IA publiques telles quelles</h3><p>Connectez-vous à une IA publique comme ChatGPT, Claude ou Gemini, utilisez une clé API (une clé Gemini gratuite convient) ou un modèle local gratuit sur votre propre ordinateur.</p></div>
       <div class="tile"><h3>Open source</h3><p>Il fonctionne sur l'assistant IA open source <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>, et son code source est publié sur <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>.</p></div>
     </div>
     <p class="tiles-hint" aria-hidden="true">Faites glisser →</p>
@@ -428,13 +428,13 @@ section{padding:clamp(48px,7vw,88px) 0}
     </div>
     <div id="pane-win" role="tabpanel" aria-labelledby="tab-win" hidden>
       <div class="code"><button class="copy" type="button">Copier</button><span data-copy>irm https://raw.githubusercontent.com/inphilchoi/haru-pc/main/install.ps1 | iex</span></div>
-      <p class="note">Ouvrez <b>PowerShell</b> depuis le menu Démarrer et collez la ligne. Windows 10 et 11 sont pris en charge.</p>
+      <p class="note">Ouvrez <b>PowerShell</b> depuis le menu Démarrer et collez la ligne. Windows 10 et 11 sont pris en charge. L'installateur installe aussi <b>OpenSSL</b> (nécessaire à la connexion chiffrée) avec winget : Windows affiche une demande administrateur (UAC), choisissez <b>Oui</b>. Besoin d'un nouveau QR code d'appairage plus tard ? Lancez <code>haru-pc pair</code> (valable 10 minutes, usage unique) ; vérifiez le service en arrière-plan avec <code>openclaw --profile haru gateway status</code>.</p>
     </div>
     <ol class="steps">
       <li><b>Installation des prérequis</b><p>Node.js (installé ou mis à jour s'il est absent ou trop ancien), une version vérifiée d'OpenClaw et le plugin de sécurité Haru PC.</p></li>
       <li><b>Configuration sécurisée</b><p>Toute modification passe par une approbation sur le téléphone, connexion chiffrée (TLS), accès direct uniquement sur le même Wi-Fi.</p></li>
       <li><b>Choix de la connexion</b><p>1) Relais Haru (recommandé) 2) Connexion directe auto-hébergée. Vous pourrez changer plus tard.</p></li>
-      <li><b>Choix de l'IA</b><p>Connexion à une IA publique comme ChatGPT, Claude ou Gemini, clé API, modèle cloud gratuit sans inscription ou modèle local gratuit. Les connexions se font sur la page officielle de chaque entreprise.</p></li>
+      <li><b>Choix de l'IA</b><p>Connexion à une IA publique comme ChatGPT, Claude ou Gemini, clé API (par défaut, une clé Gemini gratuite) ou modèle local gratuit avec Ollama. Les connexions se font sur la page officielle de chaque entreprise.</p></li>
       <li><b>Le QR de connexion s'affiche</b><p>Haru PC reste actif en arrière-plan et affiche un QR à scanner avec le téléphone.</p></li>
     </ol>
     <p class="note">Pour lire le script avant de l'exécuter : <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.sh">install.sh</a> · <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.ps1">install.ps1</a></p>
@@ -457,15 +457,15 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model key openai</td><td>Clé API (openai·anthropic·gemini·mistral·deepseek, etc.)</td></tr>
         <tr><td>haru-pc model key gemini</td><td>Gemini et Meta uniquement avec une clé API (clé Gemini gratuite : aistudio.google.com)</td></tr>
         <tr><td>haru-pc model local</td><td>Modèle local gratuit sur votre ordinateur — privé mais lent. 16 Go de RAM ou plus recommandés</td></tr>
-        <tr><td>haru-pc model free</td><td>Modèle cloud gratuit, sans inscription (OpenCode Zen, durée limitée) — votre modèle actuel reste en secours</td></tr>
+        <tr><td>haru-pc model free</td><td>Le modèle cloud gratuit (OpenCode Zen) a pris fin en octobre 2026 — utilisez une clé Gemini gratuite ou un modèle local</td></tr>
       </tbody>
     </table>
-    <p class="note" style="margin-top:28px"><b>Commencer avec le modèle gratuit</b></p>
+    <p class="note" style="margin-top:28px"><b>Commencer gratuitement</b></p>
     <ol class="steps">
-      <li><b>Activez-le</b><p>Quand l'installateur demande une IA, appuyez simplement sur Entrée ou choisissez <strong>6) Modèle cloud gratuit</strong>. Si Haru PC est déjà installé, lancez <code>haru-pc model free</code>. Ni inscription, ni clé, ni paiement.</p></li>
-      <li><b>Vérifiez</b><p><code>haru-pc model</code> : si vous voyez <code>opencode/space-bunny-free</code>, c'est prêt. Confiez vos tâches depuis le téléphone comme d'habitude.</p></li>
-      <li><b>À la fin de la période gratuite</b><p>Si vous utilisiez un autre modèle avant, Haru PC y revient tout seul. Sinon, choisissez une autre IA avec <code>haru-pc model choose</code>.</p></li>
-      <li><b>Bon à savoir</b><p>Vos messages passent par les serveurs d'OpenCode (qui indique ne pas les conserver ni les utiliser pour l'entraînement). C'est gratuit pour une durée limitée, sans date de fin annoncée.</p></li>
+      <li><b>Clé Gemini gratuite (par défaut)</b><p>Quand l'installateur demande une IA, appuyez sur Entrée, obtenez une clé gratuite sur <a class="link" href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a> et collez-la. Ou plus tard : <code>haru-pc model key gemini</code>. Vos messages vont à Google selon les conditions de Google.</p></li>
+      <li><b>Modèle local avec Ollama</b><p>Installez <a class="link" href="https://ollama.com">Ollama</a>, puis lancez <code>haru-pc model local</code>. Gratuit et privé, mais il faut un bon GPU ou 16 Go de RAM ou plus. Il utilise <code>qwen3:8b</code> et active le mode lecture seule.</p></li>
+      <li><b>Vérifiez</b><p><code>haru-pc model</code> affiche le modèle utilisé. S'il n'y en a pas, l'installateur vous avertit et affiche quand même le code d'appairage ; lancez ensuite <code>haru-pc model choose</code>.</p></li>
+      <li><b>L'ancien modèle cloud gratuit a pris fin</b><p>Le « Space Bunny » gratuit d'OpenCode Zen a pris fin en octobre 2026 et répond maintenant par une erreur (403 <code>FreeTierError</code>). Passez à l'une des options ci-dessus.</p></li>
     </ol>
     <p class="note"><b>Configuration recommandée</b> — un <b>Mac mini</b> toujours allumé. Il consomme peu d'électricité, tourne sans écran et, avec 16 Go de RAM ou plus, peut même faire tourner le modèle local gratuit.</p>
   </div>

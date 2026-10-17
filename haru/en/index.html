@@ -372,7 +372,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <div class="tiles tiles-4">
       <div class="tile"><h3>Your choice of connection</h3><p>Haru relay from anywhere, or a self-hosted direct connection with no relay. <a class="link" href="#connection">Compare</a></p></div>
       <div class="tile"><h3>Even with the app closed</h3><p>The work you handed off keeps going on your PC. Open the app again, and any waiting approval cards show up.</p></div>
-      <div class="tile"><h3>The public AI you already use</h3><p>Sign in to a public AI like ChatGPT, Claude or Gemini, use an API key, use a free cloud model with no sign-up, or use a free local model on your own computer.</p></div>
+      <div class="tile"><h3>The public AI you already use</h3><p>Sign in to a public AI like ChatGPT, Claude or Gemini, use an API key (a free Gemini key works), or use a free local model on your own computer.</p></div>
       <div class="tile"><h3>Open source</h3><p>It runs on the open-source AI assistant <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a>, and the source code is public on <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a>.</p></div>
     </div>
     <p class="tiles-hint" aria-hidden="true">Swipe for more →</p>
@@ -428,13 +428,13 @@ section{padding:clamp(48px,7vw,88px) 0}
     </div>
     <div id="pane-win" role="tabpanel" aria-labelledby="tab-win" hidden>
       <div class="code"><button class="copy" type="button">Copy</button><span data-copy>irm https://raw.githubusercontent.com/inphilchoi/haru-pc/main/install.ps1 | iex</span></div>
-      <p class="note">Open <b>PowerShell</b> from the Start menu and paste it. Windows 10 and 11 are supported.</p>
+      <p class="note">Open <b>PowerShell</b> from the Start menu and paste it. Windows 10 and 11 are supported. The installer also installs <b>OpenSSL</b> (needed for the encrypted connection) with winget — Windows shows an administrator (UAC) prompt: choose <b>Yes</b>. Need a new pairing QR later? Run <code>haru-pc pair</code> (valid 10 minutes, one use); check the background service with <code>openclaw --profile haru gateway status</code>.</p>
     </div>
     <ol class="steps">
       <li><b>Installs what it needs</b><p>Node.js (installed or updated if it's missing or out of date), a tested version of OpenClaw, and the Haru PC safety plug-in.</p></li>
       <li><b>Sets things up safely</b><p>Every change needs approval on your phone, connections are encrypted (TLS), and direct access works only within the same Wi-Fi.</p></li>
       <li><b>Choose how to connect</b><p>1) Haru relay (recommended) 2) Self-hosted direct connection. You can change it later.</p></li>
-      <li><b>Choose your AI</b><p>Sign in to a public AI like ChatGPT, Claude or Gemini, use an API key, a free cloud model with no sign-up, or a free local model. Sign-ins happen on each company's own page.</p></li>
+      <li><b>Choose your AI</b><p>Sign in to a public AI like ChatGPT, Claude or Gemini, use an API key (a free Gemini key is the default), or a free local model with Ollama. Sign-ins happen on each company's own page.</p></li>
       <li><b>A pairing QR code appears</b><p>Haru PC keeps running in the background and shows a QR code for your phone to scan.</p></li>
     </ol>
     <p class="note">Want to read the script first? <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.sh">install.sh</a> · <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.ps1">install.ps1</a></p>
@@ -457,15 +457,15 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model key openai</td><td>API key (openai, anthropic, gemini, mistral, deepseek and more)</td></tr>
         <tr><td>haru-pc model key gemini</td><td>Gemini and Meta connect with an API key only (free Gemini key: aistudio.google.com)</td></tr>
         <tr><td>haru-pc model local</td><td>A free local model on your own computer — private but slow. 16GB of RAM or more recommended</td></tr>
-        <tr><td>haru-pc model free</td><td>A free cloud model, no sign-up (OpenCode Zen, limited time) — your current model stays as the backup</td></tr>
+        <tr><td>haru-pc model free</td><td>The free cloud model (OpenCode Zen) ended in 10/2026 — use a free Gemini key or a local model instead</td></tr>
       </tbody>
     </table>
-    <p class="note" style="margin-top:28px"><b>Start with the free model</b></p>
+    <p class="note" style="margin-top:28px"><b>Free ways to start</b></p>
     <ol class="steps">
-      <li><b>Turn it on</b><p>When the installer asks for an AI, just press Enter or pick <strong>6) Free cloud model</strong>. If Haru PC is already installed, run <code>haru-pc model free</code>. No sign-up, key or payment.</p></li>
-      <li><b>Check it</b><p><code>haru-pc model</code> — when you see <code>opencode/space-bunny-free</code>, you're done. Ask from your phone as usual.</p></li>
-      <li><b>When the free period ends</b><p>If you used another model before, Haru PC switches back to it on its own. If not, choose another AI with <code>haru-pc model choose</code>.</p></li>
-      <li><b>Good to know</b><p>Your messages go through OpenCode's servers (OpenCode says it doesn't store them or use them for training). It's free for a limited time, with no end date announced.</p></li>
+      <li><b>Gemini free key (default)</b><p>When the installer asks for an AI, just press Enter, get a free key at <a class="link" href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a>, and paste it. Or later: <code>haru-pc model key gemini</code>. Your messages go to Google under Google's terms.</p></li>
+      <li><b>Local model with Ollama</b><p>Install <a class="link" href="https://ollama.com">Ollama</a>, then run <code>haru-pc model local</code>. Free and private, but it needs a good GPU or 16GB of RAM or more. It uses <code>qwen3:8b</code> and turns on read-only mode.</p></li>
+      <li><b>Check it</b><p><code>haru-pc model</code> shows the model in use. If none is set, the installer warns you and still shows the pairing code — run <code>haru-pc model choose</code> afterwards.</p></li>
+      <li><b>The old free cloud model has ended</b><p>OpenCode Zen's free "Space Bunny" ended in October 2026 and now answers with an error (403 <code>FreeTierError</code>). Switch with one of the options above.</p></li>
     </ol>
     <p class="note"><b>Recommended setup</b> — a <b>Mac mini</b> that's always on. It uses little power, runs without a monitor, and with 16GB of RAM or more it can even run a free local model.</p>
   </div>

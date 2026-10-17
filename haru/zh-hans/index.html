@@ -372,7 +372,7 @@ section{padding:clamp(48px,7vw,88px) 0}
     <div class="tiles tiles-4">
       <div class="tile"><h3>连接方式自己选</h3><p>用 Haru 中继随时随地连接，或不经中继、自托管直连。<a class="link" href="#connection">对比</a></p></div>
       <div class="tile"><h3>关掉应用也没关系</h3><p>交代的事会在电脑上继续进行。重新打开时，等待中的审批卡片会弹出来。</p></div>
-      <div class="tile"><h3>直接用公开 AI</h3><p>登录 ChatGPT、Claude、Gemini 等公开 AI，或使用 API 密钥，也可以用无需注册的免费云端模型，或自己电脑上的免费本地模型。</p></div>
+      <div class="tile"><h3>直接用公开 AI</h3><p>登录 ChatGPT、Claude、Gemini 等公开 AI，或使用 API 密钥（免费的 Gemini 密钥也可以），也可以用自己电脑上的免费本地模型。</p></div>
       <div class="tile"><h3>开源</h3><p>基于开源 AI 助理 <a class="link" href="https://github.com/openclaw/openclaw">OpenClaw</a> 运行，源代码公开在 <a class="link" href="https://github.com/inphilchoi/haru-pc">GitHub</a> 上。</p></div>
     </div>
     <p class="tiles-hint" aria-hidden="true">左右滑动查看 →</p>
@@ -428,13 +428,13 @@ section{padding:clamp(48px,7vw,88px) 0}
     </div>
     <div id="pane-win" role="tabpanel" aria-labelledby="tab-win" hidden>
       <div class="code"><button class="copy" type="button">复制</button><span data-copy>irm https://raw.githubusercontent.com/inphilchoi/haru-pc/main/install.ps1 | iex</span></div>
-      <p class="note">从开始菜单打开 <b>PowerShell</b> 并粘贴。支持 Windows 10、11。</p>
+      <p class="note">从开始菜单打开 <b>PowerShell</b> 并粘贴。支持 Windows 10、11。安装程序还会用 winget 安装加密连接所需的 <b>OpenSSL</b> — 弹出管理员确认（UAC）窗口时请选择<b>是</b>。之后需要新的配对二维码，运行 <code>haru-pc pair</code>（有效 10 分钟，仅限一次）；检查后台服务用 <code>openclaw --profile haru gateway status</code>。</p>
     </div>
     <ol class="steps">
       <li><b>安装所需组件</b><p>Node.js（没有或版本过旧时会重新安装或更新）、经过验证版本的 OpenClaw，以及 Haru PC 安全插件。</p></li>
       <li><b>安全地完成设置</b><p>所有改动都需手机审批，使用加密连接（TLS），只允许在同一 Wi-Fi 内直接访问。</p></li>
       <li><b>选择连接方式</b><p>1) Haru 中继（推荐）2) 自托管直连。以后可以更改。</p></li>
-      <li><b>选择 AI</b><p>登录 ChatGPT、Claude、Gemini 等公开 AI 或使用 API 密钥，也可以用无需注册的免费云端模型或免费本地模型。登录都在各公司的官方页面完成。</p></li>
+      <li><b>选择 AI</b><p>登录 ChatGPT、Claude、Gemini 等公开 AI 或使用 API 密钥（默认是免费的 Gemini 密钥），也可以用 Ollama 免费本地模型。登录都在各公司的官方页面完成。</p></li>
       <li><b>显示连接二维码</b><p>在后台保持运行，并显示供手机扫描的二维码。</p></li>
     </ol>
     <p class="note">如果想先看看脚本内容：<a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.sh">install.sh</a> · <a class="link" href="https://github.com/inphilchoi/haru-pc/blob/main/install.ps1">install.ps1</a></p>
@@ -457,15 +457,15 @@ section{padding:clamp(48px,7vw,88px) 0}
         <tr><td>haru-pc model key openai</td><td>API 密钥（openai、anthropic、gemini、mistral、deepseek 等）</td></tr>
         <tr><td>haru-pc model key gemini</td><td>Gemini、Meta 只能用 API 密钥连接（Gemini 免费密钥：aistudio.google.com）</td></tr>
         <tr><td>haru-pc model local</td><td>自己电脑上的免费本地模型 — 私密但较慢。建议 RAM 16GB 以上</td></tr>
-        <tr><td>haru-pc model free</td><td>无需注册的免费云端模型（OpenCode Zen，限时）— 当前模型保留为备用</td></tr>
+        <tr><td>haru-pc model free</td><td>免费云端模型（OpenCode Zen）已于 2026 年 10 月结束 — 请改用免费的 Gemini 密钥或本地模型</td></tr>
       </tbody>
     </table>
-    <p class="note" style="margin-top:28px"><b>用免费模型开始</b></p>
+    <p class="note" style="margin-top:28px"><b>免费开始的方式</b></p>
     <ol class="steps">
-      <li><b>打开</b><p>安装时选择 AI 的步骤中直接按 Enter，或选 <strong>6) 免费云端模型</strong>；如果已经装好，运行 <code>haru-pc model free</code>。无需注册、密钥或付款。</p></li>
-      <li><b>确认</b><p><code>haru-pc model</code> — 看到 <code>opencode/space-bunny-free</code> 就完成了。像平常一样在手机上交代就行。</p></li>
-      <li><b>免费期结束后</b><p>如果之前用过其他模型，会自动切回那个模型；如果没有，用 <code>haru-pc model choose</code> 选择其他 AI。</p></li>
-      <li><b>须知</b><p>消息会经过 OpenCode 的服务器（OpenCode 表示不会保存，也不会用于训练）。限时免费，尚未公布结束日期。</p></li>
+      <li><b>Gemini 免费密钥（默认）</b><p>安装时选择 AI 的步骤中直接按 Enter，到 <a class="link" href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a> 获取免费密钥并粘贴。之后也可以运行 <code>haru-pc model key gemini</code>。消息会按 Google 的条款发送给 Google。</p></li>
+      <li><b>Ollama 本地模型</b><p>安装 <a class="link" href="https://ollama.com">Ollama</a> 后运行 <code>haru-pc model local</code>。免费且私密，但需要性能不错的显卡或 16GB 以上内存。使用 <code>qwen3:8b</code>，并开启只读模式。</p></li>
+      <li><b>确认</b><p><code>haru-pc model</code> 可查看正在使用的模型。如果没有设置，安装程序会给出警告，连接码照常显示，之后请运行 <code>haru-pc model choose</code>。</p></li>
+      <li><b>原来的免费云端模型已结束</b><p>OpenCode Zen 的免费“Space Bunny”已于 2026 年 10 月结束，现在会返回错误（403 <code>FreeTierError</code>）。请改用上面的任一方式。</p></li>
     </ol>
     <p class="note"><b>推荐配置</b> — 一直开着的 <b>Mac mini</b>。耗电少，无需显示器也能运行；RAM 16GB 以上的话，还能用免费本地模型。</p>
   </div>
