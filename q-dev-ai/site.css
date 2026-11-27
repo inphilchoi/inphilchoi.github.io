@@ -149,3 +149,15 @@ body.mn-open{overflow:hidden}
 .sc-group:first-of-type{margin-top:8px}
 .sc-group .cnt{font-size:17px;font-weight:600;color:var(--text-muted)}
 .sc-bigico{position:absolute;inset:0;margin:auto;width:96px!important;height:96px!important;border-radius:22px;object-fit:cover!important}
+/* 사례 쪽: 휴대폰(360~529px)에서는 두 줄로 놓아 스크롤을 줄인다 */
+@media (min-width:360px) and (max-width:529px){
+.sc-chips{gap:6px}
+.sc-grid{grid-template-columns:1fr 1fr;gap:12px}
+.sc-grid .sc-card a{padding:10px 10px 14px;border-radius:20px}
+.sc-grid .sc-phone{border-width:4px;border-radius:20px}
+.sc-grid .sc-meta{gap:8px;margin-top:10px}
+.sc-grid .rn-ico{width:32px;height:32px;border-radius:8px}
+.sc-grid .rn-name{overflow-wrap:anywhere}
+.sc-grid .sc-from{font-size:15px;overflow-wrap:anywhere}
+.sc-grid .sc-chip{font-size:13px;min-height:30px;padding:4px 10px}
+}
