@@ -140,3 +140,12 @@ body.mn-open{overflow:hidden}
 @media (min-width:821px) and (max-width:1100px){.rn-sub a{padding:6px 7px}.rn-sub{gap:0}}
 /* 번역 글에 줄바꿈(\n)을 쓰는 제목 */
 [data-k="r.h1"],[data-k="r.made.h"],[data-k="r.how.h"]{white-space:pre-line}
+
+/* 사례 쪽: 칩 줄·분야 묶음 */
+.sc-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.sc-chips .sc-chip{margin-top:0}
+.sc-chip.alt{background:var(--surface-2);color:var(--text-mid)}
+.sc-group{display:flex;align-items:baseline;gap:10px;margin:40px 0 18px;font-size:clamp(1.5rem,1.2rem + 1.4vw,2.25rem);font-weight:700;letter-spacing:-.025em;line-height:1.15}
+.sc-group:first-of-type{margin-top:8px}
+.sc-group .cnt{font-size:17px;font-weight:600;color:var(--text-muted)}
+.sc-bigico{position:absolute;inset:0;margin:auto;width:96px!important;height:96px!important;border-radius:22px;object-fit:cover!important}
